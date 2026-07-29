@@ -10,17 +10,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(__dirname));
 
-// Route handler for MONETA Sistem page
-app.get(['/sistem', '/sistem/', '/moneta-sistem', '/moneta-sistem/', '/moneta-sistiem', '/moneta-sistiem/'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'sistem.html'));
-});
-
-// Fallback to index.html for unknown HTML navigation routes
+// Fallback to index.html for unknown routes
 app.use((req, res) => {
-  // If request path has an extension (e.g. .js, .css, .png, .jpg, .svg, .ico, etc), return 404
-  if (path.extname(req.path)) {
-    return res.status(404).type('text/plain').send('404 Not Found');
-  }
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
