@@ -870,23 +870,67 @@ const newsletterEmailInput = document.getElementById('newsletterEmailInput');
 const newsletterFeedback = document.getElementById('newsletterFeedback');
 
 if (newsletterForm && newsletterEmailInput && newsletterFeedback) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    const validateEmail = (email) => {
+        if (!email) return { valid: false, reason: 'empty' };
+        if (!emailRegex.test(email)) return { valid: false, reason: 'format' };
+        return { valid: true };
+    };
+
+    const clearValidationState = () => {
+        newsletterEmailInput.classList.remove('is-invalid');
+        newsletterFeedback.className = 'newsletter__feedback';
+        newsletterFeedback.innerHTML = '';
+    };
+
+    newsletterEmailInput.addEventListener('input', () => {
+        if (newsletterEmailInput.classList.contains('is-invalid')) {
+            const result = validateEmail(newsletterEmailInput.value.trim());
+            if (result.valid) {
+                clearValidationState();
+            }
+        }
+    });
+
     newsletterForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = newsletterEmailInput.value.trim();
-        
-        if (!email || !email.includes('@') || !email.includes('.')) {
+        const lang = document.documentElement.lang === 'en' ? 'en' : 'mk';
+        const validation = validateEmail(email);
+
+        if (!validation.valid) {
+            newsletterEmailInput.classList.add('is-invalid');
             newsletterFeedback.className = 'newsletter__feedback is-error';
+
+            let errorMsg = '';
+            if (validation.reason === 'empty') {
+                errorMsg = lang === 'en' 
+                    ? 'Please enter your email address.' 
+                    : 'Ве молиме внесете ја вашата е-пошта адреса.';
+            } else {
+                errorMsg = lang === 'en' 
+                    ? 'Please enter a valid email address (e.g., name@domain.com).' 
+                    : 'Ве молиме внесете валиден формат на е-пошта (на пр. ime@domen.mk).';
+            }
+
             newsletterFeedback.innerHTML = `
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                <span>Ве молиме внесете валидна е-пошта адреса.</span>
+                <span>${errorMsg}</span>
             `;
+            newsletterEmailInput.focus();
             return;
         }
 
+        newsletterEmailInput.classList.remove('is-invalid');
         newsletterFeedback.className = 'newsletter__feedback is-success';
+        const successMsg = lang === 'en'
+            ? 'Thank you! You have successfully subscribed to our foot health newsletter.'
+            : 'Ви благодариме! Успешно се пријавивте за нашиот билтен со совети за здравје на стапалата.';
+
         newsletterFeedback.innerHTML = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Ви благодариме! Успешно се пријавивте за нашиот билтен со совети за здравје на стапалата.</span>
+            <span>${successMsg}</span>
         `;
         newsletterEmailInput.value = '';
     });
@@ -1088,6 +1132,371 @@ if (compareToggleBtn && compareModelsSection) {
         compareCloseBtn.addEventListener('click', () => toggleCompareSection(true));
     }
 }
+
+// ========================================
+// INTERACTIVE 1:1 MODEL COMPARISON TOOL ENGINE
+// ========================================
+(function initInteractiveCompareTool() {
+    const compareSelect1 = document.getElementById('compareSelect1');
+    const compareSelect2 = document.getElementById('compareSelect2');
+    const compareSwapBtn = document.getElementById('compareSwapBtn');
+    const compareDiffOnlyToggle = document.getElementById('compareDiffOnlyToggle');
+    const compareDiffCountBadge = document.getElementById('compareDiffCountBadge');
+    const compareInteractiveContainer = document.getElementById('compareInteractiveContainer');
+    const compareTabInteractive = document.getElementById('compareTabInteractive');
+    const compareTabOverview = document.getElementById('compareTabOverview');
+    const compareInteractiveView = document.getElementById('compareInteractiveView');
+    const compareOverviewView = document.getElementById('compareOverviewView');
+    const presetChips = document.querySelectorAll('.compare-preset-chip');
+
+    if (!compareSelect1 || !compareSelect2 || !compareInteractiveContainer) return;
+
+    // Full Specs Data Matrix
+    const COMPARE_PRODUCTS = {
+        sportski: {
+            id: 'sportski',
+            name: { mk: 'Спортски влошки', en: 'Sports Insoles' },
+            shortName: { mk: 'Спортски', en: 'Sports' },
+            image: '/images/cards/Sportski.webp',
+            link: '/produkti/sportski/',
+            price: '890 ден.',
+            specs: {
+                material: { mk: 'EVA пена & Gel перничиња', en: 'EVA foam & Gel cushioning' },
+                purpose: { mk: 'Спорт, трчање, активно вежбање', en: 'Sports, running, active workouts' },
+                archSupport: { mk: 'Висока', en: 'High', levelPercent: 85, badgeClass: 'compare-badge--high' },
+                shockAbsorption: { stars: '★★★★★', score: '5/5', mk: 'Максимална (5/5)', en: 'Maximum (5/5)' },
+                thickness: { mk: '4 - 6 mm', en: '4 - 6 mm' },
+                keyFeature: { mk: 'Гел амортизација за пета и шок-апсорпција', en: 'Gel heel cushioning & high shock absorption' },
+                footwear: { mk: 'Спортски патики, тренинг и активни обувки', en: 'Athletic sneakers, running & workout shoes' },
+                odorControl: { mk: 'Перфорирана дишлива EVA пена', en: 'Perforated breathable EVA foam' },
+                care: { mk: 'Рачно миење со блага сапуница и млака вода', en: 'Hand wash with mild soap and warm water' },
+                fatigue: { mk: 'Намалува притисок во зглобовите до 95%', en: 'Reduces joint pressure by up to 95%' }
+            }
+        },
+        kozhni: {
+            id: 'kozhni',
+            name: { mk: 'Кожни влошки', en: 'Leather Insoles' },
+            shortName: { mk: 'Кожни', en: 'Leather' },
+            image: '/images/cards/Kozni.webp',
+            link: '/produkti/kozhni/',
+            price: '890 ден.',
+            specs: {
+                material: { mk: '100% природна кожа & мек латекс', en: '100% genuine leather & soft latex' },
+                purpose: { mk: 'Елегантни, деловни и секојдневни обувки', en: 'Elegant, business & everyday shoes' },
+                archSupport: { mk: 'Средна', en: 'Medium', levelPercent: 65, badgeClass: 'compare-badge--medium' },
+                shockAbsorption: { stars: '★★★☆☆', score: '3/5', mk: 'Умерена (3/5)', en: 'Moderate (3/5)' },
+                thickness: { mk: '3 - 4 mm', en: '3 - 4 mm' },
+                keyFeature: { mk: 'Природна кожа која абсорбира влага и мирис', en: 'Natural leather moisture & odor absorption' },
+                footwear: { mk: 'Деловни чевли, чизми и суви обувки', en: 'Dress shoes, leather boots & formal shoes' },
+                odorControl: { mk: 'Природни макропори против потење', en: 'Natural pores resisting sweat' },
+                care: { mk: 'Бришење со влажна/сува памучна крпа', en: 'Wipe clean with damp or dry cloth' },
+                fatigue: { mk: 'Спречува лизгање и дава елегантна удобност', en: 'Prevents slippage with elegant comfort' }
+            }
+        },
+        letni: {
+            id: 'letni',
+            name: { mk: 'Летни влошки', en: 'Summer Insoles' },
+            shortName: { mk: 'Летни', en: 'Summer' },
+            image: '/images/cards/Letni.webp',
+            link: '/produkti/letni/',
+            price: '790 ден.',
+            specs: {
+                material: { mk: 'Памук / Лен со активен јаглен', en: 'Cotton / Linen with activated carbon' },
+                purpose: { mk: 'Летни обувки, носење на босо стапало', en: 'Summer footwear, barefoot wear' },
+                archSupport: { mk: 'Лесна', en: 'Light', levelPercent: 40, badgeClass: 'compare-badge--light' },
+                shockAbsorption: { stars: '★★☆☆☆', score: '2/5', mk: 'Лесна (2/5)', en: 'Light (2/5)' },
+                thickness: { mk: '2 - 3 mm', en: '2 - 3 mm' },
+                keyFeature: { mk: 'Фитер од активен јаглен против непријатни мириси', en: 'Activated carbon filter neutralizing odors' },
+                footwear: { mk: 'Мокасини, еспадрили, патики и летни чевли', en: 'Loafers, espadrilles, sneakers & summer shoes' },
+                odorControl: { mk: 'Максимална заштита со активен јаглен', en: 'Maximum active carbon odor protection' },
+                care: { mk: 'Рачно перење на температура до 30°C', en: 'Hand wash at temperatures up to 30°C' },
+                fatigue: { mk: 'Свежина и чувство на сувост во топли денови', en: 'Freshness and dryness on hot days' }
+            }
+        },
+        zimski: {
+            id: 'zimski',
+            name: { mk: 'Зимски влошки', en: 'Winter Insoles' },
+            shortName: { mk: 'Зимски', en: 'Winter' },
+            image: '/images/cards/thermo_alu.webp',
+            link: '/produkti/zimski/',
+            price: '890 ден.',
+            specs: {
+                material: { mk: '100% природна волна & алуминиумски слој', en: '100% natural wool & aluminium barrier' },
+                purpose: { mk: 'Зимски чизми, топлотна изолација во студ', en: 'Winter boots, cold weather isolation' },
+                archSupport: { mk: 'Средна', en: 'Medium', levelPercent: 60, badgeClass: 'compare-badge--medium' },
+                shockAbsorption: { stars: '★★★★☆', score: '4/5', mk: 'Висока (4/5)', en: 'High (4/5)' },
+                thickness: { mk: '5 - 7 mm', en: '5 - 7 mm' },
+                keyFeature: { mk: 'Термо-алуминиумска заштита од ладен под', en: 'Thermo-aluminium cold ground barrier' },
+                footwear: { mk: 'Зимски чизми, спортски чизми за снег', en: 'Winter boots, snow boots, heavy shoes' },
+                odorControl: { mk: 'Природна волнена саморегулација', en: 'Natural self-regulating wool' },
+                care: { mk: 'Нежно четкање со сува четка', en: 'Gentle dry brushing' },
+                fatigue: { mk: 'Ги одржува стапалата топли во екстремен студ', en: 'Keeps feet warm in extreme cold conditions' }
+            }
+        },
+        hunter: {
+            id: 'hunter',
+            name: { mk: 'HUNTER влошки', en: 'HUNTER Insoles' },
+            shortName: { mk: 'HUNTER', en: 'HUNTER' },
+            image: '/images/cards/HUNTER vloski.webp',
+            link: '/produkti/hunter/',
+            price: '990 ден.',
+            specs: {
+                material: { mk: 'Гумена база & мемори пена за екстремни услови', en: 'Heavy rubber base & high-density memory foam' },
+                purpose: { mk: 'Лов, планинарење, теренска работа', en: 'Hunting, hiking, extreme outdoor duty' },
+                archSupport: { mk: 'Максимална', en: 'Maximum', levelPercent: 100, badgeClass: 'compare-badge--max' },
+                shockAbsorption: { stars: '★★★★★', score: '5/5', mk: 'Максимална (5/5)', en: 'Maximum (5/5)' },
+                thickness: { mk: '6 - 8 mm', en: '6 - 8 mm' },
+                keyFeature: { mk: 'Водоотпорна гумена чашка и длабоко фиксирање', en: 'Waterproof rubber base & deep heel cup' },
+                footwear: { mk: 'Ловечки чизми, планински и работни обувки', en: 'Hunting boots, hiking boots, work boots' },
+                odorControl: { mk: 'Хидрофобна антибактериска површина', en: 'Hydrophobic antibacterial layer' },
+                care: { mk: 'Директно миење под млаз вода со сапун', en: 'Direct rinse with water and soap' },
+                fatigue: { mk: 'Спречува извиткување на глуждот на нерамен терен', en: 'Prevents ankle rolls on rugged terrain' }
+            }
+        },
+        detski: {
+            id: 'detski',
+            name: { mk: 'Детски влошки', en: 'Kids Insoles' },
+            shortName: { mk: 'Детски', en: 'Kids' },
+            image: '/images/cards/detski.webp',
+            link: '/produkti/detski/',
+            price: '690 ден.',
+            specs: {
+                material: { mk: 'Хипоалергенска мека анатомична пена', en: 'Hypoallergenic soft anatomical foam' },
+                purpose: { mk: 'Детски обувки, училиште & спорт', en: 'Children shoes, school & playtime' },
+                archSupport: { mk: 'Деликатна', en: 'Gentle', levelPercent: 50, badgeClass: 'compare-badge--gentle' },
+                shockAbsorption: { stars: '★★★☆☆', score: '3/5', mk: 'Средна (3/5)', en: 'Medium (3/5)' },
+                thickness: { mk: '3 - 4 mm', en: '3 - 4 mm' },
+                keyFeature: { mk: 'Анатомски обликувана за правилен раст на стапалото', en: 'Anatomically molded for healthy foot growth' },
+                footwear: { mk: 'Детски патики, училишни чевли', en: 'Kids sneakers, school shoes, boots' },
+                odorControl: { mk: 'Благ антибактериски слој за детска кожа', en: 'Gentle antibacterial layer for young skin' },
+                care: { mk: 'Брзо сушење по рачно миење', en: 'Quick drying after hand wash' },
+                fatigue: { mk: 'Поддржува правилно држење на детското тело', en: 'Supports healthy posture during development' }
+            }
+        }
+    };
+
+    const SPEC_DEFINITIONS = [
+        { key: 'material', label: { mk: 'Материјал и Состав', en: 'Material & Composition' } },
+        { key: 'purpose', label: { mk: 'Главна намена', en: 'Primary Use' } },
+        { key: 'archSupport', label: { mk: 'Поддршка за свод', en: 'Arch Support' }, type: 'arch' },
+        { key: 'shockAbsorption', label: { mk: 'Апсорпција на шок', en: 'Shock Absorption' }, type: 'stars' },
+        { key: 'thickness', label: { mk: 'Дебелина', en: 'Thickness' } },
+        { key: 'keyFeature', label: { mk: 'Клучна одлика', en: 'Key Advantage' } },
+        { key: 'footwear', label: { mk: 'Препорачани обувки', en: 'Recommended Footwear' } },
+        { key: 'odorControl', label: { mk: 'Заштита од мириси', en: 'Odor & Sweat Protection' } },
+        { key: 'care', label: { mk: 'Одржување и миење', en: 'Care & Cleaning' } },
+        { key: 'fatigue', label: { mk: 'Редукција на замор', en: 'Fatigue Benefit' } }
+    ];
+
+    const getLang = () => document.documentElement.lang === 'en' ? 'en' : 'mk';
+
+    const renderSideBySideTable = () => {
+        const lang = getLang();
+        const p1Id = compareSelect1.value;
+        const p2Id = compareSelect2.value;
+        const p1 = COMPARE_PRODUCTS[p1Id] || COMPARE_PRODUCTS.sportski;
+        const p2 = COMPARE_PRODUCTS[p2Id] || COMPARE_PRODUCTS.kozhni;
+
+        const showDiffOnly = compareDiffOnlyToggle ? compareDiffOnlyToggle.checked : false;
+        let totalDiffs = 0;
+
+        let html = '';
+
+        // Product Header Grid
+        html += `
+            <div class="compare-product-header-grid">
+                <div class="compare-header-label-cell">
+                    <span>${lang === 'en' ? 'SPECIFICATIONS' : 'СПЕЦИФИКАЦИИ'}</span>
+                </div>
+                <div class="compare-product-card-head">
+                    <img src="${p1.image}" alt="${p1.name[lang]}" class="compare-phead-img">
+                    <div class="compare-phead-info">
+                        <h4 class="compare-phead-title">${p1.name[lang]}</h4>
+                        <span class="compare-phead-price">${p1.price}</span>
+                        <a href="${p1.link}" class="compare-phead-link">${lang === 'en' ? 'View Details →' : 'Погледни модел →'}</a>
+                    </div>
+                </div>
+                <div class="compare-product-card-head">
+                    <img src="${p2.image}" alt="${p2.name[lang]}" class="compare-phead-img">
+                    <div class="compare-phead-info">
+                        <h4 class="compare-phead-title">${p2.name[lang]}</h4>
+                        <span class="compare-phead-price">${p2.price}</span>
+                        <a href="${p2.link}" class="compare-phead-link">${lang === 'en' ? 'View Details →' : 'Погледни модел →'}</a>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Spec Rows
+        SPEC_DEFINITIONS.forEach(specDef => {
+            const val1Obj = p1.specs[specDef.key];
+            const val2Obj = p2.specs[specDef.key];
+
+            const str1 = val1Obj ? (val1Obj[lang] || val1Obj.mk || '') : '';
+            const str2 = val2Obj ? (val2Obj[lang] || val2Obj.mk || '') : '';
+
+            const isDifferent = str1 !== str2;
+            if (isDifferent) totalDiffs++;
+
+            const hiddenClass = (showDiffOnly && !isDifferent) ? 'is-hidden-diff' : '';
+            const diffClass = isDifferent ? 'is-different' : '';
+
+            let content1Html = '';
+            let content2Html = '';
+
+            if (specDef.type === 'arch') {
+                content1Html = `
+                    <div class="compare-meter-container">
+                        <div class="compare-meter-header">
+                            <span class="compare-badge ${val1Obj.badgeClass}">${val1Obj[lang]}</span>
+                        </div>
+                        <div class="compare-meter-bg">
+                            <div class="compare-meter-fill" style="width: ${val1Obj.levelPercent}%"></div>
+                        </div>
+                    </div>
+                `;
+                content2Html = `
+                    <div class="compare-meter-container">
+                        <div class="compare-meter-header">
+                            <span class="compare-badge ${val2Obj.badgeClass}">${val2Obj[lang]}</span>
+                        </div>
+                        <div class="compare-meter-bg">
+                            <div class="compare-meter-fill" style="width: ${val2Obj.levelPercent}%"></div>
+                        </div>
+                    </div>
+                `;
+            } else if (specDef.type === 'stars') {
+                content1Html = `
+                    <div>
+                        <span class="compare-stars">${val1Obj.stars}</span>
+                        <strong style="margin-left: 6px; font-size: 13px;">${val1Obj.score}</strong>
+                    </div>
+                `;
+                content2Html = `
+                    <div>
+                        <span class="compare-stars">${val2Obj.stars}</span>
+                        <strong style="margin-left: 6px; font-size: 13px;">${val2Obj.score}</strong>
+                    </div>
+                `;
+            } else {
+                content1Html = `<div class="compare-spec-val">${str1}</div>`;
+                content2Html = `<div class="compare-spec-val">${str2}</div>`;
+            }
+
+            html += `
+                <div class="compare-spec-row ${diffClass} ${hiddenClass}">
+                    <div class="compare-spec-label">
+                        <span>${specDef.label[lang]}</span>
+                        ${isDifferent ? `<span class="compare-diff-tag">${lang === 'en' ? 'Difference' : 'Различно'}</span>` : ''}
+                    </div>
+                    <div>${content1Html}</div>
+                    <div>${content2Html}</div>
+                </div>
+            `;
+        });
+
+        compareInteractiveContainer.innerHTML = html;
+
+        if (compareDiffCountBadge) {
+            compareDiffCountBadge.textContent = lang === 'en'
+                ? `Differences: ${totalDiffs}`
+                : `Разлики: ${totalDiffs}`;
+        }
+    };
+
+    // Event Listeners
+    compareSelect1.addEventListener('change', () => {
+        if (compareSelect1.value === compareSelect2.value) {
+            const options = Array.from(compareSelect2.options).map(o => o.value);
+            const other = options.find(val => val !== compareSelect1.value);
+            if (other) compareSelect2.value = other;
+        }
+        renderSideBySideTable();
+    });
+
+    compareSelect2.addEventListener('change', () => {
+        if (compareSelect1.value === compareSelect2.value) {
+            const options = Array.from(compareSelect1.options).map(o => o.value);
+            const other = options.find(val => val !== compareSelect2.value);
+            if (other) compareSelect1.value = other;
+        }
+        renderSideBySideTable();
+    });
+
+    if (compareSwapBtn) {
+        compareSwapBtn.addEventListener('click', () => {
+            const temp = compareSelect1.value;
+            compareSelect1.value = compareSelect2.value;
+            compareSelect2.value = temp;
+
+            if (typeof gsap !== 'undefined') {
+                gsap.fromTo(compareInteractiveContainer,
+                    { opacity: 0.4, scale: 0.98 },
+                    { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' }
+                );
+            }
+            renderSideBySideTable();
+        });
+    }
+
+    if (compareDiffOnlyToggle) {
+        compareDiffOnlyToggle.addEventListener('change', renderSideBySideTable);
+    }
+
+    // Preset Chips
+    presetChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const p1 = chip.getAttribute('data-p1');
+            const p2 = chip.getAttribute('data-p2');
+            if (p1 && p2 && COMPARE_PRODUCTS[p1] && COMPARE_PRODUCTS[p2]) {
+                compareSelect1.value = p1;
+                compareSelect2.value = p2;
+                renderSideBySideTable();
+
+                if (typeof gsap !== 'undefined') {
+                    gsap.fromTo(compareInteractiveContainer,
+                        { opacity: 0.3, y: 10 },
+                        { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }
+                    );
+                }
+            }
+        });
+    });
+
+    // View Tabs Switcher (Interactive vs Overview)
+    if (compareTabInteractive && compareTabOverview && compareInteractiveView && compareOverviewView) {
+        compareTabInteractive.addEventListener('click', () => {
+            compareTabInteractive.classList.add('is-active');
+            compareTabInteractive.setAttribute('aria-selected', 'true');
+            compareTabOverview.classList.remove('is-active');
+            compareTabOverview.setAttribute('aria-selected', 'false');
+
+            compareInteractiveView.style.display = 'block';
+            compareOverviewView.style.display = 'none';
+        });
+
+        compareTabOverview.addEventListener('click', () => {
+            compareTabOverview.classList.add('is-active');
+            compareTabOverview.setAttribute('aria-selected', 'true');
+            compareTabInteractive.classList.remove('is-active');
+            compareTabInteractive.setAttribute('aria-selected', 'false');
+
+            compareInteractiveView.style.display = 'none';
+            compareOverviewView.style.display = 'block';
+        });
+    }
+
+    // Listen for language changes across the app
+    const langBtns = document.querySelectorAll('.lang-btn');
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setTimeout(renderSideBySideTable, 50);
+        });
+    });
+
+    // Initial render
+    renderSideBySideTable();
+})();
 
 // ========================================
 // LIVE NAVBAR SEARCH SYSTEM
@@ -1530,7 +1939,7 @@ if (compareToggleBtn && compareModelsSection) {
 })();
 
 // ========================================
-// HERO CTA SMOOTH SCROLL & MOBILE CATEGORIES FOCUS BLUR
+// HERO CTA SMOOTH SCROLL & MOBILE CATEGORIES FOCUS
 // ========================================
 (function initCategoryScrollEffects() {
     // 1. Smooth scroll for anchor links (e.g. #kategorii)
@@ -1549,48 +1958,52 @@ if (compareToggleBtn && compareModelsSection) {
         });
     });
 
-    // 2. Mobile Progressive Scroll Blur for Category Cards
-    function updateCategoryCardsScrollBlur() {
-        const categoryCards = document.querySelectorAll('.card--sport, .card--image');
+    // 2. Sequential Magnetic Card Focus Tracking (Mobile Only; Desktop uses hover)
+    function updateCategoryCardsSequentialFocus() {
+        const categoryCards = document.querySelectorAll('.categories__grid .card');
         if (!categoryCards.length) return;
 
-        const isMobile = window.innerWidth <= 860 || ('ontouchstart' in window);
+        const isMobile = window.innerWidth <= 860 || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+        // Clear auto-focus on desktop so hover handles animation cleanly
+        if (!isMobile) {
+            categoryCards.forEach((card) => {
+                card.classList.remove('is-scroll-focused');
+                card.classList.remove('is-active');
+            });
+            return;
+        }
+
         const viewportHeight = window.innerHeight;
-        const viewportCenter = viewportHeight * 0.5;
-        const maxDist = viewportHeight * 0.42;
+        const viewportCenter = viewportHeight * 0.50;
+
+        let closestCard = null;
+        let minDistance = Infinity;
 
         categoryCards.forEach((card) => {
             const img = card.querySelector('.card__image img');
-            if (!img) return;
-
-            if (!isMobile) {
+            if (img) {
                 img.style.removeProperty('--card-blur');
-                img.style.removeProperty('--card-brightness');
-                img.style.removeProperty('--card-scale');
-                card.classList.remove('is-scroll-focused');
-                return;
+                img.style.filter = 'none';
             }
 
             const rect = card.getBoundingClientRect();
-            const cardCenter = rect.top + (rect.height * 0.5);
-            const distFromCenter = Math.abs(cardCenter - viewportCenter);
+            if (rect.bottom > 0 && rect.top < viewportHeight) {
+                const cardCenter = rect.top + (rect.height * 0.5);
+                const dist = Math.abs(cardCenter - viewportCenter);
+                if (dist < minDistance) {
+                    minDistance = dist;
+                    closestCard = card;
+                }
+            }
+        });
 
-            // Progressive focus factor t from 0 (off-screen / edge) to 1 (center focus)
-            let t = 1 - Math.min(distFromCenter / maxDist, 1);
-            // Smooth curve
-            t = Math.pow(t, 1.2);
-
-            const blurVal = (1 - t) * 22; // 0px in center to 22px at edges
-            const brightnessVal = 0.55 + (t * 0.33); // 0.55 to 0.88
-            const scaleVal = 1.0 + (t * 0.04); // 1.0 to 1.04
-
-            img.style.setProperty('--card-blur', `${blurVal.toFixed(1)}px`);
-            img.style.setProperty('--card-brightness', brightnessVal.toFixed(2));
-            img.style.setProperty('--card-scale', scaleVal.toFixed(2));
-
-            if (t > 0.6) {
-                card.classList.add('is-scroll-focused');
-                card.classList.add('is-active');
+        categoryCards.forEach((card) => {
+            if (card === closestCard && minDistance < viewportHeight * 0.42) {
+                if (!card.classList.contains('is-scroll-focused')) {
+                    card.classList.add('is-scroll-focused');
+                    card.classList.add('is-active');
+                }
             } else {
                 card.classList.remove('is-scroll-focused');
                 card.classList.remove('is-active');
@@ -1602,7 +2015,7 @@ if (compareToggleBtn && compareModelsSection) {
     function onScroll() {
         if (!isTicking) {
             requestAnimationFrame(() => {
-                updateCategoryCardsScrollBlur();
+                updateCategoryCardsSequentialFocus();
                 isTicking = false;
             });
             isTicking = true;
@@ -1610,11 +2023,11 @@ if (compareToggleBtn && compareModelsSection) {
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', updateCategoryCardsScrollBlur, { passive: true });
+    window.addEventListener('resize', updateCategoryCardsSequentialFocus, { passive: true });
     
     // Initial calculation on load
-    setTimeout(updateCategoryCardsScrollBlur, 100);
-    setTimeout(updateCategoryCardsScrollBlur, 500);
+    setTimeout(updateCategoryCardsSequentialFocus, 100);
+    setTimeout(updateCategoryCardsSequentialFocus, 500);
 })();
 
 // ========================================
