@@ -1498,6 +1498,94 @@ if (compareToggleBtn && compareModelsSection) {
 })();
 
 // ========================================
+// HERO CTA SMOOTH SCROLL & MOBILE CATEGORIES FOCUS BLUR
+// ========================================
+(function initCategoryScrollEffects() {
+    // 1. Smooth scroll for anchor links (e.g. #kategorii)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+                e.preventDefault();
+                targetEl.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // 2. Mobile Progressive Scroll Blur for Category Cards
+    function updateCategoryCardsScrollBlur() {
+        const categoryCards = document.querySelectorAll('.card--sport, .card--image');
+        if (!categoryCards.length) return;
+
+        const isMobile = window.innerWidth <= 860 || ('ontouchstart' in window);
+        const viewportHeight = window.innerHeight;
+        const viewportCenter = viewportHeight * 0.5;
+        const maxDist = viewportHeight * 0.42;
+
+        categoryCards.forEach((card) => {
+            const img = card.querySelector('.card__image img');
+            if (!img) return;
+
+            if (!isMobile) {
+                img.style.removeProperty('--card-blur');
+                img.style.removeProperty('--card-brightness');
+                img.style.removeProperty('--card-scale');
+                card.classList.remove('is-scroll-focused');
+                return;
+            }
+
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.top + (rect.height * 0.5);
+            const distFromCenter = Math.abs(cardCenter - viewportCenter);
+
+            // Progressive focus factor t from 0 (off-screen / edge) to 1 (center focus)
+            let t = 1 - Math.min(distFromCenter / maxDist, 1);
+            // Smooth curve
+            t = Math.pow(t, 1.2);
+
+            const blurVal = (1 - t) * 22; // 0px in center to 22px at edges
+            const brightnessVal = 0.55 + (t * 0.33); // 0.55 to 0.88
+            const scaleVal = 1.0 + (t * 0.04); // 1.0 to 1.04
+
+            img.style.setProperty('--card-blur', `${blurVal.toFixed(1)}px`);
+            img.style.setProperty('--card-brightness', brightnessVal.toFixed(2));
+            img.style.setProperty('--card-scale', scaleVal.toFixed(2));
+
+            if (t > 0.6) {
+                card.classList.add('is-scroll-focused');
+                card.classList.add('is-active');
+            } else {
+                card.classList.remove('is-scroll-focused');
+                card.classList.remove('is-active');
+            }
+        });
+    }
+
+    let isTicking = false;
+    function onScroll() {
+        if (!isTicking) {
+            requestAnimationFrame(() => {
+                updateCategoryCardsScrollBlur();
+                isTicking = false;
+            });
+            isTicking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updateCategoryCardsScrollBlur, { passive: true });
+    
+    // Initial calculation on load
+    setTimeout(updateCategoryCardsScrollBlur, 100);
+    setTimeout(updateCategoryCardsScrollBlur, 500);
+})();
+
+// ========================================
 // CONSOLE WELCOME
 // ========================================
 console.log('%c MONETA Macedonia 🦶 ', 'background:#EC1752;color:#fff;font-size:20px;font-weight:bold;padding:10px 20px;border-radius:8px;');
