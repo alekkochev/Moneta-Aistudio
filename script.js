@@ -627,42 +627,42 @@ if (sizeModal) {
         sport: {
             title: 'Спортски анатомски влошки',
             tag: 'Препорака за спорт & патики',
-            image: 'images/cards/Sportski.webp',
+            image: '/images/cards/Sportski.webp',
             link: '/produkti/sportski/',
             desc: 'Максимална амортизација со гел зони на петицата за ублажување на удари при трчање и активност.'
         },
         leather: {
             title: 'Кожни елегантни влошки',
             tag: 'Препорака за деловни & кожни чевли',
-            image: 'images/cards/Kozni.webp',
+            image: '/images/cards/Kozni.webp',
             link: '/produkti/kozhni/',
             desc: 'Танки, изработени од природна кожа со активен јаглен кој спречува непријатни мириси.'
         },
         summer: {
             title: 'Летни дишечки влошки',
             tag: 'Препорака за топло време & одобливи обувки',
-            image: 'images/cards/Letni.webp',
+            image: '/images/cards/Letni.webp',
             link: '/produkti/letni/',
             desc: 'Перфорирана лесна структура што овозможува максимална циркулација на воздух и свежина.'
         },
         winter: {
             title: 'Зимски термо влошки',
             tag: 'Препорака за ладни денови & чизми',
-            image: 'images/cards/thermo_alu.webp',
+            image: '/images/cards/thermo_alu.webp',
             link: '/produkti/zimski/',
             desc: 'Алуминиумска топлотна изолација и волнена површина кои ја задржуваат топлината во чизмите.'
         },
         hunter: {
             title: 'HUNTER професионални влошки',
             tag: 'Препорака за терен & работни чевли',
-            image: 'images/cards/HUNTER vloski.webp',
+            image: '/images/cards/HUNTER vloski.webp',
             link: '/produkti/hunter/',
             desc: 'Специјална зајакната конструкција за екстремни оптоварувања, лов, планинарење и работна обувка.'
         },
         kids: {
             title: 'Детски анатомски влошки',
             tag: 'Препорака за правилен детски развој',
-            image: 'images/cards/detski.webp',
+            image: '/images/cards/detski.webp',
             link: '/produkti/detski/',
             desc: 'Нежна поддршка за правилно формирање на детскиот свод на стапалата во развој.'
         }
@@ -1113,7 +1113,7 @@ if (compareToggleBtn && compareModelsSection) {
             descMk: 'Гел-зони за максимална апсорпција на удари при трчање и активност',
             descEn: 'Gel zones for maximum shock absorption during running & fitness',
             url: '/produkti/sportski/',
-            image: 'images/cards/Sportski.webp',
+            image: '/images/cards/Sportski.webp',
             badgeMk: 'Гел-зони',
             badgeEn: 'Gel zones',
             keywords: 'спортски sport гел гел-зони омекнување патики трчање фитнес 35-46 gel running fitness sneakers'
@@ -1125,7 +1125,7 @@ if (compareToggleBtn && compareModelsSection) {
             descMk: 'Премиум природна кожа за елегантни и деловни обувки со суптилен амортизер',
             descEn: 'Premium natural leather for dress shoes with subtle heel cushioning',
             url: '/produkti/kozhni/',
-            image: 'images/cards/Kozni.webp',
+            image: '/images/cards/Kozni.webp',
             badgeMk: 'Природна кожа',
             badgeEn: 'Natural leather',
             keywords: 'кожни leather природна кожа деловни чевли елегантни омекнувачки dress shoes business elegant'
@@ -1137,7 +1137,7 @@ if (compareToggleBtn && compareModelsSection) {
             descMk: 'Прозрачна 3D мрежа против потење и непријатни мириси при носење боси',
             descEn: 'Breathable 3D mesh prevents sweat and odor for bare-foot summer comfort',
             url: '/produkti/letni/',
-            image: 'images/cards/Letni.webp',
+            image: '/images/cards/Letni.webp',
             badgeMk: 'Дишечка мрежа',
             badgeEn: 'Breathable mesh',
             keywords: 'летни summer дишечки прозрачни потење мирис отворени обувки боси mesh barefoot odor sweat'
@@ -1149,7 +1149,7 @@ if (compareToggleBtn && compareModelsSection) {
             descMk: 'Природна волна со слој од алуминиумска фолија за заштита од најсилен студ',
             descEn: 'Natural wool with aluminium foil layer for insulation in harsh winter conditions',
             url: '/produkti/zimski/',
-            image: 'images/cards/thermo_alu.webp',
+            image: '/images/cards/thermo_alu.webp',
             badgeMk: 'Алу-изолација',
             badgeEn: 'Alu insulation',
             keywords: 'зимски winter термо волна алуминиум топлина волна чизми снег студ wool alu cold boots'
@@ -1161,7 +1161,7 @@ if (compareToggleBtn && compareModelsSection) {
             descMk: 'Засилена конструкција за работни обувки, лов, риболов и тешки терени',
             descEn: 'Reinforced design for work boots, hunting, fishing, and tough terrains',
             url: '/produkti/hunter/',
-            image: 'images/cards/HUNTER vloski.webp',
+            image: '/images/cards/HUNTER vloski.webp',
             badgeMk: 'Тешки услови',
             badgeEn: 'Heavy duty',
             keywords: 'hunter работни заштитни тешки обувки издржливи лов риболов boots work heavy duty hunting'
@@ -1173,7 +1173,7 @@ if (compareToggleBtn && compareModelsSection) {
             descMk: 'Анатомска потпора на сводот за правилен раст и развој на детското стапало',
             descEn: 'Arch support for healthy foot growth and postural development in kids',
             url: '/produkti/detski/',
-            image: 'images/cards/detski.webp',
+            image: '/images/cards/detski.webp',
             badgeMk: 'Правилен развој',
             badgeEn: 'Healthy growth',
             keywords: 'детски kids деца развој стапало 28-34 училиште игра children school growth'
@@ -1249,6 +1249,18 @@ if (compareToggleBtn && compareModelsSection) {
             badgeMk: 'Курир 24-48h',
             badgeEn: 'Courier 24-48h',
             keywords: 'достава плаќање карго брзина рокови дена македонија скопје битола охрид куманово delivery courier payment cod'
+        },
+        {
+            type: 'info',
+            titleMk: 'MONETA® Технолошки Системи',
+            titleEn: 'MONETA® Technological Systems',
+            descMk: 'Пет иновативни анатомски технологии: Anatomic, Absorb, Memory, Ortho и Thermo',
+            descEn: 'Five innovative anatomical technologies: Anatomic, Absorb, Memory, Ortho & Thermo',
+            url: '/sistem/',
+            icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC1752" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
+            badgeMk: 'MONETA Систем',
+            badgeEn: 'MONETA System',
+            keywords: 'монета систем moneta sistem анатомски технологии anatomic absorb memory ortho thermo замор болка свод пета'
         }
     ];
 
@@ -1494,6 +1506,26 @@ if (compareToggleBtn && compareModelsSection) {
                 }
             });
         });
+    }
+})();
+
+// ========================================
+// HERO BACKGROUND LAZY LOAD CROSSFADE
+// ========================================
+(function initHeroCrossfade() {
+    const heroBgImg = document.querySelector('.hero__bg-img');
+    if (!heroBgImg) return;
+
+    function revealHeroImage() {
+        heroBgImg.classList.add('is-loaded');
+    }
+
+    if (heroBgImg.complete && heroBgImg.naturalWidth > 0) {
+        revealHeroImage();
+    } else {
+        heroBgImg.addEventListener('load', revealHeroImage, { once: true });
+        // Fallback safety timeout if load event fired earlier or fails
+        setTimeout(revealHeroImage, 400);
     }
 })();
 
