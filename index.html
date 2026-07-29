@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MONETA — Анатомски вложки</title>
+    <meta name="description" content="MONETA анатомски вложки – подобар чекор, помал замор и поголема удобност." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+        <div class="navbar__inner">
+            <a href="/" class="navbar__logo">
+                <img src="images/moneta-logo.svg" alt="MONETA" width="132" height="37">
+            </a>
+            <div class="navbar__right">
+                <button type="button" class="navbar__search-btn" id="searchTrigger" aria-label="Пребарај" title="Пребарај (Ctrl+K)" data-mk-aria="Пребарај" data-en-aria="Search" data-mk-title="Пребарај (Ctrl+K)" data-en-title="Search (Ctrl+K)">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span class="search-btn__label" data-mk="Пребарај..." data-en="Search...">Пребарај...</span>
+                    <kbd class="search-btn__shortcut">⌘K</kbd>
+                </button>
+                <ul class="navbar__links" id="navLinks">
+                    <li><a href="/produkti/" data-mk="Влошки" data-en="Insoles">Влошки</a></li>
+                    <li><a href="/informacii/" data-mk="Информации" data-en="Information">Информации</a></li>
+                    <li><a href="/sistem/" data-mk="MONETA Систем" data-en="MONETA System">MONETA Систем</a></li>
+                    <li><a href="/kontakt/" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li>
+                        <a href="/korpa/" class="navbar__cart" aria-label="Кошница" title="Кошница" data-mk-aria="Кошница" data-en-aria="Cart" data-mk-title="Кошница" data-en-title="Cart">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"/>
+                                <circle cx="20" cy="21" r="1"/>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+                <div class="lang-switcher" id="langSwitcher">
+                    <button type="button" class="lang-btn is-active" data-lang="mk" aria-label="Македонски" aria-pressed="true">MK</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+                </div>
+                <button class="navbar__toggle" id="navToggle" aria-label="Мени">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero__content-wrapper">
+            <div class="hero__inner">
+
+                <!-- H1 -->
+                <h1 data-aos="fade-up">
+                    <span class="hero__white" data-mk="РЕШЕНИЕ ЗА ПОДОБАР ЧЕКОР," data-en="SOLUTION FOR A BETTER STEP,">РЕШЕНИЕ ЗА ПОДОБАР ЧЕКОР,</span><br>
+                    <span class="hero__pink" data-mk="ПОМАЛ ЗАМОР И ПОГОЛЕМА УДОБНОСТ" data-en="LESS FATIGUE &amp; GREATER COMFORT">ПОМАЛ ЗАМОР И ПОГОЛЕМА УДОБНОСТ</span>
+                </h1>
+
+                <!-- H2 (поднаслов) -->
+                <p class="hero__subtitle-dark" data-aos="fade-up" data-aos-delay="150" data-mk="Престанете со болката во стапалата – анатомски влошки за секојдневно движење" data-en="Stop foot pain – anatomical insoles for everyday movement">
+                    Престанете со болката во стапалата – анатомски влошки за секојдневно движење
+                </p>
+
+                <!-- CTA -->
+                <a href="/produkti/" class="hero__cta" data-aos="fade-up" data-aos-delay="300" data-mk="Истражи ги влошките →" data-en="Explore Insoles →">
+                    Истражи ги влошките →
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CATEGORIES ===== -->
+    <section class="categories-section">
+        <!-- Trust badges -->
+        <div class="hero__trust" data-aos="fade-up" data-aos-delay="200">
+            <span class="hero__trust-item" data-mk="✓ Потврден квалитет" data-en="✓ Certified Quality">✓ Потврден квалитет</span>
+            <span class="hero__trust-item" data-mk="✓ Безбедни материјали" data-en="✓ Safe Materials">✓ Безбедни материјали</span>
+            <span class="hero__trust-item" data-mk="✓ За сите видови стапала" data-en="✓ For All Foot Types">✓ За сите видови стапала</span>
+        </div>
+
+        <div class="categories__actions-banner" data-aos="fade-up">
+            <button type="button" class="size-finder-trigger-btn" data-open-size-modal>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0l12.6 12.6z"/>
+                    <path d="m14.5 12.5 2-2"/>
+                    <path d="m11.5 9.5 2-2"/>
+                    <path d="m8.5 6.5 2-2"/>
+                    <path d="m17.5 15.5 2-2"/>
+                </svg>
+                <span data-mk="Не сте сигурни за бројот или моделот? <strong>Отворете го Водичот за големини →</strong>" data-en="Not sure about size or model? <strong>Open the Size Guide →</strong>" data-lang-html>Не сте сигурни за бројот или моделот? <strong>Отворете го Водичот за големини →</strong></span>
+            </button>
+            <button type="button" class="compare-models-trigger-btn" id="compareToggleBtn" aria-expanded="false" aria-controls="compareModelsSection">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"/>
+                    <line x1="12" y1="20" x2="12" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+                <span data-mk="Спореди ги сите модели" data-en="Compare All Models">Спореди ги сите модели</span>
+                <svg class="compare-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- EXPANDABLE COMPARE MODELS SECTION -->
+        <div class="compare-models-wrapper" id="compareModelsSection" aria-hidden="true" style="display: none;">
+            <div class="compare-models__card">
+                <div class="compare-models__header">
+                    <div class="compare-models__title-group">
+                        <span class="compare-models__badge">Табела за споредба</span>
+                        <h3>Споредба на MONETA анатомски влошки</h3>
+                        <p>Споредете ги материјалите, дебелината и нивото на поддршка за да го изберете идеалниот модел за вашите обувки.</p>
+                    </div>
+                    <button type="button" class="compare-models__close" id="compareCloseBtn" aria-label="Затвори споредба">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="compare-models__table-scroll">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th class="compare-table__feature-col">Модел / Особини</th>
+                                <th>
+                                    <div class="compare-th-item">
+                                        <img src="images/cards/Sportski.webp" alt="Спортски" class="compare-th-img">
+                                        <strong>Спортски</strong>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="compare-th-item">
+                                        <img src="images/cards/Kozni.webp" alt="Кожни" class="compare-th-img">
+                                        <strong>Кожни</strong>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="compare-th-item">
+                                        <img src="images/cards/Letni.webp" alt="Летни" class="compare-th-img">
+                                        <strong>Летни</strong>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="compare-th-item">
+                                        <img src="images/cards/thermo_alu.webp" alt="Зимски" class="compare-th-img">
+                                        <strong>Зимски</strong>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="compare-th-item">
+                                        <img src="images/cards/HUNTER vloski.webp" alt="HUNTER" class="compare-th-img">
+                                        <strong>HUNTER</strong>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="compare-th-item">
+                                        <img src="images/cards/detski.webp" alt="Детски" class="compare-th-img">
+                                        <strong>Детски</strong>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="compare-table__label">Материјал</td>
+                                <td>EVA пена & Gel перничиња</td>
+                                <td>100% природна кожа & Латекс</td>
+                                <td>Памук/Лен со активен јаглен</td>
+                                <td>Природна волна & Алуминиум</td>
+                                <td>Гумена база & Мемори пена</td>
+                                <td>Хипоалергенска мека пена</td>
+                            </tr>
+                            <tr>
+                                <td class="compare-table__label">Главна намена</td>
+                                <td>Спорт, трчање, активно вежбање</td>
+                                <td>Елегантни & деловни обувки</td>
+                                <td>Летни обувки, без чорапи</td>
+                                <td>Зимски чизми, студено време</td>
+                                <td>Лов, планинарење, тешки услови</td>
+                                <td>Детски обувки & училиште</td>
+                            </tr>
+                            <tr>
+                                <td class="compare-table__label">Поддршка за свод</td>
+                                <td><span class="compare-badge compare-badge--high">Висока</span></td>
+                                <td><span class="compare-badge compare-badge--medium">Средна</span></td>
+                                <td><span class="compare-badge compare-badge--light">Лесна</span></td>
+                                <td><span class="compare-badge compare-badge--medium">Средна</span></td>
+                                <td><span class="compare-badge compare-badge--max">Максимална</span></td>
+                                <td><span class="compare-badge compare-badge--gentle">Деликатна</span></td>
+                            </tr>
+                            <tr>
+                                <td class="compare-table__label">Апсорпција на шок</td>
+                                <td><span class="compare-stars">★★★★★</span></td>
+                                <td><span class="compare-stars">★★★☆☆</span></td>
+                                <td><span class="compare-stars">★★☆☆☆</span></td>
+                                <td><span class="compare-stars">★★★★☆</span></td>
+                                <td><span class="compare-stars">★★★★★</span></td>
+                                <td><span class="compare-stars">★★★☆☆</span></td>
+                            </tr>
+                            <tr>
+                                <td class="compare-table__label">Дебелина</td>
+                                <td>4 - 6 mm</td>
+                                <td>3 - 4 mm</td>
+                                <td>2 - 3 mm</td>
+                                <td>5 - 7 mm</td>
+                                <td>6 - 8 mm</td>
+                                <td>3 - 4 mm</td>
+                            </tr>
+                            <tr>
+                                <td class="compare-table__label">Клучна одлика</td>
+                                <td>Гел амортизација на петата</td>
+                                <td>Природно апсорбира влага</td>
+                                <td>Неутрализира мириси</td>
+                                <td>Изолација од ладен под</td>
+                                <td>Водоотпорна & длабока пета</td>
+                                <td>Поддржува правилен развој</td>
+                            </tr>
+                            <tr>
+                                <td class="compare-table__label">Детали</td>
+                                <td><a href="/produkti/sportski/" class="compare-link-btn">Види модел →</a></td>
+                                <td><a href="/produkti/kozhni/" class="compare-link-btn">Види модел →</a></td>
+                                <td><a href="/produkti/letni/" class="compare-link-btn">Види модел →</a></td>
+                                <td><a href="/produkti/zimski/" class="compare-link-btn">Види модел →</a></td>
+                                <td><a href="/produkti/hunter/" class="compare-link-btn">Види модел →</a></td>
+                                <td><a href="/produkti/detski/" class="compare-link-btn">Види модел →</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="categories__grid">
+
+            <!-- 1. Спортски -->
+            <a href="/produkti/sportski/" class="card card--sport">
+                <button type="button" class="card__share-trigger" aria-label="Сподели модел" title="Сподели" data-mk-title="Сподели" data-en-title="Share">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                    </svg>
+                </button>
+                <div class="card__share-popover" aria-hidden="true">
+                    <div class="share-popover__header" data-mk="Сподели модел" data-en="Share model">Сподели модел</div>
+                    <div class="share-popover__menu">
+                        <button type="button" class="share-btn share-btn--facebook" data-platform="facebook" data-model-name="MONETA Спортски влошки" data-model-url="/produkti/sportski/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--twitter" data-platform="twitter" data-model-name="MONETA Спортски влошки" data-model-url="/produkti/sportski/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                            <span>X / Twitter</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--copy" data-platform="copy" data-model-url="/produkti/sportski/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-btn-text" data-mk="Копирај линк" data-en="Copy Link">Копирај линк</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card__image">
+                    <img src="images/cards/Sportski.webp" alt="Спортски влошки" loading="lazy">
+                </div>
+                <div class="card__overlay">
+                    <div class="card__icon">
+                        <img src="images/icons/sport.svg" alt="Спорт" width="26" height="26">
+                    </div>
+                    <h4 data-mk="Спортски влошки" data-en="Sports Insoles">Спортски влошки</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+
+            <!-- 2. Кожни -->
+            <a href="/produkti/kozhni/" class="card card--image">
+                <button type="button" class="card__share-trigger" aria-label="Сподели модел" title="Сподели" data-mk-title="Сподели" data-en-title="Share">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                    </svg>
+                </button>
+                <div class="card__share-popover" aria-hidden="true">
+                    <div class="share-popover__header" data-mk="Сподели модел" data-en="Share model">Сподели модел</div>
+                    <div class="share-popover__menu">
+                        <button type="button" class="share-btn share-btn--facebook" data-platform="facebook" data-model-name="MONETA Кожни влошки" data-model-url="/produkti/kozhni/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--twitter" data-platform="twitter" data-model-name="MONETA Кожни влошки" data-model-url="/produkti/kozhni/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                            <span>X / Twitter</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--copy" data-platform="copy" data-model-url="/produkti/kozhni/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-btn-text" data-mk="Копирај линк" data-en="Copy Link">Копирај линк</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card__image">
+                    <img src="images/cards/Kozni.webp" alt="Кожни влошки" loading="lazy">
+                </div>
+                <div class="card__overlay">
+                    <div class="card__icon">
+                        <img src="images/icons/leather.svg" alt="Кожни" width="26" height="26">
+                    </div>
+                    <h4 data-mk="Кожни влошки" data-en="Leather Insoles">Кожни влошки</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+
+            <!-- 3. Летни -->
+            <a href="/produkti/letni/" class="card card--image">
+                <button type="button" class="card__share-trigger" aria-label="Сподели модел" title="Сподели" data-mk-title="Сподели" data-en-title="Share">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                    </svg>
+                </button>
+                <div class="card__share-popover" aria-hidden="true">
+                    <div class="share-popover__header" data-mk="Сподели модел" data-en="Share model">Сподели модел</div>
+                    <div class="share-popover__menu">
+                        <button type="button" class="share-btn share-btn--facebook" data-platform="facebook" data-model-name="MONETA Летни влошки" data-model-url="/produkti/letni/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--twitter" data-platform="twitter" data-model-name="MONETA Летни влошки" data-model-url="/produkti/letni/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                            <span>X / Twitter</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--copy" data-platform="copy" data-model-url="/produkti/letni/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-btn-text" data-mk="Копирај линк" data-en="Copy Link">Копирај линк</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card__image">
+                    <img src="images/cards/Letni.webp" alt="Летни влошки" loading="lazy">
+                </div>
+                <div class="card__overlay">
+                    <div class="card__icon">
+                        <img src="images/icons/summer.svg" alt="Летни" width="26" height="26">
+                    </div>
+                    <h4 data-mk="Летни влошки" data-en="Summer Insoles">Летни влошки</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+
+            <!-- 4. Зимски -->
+            <a href="/produkti/zimski/" class="card card--image">
+                <button type="button" class="card__share-trigger" aria-label="Сподели модел" title="Сподели" data-mk-title="Сподели" data-en-title="Share">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                    </svg>
+                </button>
+                <div class="card__share-popover" aria-hidden="true">
+                    <div class="share-popover__header" data-mk="Сподели модел" data-en="Share model">Сподели модел</div>
+                    <div class="share-popover__menu">
+                        <button type="button" class="share-btn share-btn--facebook" data-platform="facebook" data-model-name="MONETA Зимски влошки" data-model-url="/produkti/zimski/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--twitter" data-platform="twitter" data-model-name="MONETA Зимски влошки" data-model-url="/produkti/zimski/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                            <span>X / Twitter</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--copy" data-platform="copy" data-model-url="/produkti/zimski/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-btn-text" data-mk="Копирај линк" data-en="Copy Link">Копирај линк</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card__image">
+                    <img src="images/cards/thermo_alu.webp" alt="Зимски влошки" loading="lazy">
+                </div>
+                <div class="card__overlay">
+                    <div class="card__icon">
+                        <img src="images/icons/winter.svg" alt="Зимски" width="26" height="26">
+                    </div>
+                    <h4 data-mk="Зимски влошки" data-en="Winter Insoles">Зимски влошки</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+
+            <!-- 5. HUNTER -->
+            <a href="/produkti/hunter/" class="card card--image">
+                <button type="button" class="card__share-trigger" aria-label="Сподели модел" title="Сподели" data-mk-title="Сподели" data-en-title="Share">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                    </svg>
+                </button>
+                <div class="card__share-popover" aria-hidden="true">
+                    <div class="share-popover__header" data-mk="Сподели модел" data-en="Share model">Сподели модел</div>
+                    <div class="share-popover__menu">
+                        <button type="button" class="share-btn share-btn--facebook" data-platform="facebook" data-model-name="MONETA HUNTER влошки" data-model-url="/produkti/hunter/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--twitter" data-platform="twitter" data-model-name="MONETA HUNTER влошки" data-model-url="/produkti/hunter/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                            <span>X / Twitter</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--copy" data-platform="copy" data-model-url="/produkti/hunter/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-btn-text" data-mk="Копирај линк" data-en="Copy Link">Копирај линк</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card__image">
+                    <img src="images/cards/HUNTER vloski.webp" alt="HUNTER влошки" loading="lazy">
+                </div>
+                <div class="card__overlay">
+                    <div class="card__icon">
+                        <img src="images/icons/hunter.svg" alt="HUNTER" width="26" height="26">
+                    </div>
+                    <h4 data-mk="HUNTER влошки" data-en="HUNTER Insoles">HUNTER влошки</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+
+            <!-- 6. Детски -->
+            <a href="/produkti/detski/" class="card card--image">
+                <button type="button" class="card__share-trigger" aria-label="Сподели модел" title="Сподели" data-mk-title="Сподели" data-en-title="Share">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                    </svg>
+                </button>
+                <div class="card__share-popover" aria-hidden="true">
+                    <div class="share-popover__header" data-mk="Сподели модел" data-en="Share model">Сподели модел</div>
+                    <div class="share-popover__menu">
+                        <button type="button" class="share-btn share-btn--facebook" data-platform="facebook" data-model-name="MONETA Детски влошки" data-model-url="/produkti/detski/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                            <span>Facebook</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--twitter" data-platform="twitter" data-model-name="MONETA Детски влошки" data-model-url="/produkti/detski/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                            <span>X / Twitter</span>
+                        </button>
+                        <button type="button" class="share-btn share-btn--copy" data-platform="copy" data-model-url="/produkti/detski/">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span class="copy-btn-text" data-mk="Копирај линк" data-en="Copy Link">Копирај линк</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card__image">
+                    <img src="images/cards/detski.webp" alt="Детски влошки" loading="lazy">
+                </div>
+                <div class="card__overlay">
+                    <div class="card__icon">
+                        <img src="images/icons/kids.svg" alt="Детски" width="26" height="26">
+                    </div>
+                    <h4 data-mk="Детски влошки" data-en="Kids Insoles">Детски влошки</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- ===== FEATURES & BENEFITS ===== -->
+    <section class="features-section" id="prednosti" data-aos="fade-up">
+        <div class="features__inner">
+            <div class="features__header">
+                <h2 data-mk="Зошто MONETA анатомски влошки?" data-en="Why MONETA Anatomical Insoles?">Зошто MONETA анатомски влошки?</h2>
+                <p data-mk="Главните предности за долготрајно здравје, стабилност и непречена удобност во текот на целиот ден." data-en="Key benefits for long-term health, stability, and uncompromised all-day comfort.">Главните предности за долготрајно здравје, стабилност и непречена удобност во текот на целиот ден.</p>
+            </div>
+            <div class="features__grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 data-mk="Намалување на заморот" data-en="Reduced Fatigue">Намалување на заморот</h3>
+                    <p data-mk="Правилно распределување на тежината кое го намалува притисокот врз колената, зглобовите и рбетот." data-en="Proper weight distribution that reduces pressure on knees, joints, and spine.">Правилно распределување на тежината кое го намалува притисокот врз колената, зглобовите и рбетот.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 data-mk="Анатомска поддршка" data-en="Anatomical Support">Анатомска поддршка</h3>
+                    <p data-mk="Ергономска поддршка за подолжниот и попречниот свод на стапалото за стабилен и правилен чекор." data-en="Ergonomic support for longitudinal and transverse arch for a stable, correct stride.">Ергономска поддршка за подолжниот и попречниот свод на стапалото за стабилен и правилен чекор.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 12c2-2.96 0-7-1-8 0 3.038-1.773 4.741-3 6-1.226 1.26-2 2.5-2 4a6 6 0 0 0 12 0c0-1.53-.774-2.74-2-4-1.227-1.259-3-2.962-3-6-1 1-3 5.04-1 8z"/>
+                        </svg>
+                    </div>
+                    <h3 data-mk="Прозрачност &amp; Свежина" data-en="Breathability &amp; Freshness">Прозрачност &amp; Свежина</h3>
+                    <p data-mk="Перфорирани дишечки материјали со висока циркулација на воздух што спречуваат потење и мириси." data-en="Perforated breathable materials with high airflow preventing sweat and odors.">Перфорирани дишечки материјали со висока циркулација на воздух што спречуваат потење и мириси.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3 data-mk="Апсорпција на удари" data-en="Shock Absorption">Апсорпција на удари</h3>
+                    <p data-mk="Специјални гел и мемори зони на петицата и предниот дел за максимално ублажување на вибрациите." data-en="Special gel and memory zones on heel and forefoot for maximum vibration cushioning.">Специјални гел и мемори зони на петицата и предниот дел за максимално ублажување на вибрациите.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CUSTOMER REVIEWS ===== -->
+    <section class="reviews-section" id="recenzii" data-aos="fade-up">
+        <div class="reviews__inner">
+            <div class="reviews__top">
+                <div class="reviews__header">
+                    <div class="reviews__badge">
+                        <span class="reviews__stars">★★★★★</span>
+                        <span class="reviews__score">4.9 / 5.0</span>
+                        <span class="reviews__count">(над 1,200+ задоволни купувачи)</span>
+                    </div>
+                    <h2>Искуства од нашите корисници</h2>
+                    <p>Прочитајте ги автентичните мислења и впечатоци од луѓе кои секојдневно ги носат MONETA влошките.</p>
+                </div>
+                <div class="reviews__controls">
+                    <button class="reviews__btn reviews__btn--prev" id="reviewsPrev" aria-label="Претходна рецензија">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <button class="reviews__btn reviews__btn--next" id="reviewsNext" aria-label="Следна рецензија">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="reviews__carousel-wrapper">
+                <div class="reviews__carousel" id="reviewsCarousel">
+
+                    <!-- Review Card 1 -->
+                    <div class="review-card">
+                        <div class="review-card__header">
+                            <div class="review-card__rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="verified-tag">✓ Потврден купувач</span>
+                            </div>
+                            <span class="product-tag">Спортски влошки</span>
+                        </div>
+                        <h4 class="review-card__title">„Неверојатно олеснување при трчање“</h4>
+                        <p class="review-card__text">
+                            Ги користам спортските влошки веќе 3 месеци за секојдневно трчање и тренирање. Болката во петите што ја имав со месеци целосно исчезна. Топло ги препорачувам на сите спортисти!
+                        </p>
+                        <div class="review-card__author">
+                            <div class="review-card__avatar">КТ</div>
+                            <div class="review-card__info">
+                                <strong>Кристијан Т.</strong>
+                                <span>Скопје</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 2 -->
+                    <div class="review-card">
+                        <div class="review-card__header">
+                            <div class="review-card__rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="verified-tag">✓ Потврден купувач</span>
+                            </div>
+                            <span class="product-tag">Кожни влошки</span>
+                        </div>
+                        <h4 class="review-card__title">„Совршени за 8 часа на нозе на работа“</h4>
+                        <p class="review-card__text">
+                            Работам во фармација и цел ден сум на нозе. Кожните MONETA влошки се премногу удобни, не се лизгаат во елегантните чевли и ногата воопшто не се поти. Не можам да замислам работен ден без нив.
+                        </p>
+                        <div class="review-card__author">
+                            <div class="review-card__avatar">ЕМ</div>
+                            <div class="review-card__info">
+                                <strong>Елена М.</strong>
+                                <span>Битола</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 3 -->
+                    <div class="review-card">
+                        <div class="review-card__header">
+                            <div class="review-card__rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="verified-tag">✓ Потврден купувач</span>
+                            </div>
+                            <span class="product-tag">HUNTER влошки</span>
+                        </div>
+                        <h4 class="review-card__title">„Врвен квалитет за тешки услови“</h4>
+                        <p class="review-card__text">
+                            HUNTER модел кој го зедов за планинарење и лов ги надмина сите мои очекувања. И во влажни и ладни услови стапалото е стабилно и суво. Заштитата и амортизацијата се феноменални.
+                        </p>
+                        <div class="review-card__author">
+                            <div class="review-card__avatar">ИС</div>
+                            <div class="review-card__info">
+                                <strong>Игор С.</strong>
+                                <span>Охрид</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 4 -->
+                    <div class="review-card">
+                        <div class="review-card__header">
+                            <div class="review-card__rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="verified-tag">✓ Потврден купувач</span>
+                            </div>
+                            <span class="product-tag">Летни влошки</span>
+                        </div>
+                        <h4 class="review-card__title">„Свежина и леснотија целото лето“</h4>
+                        <p class="review-card__text">
+                            Летните влошки се толку лесни и дишат совршено. Ги ставив во летните патики и одот е мек и пријатен. Доставата беше брза, а пакувањето одлично.
+                        </p>
+                        <div class="review-card__author">
+                            <div class="review-card__avatar">МП</div>
+                            <div class="review-card__info">
+                                <strong>Марија П.</strong>
+                                <span>Велес</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 5 -->
+                    <div class="review-card">
+                        <div class="review-card__header">
+                            <div class="review-card__rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="verified-tag">✓ Потврден купувач</span>
+                            </div>
+                            <span class="product-tag">Зимски влошки</span>
+                        </div>
+                        <h4 class="review-card__title">„Топли стапала во најладните денови“</h4>
+                        <p class="review-card__text">
+                            Алуминиумскиот слој кај зимските влошки е вистинско откритие. Нозете ми беа секогаш ладни во зимските чизми, а сега со MONETA термо влошките топлината останува во обувката цел ден.
+                        </p>
+                        <div class="review-card__author">
+                            <div class="review-card__avatar">ДК</div>
+                            <div class="review-card__info">
+                                <strong>Дејан К.</strong>
+                                <span>Штип</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 6 -->
+                    <div class="review-card">
+                        <div class="review-card__header">
+                            <div class="review-card__rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="verified-tag">✓ Потврден купувач</span>
+                            </div>
+                            <span class="product-tag">Детски влошки</span>
+                        </div>
+                        <h4 class="review-card__title">„Правилен развој за моето дете“</h4>
+                        <p class="review-card__text">
+                            Ортопед ни препорача анатомски влошки за син ми. Од кога ги носат во училишните патики, одот му е подобрен и не се жали на замор при трчање. Одличен производ за деца!
+                        </p>
+                        <div class="review-card__author">
+                            <div class="review-card__avatar">АЃ</div>
+                            <div class="review-card__info">
+                                <strong>Ана Ѓ.</strong>
+                                <span>Куманово</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ACCORDION ===== -->
+    <section class="faq-section" id="faq" data-aos="fade-up">
+        <div class="faq__inner">
+            <div class="faq__header">
+                <h2 data-mk="Често поставувани прашања" data-en="Frequently Asked Questions">Често поставувани прашања</h2>
+                <p data-mk="Сè што треба да знаете за изборот, димензиите и одржувањето на MONETA влошките." data-en="Everything you need to know about sizing, selection, and care for MONETA insoles.">Сè што треба да знаете за изборот, димензиите и одржувањето на MONETA влошките.</p>
+            </div>
+
+            <div class="faq__accordion" id="faqAccordion">
+
+                <!-- FAQ 1 -->
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L3.3 9.3a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0l12 12z"/>
+                                <line x1="14.5" y1="7.5" x2="12" y2="10"/>
+                                <line x1="11.5" y1="10.5" x2="9" y2="13"/>
+                                <line x1="8.5" y1="13.5" x2="6" y2="16"/>
+                            </svg>
+                        </div>
+                        <span data-mk="Како да ја изберам вистинската големина на анатомски влошки?" data-en="How do I choose the right size of anatomical insoles?">Како да ја изберам вистинската големина на анатомски влошки?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p>
+                                <span data-mk="Влошките се изработени според стандардните европски броеви на обувки (35-46). Препорачуваме да го изберете истиот број што го носите најчесто." data-en="Insoles are crafted according to standard European shoe sizes (35-46). We recommend choosing your usual shoe size.">Влошките се изработени според стандардните европски броеви на обувки (35-46). Препорачуваме да го изберете истиот број што го носите најчесто.</span>
+                                <button type="button" class="faq__modal-link" data-open-size-modal data-mk="Отворете го Водичот за големини и модели →" data-en="Open Size &amp; Model Guide →">Отворете го Водичот за големини и модели →</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <span data-mk="Дали влошките одговараат за сите видови чевли и патики?" data-en="Are insoles suitable for all types of shoes and sneakers?">Дали влошките одговараат за сите видови чевли и патики?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Да, имаме специјализирани линии: спортски влошки со апсорпција на удари за спорт и патики, танки кожни влошки за елегантни и деловни обувки, термо зимски влошки со алуминиумска изолација и детски анатомски модели за правилен развој на детското стапало." data-en="Yes, we offer specialized lines: shock-absorbing sports insoles, thin leather insoles for dress shoes, thermo winter insoles with aluminium insulation, and children's anatomical models for healthy foot development.">Да, имаме специјализирани линии: спортски влошки со апсорпција на удари за спорт и патики, танки кожни влошки за елегантни и деловни обувки, термо зимски влошки со алуминиумска изолација и детски анатомски модели за правилен развој на детското стапало.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <polyline points="12 8 12 12 15 15"/>
+                            </svg>
+                        </div>
+                        <span data-mk="Колку долго траат MONETA анатомските влошки?" data-en="How long do MONETA anatomical insoles last?">Колку долго траат MONETA анатомските влошки?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Со редовно секојдневно користење, очекуваниот животен век на влошките е помеѓу 6 и 12 месеци. Времетраењето зависи од телесната тежина, интензитетот на физичка активност и типот на подлога на која најчесто чекорите." data-en="With daily use, the expected lifespan of the insoles is between 6 and 12 months, depending on body weight, physical activity level, and terrain.">Со редовно секојдневно користење, очекуваниот животен век на влошките е помеѓу 6 и 12 месеци. Времетраењето зависи од телесната тежина, интензитетот на физичка активност и типот на подлога на која најчесто чекорите.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="6" cy="6" r="3"/>
+                                <circle cx="6" cy="18" r="3"/>
+                                <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+                                <line x1="14.47" y1="14.47" x2="20" y2="20"/>
+                                <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <span data-mk="Дали можам да ги скратам или прилагодам влошките со ножици?" data-en="Can I trim or adjust the insoles with scissors?">Дали можам да ги скратам или прилагодам влошките со ножици?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Повеќето спортски, летни и зимски модели имаат означени испрекинати линии за поткастрување на предниот дел. Најдобар начин е да ја извадите постоечката влошка од вашите чевли, да ја преклопите врз MONETA влошката и внимателно да го скратите вишокот материјал на прстите." data-en="Most sports, summer, and winter models feature cut-to-fit guide lines on the forefoot. Simply place your original insole over the MONETA insole and trim carefully.">Повеќето спортски, летни и зимски модели имаат означени испрекинати линии за поткастрување на предниот дел. Најдобар начин е да ја извадите постоечката влошка од вашите чевли, да ја преклопите врз MONETA влошката и внимателно да го скратите вишокот материјал на прстите.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                            </svg>
+                        </div>
+                        <span data-mk="Како правилно да ги чистам и одржувам влошките?" data-en="How do I properly clean and maintain the insoles?">Како правилно да ги чистам и одржувам влошките?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="За кожните влошки користите малку влажна крпа и средство за нега на кожа. Текстилните и гел влошките може да се избришат со влажна крпа и благ сапун. Не се препорачува нивно перење во машина за алишта ниту директно сушење на радијатор." data-en="For leather insoles, use a damp cloth with leather care product. Textile and gel insoles can be wiped with a damp cloth and mild soap. Machine washing or direct heat drying is not recommended.">За кожните влошки користите малку влажна крпа и средство за нега на кожа. Текстилните и гел влошките може да се избришат со влажна крпа и благ сапун. Не се препорачува нивно перење во машина за алишта ниту директно сушење на радијатор.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </div>
+                        <span data-mk="Колку време е потребно за прилагодување на стапалото?" data-en="How long does it take for feet to adapt to insoles?">Колку време е потребно за прилагодување на стапалото?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Повеќето корисници чувствуваат олеснување веднаш. Доколку претходно не сте носеле анатомски влошки, нормално е да почувствувате благ притисок во првите 2-3 дена додека мускулите и мускулно-скелетниот систем на стапалото се прилагодат на правилната поддршка." data-en="Most users feel relief immediately. If you haven't worn anatomical insoles before, mild pressure during the first 2-3 days is normal as foot muscles adjust to arch support.">Повеќето корисници чувствуваат олеснување веднаш. Доколку претходно не сте носеле анатомски влошки, нормално е да почувствувате благ притисок во првите 2-3 дена додека мускулите и мускулно-скелетниот систем на стапалото се прилагодат на правилната поддршка.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KONTAKT FORMA (ДОЛУ) ===== -->
+    <section class="kontakt" id="kontakt" data-aos="fade-up">
+        <div class="kontakt__inner">
+            <h2 data-aos="fade-up">Контактирајте не</h2>
+            <p data-aos="fade-up" data-aos-delay="100">Испратете ни порака и ќе ве контактираме во најкраток рок.</p>
+
+            <form class="kontakt__form" id="kontaktForm" data-aos="fade-up" data-aos-delay="200">
+                <div class="form__group">
+                    <label for="name">Име и презиме</label>
+                    <input type="text" id="name" name="name" placeholder="Вашето име" required>
+                </div>
+
+                <div class="form__group">
+                    <label for="email">Е-пошта</label>
+                    <input type="email" id="email" name="email" placeholder="vas@email.com" required>
+                </div>
+
+                <div class="form__group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" placeholder="071 234 567">
+                </div>
+
+                <div class="form__group">
+                    <label for="message">Порака</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Напишете ја вашата порака..." required></textarea>
+                </div>
+
+                <button type="submit" class="form__submit">Испрати порака</button>
+                <div class="form__feedback" id="kontaktFeedback" aria-live="polite"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__inner-wrap">
+            <div class="footer__top-blocks">
+                <!-- Newsletter Section -->
+                <div class="footer__newsletter">
+                    <div class="newsletter__header">
+                        <div class="newsletter__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="newsletter__titles">
+                            <h3 data-mk="Билтен за здравје на стапалата" data-en="Foot Health Newsletter">Билтен за здравје на стапалата</h3>
+                            <p data-mk="Добивајте стручни совети за нега, вежби и попусти за MONETA влошките." data-en="Get expert foot care tips, exercises, and discounts for MONETA insoles.">Добивајте стручни совети за нега, вежби и попусти за MONETA влошките.</p>
+                        </div>
+                    </div>
+
+                    <form class="newsletter__form" id="newsletterForm">
+                        <div class="newsletter__input-group">
+                            <input type="email" id="newsletterEmailInput" placeholder="Внесете ја вашата е-пошта..." data-mk-placeholder="Внесете ја вашата е-пошта..." data-en-placeholder="Enter your email address..." required autocomplete="email">
+                            <button type="submit" class="newsletter__submit">
+                                <span data-mk="Претплати се" data-en="Subscribe">Претплати се</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="newsletter__feedback" id="newsletterFeedback" aria-live="polite"></div>
+                </div>
+
+                <!-- Order Tracker Section -->
+                <div class="footer__tracker">
+                    <div class="order-tracker__header">
+                        <div class="order-tracker__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                        </div>
+                        <div class="order-tracker__titles">
+                            <h3 data-mk="Следете ја вашата нарачка" data-en="Track Your Order">Следете ја вашата нарачка</h3>
+                            <p data-mk="Внесете го вашиот број на нарачка за статус во реално време" data-en="Enter your order number for real-time tracking status">Внесете го вашиот број на нарачка за статус во реално време</p>
+                        </div>
+                    </div>
+
+                    <form class="order-tracker__form" id="orderTrackerForm">
+                        <div class="order-tracker__input-group">
+                            <input type="text" id="orderIdInput" placeholder="Внесете бр. на нарачка (пр. MN-8492)" data-mk-placeholder="Внесете бр. на нарачка (пр. MN-8492)" data-en-placeholder="Enter order no. (e.g. MN-8492)" required autocomplete="off">
+                            <button type="submit" class="order-tracker__submit">
+                                <span data-mk="Следи пратка" data-en="Track Package">Следи пратка</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="order-tracker__samples">
+                        <span class="samples-label" data-mk="Брз тест:" data-en="Quick test:">Брз тест:</span>
+                        <button type="button" class="order-sample-chip" data-sample="MN-8492">MN-8492</button>
+                        <button type="button" class="order-sample-chip" data-sample="MN-3021">MN-3021</button>
+                        <button type="button" class="order-sample-chip" data-sample="MN-1094">MN-1094</button>
+                    </div>
+
+                    <!-- Status output -->
+                    <div class="order-tracker__result" id="orderStatusResult" aria-live="polite"></div>
+                </div>
+            </div>
+
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <img src="images/moneta-logo.svg" alt="MONETA" width="100" height="28">
+                    <p data-mk="&copy; 2026 MONETA. Сите права задржани." data-en="&copy; 2026 MONETA. All rights reserved.">&copy; 2026 MONETA. Сите права задржани.</p>
+                </div>
+                <div class="footer__social">
+                    <span class="social__label" data-mk="Следете нè:" data-en="Follow us:">Следете нè:</span>
+                    <div class="social__links">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--facebook" aria-label="MONETA на Facebook" title="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.69c0-2.47 1.47-3.83 3.72-3.83 1.08 0 2.21.19 2.21.19v2.43h-1.24c-1.23 0-1.61.76-1.61 1.54V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--instagram" aria-label="MONETA на Instagram" title="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--tiktok" aria-label="MONETA на TikTok" title="TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-2.84V7.65a6.34 6.34 0 0 0-3.5 1.01 6.33 6.33 0 1 0 9.84 5.34V8.85a8.3 8.3 0 0 0 4.77 1.47V6.87a4.85 4.85 0 0 1-1.00-.18z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <ul class="footer__links">
+                    <li><a href="/za-nas/" data-mk="За нас" data-en="About Us">За нас</a></li>
+                    <li><a href="/kontakt/" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li><a href="/uslovi/" data-mk="Услови" data-en="Terms">Услови</a></li>
+                    <li><a href="/privatnost/" data-mk="Приватност" data-en="Privacy">Приватност</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SIZE FINDER MODAL ===== -->
+    <div class="modal" id="sizeModal" aria-hidden="true" role="dialog" aria-labelledby="sizeModalTitle">
+        <div class="modal__backdrop" data-close-modal></div>
+        <div class="modal__dialog">
+            <div class="modal__header">
+                <div class="modal__title-group">
+                    <span class="modal__badge" data-mk="📏 Водич за големини &amp; Препорака" data-en="📏 Size Guide &amp; Recommendation">📏 Водич за големини &amp; Препорака</span>
+                    <h3 id="sizeModalTitle" data-mk="Најдете ја вашата идеална MONETA влошка" data-en="Find Your Ideal MONETA Insole">Најдете ја вашата идеална MONETA влошка</h3>
+                </div>
+                <button type="button" class="modal__close" data-close-modal aria-label="Затвори маска">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal__body">
+                <!-- Step 1: Select Shoe Size -->
+                <div class="size-finder__group">
+                    <label class="size-finder__label" data-mk="1. Изберете го вашиот број на обувки (EU):" data-en="1. Select your shoe size (EU):">1. Изберете го вашиот број на обувки (EU):</label>
+                    <div class="size-finder__pills" id="sizePills">
+                        <button type="button" class="size-pill" data-size="28-34" data-mk="Детски (28-34)" data-en="Kids (28-34)">Детски (28-34)</button>
+                        <button type="button" class="size-pill" data-size="35-36">35 - 36</button>
+                        <button type="button" class="size-pill" data-size="37-38">37 - 38</button>
+                        <button type="button" class="size-pill is-active" data-size="39-40">39 - 40</button>
+                        <button type="button" class="size-pill" data-size="41-42">41 - 42</button>
+                        <button type="button" class="size-pill" data-size="43-44">43 - 44</button>
+                        <button type="button" class="size-pill" data-size="45-46">45 - 46</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Select Activity / Shoe Type -->
+                <div class="size-finder__group">
+                    <label class="size-finder__label" data-mk="2. Изберете ја вашата главна намена или вид обувки:" data-en="2. Select your main activity or shoe type:">2. Изберете ја вашата главна намена или вид обувки:</label>
+                    <div class="size-finder__activities" id="activityOptions">
+                        <button type="button" class="activity-pill is-active" data-activity="sport">
+                            <img src="images/icons/sport.svg" alt="" width="20" height="20">
+                            <span data-mk="Спорт &amp; Патики" data-en="Sports &amp; Sneakers">Спорт &amp; Патики</span>
+                        </button>
+                        <button type="button" class="activity-pill" data-activity="leather">
+                            <img src="images/icons/leather.svg" alt="" width="20" height="20">
+                            <span data-mk="Кожни &amp; Деловни" data-en="Leather &amp; Dress Shoes">Кожни &amp; Деловни</span>
+                        </button>
+                        <button type="button" class="activity-pill" data-activity="summer">
+                            <img src="images/icons/summer.svg" alt="" width="20" height="20">
+                            <span data-mk="Летни &amp; Отворени" data-en="Summer &amp; Open Shoes">Летни &amp; Отворени</span>
+                        </button>
+                        <button type="button" class="activity-pill" data-activity="winter">
+                            <img src="images/icons/winter.svg" alt="" width="20" height="20">
+                            <span data-mk="Зимски &amp; Чизми" data-en="Winter &amp; Boots">Зимски &amp; Чизми</span>
+                        </button>
+                        <button type="button" class="activity-pill" data-activity="hunter">
+                            <img src="images/icons/hunter.svg" alt="" width="20" height="20">
+                            <span data-mk="HUNTER / Работни" data-en="HUNTER / Heavy Duty">HUNTER / Работни</span>
+                        </button>
+                        <button type="button" class="activity-pill" data-activity="kids">
+                            <img src="images/icons/kids.svg" alt="" width="20" height="20">
+                            <span data-mk="Детски обувки" data-en="Children's Shoes">Детски обувки</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dynamic Recommendation Result Card -->
+                <div class="size-finder__result" id="sizeResult">
+                    <!-- Populated via script.js -->
+                </div>
+            </div>
+
+            <div class="modal__footer">
+                <p class="modal__tip">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    <span><strong>Совет:</strong> Сите MONETA спортски, летни и зимски модели овозможуваат прилагодување со поткастрување со обични ножици.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SEARCH MODAL ===== -->
+    <div class="search-modal" id="searchModal" aria-hidden="true">
+        <div class="search-modal__backdrop" id="searchBackdrop"></div>
+        <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="searchInput">
+            <div class="search-modal__header">
+                <div class="search-modal__input-wrapper">
+                    <svg class="search-modal__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="searchInput" class="search-modal__input" placeholder="Пребарај модели на влошки, броеви или совети..." autocomplete="off" spellcheck="false" data-mk-placeholder="Пребарај модели на влошки, броеви или совети..." data-en-placeholder="Search insole models, sizes, or advice...">
+                    <button type="button" id="searchClear" class="search-modal__clear" aria-label="Исчисти" style="display: none;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <button type="button" class="search-modal__close" id="searchClose" aria-label="Затвори" title="Затвори (ESC)">
+                    <kbd>ESC</kbd>
+                </button>
+            </div>
+
+            <div class="search-modal__quick-tags">
+                <span class="quick-tags__title" data-mk="Брзи категории:" data-en="Quick categories:">Брзи категории:</span>
+                <button type="button" class="search-tag" data-query="спортски" data-mk="Спортски" data-en="Sports">Спортски</button>
+                <button type="button" class="search-tag" data-query="кожни" data-mk="Кожни" data-en="Leather">Кожни</button>
+                <button type="button" class="search-tag" data-query="зимски" data-mk="Зимски" data-en="Winter">Зимски</button>
+                <button type="button" class="search-tag" data-query="детски" data-mk="Детски" data-en="Kids">Детски</button>
+                <button type="button" class="search-tag" data-query="големина" data-mk="Водич за броеви" data-en="Size guide">Водич за броеви</button>
+            </div>
+
+            <div class="search-modal__body" id="searchResultsContainer">
+                <!-- Search results rendered dynamically via JS -->
+            </div>
+
+            <div class="search-modal__footer">
+                <div class="search-modal__shortcuts">
+                    <span><kbd>↑</kbd><kbd>↓</kbd> <span data-mk="Навигација" data-en="Navigate">Навигација</span></span>
+                    <span><kbd>↵</kbd> <span data-mk="Отвори" data-en="Open">Отвори</span></span>
+                    <span><kbd>ESC</kbd> <span data-mk="Затвори" data-en="Close">Затвори</span></span>
+                </div>
+                <div class="search-modal__brand">MONETA Search</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Назад кон врвот">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-+wyCyo7u4vL+uOQHD6b+vWUwL08m0yyxTD5eVq74uV3OE36Q0K3sB2yMZJUo6tH+u8SXq+GjZlARHzI6alAzUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Hl5SJd4bBm+7MxT7f1VP+h9wbH/j4wGz2N6DWM+hBweY2vgu8c5eH0tHYRzab8m8NE6C9odhM6uT8S6E3KgnRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js"></script>
+</body>
+</html>

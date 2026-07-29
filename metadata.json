@@ -1,0 +1,8 @@
+{
+  "name": "MONETA — Анатомски вложки",
+  "description": "MONETA анатомски вложки – подобар чекор, помал замор и поголема удобност.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
