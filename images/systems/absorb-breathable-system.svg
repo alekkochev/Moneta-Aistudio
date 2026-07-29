@@ -1,76 +1,98 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
   <defs>
-    <!-- Outer Ring Gradient -->
-    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="70%" stop-color="#F2F3F5"/>
-      <stop offset="100%" stop-color="#DCE0E6"/>
+    <!-- Background Radial / Linear Gradient inside the seal -->
+    <radialGradient id="innerBg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#D6D8DC" />
+      <stop offset="100%" stop-color="#9EA3AC" />
     </radialGradient>
-    <radialGradient id="innerGlow" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#E2E6EB" stop-opacity="0.4"/>
-    </radialGradient>
-    
-    <!-- Text Paths for Circular Text -->
-    <path id="textPathTop" d="M 68 250 A 182 182 0 1 1 432 250" fill="none"/>
-    <path id="textPathBottom" d="M 432 250 A 182 182 0 1 1 68 250" fill="none"/>
 
-    <!-- Shadow filter -->
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.15"/>
+    <!-- Drop Shadow Filter for Insole and Text -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.25"/>
     </filter>
-    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#8DB600" flood-opacity="0.25"/>
+    <filter id="insoleShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="12" flood-color="#333333" flood-opacity="0.4"/>
     </filter>
+
+    <!-- Circular Path for Top Text -->
+    <!-- Center (250,250), radius 195 -->
+    <path id="badgeTextPath" d="M 75 250 A 175 175 0 1 1 425 250" fill="none"/>
   </defs>
 
-  <!-- Outer Shadow Circle -->
-  <circle cx="250" cy="250" r="235" fill="none" filter="url(#shadow)"/>
+  <!-- Outer Lime Green Circle -->
+  <circle cx="250" cy="250" r="235" fill="#8DB600" stroke="#7A9E00" stroke-width="3"/>
 
-  <!-- Main Color Ring -->
-  <circle cx="250" cy="250" r="235" fill="#8DB600" stroke="#FFFFFF" stroke-width="4"/>
-  <circle cx="250" cy="250" r="172" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.6"/>
+  <!-- Inner Concentric Ring Line -->
+  <circle cx="250" cy="250" r="176" fill="none" stroke="#688700" stroke-width="1.5" opacity="0.6"/>
 
-  <!-- Circular Text Top & Bottom -->
-  <text font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-weight="800" font-size="25" fill="#FFFFFF" letter-spacing="2">
-    <textPath href="#textPathTop" startOffset="50%" text-anchor="middle">
-      MONETA ABSORB & BREATHABLE SYSTEM
-    </textPath>
-  </text>
-  <text font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-weight="800" font-size="25" fill="#FFFFFF" letter-spacing="2">
-    <textPath href="#textPathBottom" startOffset="50%" text-anchor="middle">
-      MONETA ABSORB & BREATHABLE SYSTEM
+  <!-- Curved Text: MONETA ABSORB & BREATHABLE SYSTEM -->
+  <text font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-weight="900" font-size="24" fill="#FFFFFF" letter-spacing="2">
+    <textPath href="#badgeTextPath" startOffset="50%" text-anchor="middle">
+      MONETA ABSORB &amp; BREATHABLE SYSTEM
     </textPath>
   </text>
 
-  <!-- Inner Circle Canvas -->
-  <circle cx="250" cy="250" r="162" fill="url(#bgGrad)" stroke="#8DB600" stroke-width="3"/>
-  <circle cx="250" cy="250" r="162" fill="url(#innerGlow)"/>
+  <!-- Inner Circle Seal Background -->
+  <circle cx="250" cy="250" r="162" fill="url(#innerBg)" stroke="#8DB600" stroke-width="4"/>
 
-  <!-- Center Graphic & Moneta Branding -->
-  <g transform="translate(0,0)">
-    
-    <!-- Insole shape -->
-    <path d="M 140 215 Q 220 195 360 220 Q 365 235 340 245 Q 220 250 145 230 Z" fill="#B5D334" stroke="#7A9E00" stroke-width="2.5"/>
-    <!-- Water Drops -->
-    <g fill="#00A8FF" stroke="#0077CC" stroke-width="1.5">
-      <path d="M 175 180 C 175 172 183 162 183 162 C 183 162 191 172 191 180 C 191 185 187 189 183 189 C 179 189 175 185 175 180 Z"/>
-      <path d="M 225 190 C 225 182 233 172 233 172 C 233 172 241 182 241 190 C 241 195 237 199 233 199 C 229 199 225 195 225 190 Z"/>
-      <path d="M 280 195 C 280 187 288 177 288 177 C 288 177 296 187 296 195 C 296 200 292 204 288 204 C 284 204 280 200 280 195 Z"/>
-      <path d="M 325 200 C 325 193 331 184 331 184 C 331 184 337 193 337 200 C 337 204 334 207 331 207 C 328 207 325 204 325 200 Z"/>
-    </g>
-    <!-- Downward Arrows -->
-    <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
-      <path d="M 180 232 L 180 255 M 174 249 L 180 256 L 186 249"/>
-      <path d="M 225 236 L 225 259 M 219 253 L 225 260 L 231 253"/>
-      <path d="M 275 238 L 275 261 M 269 255 L 275 262 L 281 255"/>
-      <path d="M 320 235 L 320 258 M 314 252 L 320 259 L 326 252"/>
-    </g>
-  
+  <!-- MONETA Brand Logo in Center Top -->
+  <g transform="translate(250, 190)" filter="url(#shadow)">
+    <text x="0" y="0" font-family="'Arial Black', 'Trebuchet MS', sans-serif" font-weight="900" font-size="38" fill="#EC1752" text-anchor="middle" letter-spacing="-1.5">moneta<tspan font-size="18" dy="-16">®</tspan></text>
   </g>
 
-  <!-- MONETA Logo Text in center -->
-  <g transform="translate(250, 275)" filter="url(#shadow)">
-    <text x="0" y="0" font-family="'Arial Black', 'Trebuchet MS', sans-serif" font-weight="900" font-size="34" fill="#EC1752" text-anchor="middle" letter-spacing="-1">moneta<tspan font-size="16" dy="-14">®</tspan></text>
+  <!-- Insole Silhouette in Center -->
+  <g transform="translate(0, 20)">
+    <!-- Insole Drop Shadow -->
+    <path d="M 130 220 Q 220 180 370 240 Q 360 295 310 295 Q 210 280 140 250 Z" fill="#444444" opacity="0.35" filter="url(#insoleShadow)" transform="translate(0, 15)"/>
+    
+    <!-- Main Insole Body (Lime/Yellow-Green) -->
+    <path d="M 130 220 Q 230 185 370 250 Q 360 290 300 290 Q 200 275 135 245 Z" fill="#9ACD32" stroke="#7AA322" stroke-width="2.5"/>
+    <path d="M 135 222 Q 230 190 365 248 Q 355 285 298 285 Q 202 272 140 243 Z" fill="#A8DC38"/>
+    <!-- Insole Top Soft Highlight -->
+    <path d="M 145 224 Q 230 195 355 248" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.6" stroke-linecap="round"/>
+
+    <!-- 4 Blue Water Droplets Landing on Insole -->
+    <!-- Drop 1 -->
+    <g transform="translate(160, 204)">
+      <path d="M 0 -18 C -7 -6 -10 2 -10 7 C -10 13 -5 18 0 18 C 5 18 10 13 10 7 C 10 2 7 -6 0 -18 Z" fill="#00A3E0" stroke="#0077B6" stroke-width="1.5"/>
+      <ellipse cx="-3" cy="5" rx="2.5" ry="4" fill="#FFFFFF" opacity="0.75" transform="rotate(-20 -3 5)"/>
+    </g>
+
+    <!-- Drop 2 -->
+    <g transform="translate(205, 214)">
+      <path d="M 0 -18 C -7 -6 -10 2 -10 7 C -10 13 -5 18 0 18 C 5 18 10 13 10 7 C 10 2 7 -6 0 -18 Z" fill="#00A3E0" stroke="#0077B6" stroke-width="1.5"/>
+      <ellipse cx="-3" cy="5" rx="2.5" ry="4" fill="#FFFFFF" opacity="0.75" transform="rotate(-20 -3 5)"/>
+    </g>
+
+    <!-- Drop 3 -->
+    <g transform="translate(255, 240)">
+      <path d="M 0 -18 C -7 -6 -10 2 -10 7 C -10 13 -5 18 0 18 C 5 18 10 13 10 7 C 10 2 7 -6 0 -18 Z" fill="#00A3E0" stroke="#0077B6" stroke-width="1.5"/>
+      <ellipse cx="-3" cy="5" rx="2.5" ry="4" fill="#FFFFFF" opacity="0.75" transform="rotate(-20 -3 5)"/>
+    </g>
+
+    <!-- Drop 4 -->
+    <g transform="translate(310, 248)">
+      <path d="M 0 -18 C -7 -6 -10 2 -10 7 C -10 13 -5 18 0 18 C 5 18 10 13 10 7 C 10 2 7 -6 0 -18 Z" fill="#00A3E0" stroke="#0077B6" stroke-width="1.5"/>
+      <ellipse cx="-3" cy="5" rx="2.5" ry="4" fill="#FFFFFF" opacity="0.75" transform="rotate(-20 -3 5)"/>
+    </g>
+
+    <!-- 4 White Downward Arrows passing through the insole -->
+    <!-- Arrow 1 -->
+    <g transform="translate(152, 255)" filter="url(#shadow)">
+      <path d="M 0 0 L 0 32 M -7 23 L 0 32 L 7 23" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+    <!-- Arrow 2 -->
+    <g transform="translate(192, 275)" filter="url(#shadow)">
+      <path d="M 0 0 L 0 42 M -7 33 L 0 42 L 7 33" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+    <!-- Arrow 3 -->
+    <g transform="translate(252, 290)" filter="url(#shadow)">
+      <path d="M 0 0 L 0 42 M -7 33 L 0 42 L 7 33" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+    <!-- Arrow 4 -->
+    <g transform="translate(295, 280)" filter="url(#shadow)">
+      <path d="M 0 0 L 0 36 M -7 27 L 0 36 L 7 27" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
   </g>
 </svg>
