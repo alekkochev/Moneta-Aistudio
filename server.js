@@ -1,4 +1,5 @@
 import express from 'express';
+import compression from 'compression';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -8,7 +9,23 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(__dirname));
+// Enable gzip/deflate compression for all text/json/svg/css/js responses
+app.use(compression({ level: 6 }));
+
+// Static file serving with aggressive caching for immutable static assets
+app.use(express.static(__dirname, {
+  maxAge: '7d',
+  etag: true,
+  lastModified: true,
+  setHeaders: (res, filepath) => {
+    // Cache images, fonts, JS, and CSS for 7 days
+    if (/\.(webp|png|jpg|jpeg|svg|ico|css|js|woff2?|ttf|eot)$/i.test(filepath)) {
+      res.setHeader('Cache-Control', 'public, max-age=604800, stale-while-revalidate=86400');
+    } else if (/\.html$/i.test(filepath)) {
+      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+    }
+  }
+}));
 
 // Route handler for MONETA Sistem page
 app.get(['/sistem', '/sistem/', '/moneta-sistem', '/moneta-sistem/', '/moneta-sistiem', '/moneta-sistiem/'], (req, res) => {
@@ -17,7 +34,6 @@ app.get(['/sistem', '/sistem/', '/moneta-sistem', '/moneta-sistem/', '/moneta-si
 
 // Fallback to index.html for unknown HTML navigation routes
 app.use((req, res) => {
-  // If request path has an extension (e.g. .js, .css, .png, .jpg, .svg, .ico, etc), return 404
   if (path.extname(req.path)) {
     return res.status(404).type('text/plain').send('404 Not Found');
   }

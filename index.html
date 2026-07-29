@@ -7,8 +7,13 @@
     <meta name="description" content="MONETA анатомски вложки – подобар чекор, помал замор и поголема удобност." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link rel="preload" as="image" href="./images/hero-mobile.avif" type="image/avif" media="(max-width: 767px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="./images/hero-foot-insole.avif" type="image/avif" media="(min-width: 768px)" fetchpriority="high" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Manrope:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /></noscript>
     <link rel="icon" type="image/svg+xml" href="./images/favicon/favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
@@ -115,7 +120,15 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="hero__bg-container">
-            <img class="hero__bg-img" src="./images/hero-foot-insole.webp" alt="Moneta Foot Insole Hero Background" loading="lazy" decoding="async" aria-hidden="true">
+            <picture>
+                <!-- Mobile -->
+                <source media="(max-width: 767px)" srcset="./images/hero-mobile.avif" type="image/avif">
+                <source media="(max-width: 767px)" srcset="./images/hero-mobile.webp" type="image/webp">
+                <!-- Desktop -->
+                <source srcset="./images/hero-foot-insole.avif" type="image/avif">
+                <!-- Fallback -->
+                <img class="hero__bg-img" src="./images/hero-foot-insole.webp" fetchpriority="high" loading="eager" decoding="async" width="1240" height="700" alt="Moneta Foot Insole Hero Background" aria-hidden="true">
+            </picture>
         </div>
         <div class="hero__content-wrapper">
             <div class="hero__inner">
@@ -288,37 +301,37 @@
                                     <th class="compare-table__feature-col">Модел / Особини</th>
                                     <th>
                                         <div class="compare-th-item">
-                                            <img src="./images/cards/Sportski.webp" alt="Спортски" class="compare-th-img">
+                                            <img src="./images/cards/Sportski.webp" alt="Спортски" class="compare-th-img" width="60" height="60" loading="lazy" decoding="async">
                                             <strong>Спортски</strong>
                                         </div>
                                     </th>
                                     <th>
                                         <div class="compare-th-item">
-                                            <img src="./images/cards/Kozni.webp" alt="Кожни" class="compare-th-img">
+                                            <img src="./images/cards/Kozni.webp" alt="Кожни" class="compare-th-img" width="60" height="60" loading="lazy" decoding="async">
                                             <strong>Кожни</strong>
                                         </div>
                                     </th>
                                     <th>
                                         <div class="compare-th-item">
-                                            <img src="./images/cards/Letni.webp" alt="Летни" class="compare-th-img">
+                                            <img src="./images/cards/Letni.webp" alt="Летни" class="compare-th-img" width="60" height="60" loading="lazy" decoding="async">
                                             <strong>Летни</strong>
                                         </div>
                                     </th>
                                     <th>
                                         <div class="compare-th-item">
-                                            <img src="./images/cards/thermo_alu.webp" alt="Зимски" class="compare-th-img">
+                                            <img src="./images/cards/thermo_alu.webp" alt="Зимски" class="compare-th-img" width="60" height="60" loading="lazy" decoding="async">
                                             <strong>Зимски</strong>
                                         </div>
                                     </th>
                                     <th>
                                         <div class="compare-th-item">
-                                            <img src="./images/cards/hunter_vloski.webp" alt="HUNTER" class="compare-th-img">
+                                            <img src="./images/cards/hunter_vloski.webp" alt="HUNTER" class="compare-th-img" width="60" height="60" loading="lazy" decoding="async">
                                             <strong>HUNTER</strong>
                                         </div>
                                     </th>
                                     <th>
                                         <div class="compare-th-item">
-                                            <img src="./images/cards/detski.webp" alt="Детски" class="compare-th-img">
+                                            <img src="./images/cards/detski.webp" alt="Детски" class="compare-th-img" width="60" height="60" loading="lazy" decoding="async">
                                             <strong>Детски</strong>
                                         </div>
                                     </th>
@@ -433,11 +446,11 @@
                     </div>
                 </div>
                 <div class="card__image">
-                    <img src="./images/cards/Sportski.webp" alt="Спортски влошки" loading="lazy">
+                    <img src="./images/cards/Sportski.webp" alt="Спортски влошки" class="card__img" width="400" height="300" loading="lazy" decoding="async">
                 </div>
                 <div class="card__overlay">
                     <div class="card__icon">
-                        <img src="./images/icons/sport.svg" alt="Спорт" width="26" height="26">
+                        <img src="./images/icons/sport.svg" alt="Спорт" width="26" height="26" loading="lazy" decoding="async">
                     </div>
                     <h4 data-mk="Спортски влошки" data-en="Sports Insoles">Спортски влошки</h4>
                     <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
@@ -480,11 +493,11 @@
                     </div>
                 </div>
                 <div class="card__image">
-                    <img src="./images/cards/Kozni.webp" alt="Кожни влошки" loading="lazy">
+                    <img src="./images/cards/Kozni.webp" alt="Кожни влошки" class="card__img" width="400" height="300" loading="lazy" decoding="async">
                 </div>
                 <div class="card__overlay">
                     <div class="card__icon">
-                        <img src="./images/icons/leather.svg" alt="Кожни" width="26" height="26">
+                        <img src="./images/icons/leather.svg" alt="Кожни" width="26" height="26" loading="lazy" decoding="async">
                     </div>
                     <h4 data-mk="Кожни влошки" data-en="Leather Insoles">Кожни влошки</h4>
                     <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
@@ -527,11 +540,11 @@
                     </div>
                 </div>
                 <div class="card__image">
-                    <img src="./images/cards/Letni.webp" alt="Летни влошки" loading="lazy">
+                    <img src="./images/cards/Letni.webp" alt="Летни влошки" class="card__img" width="400" height="300" loading="lazy" decoding="async">
                 </div>
                 <div class="card__overlay">
                     <div class="card__icon">
-                        <img src="./images/icons/summer.svg" alt="Летни" width="26" height="26">
+                        <img src="./images/icons/summer.svg" alt="Летни" width="26" height="26" loading="lazy" decoding="async">
                     </div>
                     <h4 data-mk="Летни влошки" data-en="Summer Insoles">Летни влошки</h4>
                     <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
@@ -574,11 +587,11 @@
                     </div>
                 </div>
                 <div class="card__image">
-                    <img src="./images/cards/thermo_alu.webp" alt="Зимски влошки" loading="lazy">
+                    <img src="./images/cards/thermo_alu.webp" alt="Зимски влошки" class="card__img" width="400" height="300" loading="lazy" decoding="async">
                 </div>
                 <div class="card__overlay">
                     <div class="card__icon">
-                        <img src="./images/icons/winter.svg" alt="Зимски" width="26" height="26">
+                        <img src="./images/icons/winter.svg" alt="Зимски" width="26" height="26" loading="lazy" decoding="async">
                     </div>
                     <h4 data-mk="Зимски влошки" data-en="Winter Insoles">Зимски влошки</h4>
                     <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
@@ -621,11 +634,11 @@
                     </div>
                 </div>
                 <div class="card__image">
-                    <img src="./images/cards/hunter_vloski.webp" alt="HUNTER влошки" loading="lazy">
+                    <img src="./images/cards/hunter_vloski.webp" alt="HUNTER влошки" class="card__img" width="400" height="300" loading="lazy" decoding="async">
                 </div>
                 <div class="card__overlay">
                     <div class="card__icon">
-                        <img src="./images/icons/hunter.svg" alt="HUNTER" width="26" height="26">
+                        <img src="./images/icons/hunter.svg" alt="HUNTER" width="26" height="26" loading="lazy" decoding="async">
                     </div>
                     <h4 data-mk="HUNTER влошки" data-en="HUNTER Insoles">HUNTER влошки</h4>
                     <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
@@ -668,11 +681,11 @@
                     </div>
                 </div>
                 <div class="card__image">
-                    <img src="./images/cards/detski.webp" alt="Детски влошки" loading="lazy">
+                    <img src="./images/cards/detski.webp" alt="Детски влошки" class="card__img" width="400" height="300" loading="lazy" decoding="async">
                 </div>
                 <div class="card__overlay">
                     <div class="card__icon">
-                        <img src="./images/icons/kids.svg" alt="Детски" width="26" height="26">
+                        <img src="./images/icons/kids.svg" alt="Детски" width="26" height="26" loading="lazy" decoding="async">
                     </div>
                     <h4 data-mk="Детски влошки" data-en="Kids Insoles">Детски влошки</h4>
                     <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
@@ -1236,27 +1249,27 @@
                     <label class="size-finder__label" data-mk="2. Изберете ја вашата главна намена или вид обувки:" data-en="2. Select your main activity or shoe type:">2. Изберете ја вашата главна намена или вид обувки:</label>
                     <div class="size-finder__activities" id="activityOptions">
                         <button type="button" class="activity-pill is-active" data-activity="sport">
-                            <img src="./images/icons/sport.svg" alt="" width="20" height="20">
+                            <img src="./images/icons/sport.svg" alt="" width="20" height="20" loading="lazy" decoding="async">
                             <span data-mk="Спорт &amp; Патики" data-en="Sports &amp; Sneakers">Спорт &amp; Патики</span>
                         </button>
                         <button type="button" class="activity-pill" data-activity="leather">
-                            <img src="./images/icons/leather.svg" alt="" width="20" height="20">
+                            <img src="./images/icons/leather.svg" alt="" width="20" height="20" loading="lazy" decoding="async">
                             <span data-mk="Кожни &amp; Деловни" data-en="Leather &amp; Dress Shoes">Кожни &amp; Деловни</span>
                         </button>
                         <button type="button" class="activity-pill" data-activity="summer">
-                            <img src="./images/icons/summer.svg" alt="" width="20" height="20">
+                            <img src="./images/icons/summer.svg" alt="" width="20" height="20" loading="lazy" decoding="async">
                             <span data-mk="Летни &amp; Отворени" data-en="Summer &amp; Open Shoes">Летни &amp; Отворени</span>
                         </button>
                         <button type="button" class="activity-pill" data-activity="winter">
-                            <img src="./images/icons/winter.svg" alt="" width="20" height="20">
+                            <img src="./images/icons/winter.svg" alt="" width="20" height="20" loading="lazy" decoding="async">
                             <span data-mk="Зимски &amp; Чизми" data-en="Winter &amp; Boots">Зимски &amp; Чизми</span>
                         </button>
                         <button type="button" class="activity-pill" data-activity="hunter">
-                            <img src="./images/icons/hunter.svg" alt="" width="20" height="20">
+                            <img src="./images/icons/hunter.svg" alt="" width="20" height="20" loading="lazy" decoding="async">
                             <span data-mk="HUNTER / Работни" data-en="HUNTER / Heavy Duty">HUNTER / Работни</span>
                         </button>
                         <button type="button" class="activity-pill" data-activity="kids">
-                            <img src="./images/icons/kids.svg" alt="" width="20" height="20">
+                            <img src="./images/icons/kids.svg" alt="" width="20" height="20" loading="lazy" decoding="async">
                             <span data-mk="Детски обувки" data-en="Children's Shoes">Детски обувки</span>
                         </button>
                     </div>
@@ -1329,7 +1342,6 @@
     </button>
 
     <!-- ===== SCRIPTS ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-+wyCyo7u4vL+uOQHD6b+vWUwL08m0yyxTD5eVq74uV3OE36Q0K3sB2yMZJUo6tH+u8SXq+GjZlARHzI6alAzUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Hl5SJd4bBm+7MxT7f1VP+h9wbH/j4wGz2N6DWM+hBweY2vgu8c5eH0tHYRzab8m8NE6C9odhM6uT8S6E3KgnRA==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>

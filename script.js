@@ -1,12 +1,21 @@
 // ========================================
-// AOS INIT
+// AOS INIT (DEFERRED FOR TBT PERFORMANCE)
 // ========================================
-AOS.init({
-    duration: 800,
-    once: true,
-    offset: 100,
-    easing: 'ease-out-cubic'
-});
+function initAOS() {
+    if (window.AOS) {
+        AOS.init({
+            duration: 700,
+            once: true,
+            offset: 60,
+            easing: 'ease-out-cubic'
+        });
+    }
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAOS, { passive: true });
+} else {
+    initAOS();
+}
 
 // ========================================
 // MOBILE MENU
@@ -279,94 +288,66 @@ document.addEventListener('click', (e) => {
 })();
 
 // ========================================
-// GSAP INIT
+// GSAP INIT (DEFERRED FOR NON-BLOCKING INITIAL PAINT)
 // ========================================
-if (window.gsap && window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
+function initGSAP() {
+    if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from('.hero__inner', {
-        opacity: 0,
-        y: 40,
-        duration: 1.1,
-        ease: 'power3.out',
-        delay: 0.2
-    });
-
-    gsap.from('.hero__trust-item', {
-        opacity: 0,
-        y: 20,
-        stagger: 0.12,
-        duration: 0.8,
-        delay: 0.6,
-        ease: 'power3.out'
-    });
-
-    gsap.from('.hero__cta', {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        delay: 0.9,
-        ease: 'power3.out'
-    });
-
-    gsap.from('.navbar__links a', {
-        opacity: 0,
-        y: -10,
-        stagger: 0.08,
-        duration: 0.7,
-        ease: 'power3.out',
-        delay: 0.3
-    });
-
-    // Category Cards GSAP Stagger Animation
-    const categoryCards = document.querySelectorAll('.categories__grid .card');
-    if (categoryCards.length > 0) {
-        gsap.from(categoryCards, {
-            scrollTrigger: {
-                trigger: '.categories__grid',
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            },
-            opacity: 0,
-            y: 50,
-            scale: 0.94,
-            duration: 0.85,
-            stagger: 0.12,
-            ease: 'power3.out',
-            clearProps: 'transform'
-        });
-
-        categoryCards.forEach((card) => {
-            ScrollTrigger.create({
-                trigger: card,
-                start: 'top 65%',
-                end: 'bottom 35%',
-                toggleClass: { targets: card, className: 'is-active' },
-                scrub: false
+        // Category Cards GSAP Stagger Animation
+        const categoryCards = document.querySelectorAll('.categories__grid .card');
+        if (categoryCards.length > 0) {
+            gsap.from(categoryCards, {
+                scrollTrigger: {
+                    trigger: '.categories__grid',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 35,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: 'power2.out',
+                clearProps: 'transform,opacity'
             });
-        });
+        }
     }
 }
 
-// ========================================
-// KONTAKT FORMA HANDLER
-// ========================================
+if (typeof requestIdleCallback === 'function') {
+    requestIdleCallback(initGSAP, { timeout: 2000 });
+} else {
+    window.addEventListener('load', () => setTimeout(initGSAP, 200), { passive: true });
+}
 
-(function() {
-    if (window.emailjs) {
-        try {
-            emailjs.init("KTMO1pZn_2I0wSyZf");
-        } catch (err) {
-            console.warn('EmailJS init failed:', err);
-        }
-    }
-})();
+// ========================================
+// KONTAKT FORMA HANDLER (LAZY EMAILJS)
+// ========================================
+let emailjsPromise = null;
+function loadEmailJS() {
+    if (window.emailjs) return Promise.resolve(window.emailjs);
+    if (emailjsPromise) return emailjsPromise;
+    emailjsPromise = new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+        script.async = true;
+        script.onload = () => {
+            try {
+                if (window.emailjs) window.emailjs.init("KTMO1pZn_2I0wSyZf");
+            } catch (err) {}
+            resolve(window.emailjs || null);
+        };
+        script.onerror = () => resolve(null);
+        document.head.appendChild(script);
+    });
+    return emailjsPromise;
+}
 
 const kontaktForm = document.getElementById('kontaktForm');
 const kontaktFeedback = document.getElementById('kontaktFeedback');
 
 if (kontaktForm) {
-    kontaktForm.addEventListener('submit', function(e) {
+    kontaktForm.addEventListener('submit', async function(e) {
         e.preventDefault();
 
         const nameInput = document.getElementById('name');
@@ -409,8 +390,9 @@ if (kontaktForm) {
             kontaktForm.reset();
         };
 
-        if (window.emailjs) {
-            emailjs.send(
+        const emailjsInstance = await loadEmailJS();
+        if (emailjsInstance) {
+            emailjsInstance.send(
                 "service_4ymilao",
                 "template_r5ysad8",
                 {
