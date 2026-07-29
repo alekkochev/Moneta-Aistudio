@@ -1767,7 +1767,7 @@ a {
 
 @media (max-width: 860px) {
     .hero {
-        background-image: url('/images/hero-foot-insole.webp');
+        background-image: url('./images/hero-foot-insole.webp');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 85% center;
