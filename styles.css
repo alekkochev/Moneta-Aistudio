@@ -431,6 +431,22 @@ a {
     letter-spacing: -0.025em;
 }
 
+@keyframes heroFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero__title-animated,
+.system-hero__title {
+    animation: heroFadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 .hero__white {
     color: #1a1c23;
     display: inline-block;
@@ -5270,3 +5286,13 @@ a {
     color: #FFFFFF;
     text-decoration: underline;
 }
+
+/* ===== AOS STATIC & ACCESSIBILITY FALLBACK ===== */
+@media print, (prefers-reduced-motion: reduce) {
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+

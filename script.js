@@ -1,21 +1,37 @@
 // ========================================
-// AOS INIT (DEFERRED FOR TBT PERFORMANCE)
+// AOS INIT & FAILSAFE FALLBACK
 // ========================================
+function revealAllAosElements() {
+    document.querySelectorAll('[data-aos]').forEach(el => {
+        el.classList.add('aos-animate');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
+}
+
 function initAOS() {
     if (window.AOS) {
         AOS.init({
             duration: 700,
             once: true,
-            offset: 60,
+            offset: 40,
             easing: 'ease-out-cubic'
         });
+    } else {
+        revealAllAosElements();
     }
 }
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAOS, { passive: true });
 } else {
     initAOS();
 }
+window.addEventListener('load', initAOS, { passive: true });
+// Failsafe timeout to guarantee elements are visible even if CDN fails
+setTimeout(() => {
+    if (!window.AOS) revealAllAosElements();
+}, 500);
 
 // ========================================
 // MOBILE MENU
@@ -191,9 +207,12 @@ document.addEventListener('click', (e) => {
 
             const platform = btn.dataset.platform;
             const modelName = btn.dataset.modelName || 'MONETA Анатомски влошки';
-            const modelUrl = btn.dataset.modelUrl || window.location.pathname;
+            const modelUrl = btn.dataset.modelUrl || '#kategorii';
 
-            const fullUrl = window.location.origin + modelUrl;
+            const basePageUrl = window.location.href.split('#')[0];
+            const fullUrl = modelUrl.startsWith('#')
+                ? basePageUrl + modelUrl
+                : (modelUrl.startsWith('http') ? modelUrl : basePageUrl + '#' + modelUrl);
             const currentLang = document.documentElement.lang || 'mk';
 
             if (platform === 'facebook') {
