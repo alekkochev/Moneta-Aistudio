@@ -1867,6 +1867,10 @@ a {
     .hero {
         min-height: auto;
     }
+    .hero__bg-img {
+        object-position: 70% center;
+        opacity: 0.95;
+    }
     .hero__inner {
         margin: 90px auto 0;
         padding: 0 20px;

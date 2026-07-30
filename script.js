@@ -1083,54 +1083,59 @@ if (newsletterForm && newsletterEmailInput && newsletterFeedback) {
 }
 
 // ========================================
-// GSAP CATEGORY CARDS 3D TILT EFFECT
+// CATEGORY CARDS 3D TILT EFFECT (GSAP + VANILLA JS FALLBACK)
 // ========================================
-document.addEventListener('DOMContentLoaded', () => {
+function initCategoryCards3DTilt() {
     const categoryCards = document.querySelectorAll('.categories__grid .card');
-    const isHoverCapable = window.matchMedia('(hover: hover)').matches;
+    if (!categoryCards || categoryCards.length === 0) return;
 
-    if (categoryCards.length > 0 && typeof gsap !== 'undefined' && isHoverCapable) {
-        categoryCards.forEach((card) => {
-            const icon = card.querySelector('.card__icon');
-            const title = card.querySelector('h4');
-            const link = card.querySelector('.card__link');
+    categoryCards.forEach((card) => {
+        if (card.dataset.tiltInitialized === 'true') return;
+        card.dataset.tiltInitialized = 'true';
 
-            gsap.set(card, {
-                transformPerspective: 1000,
-                transformStyle: 'preserve-3d'
-            });
+        const icon = card.querySelector('.card__icon');
+        const title = card.querySelector('h4');
+        const link = card.querySelector('.card__link');
 
-            card.addEventListener('mouseenter', () => {
-                gsap.to(card, {
+        card.style.transformStyle = 'preserve-3d';
+        card.style.perspective = '1000px';
+
+        card.addEventListener('mouseenter', () => {
+            if (typeof window.gsap !== 'undefined') {
+                window.gsap.to(card, {
                     scale: 1.03,
                     duration: 0.3,
                     ease: 'power2.out',
                     overwrite: 'auto'
                 });
-            });
+            } else {
+                card.style.transition = 'transform 0.15s ease-out';
+            }
+        });
 
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-                // Max tilt 12 degrees
-                const rotateX = -((y - centerY) / centerY) * 12;
-                const rotateY = ((x - centerX) / centerX) * 12;
+            // Max tilt 12 degrees
+            const rotateX = -((y - centerY) / centerY) * 12;
+            const rotateY = ((x - centerX) / centerX) * 12;
 
-                gsap.to(card, {
+            if (typeof window.gsap !== 'undefined') {
+                window.gsap.to(card, {
                     rotationX: rotateX,
                     rotationY: rotateY,
+                    scale: 1.03,
                     duration: 0.35,
                     ease: 'power2.out',
                     overwrite: 'auto'
                 });
 
-                // Subtle parallax depth for internal elements
                 if (icon) {
-                    gsap.to(icon, {
+                    window.gsap.to(icon, {
                         x: ((x - centerX) / centerX) * 8,
                         y: ((y - centerY) / centerY) * 8,
                         z: 25,
@@ -1140,7 +1145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
                 if (title) {
-                    gsap.to(title, {
+                    window.gsap.to(title, {
                         x: ((x - centerX) / centerX) * 4,
                         y: ((y - centerY) / centerY) * 4,
                         z: 15,
@@ -1150,7 +1155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
                 if (link) {
-                    gsap.to(link, {
+                    window.gsap.to(link, {
                         x: ((x - centerX) / centerX) * 6,
                         y: ((y - centerY) / centerY) * 6,
                         z: 20,
@@ -1159,10 +1164,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         overwrite: 'auto'
                     });
                 }
-            });
+            } else {
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+                if (icon) icon.style.transform = `translate3d(${((x - centerX) / centerX) * 8}px, ${((y - centerY) / centerY) * 8}px, 25px)`;
+                if (title) title.style.transform = `translate3d(${((x - centerX) / centerX) * 4}px, ${((y - centerY) / centerY) * 4}px, 15px)`;
+                if (link) link.style.transform = `translate3d(${((x - centerX) / centerX) * 6}px, ${((y - centerY) / centerY) * 6}px, 20px)`;
+            }
+        });
 
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card, {
+        card.addEventListener('mouseleave', () => {
+            if (typeof window.gsap !== 'undefined') {
+                window.gsap.to(card, {
                     rotationX: 0,
                     rotationY: 0,
                     scale: 1,
@@ -1172,39 +1184,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (icon) {
-                    gsap.to(icon, {
-                        x: 0,
-                        y: 0,
-                        z: 0,
-                        duration: 0.5,
-                        ease: 'power3.out',
-                        overwrite: 'auto'
-                    });
+                    window.gsap.to(icon, { x: 0, y: 0, z: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto' });
                 }
                 if (title) {
-                    gsap.to(title, {
-                        x: 0,
-                        y: 0,
-                        z: 0,
-                        duration: 0.5,
-                        ease: 'power3.out',
-                        overwrite: 'auto'
-                    });
+                    window.gsap.to(title, { x: 0, y: 0, z: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto' });
                 }
                 if (link) {
-                    gsap.to(link, {
-                        x: 0,
-                        y: 0,
-                        z: 0,
-                        duration: 0.5,
-                        ease: 'power3.out',
-                        overwrite: 'auto'
-                    });
+                    window.gsap.to(link, { x: 0, y: 0, z: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto' });
                 }
-            });
+            } else {
+                card.style.transition = 'transform 0.4s ease-out';
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                if (icon) { icon.style.transition = 'transform 0.4s ease-out'; icon.style.transform = 'none'; }
+                if (title) { title.style.transition = 'transform 0.4s ease-out'; title.style.transform = 'none'; }
+                if (link) { link.style.transition = 'transform 0.4s ease-out'; link.style.transform = 'none'; }
+            }
         });
-    }
-});
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCategoryCards3DTilt);
+} else {
+    initCategoryCards3DTilt();
+}
+window.addEventListener('load', initCategoryCards3DTilt);
 
 // ========================================
 // COMPARE MODELS TOGGLE INTERACTION
