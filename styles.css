@@ -92,8 +92,15 @@ a {
     background: transparent;
 }
 
+.navbar__logo {
+    display: flex;
+    align-items: center;
+}
+
 .navbar__logo img {
     height: 37px;
+    width: auto;
+    display: block;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
 }
 
@@ -105,8 +112,17 @@ a {
 
 .navbar__links {
     display: flex;
-    gap: 40px;
+    align-items: center;
+    gap: 36px;
     list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar__links li {
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .navbar__links a {
@@ -116,6 +132,9 @@ a {
     transition: color var(--transition);
     position: relative;
     padding: 6px 0;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
 }
 
 .navbar__links a::after {
@@ -845,7 +864,7 @@ a {
     height: 100%;
     object-fit: cover;
     border-radius: 22px;
-    filter: blur(5px) brightness(0.75); /* DEFAULT STATE: Frosted Glass Blurred Image */
+    filter: blur(5px) brightness(0.85); /* DEFAULT STATE: Frosted Glass Blurred Image */
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
@@ -859,11 +878,11 @@ a {
     justify-content: center;
     gap: 16px;
     width: 100%;
-    padding: 90px 20px 24px;
+    padding: 86px 20px 24px;
     min-height: 260px;
     border-radius: 22px;
     overflow: hidden;
-    background: rgba(18, 18, 24, 0.48); /* DEFAULT STATE: Frosted Glass Overlay */
+    background: rgba(22, 16, 26, 0.34); /* DEFAULT STATE: 15% lighter warm pinkish overlay */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: background 0.4s ease, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;
@@ -899,15 +918,16 @@ a {
 .card--sport .card__icon,
 .card--image .card__icon {
     position: absolute;
-    top: 0;
+    top: 20px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 56px;
-    height: 56px;
-    background: rgba(236, 23, 82, 0.35);
+    transform: translateX(-50%);
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(135deg, rgba(236, 23, 82, 0.7), rgba(255, 59, 112, 0.7));
     backdrop-filter: blur(8px);
-    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
     border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(236, 23, 82, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -991,7 +1011,7 @@ a {
     background: #EC1752;
     border-color: #FFFFFF;
     box-shadow: 0 0 20px #EC1752, 0 0 35px rgba(236, 23, 82, 0.6);
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translateX(-50%) scale(1.1);
 }
 
 @media (hover: hover) and (min-width: 861px) {
@@ -1009,7 +1029,7 @@ a {
         background: #EC1752;
         border-color: #FFFFFF;
         box-shadow: 0 0 20px #EC1752, 0 0 35px rgba(236, 23, 82, 0.6);
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: translateX(-50%) scale(1.1);
     }
 }
 
@@ -5304,6 +5324,11 @@ a {
 }
 
 /* ===== AOS STATIC & ACCESSIBILITY FALLBACK ===== */
+[data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
 @media print, (prefers-reduced-motion: reduce) {
     [data-aos] {
         opacity: 1 !important;
