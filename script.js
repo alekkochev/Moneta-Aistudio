@@ -121,53 +121,34 @@ document.addEventListener('click', (e) => {
 
     if (!shareTriggers.length) return;
 
-    // Toast Notification helper
+    // Toast Notification helper (Bottom-Right)
     const showShareToast = (message) => {
         let toast = document.getElementById('shareToast');
         if (!toast) {
             toast = document.createElement('div');
             toast.id = 'shareToast';
-            toast.style.cssText = `
-                position: fixed;
-                bottom: 24px;
-                left: 50%;
-                transform: translateX(-50%) translateY(30px);
-                background: rgba(18, 19, 26, 0.95);
-                backdrop-filter: blur(16px);
-                -webkit-backdrop-filter: blur(16px);
-                color: #ffffff;
-                border: 1px solid rgba(236, 23, 82, 0.4);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-                padding: 12px 24px;
-                border-radius: 50px;
-                font-size: 14px;
-                font-weight: 600;
-                z-index: 9999;
-                opacity: 0;
-                pointer-events: none;
-                transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            `;
+            toast.className = 'share-toast';
+            toast.setAttribute('role', 'status');
+            toast.setAttribute('aria-live', 'polite');
             document.body.appendChild(toast);
         }
 
         toast.innerHTML = `
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EC1752" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="share-toast__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
             </svg>
             <span>${message}</span>
         `;
 
-        toast.style.opacity = '1';
-        toast.style.transform = 'translateX(-50%) translateY(0)';
+        // Force reflow for smooth animation trigger if newly added
+        void toast.offsetWidth;
+
+        toast.classList.add('is-visible');
 
         clearTimeout(toast.timer);
         toast.timer = setTimeout(() => {
-            toast.style.opacity = '0';
-            toast.style.transform = 'translateX(-50%) translateY(30px)';
+            toast.classList.remove('is-visible');
         }, 3000);
     };
 
@@ -600,62 +581,155 @@ if (sizeModal) {
         }
     });
 
-    // Recommendation Engine
+    // Recommendation Engine & Dynamic Size Calculator
     const sizePills = document.querySelectorAll('#sizePills .size-pill');
     const activityPills = document.querySelectorAll('#activityOptions .activity-pill');
     const resultContainer = document.getElementById('sizeResult');
+    const customSizeInput = document.getElementById('customSizeInput');
+    const customSizeBadge = document.getElementById('customSizeBadge');
+
+    const sizeRangeMap = {
+        '28-34': { minCm: 18.0, maxCm: 22.0, defaultCm: 20.0, labelMk: 'Детска големина 28-34 EU', labelEn: 'Kids Size 28-34 EU', trimLineMk: 'Подсечете по означената линија за соодветниот детски број', trimLineEn: 'Trim along marked line for child size' },
+        '35-36': { minCm: 22.5, maxCm: 23.5, defaultCm: 23.0, labelMk: 'Број EU 35 - 36', labelEn: 'Shoe Size EU 35 - 36', trimLineMk: 'Подсечете по линијата за број 35 или 36', trimLineEn: 'Trim along guide line for size 35 or 36' },
+        '37-38': { minCm: 23.8, maxCm: 24.8, defaultCm: 24.3, labelMk: 'Број EU 37 - 38', labelEn: 'Shoe Size EU 37 - 38', trimLineMk: 'Подсечете по линијата за број 37 или 38', trimLineEn: 'Trim along guide line for size 37 or 38' },
+        '39-40': { minCm: 25.0, maxCm: 26.0, defaultCm: 25.5, labelMk: 'Број EU 39 - 40', labelEn: 'Shoe Size EU 39 - 40', trimLineMk: 'Подсечете по линијата за број 39 или 40', trimLineEn: 'Trim along guide line for size 39 or 40' },
+        '41-42': { minCm: 26.3, maxCm: 27.3, defaultCm: 26.8, labelMk: 'Број EU 41 - 42', labelEn: 'Shoe Size EU 41 - 42', trimLineMk: 'Подсечете по линијата за број 41 или 42', trimLineEn: 'Trim along guide line for size 41 or 42' },
+        '43-44': { minCm: 27.5, maxCm: 28.5, defaultCm: 28.0, labelMk: 'Број EU 43 - 44', labelEn: 'Shoe Size EU 43 - 44', trimLineMk: 'Подсечете по линијата за број 43 или 44', trimLineEn: 'Trim along guide line for size 43 or 44' },
+        '45-46': { minCm: 28.8, maxCm: 29.8, defaultCm: 29.3, labelMk: 'Број EU 45 - 46', labelEn: 'Shoe Size EU 45 - 46', trimLineMk: 'Подсечете по линијата за број 45 или 46', trimLineEn: 'Trim along guide line for size 45 or 46' }
+    };
 
     const insoleModels = {
         sport: {
-            title: 'Спортски анатомски влошки',
-            tag: 'Препорака за спорт & патики',
+            title_mk: 'MONETA Спортски анатомски влошки',
+            title_en: 'MONETA Sports Anatomical Insoles',
+            tag_mk: '98% Совпаѓање • Спорт & Трчање',
+            tag_en: '98% Match • Sports & Running',
             image: './images/cards/Sportski.webp',
-            link: './index.html#kategorii',
-            desc: 'Максимална амортизација со гел зони на петицата за ублажување на удари при трчање и активност.'
+            link: '#kategorii',
+            desc_mk: 'Напредна амортизација со ергономски силиконски гел перничиња на петицата за ублажување на удари и редукција на замор при трчање и спорт.',
+            desc_en: 'Advanced cushioning with ergonomic silicone gel heel pads, engineered for impact absorption and fatigue reduction during athletic activities.',
+            arch_mk: 'Ергономски 3D свод (Висока поддршка)',
+            arch_en: 'Ergonomic 3D Arch (High Support)',
+            tech_mk: ['Силиконски гел', 'Absorb & Breathable', 'Шок амортизација'],
+            tech_en: ['Silicone Gel', 'Absorb & Breathable', 'Shock Cushioning']
         },
         leather: {
-            title: 'Кожни елегантни влошки',
-            tag: 'Препорака за деловни & кожни чевли',
+            title_mk: 'MONETA Елегантни кожни влошки',
+            title_en: 'MONETA Elegant Leather Insoles',
+            tag_mk: '96% Совпаѓање • Деловни & Кожни чевли',
+            tag_en: '96% Match • Leather & Dress Shoes',
             image: './images/cards/Kozni.webp',
-            link: './index.html#kategorii',
-            desc: 'Танки, изработени од природна кожа со активен јаглен кој спречува непријатни мириси.'
+            link: '#kategorii',
+            desc_mk: 'Ултра-тенка изработка од 100% природна кожа со вграден слој од активен јаглен кој овозможува непрекинато свежина и спречува непријатни мириси.',
+            desc_en: 'Ultra-slim 100% genuine leather construction with active charcoal layer continuously keeping feet fresh and odor-free.',
+            arch_mk: 'Анатомски тенок профил',
+            arch_en: 'Anatomic Slim Profile',
+            tech_mk: ['100% Природна кожа', 'Активен јаглен', 'Антибактериски'],
+            tech_en: ['100% Genuine Leather', 'Active Charcoal', 'Antibacterial']
         },
         summer: {
-            title: 'Летни дишечки влошки',
-            tag: 'Препорака за топло време & одобливи обувки',
+            title_mk: 'MONETA Летни дишечки влошки',
+            title_en: 'MONETA Summer Breathable Insoles',
+            tag_mk: '97% Совпаѓање • Топло време & Свежина',
+            tag_en: '97% Match • Warm Weather & Airflow',
             image: './images/cards/Letni.webp',
-            link: './index.html#kategorii',
-            desc: 'Перфорирана лесна структура што овозможува максимална циркулација на воздух и свежина.'
+            link: '#kategorii',
+            desc_mk: 'Микро-перфорирана олеснивачка структура што овозможува максимален проток на воздух, одржувајќи ги стапалата суви и свежи во тек на целиот ден.',
+            desc_en: 'Micro-perforated lightweight structure providing maximum airflow to keep your feet dry and cool all day long.',
+            arch_mk: 'Анатомски дишечки свод',
+            arch_en: 'Anatomic Airflow Arch',
+            tech_mk: ['Микро-перфорација', 'Анти-влага систем', 'Лесен флекс'],
+            tech_en: ['Micro-perforated', 'Anti-moisture System', 'Lightweight Flex']
         },
         winter: {
-            title: 'Зимски термо влошки',
-            tag: 'Препорака за ладни денови & чизми',
+            title_mk: 'MONETA Зимски термо влошки',
+            title_en: 'MONETA Winter Thermo Insoles',
+            tag_mk: '99% Совпаѓање • Термо заштита & Зима',
+            tag_en: '99% Match • Thermal Shield & Winter',
             image: './images/cards/thermo_alu.webp',
-            link: './index.html#kategorii',
-            desc: 'Алуминиумска топлотна изолација и волнена површина кои ја задржуваат топлината во чизмите.'
+            link: '#kategorii',
+            desc_mk: 'Специјален трислоен термо систем со топлотна алуминиумска фолија и волнена површина кои ја задржуваат топлината и го рефлектираат студот.',
+            desc_en: 'Special 3-layer thermal system with cold-reflecting aluminum foil barrier and natural wool layer for extreme warmth.',
+            arch_mk: 'Термо-изолациски свод',
+            arch_en: 'Thermo-Insulating Arch',
+            tech_mk: ['Алуминиумска фолија', 'Топла волна', 'Мраз бариера'],
+            tech_en: ['Aluminum Shield', 'Warm Wool', 'Frost Barrier']
         },
         hunter: {
-            title: 'HUNTER професионални влошки',
-            tag: 'Препорака за терен & работни чевли',
+            title_mk: 'MONETA HUNTER професионални влошки',
+            title_en: 'MONETA HUNTER Heavy-Duty Insoles',
+            tag_mk: '99% Совпаѓање • Терен & Работни чевли',
+            tag_en: '99% Match • Extreme Field & Heavy Duty',
             image: './images/cards/hunter_vloski.webp',
-            link: './index.html#kategorii',
-            desc: 'Специјална зајакната конструкција за екстремни оптоварувања, лов, планинарење и работна обувка.'
+            link: '#kategorii',
+            desc_mk: 'Индустриски зајакната конструкција наменета за екстремни оптоварувања, лов, планинарење и тешки работни обувки.',
+            desc_en: 'Industrial-grade reinforced structure designed for heavy-duty loads, hunting, trekking, and safety work boots.',
+            arch_mk: 'Heavy-Duty Ortho поддршка',
+            arch_en: 'Heavy-Duty Ortho Support',
+            tech_mk: ['Ortho-Stabilizer', 'Екстремна издржливост', 'Анти-вибрација'],
+            tech_en: ['Ortho-Stabilizer', 'Extreme Durability', 'Anti-Vibration']
         },
         kids: {
-            title: 'Детски анатомски влошки',
-            tag: 'Препорака за правилен детски развој',
+            title_mk: 'MONETA Детски анатомски влошки',
+            title_en: 'MONETA Kids Anatomical Insoles',
+            tag_mk: '100% Совпаѓање • Правилен детски развој',
+            tag_en: '100% Match • Healthy Growth Support',
             image: './images/cards/detski.webp',
-            link: './index.html#kategorii',
-            desc: 'Нежна поддршка за правилно формирање на детскиот свод на стапалата во развој.'
+            link: '#kategorii',
+            desc_mk: 'Ергономски обликувани влошки за мека поддршка на правилниот развој на стапалата и превенција од рамни стапала кај деца.',
+            desc_en: 'Ergonomically contoured insoles providing gentle support for healthy foot arch development and play comfort.',
+            arch_mk: 'Нежен детски анатомски профил',
+            arch_en: 'Gentle Pediatric Anatomic Profile',
+            tech_mk: ['Превенција рамни стапала', 'Мека поддршка', 'Хипоалергени'],
+            tech_en: ['Flat Foot Prevention', 'Gentle Support', 'Hypoallergenic']
         }
     };
 
     let selectedSize = '39-40';
     let selectedActivity = 'sport';
 
+    const getInsoleLengthInfo = (sizeKey, customVal) => {
+        if (customVal && !isNaN(customVal) && customVal > 0) {
+            // If user typed custom size (e.g. 40 or 25.5 cm)
+            let euSize = customVal;
+            let cmLen = 0;
+            if (customVal <= 30 && customVal >= 15) {
+                // Foot length entered in cm (e.g. 25.5 cm)
+                cmLen = parseFloat(customVal);
+                euSize = Math.round((cmLen + 1.5) / 0.667);
+            } else {
+                // EU size entered (e.g. 40)
+                euSize = parseFloat(customVal);
+                cmLen = (euSize * 0.667) - 1.2;
+            }
+            cmLen = Math.max(16, Math.min(32, cmLen));
+            const mmLen = Math.round(cmLen * 10);
+            return {
+                cmText: `~ ${cmLen.toFixed(1)} cm (${mmLen} mm)`,
+                sizeLabelMk: `Точен број EU ${euSize} (${cmLen.toFixed(1)} cm)`,
+                sizeLabelEn: `Exact EU ${euSize} (${cmLen.toFixed(1)} cm)`,
+                trimLineMk: `Прилагодете со ножици по ознаката за EU ${Math.round(euSize)}`,
+                trimLineEn: `Trim with scissors along line for EU ${Math.round(euSize)}`
+            };
+        }
+
+        const info = sizeRangeMap[sizeKey] || sizeRangeMap['39-40'];
+        const mmMin = Math.round(info.minCm * 10);
+        const mmMax = Math.round(info.maxCm * 10);
+        return {
+            cmText: `${info.minCm.toFixed(1)} cm - ${info.maxCm.toFixed(1)} cm (${mmMin}-${mmMax} mm)`,
+            sizeLabelMk: info.labelMk,
+            sizeLabelEn: info.labelEn,
+            trimLineMk: info.trimLineMk,
+            trimLineEn: info.trimLineEn
+        };
+    };
+
     const updateRecommendation = () => {
         if (!resultContainer) return;
-        
+        const currentLang = document.documentElement.lang || localStorage.getItem('moneta_lang') || 'mk';
+        const isEn = currentLang === 'en';
+
         // Auto-select kids activity if kids size selected
         if (selectedSize === '28-34') {
             selectedActivity = 'kids';
@@ -670,21 +744,60 @@ if (sizeModal) {
         }
 
         const model = insoleModels[selectedActivity] || insoleModels.sport;
-        const sizeText = selectedSize === '28-34' ? 'Детска големина (28-34 EU)' : `Број EU ${selectedSize}`;
+        const customVal = customSizeInput ? parseFloat(customSizeInput.value) : NaN;
+        const lengthInfo = getInsoleLengthInfo(selectedSize, customVal);
+
+        // Update badge text if custom size input exists
+        if (customSizeBadge) {
+            customSizeBadge.textContent = lengthInfo.cmText;
+        }
+
+        const titleText = isEn ? model.title_en : model.title_mk;
+        const tagText = isEn ? model.tag_en : model.tag_mk;
+        const descText = isEn ? model.desc_en : model.desc_mk;
+        const archText = isEn ? model.arch_en : model.arch_mk;
+        const sizeLabel = isEn ? lengthInfo.sizeLabelEn : lengthInfo.sizeLabelMk;
+        const trimAdvice = isEn ? lengthInfo.trimLineEn : lengthInfo.trimLineMk;
+        const techList = isEn ? model.tech_en : model.tech_mk;
+
+        const ctaText = isEn ? 'Explore model details →' : 'Погледни ги сите детали за овој модел →';
+        const sizeHeading = isEn ? 'Recommended Size:' : 'Препорачан број:';
+        const lengthHeading = isEn ? 'Insole Length:' : 'Должина на влошка:';
+        const trimHeading = isEn ? 'Trimming Advice:' : 'Совет за кастрење:';
+        const archHeading = isEn ? 'Arch Profile:' : 'Профил на свод:';
+
+        const techChipsHtml = techList.map(t => `<span class="result-card__tech-chip">${t}</span>`).join('');
 
         resultContainer.innerHTML = `
             <div class="result-card__image">
-                <img src="${model.image}" alt="${model.title}">
+                <img src="${model.image}" alt="${titleText}" width="400" height="300" loading="lazy" decoding="async">
             </div>
             <div class="result-card__content">
-                <span class="result-card__tag">${model.tag}</span>
-                <h4 class="result-card__title">${model.title}</h4>
-                <p class="result-card__specs">
-                    <strong>Препорачан број:</strong> ${sizeText}<br>
-                    ${model.desc}
-                </p>
-                <a href="${model.link}" class="result-card__cta">
-                    Погледни ги сите детали за овој модел →
+                <div class="result-card__header-row">
+                    <span class="result-card__tag">${tagText}</span>
+                    <span class="result-card__cm-pill">${lengthInfo.cmText.split(' ')[0]} ${lengthInfo.cmText.split(' ')[1] || 'cm'}</span>
+                </div>
+                <h4 class="result-card__title">${titleText}</h4>
+                <div class="result-card__specs-grid">
+                    <p class="result-card__spec-item">
+                        <strong>${sizeHeading}</strong> ${sizeLabel}
+                    </p>
+                    <p class="result-card__spec-item">
+                        <strong>${lengthHeading}</strong> ${lengthInfo.cmText}
+                    </p>
+                    <p class="result-card__spec-item">
+                        <strong>${archHeading}</strong> ${archText}
+                    </p>
+                    <p class="result-card__spec-item">
+                        <strong>${trimHeading}</strong> ${trimAdvice}
+                    </p>
+                </div>
+                <p class="result-card__desc">${descText}</p>
+                <div class="result-card__tech-row">
+                    ${techChipsHtml}
+                </div>
+                <a href="${model.link}" class="result-card__cta" data-close-modal>
+                    ${ctaText}
                 </a>
             </div>
         `;
@@ -695,6 +808,7 @@ if (sizeModal) {
             sizePills.forEach((p) => p.classList.remove('is-active'));
             pill.classList.add('is-active');
             selectedSize = pill.dataset.size;
+            if (customSizeInput) customSizeInput.value = '';
             updateRecommendation();
         });
     });
@@ -708,8 +822,39 @@ if (sizeModal) {
         });
     });
 
+    if (customSizeInput) {
+        customSizeInput.addEventListener('input', () => {
+            const val = parseFloat(customSizeInput.value);
+            if (!isNaN(val) && val > 0) {
+                // Highlight closest pill range
+                let matchedPillKey = '39-40';
+                if (val <= 34 || val <= 22) matchedPillKey = '28-34';
+                else if (val <= 36 || val <= 23.5) matchedPillKey = '35-36';
+                else if (val <= 38 || val <= 24.8) matchedPillKey = '37-38';
+                else if (val <= 40 || val <= 26.0) matchedPillKey = '39-40';
+                else if (val <= 42 || val <= 27.3) matchedPillKey = '41-42';
+                else if (val <= 44 || val <= 28.5) matchedPillKey = '43-44';
+                else matchedPillKey = '45-46';
+
+                selectedSize = matchedPillKey;
+                sizePills.forEach((p) => {
+                    p.classList.toggle('is-active', p.dataset.size === matchedPillKey);
+                });
+            }
+            updateRecommendation();
+        });
+    }
+
+    // Re-render recommendation when language buttons are clicked
+    document.querySelectorAll('.navbar__lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            setTimeout(updateRecommendation, 50);
+        });
+    });
+
     // Initial calculation
     updateRecommendation();
+}
 }
 
 // ========================================
