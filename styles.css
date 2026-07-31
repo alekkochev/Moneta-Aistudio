@@ -5483,41 +5483,9 @@ textarea {
 }
 
 /* ========================================
-   SUBPAGE PRODUCT CARDS — remove fancy hover, add navbar-style pink underline
+   SUBPAGE PRODUCT CARDS — keep static (no movement/zoom), icon glow on hover
    (applies to all .page-sistem pages: category + model pages)
    ======================================== */
-.page-sistem .categories__grid .card::before,
-.page-sistem .categories__grid .card.is-active::before,
-.page-sistem .categories__grid .card.is-scroll-focused::before {
-    opacity: 0;
-    box-shadow: none;
-}
-
-.page-sistem .categories__grid .card::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background: var(--pink);
-    border-radius: 0 0 22px 22px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 7;
-    filter: none;
-    -webkit-mask: none;
-    mask: none;
-    padding: 0;
-    box-shadow: none;
-}
-
-.page-sistem .categories__grid .card:hover::after,
-.page-sistem .categories__grid .card.is-active::after,
-.page-sistem .categories__grid .card.is-scroll-focused::after {
-    opacity: 1;
-}
-
 .page-sistem .categories__grid .card:hover,
 .page-sistem .categories__grid .card.is-active {
     transform: none;
@@ -5529,15 +5497,6 @@ textarea {
 .page-sistem .categories__grid .card.is-scroll-focused .card__image img {
     transform: none;
     filter: none;
-}
-
-.page-sistem .categories__grid .card:hover .card__icon,
-.page-sistem .categories__grid .card.is-active .card__icon,
-.page-sistem .categories__grid .card.is-scroll-focused .card__icon {
-    background: #EC1752;
-    border-color: #FFFFFF;
-    box-shadow: none;
-    transform: translateX(-50%) scale(1);
 }
 
 /* ========================================
@@ -5587,14 +5546,14 @@ textarea {
 }
 
 /* ========================================
-   ICONS ON MAIN CARDS — half outside the card, half inside (index only)
+   CARD ICONS — half outside the card, half inside (all pages)
    ======================================== */
-body:not(.page-sistem) .card--sport .card__overlay,
-body:not(.page-sistem) .card--image .card__overlay {
+.card--sport .card__overlay,
+.card--image .card__overlay {
     overflow: visible;
 }
-body:not(.page-sistem) .card--sport .card__icon,
-body:not(.page-sistem) .card--image .card__icon {
+.card--sport .card__icon,
+.card--image .card__icon {
     top: -27px;
 }
 
@@ -5602,8 +5561,8 @@ body:not(.page-sistem) .card--image .card__icon {
    CATEGORY CARD LINK — magenta text, morph-glass pill, half outside at bottom
    (like the icons at top — half inside / half outside the card edge)
    ======================================== */
-body:not(.page-sistem) .card--sport .card__link,
-body:not(.page-sistem) .card--image .card__link {
+.card--sport .card__link,
+.card--image .card__link {
     position: absolute;
     bottom: -15px;
     left: 50%;

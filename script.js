@@ -936,10 +936,6 @@ function initCategoryCards3DTilt() {
         if (card.dataset.tiltInitialized === 'true') return;
         card.dataset.tiltInitialized = 'true';
 
-        const icon = card.querySelector('.card__icon');
-        const title = card.querySelector('h4');
-        const link = card.querySelector('.card__link');
-
         card.style.transformStyle = 'preserve-3d';
         card.style.perspective = '1000px';
 
@@ -976,42 +972,8 @@ function initCategoryCards3DTilt() {
                     ease: 'power2.out',
                     overwrite: 'auto'
                 });
-
-                if (icon) {
-                    window.gsap.to(icon, {
-                        x: ((x - centerX) / centerX) * 8,
-                        y: ((y - centerY) / centerY) * 8,
-                        z: 25,
-                        duration: 0.35,
-                        ease: 'power2.out',
-                        overwrite: 'auto'
-                    });
-                }
-                if (title) {
-                    window.gsap.to(title, {
-                        x: ((x - centerX) / centerX) * 4,
-                        y: ((y - centerY) / centerY) * 4,
-                        z: 15,
-                        duration: 0.35,
-                        ease: 'power2.out',
-                        overwrite: 'auto'
-                    });
-                }
-                if (link) {
-                    window.gsap.to(link, {
-                        x: ((x - centerX) / centerX) * 6,
-                        y: ((y - centerY) / centerY) * 6,
-                        z: 20,
-                        duration: 0.35,
-                        ease: 'power2.out',
-                        overwrite: 'auto'
-                    });
-                }
             } else {
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
-                if (icon) icon.style.transform = `translate3d(${((x - centerX) / centerX) * 8}px, ${((y - centerY) / centerY) * 8}px, 25px)`;
-                if (title) title.style.transform = `translate3d(${((x - centerX) / centerX) * 4}px, ${((y - centerY) / centerY) * 4}px, 15px)`;
-                if (link) link.style.transform = `translate3d(${((x - centerX) / centerX) * 6}px, ${((y - centerY) / centerY) * 6}px, 20px)`;
             }
         });
 
@@ -1025,22 +987,9 @@ function initCategoryCards3DTilt() {
                     ease: 'power3.out',
                     overwrite: 'auto'
                 });
-
-                if (icon) {
-                    window.gsap.to(icon, { x: 0, y: 0, z: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto' });
-                }
-                if (title) {
-                    window.gsap.to(title, { x: 0, y: 0, z: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto' });
-                }
-                if (link) {
-                    window.gsap.to(link, { x: 0, y: 0, z: 0, duration: 0.5, ease: 'power3.out', overwrite: 'auto' });
-                }
             } else {
                 card.style.transition = 'transform 0.4s ease-out';
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-                if (icon) { icon.style.transition = 'transform 0.4s ease-out'; icon.style.transform = 'none'; }
-                if (title) { title.style.transition = 'transform 0.4s ease-out'; title.style.transform = 'none'; }
-                if (link) { link.style.transition = 'transform 0.4s ease-out'; link.style.transform = 'none'; }
             }
         });
     });
