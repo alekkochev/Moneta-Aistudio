@@ -999,53 +999,29 @@ a {
     border-radius: 22px;
 }
 
-/* Static Crisp 1px Frame Border around Card Boundary */
+/* Single thin 1px pink line border around Card Boundary */
 .categories__grid .card::before {
     content: '';
     position: absolute;
     inset: -1px;
     border-radius: 23px;
     padding: 1px;
-    background: linear-gradient(135deg, #EC1752 0%, #FF5A84 50%, #FFFFFF 85%, #EC1752 100%);
+    background: #EC1752;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
     opacity: 0;
-    box-shadow: 0 0 10px rgba(236, 23, 82, 0.6);
+    box-shadow: 0 0 4px rgba(236, 23, 82, 0.25);
     transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     z-index: 6;
 }
 
-/* Outward Glow Blur Layer (pointing outwards around card frame boundary) */
-.categories__grid .card::after {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    border-radius: 27px;
-    padding: 2px;
-    background: linear-gradient(135deg, #EC1752 0%, #FF5A84 50%, #FFFFFF 85%, #EC1752 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    filter: blur(8px);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 5;
-}
-
-/* Light up static outer 1px magenta outline frame on Mobile Scroll Focus & Desktop Hover */
+/* Light up single 1px pink line on Mobile Scroll Focus & Desktop Hover */
 .categories__grid .card.is-active::before,
 .categories__grid .card.is-scroll-focused::before {
     opacity: 1;
-    box-shadow: 0 0 14px rgba(236, 23, 82, 0.8), 0 0 24px rgba(236, 23, 82, 0.4);
-}
-
-.categories__grid .card.is-active::after,
-.categories__grid .card.is-scroll-focused::after {
-    opacity: 1;
-    filter: blur(10px);
+    box-shadow: 0 0 4px rgba(236, 23, 82, 0.3);
 }
 
 .categories__grid .card.is-active .card__icon,
@@ -1059,12 +1035,7 @@ a {
 @media (hover: hover) and (min-width: 861px) {
     .categories__grid .card:hover::before {
         opacity: 1;
-        box-shadow: 0 0 14px rgba(236, 23, 82, 0.8), 0 0 24px rgba(236, 23, 82, 0.4);
-    }
-
-    .categories__grid .card:hover::after {
-        opacity: 1;
-        filter: blur(10px);
+        box-shadow: 0 0 4px rgba(236, 23, 82, 0.3);
     }
 
     .categories__grid .card:hover .card__icon {
@@ -5711,5 +5682,86 @@ textarea {
         font-size: 19px;
         padding: 8px 20px;
     }
+}
+
+/* ========================================
+   SUBPAGE PRODUCT CARDS — remove fancy hover, add navbar-style pink underline
+   (applies to all .page-sistem pages: category + model pages)
+   ======================================== */
+.page-sistem .categories__grid .card::before,
+.page-sistem .categories__grid .card.is-active::before,
+.page-sistem .categories__grid .card.is-scroll-focused::before {
+    opacity: 0;
+    box-shadow: none;
+}
+
+.page-sistem .categories__grid .card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--pink);
+    border-radius: 0 0 22px 22px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 7;
+    filter: none;
+    -webkit-mask: none;
+    mask: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+.page-sistem .categories__grid .card:hover::after,
+.page-sistem .categories__grid .card.is-active::after,
+.page-sistem .categories__grid .card.is-scroll-focused::after {
+    opacity: 1;
+}
+
+.page-sistem .categories__grid .card:hover,
+.page-sistem .categories__grid .card.is-active {
+    transform: none;
+    box-shadow: var(--shadow-md);
+}
+
+.page-sistem .categories__grid .card:hover .card__image img,
+.page-sistem .categories__grid .card.is-active .card__image img,
+.page-sistem .categories__grid .card.is-scroll-focused .card__image img {
+    transform: none;
+    filter: none;
+}
+
+.page-sistem .categories__grid .card:hover .card__icon,
+.page-sistem .categories__grid .card.is-active .card__icon,
+.page-sistem .categories__grid .card.is-scroll-focused .card__icon {
+    background: #EC1752;
+    border-color: #FFFFFF;
+    box-shadow: none;
+    transform: translateX(-50%) scale(1);
+}
+
+/* ========================================
+   SIZE GUIDE BUTTON — shortened text, gray style
+   ======================================== */
+.size-finder-trigger-btn {
+    background: #ffffff;
+    border: 1.5px solid #d4d4d8;
+    color: #6b7280;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.size-finder-trigger-btn svg {
+    color: #9ca3af;
+}
+.size-finder-trigger-btn:hover {
+    background: #f4f4f5;
+    border-color: #a1a1aa;
+    color: #52525b;
+    box-shadow: none;
+    transform: translateY(-1px);
+}
+.size-finder-trigger-btn:hover svg {
+    color: #71717a;
 }
 

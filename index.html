@@ -9,8 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
     <link rel="dns-prefetch" href="https://unpkg.com" />
-    <link rel="preload" as="image" href="./images/hero-mobile.webp" type="image/webp" media="(max-width: 767px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="./images/hero-foot-insole.webp" type="image/webp" media="(min-width: 768px)" fetchpriority="high" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Manrope:wght@700&display=swap" rel="stylesheet" />
     <link href="./vendor/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="./vendor/aos.css" /></noscript>
@@ -124,13 +122,6 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero">
-        <div class="hero__bg-container">
-            <picture>
-                <source media="(max-width: 767px)" srcset="./images/hero-mobile.webp" type="image/webp">
-                <source media="(min-width: 768px)" srcset="./images/hero-foot-insole.webp" type="image/webp">
-                <img class="hero__bg-img" src="./images/hero-foot-insole.webp" fetchpriority="high" loading="eager" decoding="async" width="1240" height="700" alt="Moneta Foot Insole Hero Background">
-            </picture>
-        </div>
         <div class="hero__content-wrapper">
             <div class="hero__inner">
                 <h1 class="hero__title-animated">
@@ -169,7 +160,7 @@
                     <path d="m8.5 6.5 2-2"/>
                     <path d="m17.5 15.5 2-2"/>
                 </svg>
-                <span data-mk="Не сте сигурни за бројот или моделот? <strong>Отворете го Водичот за големини →</strong>" data-en="Not sure about size or model? <strong>Open the Size Guide →</strong>" data-lang-html>Не сте сигурни за бројот или моделот? <strong>Отворете го Водичот за големини →</strong></span>
+                <span data-mk="<strong>Отворете го Водичот за големини →</strong>" data-en="<strong>Open the Size Guide →</strong>" data-lang-html><strong>Отворете го Водичот за големини →</strong></span>
             </button>
             <button type="button" class="compare-models-trigger-btn" id="compareToggleBtn" aria-expanded="false" aria-controls="compareModelsSection">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

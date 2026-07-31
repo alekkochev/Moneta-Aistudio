@@ -1085,6 +1085,9 @@ if (newsletterForm && newsletterEmailInput && newsletterFeedback) {
 // CATEGORY CARDS 3D TILT EFFECT (GSAP + VANILLA JS FALLBACK)
 // ========================================
 function initCategoryCards3DTilt() {
+    // Skip 3D tilt on subpages — product cards use the simple navbar-style pink line instead
+    if (document.body.classList.contains('page-sistem')) return;
+
     const categoryCards = document.querySelectorAll('.categories__grid .card');
     if (!categoryCards || categoryCards.length === 0) return;
 
