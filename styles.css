@@ -622,180 +622,6 @@ a {
     justify-content: center;
 }
 
-/* ========================================
-   PRODUCT CARD SOCIAL SHARE POPOVER
-   ======================================== */
-.card__share-trigger {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 10;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
-}
-
-.card__share-trigger:hover,
-.card__share-trigger.is-active {
-    background: var(--pink);
-    border-color: var(--pink);
-    color: #ffffff;
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(236, 23, 82, 0.45);
-}
-
-.card__share-popover {
-    position: absolute;
-    top: 56px;
-    right: 14px;
-    z-index: 30;
-    width: 175px;
-    background: rgba(18, 19, 26, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    padding: 10px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-8px) scale(0.94);
-    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
-}
-
-.card__share-popover.is-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0) scale(1);
-}
-
-.share-popover__header {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.45);
-    padding: 2px 8px 6px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    margin-bottom: 6px;
-}
-
-.share-popover__menu {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.share-btn {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 8px 10px;
-    border-radius: 10px;
-    border: none;
-    background: transparent;
-    color: #e2e8f0;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
-    transition: all 0.2s ease;
-    font-family: inherit;
-}
-
-.share-btn svg {
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
-}
-
-.share-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-}
-
-.share-btn:hover svg {
-    transform: scale(1.15);
-}
-
-.share-btn--facebook:hover {
-    background: rgba(24, 119, 242, 0.2);
-    color: #4294ff;
-}
-
-.share-btn--twitter:hover {
-    background: rgba(29, 161, 242, 0.2);
-    color: #40b5ff;
-}
-
-.share-btn--copy:hover {
-    background: rgba(16, 185, 129, 0.2);
-    color: #34d399;
-}
-
-/* ========================================
-   SHARE TOAST NOTIFICATION (BOTTOM-RIGHT)
-   ======================================== */
-.share-toast {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    left: auto;
-    max-width: calc(100vw - 32px);
-    background: rgba(18, 19, 26, 0.94);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    color: #ffffff;
-    border: 1px solid rgba(236, 23, 82, 0.4);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 20px rgba(236, 23, 82, 0.15);
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(20px) scale(0.96);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, visibility 0.35s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.share-toast.is-visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
-}
-
-.share-toast__icon {
-    flex-shrink: 0;
-    color: var(--pink, #EC1752);
-}
-
-@media (max-width: 480px) {
-    .share-toast {
-        bottom: 16px;
-        right: 16px;
-        max-width: calc(100vw - 32px);
-    }
-}
-
 .hero__trust-item {
     font-size: 14px;
     font-weight: 500;
@@ -1000,86 +826,23 @@ a {
 }
 
 /* ========================================
-   COMET EFFECT — dynamic line that runs 360° around the card
-   (index main cards only; subpages keep their simple hover line)
-   Desktop: runs ONLY on hover. Mobile: runs when the card scrolls into focus.
+   CARD ICON HOVER — icon lights up on hover (desktop) / scroll-focus (mobile)
    ======================================== */
-body:not(.page-sistem) .categories__grid .card::before,
-body:not(.page-sistem) .categories__grid .card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    opacity: 0;
-    z-index: 8;
-    offset-path: var(--comet-path, rect(0 0 100% 100% round 22px));
-    offset-rotate: auto;
-    will-change: offset-distance;
-}
-/* Comet head — single bright leading dot */
-body:not(.page-sistem) .categories__grid .card::before {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    offset-anchor: center;
-    background: radial-gradient(circle, #ffffff 0%, #FF5A84 45%, rgba(236, 23, 82, 0) 78%);
-    box-shadow: 0 0 12px 3px rgba(236, 23, 82, 0.7);
-}
-/* Comet tail — ONE long extensive gradient trail behind the head */
-body:not(.page-sistem) .categories__grid .card::after {
-    width: min(220px, 85%);
-    height: 10px;
-    border-radius: 10px;
-    offset-anchor: right center;
-    background: linear-gradient(to left, rgba(255, 90, 132, 0.85) 0%, rgba(236, 23, 82, 0.35) 45%, rgba(236, 23, 82, 0) 100%);
-    filter: blur(1.5px);
-}
-
-@keyframes cometHead {
-    0%   { offset-distance: 0%; opacity: 0; }
-    4%   { opacity: 1; }
-    92%  { opacity: 1; }
-    100% { offset-distance: 100%; opacity: 0; }
-}
-@keyframes cometTail {
-    0%   { offset-distance: 0%; opacity: 0; }
-    6%   { opacity: 0.9; }
-    94%  { opacity: 0.9; }
-    100% { offset-distance: 100%; opacity: 0; }
-}
-
-/* Desktop hover ONLY → head does the 360° loop in 2.5s, tail sweeps until ~4s */
 @media (hover: hover) and (min-width: 861px) {
-    body:not(.page-sistem) .categories__grid .card:hover::before {
-        animation: cometHead 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    .categories__grid .card:hover .card__icon {
+        background: #EC1752;
+        border-color: #FFFFFF;
+        box-shadow: 0 0 20px #EC1752, 0 0 35px rgba(236, 23, 82, 0.6);
+        transform: translateX(-50%) scale(1.1);
     }
-    body:not(.page-sistem) .categories__grid .card:hover::after {
-        animation: cometTail 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
 }
-
-/* Mobile focus (JS adds .comet-run when the card scrolls into view) */
-body:not(.page-sistem) .categories__grid .card.comet-run::before {
-    animation: cometHead 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-body:not(.page-sistem) .categories__grid .card.comet-run::after {
-    animation: cometTail 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Icon lights up ONLY when the comet head completes its 360° loop and hits it */
-body:not(.page-sistem) .categories__grid .card.icon-hit .card__icon {
+.categories__grid .card.is-active .card__icon,
+.categories__grid .card.is-scroll-focused .card__icon {
     background: #EC1752;
     border-color: #FFFFFF;
     box-shadow: 0 0 20px #EC1752, 0 0 35px rgba(236, 23, 82, 0.6);
     transform: translateX(-50%) scale(1.1);
 }
-
-/* Comet replaces the static 1px line — is-active/scroll-focus handled by JS (comet-run) */
-
-/* Icon glow on scroll-focus is now handled by .icon-hit (after the comet loop) */
-
-/* Icon now lights up only via .icon-hit — see COMET EFFECT block below */
 
 @keyframes traceLaserBeamCircuit {
     0% {
