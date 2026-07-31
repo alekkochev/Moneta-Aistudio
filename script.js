@@ -1213,6 +1213,93 @@ if (document.readyState === 'loading') {
 window.addEventListener('load', initCategoryCards3DTilt);
 
 // ========================================
+// COMET EFFECT — dynamic 360° line around the 6 main category cards (index only)
+// ========================================
+(function initCometEffect() {
+    if (document.body.classList.contains('page-sistem')) return;
+
+    const cards = document.querySelectorAll('.categories__grid .card');
+    if (!cards.length) return;
+
+    // Build a rounded-rect motion path that starts just left of the icon and
+    // ends just right of it, after a full 360° loop around the card.
+    function buildCometPath(w, h, radius) {
+        const o = 3; // slight outset outside the card border
+        const x0 = -o, y0 = -o, x1 = w + o, y1 = h + o;
+        const r = Math.max(4, Math.min(radius, (x1 - x0) / 2, (y1 - y0) / 2));
+        const startX = x0 + (w / 2) - 28;
+        const endX = x0 + (w / 2) + 28;
+        return 'M ' + startX + ' ' + y0 +
+            ' L ' + (x1 - r) + ' ' + y0 +
+            ' A ' + r + ' ' + r + ' 0 0 1 ' + x1 + ' ' + (y0 + r) +
+            ' L ' + x1 + ' ' + (y1 - r) +
+            ' A ' + r + ' ' + r + ' 0 0 1 ' + (x1 - r) + ' ' + y1 +
+            ' L ' + (x0 + r) + ' ' + y1 +
+            ' A ' + r + ' ' + r + ' 0 0 1 ' + x0 + ' ' + (y1 - r) +
+            ' L ' + x0 + ' ' + (y0 + r) +
+            ' A ' + r + ' ' + r + ' 0 0 1 ' + (x0 + r) + ' ' + y0 +
+            ' L ' + endX + ' ' + y0 + ' Z';
+    }
+
+    function applyPaths() {
+        cards.forEach((card) => {
+            const w = card.offsetWidth;
+            const h = card.offsetHeight;
+            if (w > 0 && h > 0) {
+                card.style.setProperty('--comet-path', 'path("' + buildCometPath(w, h, 22) + '")');
+            }
+        });
+    }
+    applyPaths();
+    let resizeT = null;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeT);
+        resizeT = setTimeout(applyPaths, 150);
+    });
+
+    cards.forEach((card, i) => {
+        card.dataset.cometIndex = String(i);
+
+        // Icon lights up only when the comet finishes its 360° loop and hits it
+        card.addEventListener('animationend', (e) => {
+            if (e.animationName === 'cometHead') {
+                card.classList.add('icon-hit');
+            }
+        });
+
+        // Reset after the comet so hover / scroll can re-trigger later
+        card.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                card.classList.remove('comet-run');
+                card.classList.remove('icon-hit');
+            }, 250);
+        });
+    });
+
+    // Run the comet once whenever a card becomes visible again (scroll into view)
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const card = entry.target;
+                if (entry.isIntersecting) {
+                    card.classList.remove('comet-run');
+                    card.classList.remove('icon-hit');
+                    const idx = parseInt(card.dataset.cometIndex || '0', 10);
+                    setTimeout(() => {
+                        void card.offsetWidth; // restart animation
+                        card.classList.add('comet-run');
+                    }, idx * 140); // small stagger so they don't all start at once
+                } else {
+                    card.classList.remove('comet-run');
+                    card.classList.remove('icon-hit');
+                }
+            });
+        }, { threshold: 0.35 });
+        cards.forEach((card) => io.observe(card));
+    }
+})();
+
+// ========================================
 // COMPARE MODELS TOGGLE INTERACTION
 // ========================================
 const compareToggleBtn = document.getElementById('compareToggleBtn');
