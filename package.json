@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "MONETA — Анатомски вложки",
   "type": "module",
-  "main": "server.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "echo 'No build required for static site'",
-    "start": "node server.js"
+    "build": "echo 'No build required for static site'"
   },
   "dependencies": {
     "compression": "^1.8.1",
