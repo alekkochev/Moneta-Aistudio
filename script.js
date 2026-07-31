@@ -1221,6 +1221,11 @@ window.addEventListener('load', initCategoryCards3DTilt);
     const cards = document.querySelectorAll('.categories__grid .card');
     if (!cards.length) return;
 
+    // Desktop: the comet runs ONLY on hover (CSS :hover). Mobile: it runs when
+    // the card scrolls into focus (IntersectionObserver) — a tap would navigate
+    // to the card link, so we can't use tap to trigger the effect.
+    const isMobile = window.innerWidth <= 860 || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
     // Build a rounded-rect motion path that starts just left of the icon and
     // ends just right of it, after a full 360° loop around the card.
     function buildCometPath(w, h, radius) {
@@ -1260,24 +1265,35 @@ window.addEventListener('load', initCategoryCards3DTilt);
     cards.forEach((card, i) => {
         card.dataset.cometIndex = String(i);
 
-        // Icon lights up only when the comet finishes its 360° loop and hits it
+        // Desktop: the icon lights up ~2.6s after hover (when the comet head
+        // completes its 360° loop and hits it). A timer is used so it works
+        // even if the CSS animation gets interrupted (e.g. mouse micro-leave).
+        card.addEventListener('mouseenter', () => {
+            clearTimeout(card._cometTimer);
+            card._cometTimer = setTimeout(() => {
+                card.classList.add('icon-hit');
+            }, 2600);
+        });
+
+        // Reset after the comet so a new hover / focus can re-trigger it
+        card.addEventListener('mouseleave', () => {
+            clearTimeout(card._cometTimer);
+            setTimeout(() => {
+                card.classList.remove('comet-run');
+                card.classList.remove('icon-hit');
+            }, 200);
+        });
+
+        // Fallback: if the CSS animation completes cleanly, light the icon too
         card.addEventListener('animationend', (e) => {
             if (e.animationName === 'cometHead') {
                 card.classList.add('icon-hit');
             }
         });
-
-        // Reset after the comet so hover / scroll can re-trigger later
-        card.addEventListener('mouseleave', () => {
-            setTimeout(() => {
-                card.classList.remove('comet-run');
-                card.classList.remove('icon-hit');
-            }, 250);
-        });
     });
 
-    // Run the comet once whenever a card becomes visible again (scroll into view)
-    if ('IntersectionObserver' in window) {
+    // Mobile ONLY: run the comet when a card scrolls into focus
+    if (isMobile && 'IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 const card = entry.target;
@@ -1288,13 +1304,13 @@ window.addEventListener('load', initCategoryCards3DTilt);
                     setTimeout(() => {
                         void card.offsetWidth; // restart animation
                         card.classList.add('comet-run');
-                    }, idx * 140); // small stagger so they don't all start at once
+                    }, idx * 160); // small stagger so they don't all start at once
                 } else {
                     card.classList.remove('comet-run');
                     card.classList.remove('icon-hit');
                 }
             });
-        }, { threshold: 0.35 });
+        }, { threshold: 0.4 });
         cards.forEach((card) => io.observe(card));
     }
 })();
