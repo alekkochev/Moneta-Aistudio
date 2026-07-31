@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MONETA — Heel Pad Grip перниче за пета</title>
+    <meta name="description" content="MONETA Heel Pad Grip – самолепливо перниче за пета од мека кожа со карбосан пена. Универзална големина. Код 951013." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Manrope:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /></noscript>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon/favicon.svg" />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+        /* MONETA page-specific layout helpers */
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 900px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+        .card__desc { color: rgba(255,255,255,.9); font-size: 13.5px; line-height: 1.5; text-align: center; margin: 0; }
+        .hero-img { margin-top: 30px; }
+        .hero-img img { width: min(380px, 100%); border-radius: 24px; box-shadow: 0 24px 60px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.18); }
+        .order-bar { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 44px; }
+        .spec-list { list-style: none; margin: 0; padding: 0; text-align: left; display: inline-block; }
+        .spec-list li { padding: 2px 0; }
+        .related-head { padding-top: 70px; }
+    </style>
+</head>
+<body class="page-sistem">
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar navbar--sistem">
+        <div class="navbar__inner">
+            <a href="../index.html" class="navbar__logo">
+                <img src="../images/moneta-logo.svg" alt="MONETA" width="132" height="37">
+            </a>
+            <div class="navbar__right">
+                <button type="button" class="navbar__search-btn" id="searchTrigger" aria-label="Пребарај" title="Пребарај" data-mk-aria="Пребарај" data-en-aria="Search" data-mk-title="Пребарај" data-en-title="Search">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span class="search-btn__label" data-mk="Пребарај..." data-en="Search...">Пребарај...</span>
+                    <kbd class="search-btn__shortcut">⌘K</kbd>
+                </button>
+                <ul class="navbar__links" id="navLinks">
+                    <li><a href="../index.html#kategorii" data-mk="Влошки" data-en="Insoles">Влошки</a></li>
+                    <li><a href="../sistem.html" data-mk="МОНЕТА систем" data-en="MONETA System">МОНЕТА систем</a></li>
+                    <li><a href="../index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li class="navbar__promo-item">
+                        <button type="button" class="promo-btn" id="promoTrigger" aria-label="Промокод" title="Промокод" data-mk-aria="Промокод" data-en-aria="Promo Code" data-mk-title="Промокод" data-en-title="Promo Code">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M14 9l-4 6"/><circle cx="9.5" cy="9.5" r="0.5"/><circle cx="14.5" cy="14.5" r="0.5"/></svg>
+                            <span class="promo-btn__label" data-mk="Промокод" data-en="Promo Code">Промокод</span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="lang-switcher" id="langSwitcher">
+                    <button type="button" class="lang-btn is-active" data-lang="mk" aria-label="Македонски" aria-pressed="true">MK</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+                </div>
+                <button class="navbar__toggle" id="navToggle" aria-label="Мени">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MODEL HERO ===== -->
+    <section class="system-hero">
+        <div class="system-hero__bg-glow"></div>
+        <div class="system-hero__inner">
+            <div class="system-hero__breadcrumbs">
+                <a href="../index.html" data-mk="Почетна" data-en="Home">Почетна</a>
+                <span>/</span>
+                <a href="../kozni.html" data-mk="Кожни влошки" data-en="Leather Insoles">Кожни влошки</a>
+                <span>/</span>
+                <span>Heel Pad Grip</span>
+            </div>
+            <div class="system-hero__badge" data-mk="🦶 САМОЛЕПЛИВО ПЕРНИЧЕ СО ДОПОЛНИТЕЛЕН GRIP" data-en="🦶 SELF-ADHESIVE CUSHION WITH EXTRA GRIP">
+                🦶 САМОЛЕПЛИВО ПЕРНИЧЕ СО ДОПОЛНИТЕЛЕН GRIP
+            </div>
+            <h1 class="system-hero__title">
+                <span data-mk="HEEL PAD" data-en="HEEL PAD">HEEL PAD</span> <span data-mk="GRIP" data-en="GRIP">GRIP</span>
+            </h1>
+            <p class="system-hero__subtitle" data-mk="Самолепливо перниче за пета од мека кожа, карбосан пена." data-en="Self-adhesive heel cushion of soft leather with carbosan foam.">
+                Самолепливо перниче за пета од мека кожа, карбосан пена.
+            </p>
+            <div class="hero-img">
+                <img src="../images/cards/heel-pad-grip.webp" alt="Heel Pad Grip" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KEY FEATURES ===== -->
+    <section class="features-section">
+        <div class="features__inner">
+            <div class="features__header">
+                <h2 data-mk="Клучни карактеристики" data-en="Key Features">Клучни карактеристики</h2>
+                <p data-mk="Дополнително држење и удобност за петата во секоја обувка." data-en="Extra hold and heel comfort in any shoe.">Дополнително држење и удобност за петата во секоја обувка.</p>
+            </div>
+            <div class="features__grid">
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h3 data-mk="Мека кожа" data-en="Soft Leather">Мека кожа</h3>
+                    <p data-mk="Природната кожа е пријатна на допир и го спречува триењето на петата." data-en="Natural leather is pleasant to the touch and prevents heel rubbing.">Природната кожа е пријатна на допир и го спречува триењето на петата.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                    </div>
+                    <h3 data-mk="Карбосан пена" data-en="Carbosan Foam">Карбосан пена</h3>
+                    <p data-mk="Пената ги апсорбира ударите и ја намалува непријатноста при одење." data-en="The foam absorbs impacts and reduces walking discomfort.">Пената ги апсорбира ударите и ја намалува непријатноста при одење.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <h3 data-mk="Самолеплив слој" data-en="Self-Adhesive Layer">Самолеплив слој</h3>
+                    <p data-mk="Сигурно прицврстување без лизгање и поместување во обувката." data-en="Secure attachment without slipping or shifting in the shoe.">Сигурно прицврстување без лизгање и поместување во обувката.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8h.01"/><path d="M12 12v4"/></svg>
+                    </div>
+                    <h3 data-mk="Универзална големина" data-en="Universal Size">Универзална големина</h3>
+                    <p data-mk="Една големина одговара за сите броеви на обувки – едноставно поставување без мерење." data-en="One size fits all shoe sizes – simple application without measuring.">Една големина одговара за сите броеви на обувки – едноставно поставување без мерење.</p>
+                </div>
+            </div>
+
+            <!-- ORDER BAR -->
+            <div class="order-bar">
+                <div class="model-price" data-mk="Цена: 590 ден." data-en="Price: 590 MKD">Цена: 590 ден.</div>
+                <button type="button" class="hero__cta hero__cta--primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span data-mk="Додади во кошничка" data-en="Add to Cart">Додади во кошничка</span>
+                </button>
+                <a href="../index.html#kontakt" class="hero__cta hero__cta--secondary" data-mk="Нарачај" data-en="Order Now">Нарачај</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TECHNICAL INFO ===== -->
+    <section class="compare-models-wrapper" style="padding: 70px 32px 20px;">
+        <div class="compare-models__card" data-aos="fade-up">
+            <div class="compare-models__header">
+                <div class="compare-models__title-group">
+                    <span class="compare-models__badge" data-mk="Технички информации" data-en="Technical Info">Технички информации</span>
+                    <h3 data-mk="Спецификации на Heel Pad Grip" data-en="Heel Pad Grip Specifications">Спецификации на Heel Pad Grip</h3>
+                    <p data-mk="Материјали, големини, код и EAN на моделот Heel Pad Grip." data-en="Materials, sizes, code, and EAN of the Heel Pad Grip model.">Материјали, големини, код и EAN на моделот Heel Pad Grip.</p>
+                </div>
+            </div>
+            <div class="compare-models__table-scroll">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th class="compare-table__feature-col">Особина</th>
+                            <th>Вредност</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="compare-table__label">Материјали</td>
+                            <td>
+                                <ul class="spec-list">
+                                    <li><span class="compare-badge compare-badge--high">1</span> Мека јагнешка кожа</li>
+                                    <li><span class="compare-badge compare-badge--high">2</span> Карбосан перниче</li>
+                                    <li><span class="compare-badge compare-badge--high">3</span> Самолеплив слој</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="compare-table__label">Големини</td>
+                            <td>Универзална</td>
+                        </tr>
+                        <tr>
+                            <td class="compare-table__label">Код</td>
+                            <td><strong>951013</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="compare-table__label">EAN</td>
+                            <td>8586005030430</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-section">
+        <div class="faq__inner">
+            <div class="faq__header">
+                <h2 data-mk="Често поставувани прашања" data-en="Frequently Asked Questions">Често поставувани прашања</h2>
+                <p data-mk="Сè што треба да знаете за Heel Pad Grip перничето." data-en="Everything you need to know about the Heel Pad Grip cushion.">Сè што треба да знаете за Heel Pad Grip перничето.</p>
+            </div>
+            <div class="faq__accordion" id="faqAccordion">
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        </div>
+                        <span data-mk="Што значи „Grip“ кај овој модел?" data-en="What does "Grip" mean in this model?">Што значи „Grip“ кај овој модел?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="„Grip“ означува дополнително држење – перничето ја прицврстува петата во обувката и спречува лизгање, што е корисно кај обувки со малку поголема пета." data-en=""Grip" means extra hold – the cushion anchors the heel in the shoe and prevents slipping, useful in shoes with a slightly larger heel.">„Grip“ означува дополнително држење – перничето ја прицврстува петата во обувката и спречува лизгање, што е корисно кај обувки со малку поголема пета.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8h.01"/><path d="M12 12v4"/></svg>
+                        </div>
+                        <span data-mk="Дали универзалната големина одговара за сите?" data-en="Does the universal size fit everyone?">Дали универзалната големина одговара за сите?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Да. Перничето е дизајнирано да покрие широк опсег на големини (приближно 35–46) благодарение на својата форма и големина прилагодена на просечна пета." data-en="Yes. The cushion is designed to cover a wide range of sizes (approximately 35–46) thanks to its shape and size adapted to an average heel.">Да. Перничето е дизајнирано да покрие широк опсег на големини (приближно 35–46) благодарение на својата форма и големина прилагодена на просечна пета.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                        </div>
+                        <span data-mk="Дали помага при лизгање на петата во чевлите?" data-en="Does it help with heel slipping in shoes?">Дали помага при лизгање на петата во чевлите?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Да, ова е главната намена на моделот. Перничето ја подига и прицврстува петата, намалувајќи го лизгањето и триењето кое предизвикува плускавци." data-en="Yes, this is the main purpose of the model. The cushion lifts and anchors the heel, reducing the slipping and rubbing that causes blisters.">Да, ова е главната намена на моделот. Перничето ја подига и прицврстува петата, намалувајќи го лизгањето и триењето кое предизвикува плускавци.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        </div>
+                        <span data-mk="Како се одржува?" data-en="How do I maintain it?">Како се одржува?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Перничето се чисти со малку влажна крпа. Избегнувајте вода и агресивни средства кои може да го оштетат самолепливиот слој." data-en="The cushion is cleaned with a slightly damp cloth. Avoid water and harsh products that could damage the adhesive layer.">Перничето се чисти со малку влажна крпа. Избегнувајте вода и агресивни средства кои може да го оштетат самолепливиот слој.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RELATED PRODUCTS ===== -->
+    <section class="categories-section">
+        <div class="features__header related-head">
+            <h2 data-mk="Поврзани производи" data-en="Related Products">Поврзани производи</h2>
+            <p data-mk="Слични Heel Pad и кожни модели кои може да ви се допаднат." data-en="Similar Heel Pad and leather models you might like.">Слични Heel Pad и кожни модели кои може да ви се допаднат.</p>
+        </div>
+        <div class="categories__grid grid-3">
+            <a href="heel-pad.html" class="card card--image">
+                <div class="card__image"><img src="../images/cards/heel-pad.webp" alt="Heel Pad" class="card__img" width="400" height="300" loading="lazy" decoding="async"></div>
+                <div class="card__overlay">
+                    <div class="card__icon"><img src="../images/icons/leather.svg" alt="Heel Pad" width="26" height="26" loading="lazy" decoding="async"></div>
+                    <h4>Heel Pad</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+            <a href="heel-pad-fix.html" class="card card--image">
+                <div class="card__image"><img src="../images/cards/heel-pad-fix.webp" alt="Heel Pad FIX" class="card__img" width="400" height="300" loading="lazy" decoding="async"></div>
+                <div class="card__overlay">
+                    <div class="card__icon"><img src="../images/icons/leather.svg" alt="Heel Pad FIX" width="26" height="26" loading="lazy" decoding="async"></div>
+                    <h4>Heel Pad FIX</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+            <a href="vital.html" class="card card--image">
+                <div class="card__image"><img src="../images/cards/vital.webp" alt="Vital" class="card__img" width="400" height="300" loading="lazy" decoding="async"></div>
+                <div class="card__overlay">
+                    <div class="card__icon"><img src="../images/icons/leather.svg" alt="Vital" width="26" height="26" loading="lazy" decoding="async"></div>
+                    <h4>Vital</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <img src="../images/moneta-logo.svg" alt="MONETA" width="100" height="28">
+                    <p data-mk="&copy; 2026 MONETA. Сите права задржани." data-en="&copy; 2026 MONETA. All rights reserved.">&copy; 2026 MONETA. Сите права задржани.</p>
+                </div>
+                <div class="footer__social">
+                    <span class="social__label" data-mk="Следете нè:" data-en="Follow us:">Следете нè:</span>
+                    <div class="social__links">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--facebook" aria-label="MONETA на Facebook" title="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.69c0-2.47 1.47-3.83 3.72-3.83 1.08 0 2.21.19 2.21.19v2.43h-1.24c-1.23 0-1.61.76-1.61 1.54V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--instagram" aria-label="MONETA на Instagram" title="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--tiktok" aria-label="MONETA на TikTok" title="TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-2.84V7.65a6.34 6.34 0 0 0-3.5 1.01 6.33 6.33 0 1 0 9.84 5.34V8.85a8.3 8.3 0 0 0 4.77 1.47V6.87a4.85 4.85 0 0 1-1.00-.18z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <ul class="footer__links">
+                    <li><a href="../index.html#prednosti" data-mk="За нас" data-en="About Us">За нас</a></li>
+                    <li><a href="../index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li><a href="../index.html#faq" data-mk="Услови" data-en="Terms">Услови</a></li>
+                    <li><a href="../index.html#faq" data-mk="Приватност" data-en="Privacy">Приватност</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Назад кон врвот">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="../script.js" defer></script>
+</body>
+</html>

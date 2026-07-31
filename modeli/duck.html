@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MONETA — Duck детска анатомска влошка</title>
+    <meta name="description" content="MONETA Duck – детски анатомски влошки, 100% памук, латекс, пластичен и карбосан калап за правилен развој на детското стапало. Код 201068." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Manrope:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /></noscript>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon/favicon.svg" />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+        /* MONETA page-specific layout helpers */
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 900px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+        .card__desc { color: rgba(255,255,255,.9); font-size: 13.5px; line-height: 1.5; text-align: center; margin: 0; }
+        .hero-img { margin-top: 30px; }
+        .hero-img img { width: min(380px, 100%); border-radius: 24px; box-shadow: 0 24px 60px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.18); }
+        .order-bar { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 44px; }
+        .spec-list { list-style: none; margin: 0; padding: 0; text-align: left; display: inline-block; }
+        .spec-list li { padding: 2px 0; }
+        .related-head { padding-top: 70px; }
+    </style>
+</head>
+<body class="page-sistem">
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar navbar--sistem">
+        <div class="navbar__inner">
+            <a href="../index.html" class="navbar__logo">
+                <img src="../images/moneta-logo.svg" alt="MONETA" width="132" height="37">
+            </a>
+            <div class="navbar__right">
+                <button type="button" class="navbar__search-btn" id="searchTrigger" aria-label="Пребарај" title="Пребарај" data-mk-aria="Пребарај" data-en-aria="Search" data-mk-title="Пребарај" data-en-title="Search">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span class="search-btn__label" data-mk="Пребарај..." data-en="Search...">Пребарај...</span>
+                    <kbd class="search-btn__shortcut">⌘K</kbd>
+                </button>
+                <ul class="navbar__links" id="navLinks">
+                    <li><a href="../index.html#kategorii" data-mk="Влошки" data-en="Insoles">Влошки</a></li>
+                    <li><a href="../sistem.html" data-mk="МОНЕТА систем" data-en="MONETA System">МОНЕТА систем</a></li>
+                    <li><a href="../index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li class="navbar__promo-item">
+                        <button type="button" class="promo-btn" id="promoTrigger" aria-label="Промокод" title="Промокод" data-mk-aria="Промокод" data-en-aria="Promo Code" data-mk-title="Промокод" data-en-title="Promo Code">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M14 9l-4 6"/><circle cx="9.5" cy="9.5" r="0.5"/><circle cx="14.5" cy="14.5" r="0.5"/></svg>
+                            <span class="promo-btn__label" data-mk="Промокод" data-en="Promo Code">Промокод</span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="lang-switcher" id="langSwitcher">
+                    <button type="button" class="lang-btn is-active" data-lang="mk" aria-label="Македонски" aria-pressed="true">MK</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+                </div>
+                <button class="navbar__toggle" id="navToggle" aria-label="Мени">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MODEL HERO ===== -->
+    <section class="system-hero">
+        <div class="system-hero__bg-glow"></div>
+        <div class="system-hero__inner">
+            <div class="system-hero__breadcrumbs">
+                <a href="../index.html" data-mk="Почетна" data-en="Home">Почетна</a>
+                <span>/</span>
+                <a href="../detski.html" data-mk="Детски влошки" data-en="Kids Insoles">Детски влошки</a>
+                <span>/</span>
+                <span>Duck</span>
+            </div>
+            <div class="system-hero__badge" data-mk="👶 ДЕТСКА АНАТОМСКА ВЛОШКА ЗА ПРАВИЛЕН РАЗВОЈ" data-en="👶 KIDS' ANATOMICAL INSOLE FOR HEALTHY DEVELOPMENT">
+                👶 ДЕТСКА АНАТОМСКА ВЛОШКА ЗА ПРАВИЛЕН РАЗВОЈ
+            </div>
+            <h1 class="system-hero__title">
+                <span data-mk="DUCK" data-en="DUCK">DUCK</span> <span data-mk="ДЕТСКА ВЛОШКА" data-en="KIDS' INSOLE">ДЕТСКА ВЛОШКА</span>
+            </h1>
+            <p class="system-hero__subtitle" data-mk="Детски анатомски влошки, 100% памук, латекс, пластичен и карбосан калап." data-en="Kids' anatomical insoles, 100% cotton, latex, plastic, and carbosan mold.">
+                Детски анатомски влошки, 100% памук, латекс, пластичен и карбосан калап.
+            </p>
+            <div class="hero-img">
+                <img src="../images/cards/duck.webp" alt="Duck" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KEY FEATURES ===== -->
+    <section class="features-section">
+        <div class="features__inner">
+            <div class="features__header">
+                <h2 data-mk="Клучни карактеристики" data-en="Key Features">Клучни карактеристики</h2>
+                <p data-mk="Природни материјали и анатомска поддршка за детските стапала во раст." data-en="Natural materials and anatomical support for growing kids' feet.">Природни материјали и анатомска поддршка за детските стапала во раст.</p>
+            </div>
+            <div class="features__grid">
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h3 data-mk="100% Памучен фротир" data-en="100% Cotton Terry">100% Памучен фротир</h3>
+                    <p data-mk="Природниот памук е мек, нежен кон детската кожа и ја апсорбира влагата." data-en="Natural cotton is soft, gentle on kids' skin, and absorbs moisture.">Природниот памук е мек, нежен кон детската кожа и ја апсорбира влагата.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3 data-mk="Ароматизирана латекс пена" data-en="Scented Latex Foam">Ароматизирана латекс пена</h3>
+                    <p data-mk="Латексот дава еластичност, а пријатната арома ги освежува детските стапала." data-en="Latex provides elasticity, while the pleasant scent refreshes kids' feet.">Латексот дава еластичност, а пријатната арома ги освежува детските стапала.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 data-mk="Пластичен + карбосан калап" data-en="Plastic + Carbosan Mold">Пластичен + карбосан калап</h3>
+                    <p data-mk="Анатомскиот калап го поддржува правилниот развој на детското стапало и зглобовите." data-en="The anatomical mold supports proper development of the child's foot and joints.">Анатомскиот калап го поддржува правилниот развој на детското стапало и зглобовите.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 data-mk="За училиште и игра" data-en="For School &amp; Play">За училиште и игра</h3>
+                    <p data-mk="Идеални за детски обувки, училиште и секојдневна игра со мека и сигурна поддршка." data-en="Ideal for kids' shoes, school, and daily play with soft and secure support.">Идеални за детски обувки, училиште и секојдневна игра со мека и сигурна поддршка.</p>
+                </div>
+            </div>
+
+            <!-- ORDER BAR -->
+            <div class="order-bar">
+                <div class="model-price" data-mk="Цена: 690 ден." data-en="Price: 690 MKD">Цена: 690 ден.</div>
+                <button type="button" class="hero__cta hero__cta--primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span data-mk="Додади во кошничка" data-en="Add to Cart">Додади во кошничка</span>
+                </button>
+                <a href="../index.html#kontakt" class="hero__cta hero__cta--secondary" data-mk="Нарачај" data-en="Order Now">Нарачај</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TECHNICAL INFO ===== -->
+    <section class="compare-models-wrapper" style="padding: 70px 32px 20px;">
+        <div class="compare-models__card" data-aos="fade-up">
+            <div class="compare-models__header">
+                <div class="compare-models__title-group">
+                    <span class="compare-models__badge" data-mk="Технички информации" data-en="Technical Info">Технички информации</span>
+                    <h3 data-mk="Спецификации на Duck" data-en="Duck Specifications">Спецификации на Duck</h3>
+                    <p data-mk="Материјали, големини, код и EAN на моделот Duck." data-en="Materials, sizes, code, and EAN of the Duck model.">Материјали, големини, код и EAN на моделот Duck.</p>
+                </div>
+            </div>
+            <div class="compare-models__table-scroll">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th class="compare-table__feature-col">Особина</th>
+                            <th>Вредност</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="compare-table__label">Материјали</td>
+                            <td>
+                                <ul class="spec-list">
+                                    <li><span class="compare-badge compare-badge--high">1</span> 100% Памучен фротир</li>
+                                    <li><span class="compare-badge compare-badge--high">2</span> Ароматизирана латекс пена</li>
+                                    <li><span class="compare-badge compare-badge--high">3</span> Пластичен калап</li>
+                                    <li><span class="compare-badge compare-badge--high">4</span> Карбосан калап</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="compare-table__label">Големини</td>
+                            <td>27, 29, 30, 32, 34, 35</td>
+                        </tr>
+                        <tr>
+                            <td class="compare-table__label">Код</td>
+                            <td><strong>201068</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="compare-table__label">EAN</td>
+                            <td>8586005030690</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-section">
+        <div class="faq__inner">
+            <div class="faq__header">
+                <h2 data-mk="Често поставувани прашања" data-en="Frequently Asked Questions">Често поставувани прашања</h2>
+                <p data-mk="Сè што треба да знаете за Duck детската влошка." data-en="Everything you need to know about the Duck kids' insole.">Сè што треба да знаете за Duck детската влошка.</p>
+            </div>
+            <div class="faq__accordion" id="faqAccordion">
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <span data-mk="Од колку години може да се користат Duck влошките?" data-en="From what age can Duck insoles be used?">Од колку години може да се користат Duck влошките?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Duck е наменета за деца чие стапало е активно во раст, приближно од 5 до 12 години, во зависност од големината на стапалото (27–35)." data-en="Duck is designed for children with actively growing feet, approximately ages 5 to 12, depending on foot size (27–35).">Duck е наменета за деца чие стапало е активно во раст, приближно од 5 до 12 години, во зависност од големината на стапалото (27–35).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        </div>
+                        <span data-mk="Дали се безбедни за детската кожа?" data-en="Are they safe for kids' skin?">Дали се безбедни за детската кожа?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Да. Влошката е изработена од 100% памук и хипоалергенски материјали, безбедни и нежни кон детската кожа." data-en="Yes. The insole is made of 100% cotton and hypoallergenic materials, safe and gentle on kids' skin.">Да. Влошката е изработена од 100% памук и хипоалергенски материјали, безбедни и нежни кон детската кожа.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <span data-mk="Дали помагаат при рамни стапала кај деца?" data-en="Do they help with flat feet in children?">Дали помагаат при рамни стапала кај деца?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Анатомскиот пластичен и карбосан калап обезбедуваат суптилна поддршка на сводот, што може да помогне при правилен развој на стапалото. За специфични состојби, консултирајте се со педијатар или ортопед." data-en="The anatomical plastic and carbosan mold provides subtle arch support, which can help with proper foot development. For specific conditions, consult a pediatrician or orthopedist.">Анатомскиот пластичен и карбосан калап обезбедуваат суптилна поддршка на сводот, што може да помогне при правилен развој на стапалото. За специфични состојби, консултирајте се со педијатар или ортопед.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        </div>
+                        <span data-mk="Како се чистат?" data-en="How do I clean them?">Како се чистат?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Избришете ги со влажна крпа и благ сапун или нежно измијте ги на рака на ниска температура. Оставете ги да се исушат природно на воздух." data-en="Wipe with a damp cloth and mild soap or gently hand-wash at low temperature. Let them air-dry naturally.">Избришете ги со влажна крпа и благ сапун или нежно измијте ги на рака на ниска температура. Оставете ги да се исушат природно на воздух.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RELATED PRODUCTS ===== -->
+    <section class="categories-section">
+        <div class="features__header related-head">
+            <h2 data-mk="Поврзани производи" data-en="Related Products">Поврзани производи</h2>
+            <p data-mk="Слични модели кои може да ви се допаднат." data-en="Similar models you might like.">Слични модели кои може да ви се допаднат.</p>
+        </div>
+        <div class="categories__grid grid-3">
+            <a href="sport-style.html" class="card card--image">
+                <div class="card__image"><img src="../images/cards/sport-style.webp" alt="Sport Style" class="card__img" width="400" height="300" loading="lazy" decoding="async"></div>
+                <div class="card__overlay">
+                    <div class="card__icon"><img src="../images/icons/sport.svg" alt="Sport Style" width="26" height="26" loading="lazy" decoding="async"></div>
+                    <h4>Sport Style</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+            <a href="active-gel.html" class="card card--image">
+                <div class="card__image"><img src="../images/cards/active-gel.webp" alt="Active Gel" class="card__img" width="400" height="300" loading="lazy" decoding="async"></div>
+                <div class="card__overlay">
+                    <div class="card__icon"><img src="../images/icons/sport.svg" alt="Active Gel" width="26" height="26" loading="lazy" decoding="async"></div>
+                    <h4>Active Gel</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+            <a href="memosole.html" class="card card--image">
+                <div class="card__image"><img src="../images/cards/memosole.webp" alt="MEMOSOLE" class="card__img" width="400" height="300" loading="lazy" decoding="async"></div>
+                <div class="card__overlay">
+                    <div class="card__icon"><img src="../images/icons/sport.svg" alt="MEMOSOLE" width="26" height="26" loading="lazy" decoding="async"></div>
+                    <h4>MEMOSOLE</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <img src="../images/moneta-logo.svg" alt="MONETA" width="100" height="28">
+                    <p data-mk="&copy; 2026 MONETA. Сите права задржани." data-en="&copy; 2026 MONETA. All rights reserved.">&copy; 2026 MONETA. Сите права задржани.</p>
+                </div>
+                <div class="footer__social">
+                    <span class="social__label" data-mk="Следете нè:" data-en="Follow us:">Следете нè:</span>
+                    <div class="social__links">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--facebook" aria-label="MONETA на Facebook" title="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.69c0-2.47 1.47-3.83 3.72-3.83 1.08 0 2.21.19 2.21.19v2.43h-1.24c-1.23 0-1.61.76-1.61 1.54V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--instagram" aria-label="MONETA на Instagram" title="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--tiktok" aria-label="MONETA на TikTok" title="TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-2.84V7.65a6.34 6.34 0 0 0-3.5 1.01 6.33 6.33 0 1 0 9.84 5.34V8.85a8.3 8.3 0 0 0 4.77 1.47V6.87a4.85 4.85 0 0 1-1.00-.18z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <ul class="footer__links">
+                    <li><a href="../index.html#prednosti" data-mk="За нас" data-en="About Us">За нас</a></li>
+                    <li><a href="../index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li><a href="../index.html#faq" data-mk="Услови" data-en="Terms">Услови</a></li>
+                    <li><a href="../index.html#faq" data-mk="Приватност" data-en="Privacy">Приватност</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Назад кон врвот">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="../script.js" defer></script>
+</body>
+</html>

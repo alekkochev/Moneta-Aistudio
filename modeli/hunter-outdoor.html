@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MONETA — Hunter Outdoor анатомска влошка</title>
+    <meta name="description" content="MONETA Hunter Outdoor – анатомска влошка со Viscolat мемориска пена, PES филц и алуминиумска фолија за пролет/есен. Код 140402." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Manrope:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /></noscript>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon/favicon.svg" />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+        /* MONETA page-specific layout helpers */
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 900px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+        .card__desc { color: rgba(255,255,255,.9); font-size: 13.5px; line-height: 1.5; text-align: center; margin: 0; }
+        .hero-img { margin-top: 30px; }
+        .hero-img img { width: min(380px, 100%); border-radius: 24px; box-shadow: 0 24px 60px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.18); }
+        .order-bar { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 44px; }
+        .spec-list { list-style: none; margin: 0; padding: 0; text-align: left; display: inline-block; }
+        .spec-list li { padding: 2px 0; }
+        .related-head { padding-top: 70px; }
+    </style>
+</head>
+<body class="page-sistem">
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar navbar--sistem">
+        <div class="navbar__inner">
+            <a href="../index.html" class="navbar__logo">
+                <img src="../images/moneta-logo.svg" alt="MONETA" width="132" height="37">
+            </a>
+            <div class="navbar__right">
+                <button type="button" class="navbar__search-btn" id="searchTrigger" aria-label="Пребарај" title="Пребарај" data-mk-aria="Пребарај" data-en-aria="Search" data-mk-title="Пребарај" data-en-title="Search">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span class="search-btn__label" data-mk="Пребарај..." data-en="Search...">Пребарај...</span>
+                    <kbd class="search-btn__shortcut">⌘K</kbd>
+                </button>
+                <ul class="navbar__links" id="navLinks">
+                    <li><a href="../index.html#kategorii" data-mk="Влошки" data-en="Insoles">Влошки</a></li>
+                    <li><a href="../sistem.html" data-mk="МОНЕТА систем" data-en="MONETA System">МОНЕТА систем</a></li>
+                    <li><a href="../index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li class="navbar__promo-item">
+                        <button type="button" class="promo-btn" id="promoTrigger" aria-label="Промокод" title="Промокод" data-mk-aria="Промокод" data-en-aria="Promo Code" data-mk-title="Промокод" data-en-title="Promo Code">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M14 9l-4 6"/><circle cx="9.5" cy="9.5" r="0.5"/><circle cx="14.5" cy="14.5" r="0.5"/></svg>
+                            <span class="promo-btn__label" data-mk="Промокод" data-en="Promo Code">Промокод</span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="lang-switcher" id="langSwitcher">
+                    <button type="button" class="lang-btn is-active" data-lang="mk" aria-label="Македонски" aria-pressed="true">MK</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+                </div>
+                <button class="navbar__toggle" id="navToggle" aria-label="Мени">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MODEL HERO ===== -->
+    <section class="system-hero">
+        <div class="system-hero__bg-glow"></div>
+        <div class="system-hero__inner">
+            <div class="system-hero__breadcrumbs">
+                <a href="../index.html" data-mk="Почетна" data-en="Home">Почетна</a>
+                <span>/</span>
+                <a href="../hunter.html" data-mk="HUNTER влошки" data-en="HUNTER Insoles">HUNTER влошки</a>
+                <span>/</span>
+                <span>Hunter Outdoor</span>
+            </div>
+            <div class="system-hero__badge" data-mk="🏔️ МЕМОРИ ПЕНА + АЛУМИНИУМ ЗА ПРОЛЕТ/ЕСЕН" data-en="🏔️ MEMORY FOAM + ALUMINUM FOR SPRING/AUTUMN">
+                🏔️ МЕМОРИ ПЕНА + АЛУМИНИУМ ЗА ПРОЛЕТ/ЕСЕН
+            </div>
+            <h1 class="system-hero__title">
+                <span data-mk="HUNTER" data-en="HUNTER">HUNTER</span> <span data-mk="OUTDOOR" data-en="OUTDOOR">OUTDOOR</span>
+            </h1>
+            <p class="system-hero__subtitle" data-mk="Анатомска влошка со Viscolat мемориска пена, PES филц и алуминиумска фолија за пролет/есен." data-en="Anatomical insole with Viscolat memory foam, PES felt, and aluminum foil for spring/autumn.">
+                Анатомска влошка со Viscolat мемориска пена, PES филц и алуминиумска фолија за пролет/есен.
+            </p>
+            <div class="hero-img">
+                <img src="../images/cards/hunter-outdoor.webp" alt="Hunter Outdoor" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KEY FEATURES ===== -->
+    <section class="features-section">
+        <div class="features__inner">
+            <div class="features__header">
+                <h2 data-mk="Клучни карактеристики" data-en="Key Features">Клучни карактеристики</h2>
+                <p data-mk="Технологија дизајнирана за лов и активности на отворено." data-en="Technology designed for hunting and outdoor activities.">Технологија дизајнирана за лов и активности на отворено.</p>
+            </div>
+            <div class="features__grid">
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h3 data-mk="Viscolat мемориска пена" data-en="Viscolat Memory Foam">Viscolat мемориска пена</h3>
+                    <p data-mk="Висококвалитетната Viscolat пена се прилагодува на стапалото и обезбедува одлична амортизација." data-en="High-quality Viscolat foam conforms to your foot and provides excellent cushioning.">Висококвалитетната Viscolat пена се прилагодува на стапалото и обезбедува одлична амортизација.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3 data-mk="Алуминиумска фолија" data-en="Aluminum Foil">Алуминиумска фолија</h3>
+                    <p data-mk="Алуминиумскиот слој ја рефлектира топлината и ја блокира ладната подлога во пролетните и есенските денови." data-en="The aluminum layer reflects heat and blocks the cold ground on spring and autumn days.">Алуминиумскиот слој ја рефлектира топлината и ја блокира ладната подлога во пролетните и есенските денови.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h3 data-mk="100% PES филц" data-en="100% PES Felt">100% PES филц</h3>
+                    <p data-mk="Филц слојот додава топлинска изолација и удобност при долги престои на отворено." data-en="The felt layer adds thermal insulation and comfort during long outdoor sessions.">Филц слојот додава топлинска изолација и удобност при долги престои на отворено.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 data-mk="Перфорирана PES ткаенина" data-en="Perforated PES Fabric">Перфорирана PES ткаенина</h3>
+                    <p data-mk="Перфорираната ткаенина овозможува циркулација на воздух и спречува прекумерно потење." data-en="The perforated fabric allows air circulation and prevents excessive sweating.">Перфорираната ткаенина овозможува циркулација на воздух и спречува прекумерно потење.</p>
+                </div>
+            </div>
+
+            <!-- ORDER BAR -->
+            <div class="order-bar">
+                <div class="model-price" data-mk="Цена: 990 ден." data-en="Price: 990 MKD">Цена: 990 ден.</div>
+                <button type="button" class="hero__cta hero__cta--primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span data-mk="Додади во кошничка" data-en="Add to Cart">Додади во кошничка</span>
+                </button>
+                <a href="../index.html#kontakt" class="hero__cta hero__cta--secondary" data-mk="Нарачај" data-en="Order Now">Нарачај</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TECHNICAL INFO ===== -->
+    <section class="compare-models-wrapper" style="padding: 70px 32px 20px;">
+        <div class="compare-models__card" data-aos="fade-up">
+            <div class="compare-models__header">
+                <div class="compare-models__title-group">
+                    <span class="compare-models__badge" data-mk="Технички информации" data-en="Technical Info">Технички информации</span>
+                    <h3 data-mk="Спецификации на Hunter Outdoor" data-en="Hunter Outdoor Specifications">Спецификации на Hunter Outdoor</h3>
+                    <p data-mk="Материјали, големини, код и EAN на моделот Hunter Outdoor." data-en="Materials, sizes, code, and EAN of the Hunter Outdoor model.">Материјали, големини, код и EAN на моделот Hunter Outdoor.</p>
+                </div>
+            </div>
+            <div class="compare-models__table-scroll">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th class="compare-table__feature-col">Особина</th>
+                            <th>Вредност</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="compare-table__label">Материјали</td>
+                            <td>
+                                <ul class="spec-list">
+                                    <li><span class="compare-badge compare-badge--high">1</span> 100% PES перфорирана ткаенина</li>
+                                    <li><span class="compare-badge compare-badge--high">2</span> Viscolat мемориска пена</li>
+                                    <li><span class="compare-badge compare-badge--high">3</span> 100% PES филц</li>
+                                    <li><span class="compare-badge compare-badge--high">4</span> Алуминиумска фолија</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="compare-table__label">Големини</td>
+                            <td>35-37, 38-39, 40-41, 42-43, 44-45, 46-47</td>
+                        </tr>
+                        <tr>
+                            <td class="compare-table__label">Код</td>
+                            <td><strong>140402</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="compare-table__label">EAN</td>
+                            <td>8586005036807</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-section">
+        <div class="faq__inner">
+            <div class="faq__header">
+                <h2 data-mk="Често поставувани прашања" data-en="Frequently Asked Questions">Често поставувани прашања</h2>
+                <p data-mk="Сè што треба да знаете за Hunter Outdoor влошката." data-en="Everything you need to know about the Hunter Outdoor insole.">Сè што треба да знаете за Hunter Outdoor влошката.</p>
+            </div>
+            <div class="faq__accordion" id="faqAccordion">
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <span data-mk="За кои услови е наменета Hunter Outdoor?" data-en="What conditions is Hunter Outdoor designed for?">За кои услови е наменета Hunter Outdoor?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Hunter Outdoor е дизајнирана за пролетни и есенски услови, кога температурите се променливи. Алуминиумската фолија нуди умерена термо изолација, а мемори пената удобност при долги прошетки." data-en="Hunter Outdoor is designed for spring and autumn conditions with variable temperatures. The aluminum foil offers moderate thermal insulation, while the memory foam provides comfort during long walks.">Hunter Outdoor е дизајнирана за пролетни и есенски услови, кога температурите се променливи. Алуминиумската фолија нуди умерена термо изолација, а мемори пената удобност при долги прошетки.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <span data-mk="Дали е погодна за лов?" data-en="Is it suitable for hunting?">Дали е погодна за лов?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Да, името Hunter не е случајно – моделот е развиен за ловци и планинари. Цврстата конструкција и мемори пената обезбедуваат стабилност и удобност на нерамни терени." data-en="Yes, the Hunter name is no coincidence – the model was developed for hunters and hikers. The firm construction and memory foam provide stability and comfort on uneven terrain.">Да, името Hunter не е случајно – моделот е развиен за ловци и планинари. Цврстата конструкција и мемори пената обезбедуваат стабилност и удобност на нерамни терени.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        </div>
+                        <span data-mk="Дали може да се скрати по големина?" data-en="Can it be trimmed to size?">Дали може да се скрати по големина?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Да, предниот дел може да се поткастри со ножици следејќи ги означените линии, за совршено вклопување во вашата обувка." data-en="Yes, the forefoot can be trimmed with scissors following the marked lines, for a perfect fit in your shoe.">Да, предниот дел може да се поткастри со ножици следејќи ги означените линии, за совршено вклопување во вашата обувка.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question" aria-expanded="false">
+                        <div class="faq__q-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        </div>
+                        <span data-mk="Како се одржува влошката?" data-en="How do I maintain the insole?">Како се одржува влошката?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                        <div class="faq__answer-content">
+                            <p data-mk="Чистете ја со влажна крпа и благ сапун, а потоа оставете ја да се исуши на воздух. Поради алуминиумската фолија, избегнувајте перење во машина и висока температура." data-en="Clean with a damp cloth and mild soap, then air-dry. Due to the aluminum foil, avoid machine washing and high temperatures.">Чистете ја со влажна крпа и благ сапун, а потоа оставете ја да се исуши на воздух. Поради алуминиумската фолија, избегнувајте перење во машина и висока температура.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RELATED PRODUCTS ===== -->
+    <section class="categories-section">
+        <div class="features__header related-head">
+            <h2 data-mk="Поврзани производи" data-en="Related Products">Поврзани производи</h2>
+            <p data-mk="Слични outdoor модели кои може да ви се допаднат." data-en="Similar outdoor models you might like.">Слични outdoor модели кои може да ви се допаднат.</p>
+        </div>
+        <div class="categories__grid grid-3">
+            <a href="hunter-flex.html" class="card card--image">
+                <div class="card__image"><img src="../images/cards/hunter-flex.webp" alt="Hunter Flex" class="card__img" width="400" height="300" loading="lazy" decoding="async"></div>
+                <div class="card__overlay">
+                    <div class="card__icon"><img src="../images/icons/hunter.svg" alt="Hunter Flex" width="26" height="26" loading="lazy" decoding="async"></div>
+                    <h4>Hunter Flex</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+            <a href="thermo-alu.html" class="card card--image">
+                <div class="card__image"><img src="../images/cards/thermo-alu.webp" alt="Thermo Alu" class="card__img" width="400" height="300" loading="lazy" decoding="async"></div>
+                <div class="card__overlay">
+                    <div class="card__icon"><img src="../images/icons/hunter.svg" alt="Thermo Alu" width="26" height="26" loading="lazy" decoding="async"></div>
+                    <h4>Thermo Alu</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+            <a href="hunter-camo.html" class="card card--image">
+                <div class="card__image"><img src="../images/cards/hunter-camo.webp" alt="Hunter CAMO" class="card__img" width="400" height="300" loading="lazy" decoding="async"></div>
+                <div class="card__overlay">
+                    <div class="card__icon"><img src="../images/icons/hunter.svg" alt="Hunter CAMO" width="26" height="26" loading="lazy" decoding="async"></div>
+                    <h4>Hunter CAMO</h4>
+                    <span class="card__link" data-mk="Погледни →" data-en="View →">Погледни →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <img src="../images/moneta-logo.svg" alt="MONETA" width="100" height="28">
+                    <p data-mk="&copy; 2026 MONETA. Сите права задржани." data-en="&copy; 2026 MONETA. All rights reserved.">&copy; 2026 MONETA. Сите права задржани.</p>
+                </div>
+                <div class="footer__social">
+                    <span class="social__label" data-mk="Следете нè:" data-en="Follow us:">Следете нè:</span>
+                    <div class="social__links">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--facebook" aria-label="MONETA на Facebook" title="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.69c0-2.47 1.47-3.83 3.72-3.83 1.08 0 2.21.19 2.21.19v2.43h-1.24c-1.23 0-1.61.76-1.61 1.54V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--instagram" aria-label="MONETA на Instagram" title="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--tiktok" aria-label="MONETA на TikTok" title="TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-2.84V7.65a6.34 6.34 0 0 0-3.5 1.01 6.33 6.33 0 1 0 9.84 5.34V8.85a8.3 8.3 0 0 0 4.77 1.47V6.87a4.85 4.85 0 0 1-1.00-.18z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <ul class="footer__links">
+                    <li><a href="../index.html#prednosti" data-mk="За нас" data-en="About Us">За нас</a></li>
+                    <li><a href="../index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li><a href="../index.html#faq" data-mk="Услови" data-en="Terms">Услови</a></li>
+                    <li><a href="../index.html#faq" data-mk="Приватност" data-en="Privacy">Приватност</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Назад кон врвот">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="../script.js" defer></script>
+</body>
+</html>

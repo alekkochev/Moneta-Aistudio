@@ -2,14 +2,51 @@
    ROOT VARIABLES & THEME CONFIG
    ======================================== */
 :root {
+    /* Brand palette */
     --pink: #EC1752;
+    --pink-dark: #D4144A;
+    --pink-light: #FF5A84;
     --ink: #201F26;
     --bg: #F7F6F5;
     --card-bg: #FFFFFF;
     --card-border: rgba(0, 0, 0, 0.08);
     --muted: #6B6B76;
+
+    /* Layout */
     --wrap: 1240px;
+    --gutter: 32px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Typography */
+    --font-heading: 'Manrope', 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+    --font-display: 'Plus Jakarta Sans', 'Manrope', sans-serif;
+
+    /* Radius scale */
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-xl: 22px;
+    --radius-2xl: 26px;
+    --radius-pill: 50px;
+
+    /* Shadow scale */
+    --shadow-sm: 0 2px 8px rgba(32, 31, 38, 0.06);
+    --shadow-md: 0 8px 24px rgba(32, 31, 38, 0.10);
+    --shadow-lg: 0 16px 40px rgba(32, 31, 38, 0.14);
+    --shadow-pink: 0 8px 24px rgba(236, 23, 82, 0.28);
+    --shadow-pink-lg: 0 14px 36px rgba(236, 23, 82, 0.4);
+
+    /* Spacing scale */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 40px;
+    --space-xl: 64px;
+    --space-2xl: 96px;
+    --section-y: 88px;
+    --section-y-mobile: 60px;
+
     --nav-btn-bg: rgba(0, 0, 0, 0.04);
     --nav-btn-border: rgba(0, 0, 0, 0.09);
     --nav-btn-color: rgba(0, 0, 0, 0.6);
@@ -40,23 +77,34 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     background: var(--bg);
     color: var(--ink);
     overflow-x: hidden;
     animation: fadeIn 0.8s ease forwards;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 h1,
 h2,
 h3,
-h4 {
-    font-family: 'Manrope', sans-serif;
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
 p {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--ink);
 }
 
 img {
@@ -289,16 +337,16 @@ a {
    ======================================== */
 .navbar--sistem .navbar__links a,
 .page-sistem .navbar__links a {
-    color: #EC1752 !important;
+    color: var(--ink) !important;
     font-weight: 700;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: none;
 }
 
 .navbar--sistem .navbar__links a:hover,
 .navbar--sistem .navbar__links a.is-active,
 .page-sistem .navbar__links a:hover,
 .page-sistem .navbar__links a.is-active {
-    color: #FF5A84 !important;
+    color: var(--pink) !important;
 }
 
 .navbar--sistem .navbar__links a::after,
@@ -309,35 +357,35 @@ a {
 
 .navbar--sistem .navbar__search-btn,
 .page-sistem .navbar__search-btn {
-    background: rgba(236, 23, 82, 0.16);
-    border-color: rgba(236, 23, 82, 0.45);
-    color: #FF5A84;
+    background: rgba(236, 23, 82, 0.1);
+    border-color: rgba(236, 23, 82, 0.35);
+    color: var(--pink);
 }
 
 .navbar--sistem .navbar__search-btn:hover,
 .page-sistem .navbar__search-btn:hover {
-    background: rgba(236, 23, 82, 0.3);
-    border-color: #EC1752;
+    background: var(--pink);
+    border-color: var(--pink);
     color: #FFFFFF;
-    box-shadow: 0 0 18px rgba(236, 23, 82, 0.45);
+    box-shadow: var(--shadow-pink);
 }
 
 .navbar--sistem .search-btn__shortcut,
 .page-sistem .search-btn__shortcut {
-    background: rgba(236, 23, 82, 0.25);
-    border-color: rgba(236, 23, 82, 0.5);
-    color: #FFFFFF;
+    background: rgba(236, 23, 82, 0.12);
+    border-color: rgba(236, 23, 82, 0.35);
+    color: var(--pink);
 }
 
 .navbar--sistem .lang-switcher,
 .page-sistem .lang-switcher {
-    background: rgba(15, 23, 42, 0.65);
-    border-color: rgba(236, 23, 82, 0.45);
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(32, 31, 38, 0.12);
 }
 
 .navbar--sistem .lang-btn,
 .page-sistem .lang-btn {
-    color: #FF85A2;
+    color: var(--ink);
 }
 
 .navbar--sistem .lang-btn.is-active,
@@ -392,6 +440,9 @@ a {
     position: relative;
     min-height: auto;
     background-color: var(--bg);
+    background-image: url('./images/hero-foot-insole.webp');
+    background-size: cover;
+    background-position: 78% center;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -787,10 +838,9 @@ a {
     padding: 22px 20px;
     border-radius: 22px;
     background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 24px rgba(32, 31, 38, 0.08);
-    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.4s ease, backdrop-filter 0.3s ease;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.4s ease;
     min-height: 150px;
     position: relative;
     transform-style: preserve-3d;
@@ -839,14 +889,13 @@ a {
     padding: 0;
     min-height: 260px;
     background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: visible;
     border-radius: 22px;
     transform-style: preserve-3d;
-    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .card--sport .card__image,
@@ -864,7 +913,7 @@ a {
     height: 100%;
     object-fit: cover;
     border-radius: 22px;
-    filter: blur(5px) brightness(0.85); /* DEFAULT STATE: Frosted Glass Blurred Image */
+    filter: brightness(0.95); /* Sharp, clear card image (no blur) */
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
@@ -882,35 +931,29 @@ a {
     min-height: 260px;
     border-radius: 22px;
     overflow: hidden;
-    background: rgba(22, 16, 26, 0.34); /* DEFAULT STATE: 15% lighter warm pinkish overlay */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    transition: background 0.4s ease, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;
+    background: rgba(22, 16, 26, 0.25); /* Unified dark overlay (no blur) */
+    transition: background 0.4s ease;
 }
 
 /* Glassmorphism Blur REMOVED / CLEARED on Mobile Scroll Focus & Desktop Hover */
 .categories__grid .card.is-active .card__overlay,
 .categories__grid .card.is-scroll-focused .card__overlay {
-    background: rgba(18, 18, 24, 0.12);
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
+    background: rgba(22, 16, 26, 0.15);
 }
 
 .categories__grid .card.is-active .card__image img,
 .categories__grid .card.is-scroll-focused .card__image img {
-    filter: blur(0px) brightness(0.98);
+    filter: brightness(0.95);
     transform: scale(1.05);
 }
 
 @media (hover: hover) and (min-width: 861px) {
     .categories__grid .card:hover .card__overlay {
-        background: rgba(18, 18, 24, 0.12);
-        backdrop-filter: blur(0px);
-        -webkit-backdrop-filter: blur(0px);
+        background: rgba(22, 16, 26, 0.15);
     }
 
     .categories__grid .card:hover .card__image img {
-        filter: blur(0px) brightness(0.98);
+        filter: brightness(0.95);
         transform: scale(1.05);
     }
 }
@@ -924,7 +967,6 @@ a {
     width: 54px;
     height: 54px;
     background: linear-gradient(135deg, rgba(236, 23, 82, 0.7), rgba(255, 59, 112, 0.7));
-    backdrop-filter: blur(8px);
     border: 1.5px solid rgba(255, 255, 255, 0.75);
     border-radius: 16px;
     box-shadow: 0 4px 18px rgba(236, 23, 82, 0.4);
@@ -3091,10 +3133,8 @@ a {
 
 .compare-swap-btn {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
     width: 54px;
     height: 54px;
     border-radius: 50%;
@@ -3112,13 +3152,6 @@ a {
     border-color: var(--pink);
     transform: scale(1.1) rotate(180deg);
     box-shadow: 0 6px 20px rgba(236, 23, 82, 0.35);
-}
-
-.compare-swap-text {
-    font-size: 9.5px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
 }
 
 /* Utility Bar */
@@ -4387,8 +4420,8 @@ a {
    MONETA SYSTEM PAGE STYLING
    ======================================== */
 .system-hero {
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-    color: #FFFFFF;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F7F6F5 45%, #FCE7EE 100%);
+    color: var(--ink);
     padding: 130px 24px 70px;
     position: relative;
     overflow: hidden;
@@ -4418,12 +4451,12 @@ a {
     gap: 8px;
     font-size: 14px;
     font-weight: 500;
-    color: #94A3B8;
+    color: var(--muted);
     margin-bottom: 20px;
 }
 
 .system-hero__breadcrumbs a {
-    color: #CBD5E1;
+    color: var(--ink);
     text-decoration: none;
     transition: color 0.2s;
 }
@@ -4437,9 +4470,9 @@ a {
     align-items: center;
     gap: 8px;
     padding: 6px 16px;
-    background: rgba(236, 23, 82, 0.15);
-    border: 1px solid rgba(236, 23, 82, 0.35);
-    color: #FF5A84;
+    background: rgba(236, 23, 82, 0.08);
+    border: 1px solid rgba(236, 23, 82, 0.3);
+    color: var(--pink);
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -4463,7 +4496,7 @@ a {
 .system-hero__subtitle {
     font-size: 18px;
     line-height: 1.6;
-    color: #94A3B8;
+    color: var(--muted);
     max-width: 780px;
     margin-bottom: 36px;
 }
@@ -4481,15 +4514,15 @@ a {
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(32, 31, 38, 0.12);
     border-radius: 40px;
-    color: #F1F5F9;
+    color: var(--ink);
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.25s ease;
-    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-sm);
 }
 
 .system-quick-btn img {
@@ -4499,11 +4532,11 @@ a {
 
 .system-quick-btn:hover,
 .system-quick-btn.is-active {
-    background: rgba(236, 23, 82, 0.2);
+    background: rgba(236, 23, 82, 0.1);
     border-color: var(--pink);
-    color: #FFFFFF;
+    color: var(--pink);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(236, 23, 82, 0.3);
+    box-shadow: var(--shadow-pink);
 }
 
 /* System Details Section */
@@ -5338,6 +5371,345 @@ a {
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
+    }
+}
+
+/* ============================================================
+   UNIFIED DESIGN SYSTEM v2 — GLOBAL CONSISTENCY
+   Brand:  #EC1752 (pink)  ·  #F7F6F5 (background)  ·  #201F26 (text)
+   Headings: Manrope / Plus Jakarta Sans  ·  Body: Montserrat
+   Applied last so it wins over all earlier component rules.
+   ============================================================ */
+
+/* ---------- 1. FOOTER CONTAINER (subpage fix: 22 pages) ---------- */
+.footer__container {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 var(--gutter);
+}
+
+/* ---------- 2. FONT FIX (Inter was referenced but never loaded) ---------- */
+.newsletter__input-group input,
+.order-tracker__input-group input,
+.form__group input,
+.form__group textarea,
+.size-finder__input,
+.search-modal__input,
+.compare-select-dropdown {
+    font-family: var(--font-body) !important;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: var(--font-body);
+}
+
+/* ---------- 3. NAVBAR (consistent across all pages) ---------- */
+.navbar {
+    padding: 18px 20px 0;
+}
+/* Desktop links: dark ink on light hero */
+@media (min-width: 861px) {
+    .navbar__links a {
+        font-family: var(--font-body);
+        font-size: 14.5px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        color: var(--ink);
+        opacity: 0.9;
+    }
+}
+.navbar__links a:hover {
+    color: var(--pink);
+    opacity: 1;
+}
+/* Light heroes (sistem + category + modeli pages) */
+.navbar--sistem .navbar__links a,
+.page-sistem .navbar__links a {
+    color: var(--ink);
+}
+.navbar--sistem .navbar__links a:hover,
+.page-sistem .navbar__links a:hover {
+    color: var(--pink);
+}
+/* Mobile dropdown has dark background → keep link text white & visible */
+@media (max-width: 860px) {
+    .navbar__links a {
+        color: #ffffff;
+        opacity: 1;
+    }
+    .navbar--sistem .navbar__links a,
+    .page-sistem .navbar__links a {
+        color: #ffffff !important;
+    }
+    .navbar__links a:hover {
+        color: var(--pink-light);
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+/* Model hero image on light background */
+.hero-img img {
+    border-color: rgba(32, 31, 38, 0.12) !important;
+    box-shadow: 0 24px 60px rgba(32, 31, 38, 0.18) !important;
+}
+/* Promo code button in navbar */
+.navbar__promo-item {
+    display: flex;
+    align-items: center;
+}
+.promo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: var(--pink);
+    color: #ffffff;
+    border: 2px solid transparent;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: var(--shadow-pink);
+    transition: all var(--transition);
+}
+.promo-btn:hover {
+    background: var(--pink-dark);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-pink-lg);
+}
+@media (max-width: 860px) {
+    .navbar__promo-item {
+        width: 100%;
+    }
+    .promo-btn {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 12px 18px;
+        box-shadow: none;
+    }
+}
+.navbar__search-btn,
+.navbar__cart,
+.lang-btn,
+.navbar__toggle {
+    font-family: var(--font-body);
+}
+
+/* ---------- 4. BUTTONS (unified: pink background, white text, pill) ---------- */
+.hero__cta,
+.hero__cta--primary,
+.form__submit,
+.newsletter__submit,
+.order-tracker__submit,
+.quiz-result__cta-btn,
+.result-card__cta,
+.size-finder-trigger-btn,
+.compare-models-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 14px 32px;
+    background: var(--pink);
+    color: #ffffff;
+    border: 2px solid transparent;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: var(--shadow-pink);
+    transition: all var(--transition);
+}
+.hero__cta:hover,
+.hero__cta--primary:hover,
+.form__submit:hover,
+.newsletter__submit:hover,
+.order-tracker__submit:hover,
+.quiz-result__cta-btn:hover,
+.result-card__cta:hover,
+.size-finder-trigger-btn:hover,
+.compare-models-trigger-btn:hover {
+    background: var(--pink-dark);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-pink-lg);
+}
+/* Secondary action keeps its role, shares geometry */
+.hero__cta--secondary {
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--ink);
+    border: 2px solid rgba(32, 31, 38, 0.14);
+    box-shadow: var(--shadow-sm);
+}
+.hero__cta--secondary:hover {
+    background: #ffffff;
+    border-color: var(--pink);
+    color: var(--pink);
+    transform: translateY(-2px);
+}
+
+/* ---------- 5. CARDS (rounded, shadow, equal height) ---------- */
+.card,
+.feature-card,
+.review-card,
+.system-card,
+.system-finder-card,
+.quiz-box {
+    border-radius: var(--radius-xl);
+}
+.card {
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-md);
+}
+.feature-card,
+.review-card,
+.system-finder-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-md);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.review-card {
+    border-radius: var(--radius-lg);
+}
+.system-card {
+    border-radius: var(--radius-2xl);
+}
+/* Equal-height frosted category cards (homepage grid) */
+.card--sport,
+.card--image,
+.card--sport .card__overlay,
+.card--image .card__overlay {
+    min-height: 280px;
+}
+/* Consistent hover lift for all cards */
+.feature-card:hover,
+.review-card:hover,
+.system-finder-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(236, 23, 82, 0.3);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ---------- 6. SECTION SPACING (consistent rhythm) ---------- */
+.categories__grid {
+    padding: var(--section-y) var(--gutter) calc(var(--section-y) - 24px);
+}
+.features-section,
+.reviews-section,
+.faq-section,
+.kontakt {
+    padding: var(--section-y) var(--gutter);
+}
+@media (max-width: 860px) {
+    .categories__grid {
+        padding: var(--section-y-mobile) 20px calc(var(--section-y-mobile) - 16px);
+    }
+    .features-section,
+    .reviews-section,
+    .faq-section,
+    .kontakt {
+        padding: var(--section-y-mobile) 20px;
+    }
+}
+
+/* ---------- 7. FAQ (consistent cards) ---------- */
+.faq__item {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    box-shadow: var(--shadow-sm);
+}
+.faq__question {
+    font-family: var(--font-heading);
+}
+
+/* ---------- 8. FORM INPUTS (consistent) ---------- */
+.form__group input,
+.form__group textarea,
+.newsletter__input-group input,
+.order-tracker__input-group input,
+.size-finder__input,
+.search-modal__input {
+    border-radius: var(--radius-md);
+    font-size: 14.5px;
+}
+.form__group input:focus,
+.form__group textarea:focus,
+.size-finder__input:focus,
+.search-modal__input:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 3px rgba(236, 23, 82, 0.12);
+}
+
+/* ---------- 9. FOOTER (consistent on every page) ---------- */
+.footer {
+    padding: var(--space-2xl) 20px var(--space-xl);
+}
+.footer__brand p {
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 400;
+}
+.footer__links a {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+}
+.footer__links a:hover {
+    color: var(--pink-light);
+}
+
+/* ---------- 10. GLOBAL DETAILS ---------- */
+::selection {
+    background: var(--pink);
+    color: #ffffff;
+}
+:focus-visible {
+    outline: 3px solid rgba(236, 23, 82, 0.45);
+    outline-offset: 2px;
+}
+.back-to-top {
+    box-shadow: var(--shadow-pink-lg);
+}
+
+/* Model price badge (shown in order bar on modeli pages) */
+.model-price {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--pink);
+    background: rgba(236, 23, 82, 0.08);
+    border: 1.5px solid rgba(236, 23, 82, 0.25);
+    border-radius: var(--radius-pill);
+    padding: 10px 26px;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 640px) {
+    .model-price {
+        font-size: 19px;
+        padding: 8px 20px;
     }
 }
 

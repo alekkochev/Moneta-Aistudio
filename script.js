@@ -874,7 +874,6 @@ if (sizeModal) {
     // Initial calculation
     updateRecommendation();
 }
-}
 
 // ========================================
 // ORDER TRACKER LOGIC
@@ -1281,6 +1280,18 @@ if (compareToggleBtn && compareModelsSection) {
     if (compareCloseBtn) {
         compareCloseBtn.addEventListener('click', () => toggleCompareSection(true));
     }
+
+    // Auto-close the compare section when the toggle button loses focus
+    compareToggleBtn.addEventListener('blur', (e) => {
+        const nextTarget = e.relatedTarget;
+        // Keep it open if focus moved inside the open section (selects, buttons, etc.)
+        if (nextTarget && compareModelsSection.contains(nextTarget)) {
+            return;
+        }
+        if (compareToggleBtn.classList.contains('is-active')) {
+            toggleCompareSection(true);
+        }
+    });
 }
 
 // ========================================
