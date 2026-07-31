@@ -5523,6 +5523,27 @@ textarea {
 }
 
 /* ========================================
+   CATEGORY GRID SPACING — extra row gap so the half-out icons (top)
+   and half-out buttons (bottom) NEVER overlap between rows.
+   (applies to index + all subpages, desktop + mobile)
+   ======================================== */
+.categories__grid {
+    column-gap: 28px;
+    row-gap: 64px;
+}
+@media (max-width: 860px) {
+    .categories__grid {
+        column-gap: 18px;
+        row-gap: 56px;
+    }
+}
+@media (max-width: 560px) {
+    .categories__grid {
+        row-gap: 52px;
+    }
+}
+
+/* ========================================
    NAVBAR — light links, active link grayish (not pink), on ALL pages
    ======================================== */
 .navbar__links a {
