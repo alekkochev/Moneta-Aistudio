@@ -209,14 +209,12 @@ a {
 .navbar__search-btn {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
-    padding: 7px 14px;
+    justify-content: center;
+    padding: 9px;
     background: rgba(0, 0, 0, 0.04);
     border: 1px solid rgba(0, 0, 0, 0.09);
-    border-radius: 20px;
+    border-radius: 50%;
     color: rgba(0, 0, 0, 0.6);
-    font-size: 13.5px;
-    font-weight: 500;
     cursor: pointer;
     transition: all var(--transition);
     font-family: inherit;
@@ -535,7 +533,7 @@ a {
     color: var(--pink);
     display: inline-block;
     filter: drop-shadow(0 4px 14px rgba(236, 23, 82, 0.25));
-    font-weight: 850;
+    font-weight: 900;
     letter-spacing: -0.02em;
     opacity: 1 !important;
     visibility: visible !important;
@@ -554,9 +552,9 @@ a {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(17px, 1.8vw, 22px);
     font-weight: 300;
-    color: rgba(30, 32, 41, 0.78);
+    color: rgba(30, 32, 41, 0.92);
     max-width: 580px;
-    margin: 0 0 32px 0;
+    margin: 54px 0 0 0;
     line-height: 1.6;
     letter-spacing: 0.01em;
     padding-left: 16px;
@@ -3754,28 +3752,6 @@ a {
     font-weight: 450;
 }
 
-.search-modal__clear {
-    background: rgba(0, 0, 0, 0.06);
-    border: none;
-    border-radius: 50%;
-    width: 34px;
-    height: 34px;
-    min-width: 34px;
-    min-height: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(0, 0, 0, 0.55);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-}
-
-.search-modal__clear:hover {
-    background: var(--pink);
-    color: #ffffff;
-}
-
 .search-modal__close {
     background: rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.08);
@@ -4112,8 +4088,7 @@ a {
     color: rgba(255, 255, 255, 0.35);
 }
 
-[data-theme="dark"] .search-modal__close,
-[data-theme="dark"] .search-modal__clear {
+[data-theme="dark"] .search-modal__close {
     background: rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.7);
 }
@@ -5224,46 +5199,49 @@ textarea {
     border-color: rgba(32, 31, 38, 0.12) !important;
     box-shadow: 0 24px 60px rgba(32, 31, 38, 0.18) !important;
 }
-/* Promo code button in navbar */
-.navbar__promo-item {
+/* Promo coupon in navbar (само икона — magenta купон) */
+.navbar__coupon-item {
     display: flex;
     align-items: center;
 }
-.promo-btn {
+.navbar__coupon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 9px 18px;
-    background: var(--pink);
-    color: #ffffff;
-    border: 2px solid transparent;
-    border-radius: var(--radius-pill);
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.02em;
+    padding: 6px;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    white-space: nowrap;
-    box-shadow: var(--shadow-pink);
+    line-height: 0;
     transition: all var(--transition);
 }
-.promo-btn:hover {
-    background: var(--pink-dark);
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-pink-lg);
+.navbar__coupon-icon {
+    display: block;
+    width: 33px;
+    height: 33px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(236, 23, 82, 0.25));
+    transition: transform var(--transition);
+}
+.navbar__coupon:hover .navbar__coupon-icon {
+    transform: scale(1.15) translateY(-1px);
+}
+.navbar__coupon:hover {
+    background: rgba(236, 23, 82, 0.1);
 }
 @media (max-width: 860px) {
-    .navbar__promo-item {
+    .navbar__coupon-item {
         width: 100%;
     }
-    .promo-btn {
+    .navbar__coupon {
         width: 100%;
-        justify-content: flex-start;
-        padding: 12px 18px;
-        box-shadow: none;
+        justify-content: center;
+        padding: 12px;
+    }
+    .navbar__coupon-icon {
+        width: 39px;
+        height: 39px;
     }
 }
 .navbar__search-btn,
@@ -5599,5 +5577,979 @@ textarea {
     font-weight: 500;
     font-size: 14px;
     z-index: 6;
+}
+
+/* ========================================
+   CART SYSTEM (2026-08-03)
+   ======================================== */
+.navbar__cart {
+    position: relative;
+}
+.navbar__cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 10px;
+    background: #D4144A;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(212, 20, 74, 0.4);
+    display: none;
+    z-index: 5;
+    /* Непрестајно пулсирање само на БРОЈКАТА (не на кошничката) */
+    animation: monetaBadgePulse 1.6s ease-in-out infinite;
+    transform-origin: center;
+    will-change: transform;
+}
+@keyframes monetaBadgePulse {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.22); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.12); }
+    56% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+/* ========================================
+   JAZIČEN PREKINUVAC — паѓачко мени (dropdown)
+   ======================================== */
+.lang-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.lang-dropdown__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 20, 74, 0.35);
+    background: #ffffff;
+    color: #D4144A;
+    font-family: Manrope, 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.lang-dropdown__trigger:hover {
+    border-color: #D4144A;
+    box-shadow: 0 2px 8px rgba(212, 20, 74, 0.18);
+}
+.lang-dropdown__chevron {
+    display: inline-flex;
+    transition: transform 0.2s ease;
+}
+.lang-dropdown.is-open .lang-dropdown__chevron {
+    transform: rotate(180deg);
+}
+.lang-dropdown__menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 180px;
+    background: #ffffff;
+    border: 1px solid #efe9e6;
+    border-radius: 14px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+    padding: 6px;
+    display: none;
+    z-index: 300;
+}
+.lang-dropdown.is-open .lang-dropdown__menu {
+    display: block;
+    animation: langDropdownIn 0.16s ease-out;
+}
+@keyframes langDropdownIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.lang-dropdown__option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #2b2b33;
+    font-size: 13px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s ease;
+}
+.lang-dropdown__option:hover {
+    background: #fdf2f5;
+}
+.lang-dropdown__option.is-active {
+    background: #fdebf0;
+    color: #D4144A;
+}
+.lang-dropdown__opt-code {
+    font-family: Manrope, 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 11.5px;
+    color: #D4144A;
+    min-width: 26px;
+}
+.lang-dropdown__opt-name {
+    color: inherit;
+}
+/* Контакт во футер + правна лента (темна позадина = светол текст) */
+.footer__inner {
+    flex-wrap: wrap;
+}
+.footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.footer__contact-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.5;
+}
+.footer__contact-line svg {
+    flex-shrink: 0;
+    color: var(--pink-light);
+}
+.footer__contact-line a {
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: none;
+}
+.footer__contact-line a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+.footer__legal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12.5px;
+}
+.footer__legal a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-weight: 600;
+}
+.footer__legal a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+.footer__legal-dot {
+    color: rgba(255, 255, 255, 0.3);
+}
+/* Потесен футер */
+.footer__inner-wrap {
+    max-width: 1120px;
+}
+/* Икони под главната слика на модел */
+.model-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.model-icons__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.65);
+    text-align: center;
+    line-height: 1.2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.model-icons__item img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+/* Мотивациски popup за бесплатна достава */
+.freeship-popup {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1200;
+    max-width: 380px;
+    background: #ffffff;
+    border: 2px solid #D4144A;
+    border-radius: 16px;
+    box-shadow: 0 18px 50px rgba(212, 20, 74, 0.3);
+    padding: 16px 18px;
+    animation: freeshipPopupIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes freeshipPopupIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.freeship-popup__content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.freeship-popup__icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+.freeship-popup__text {
+    flex: 1;
+    min-width: 0;
+}
+.freeship-popup__text strong {
+    display: block;
+    font-size: 14px;
+    color: #D4144A;
+    font-family: Manrope, 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.3;
+}
+.freeship-popup__text span {
+    display: block;
+    font-size: 12.5px;
+    color: #666;
+    margin-top: 3px;
+    line-height: 1.4;
+}
+.freeship-popup__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 16px;
+    background: #D4144A;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-top: 10px;
+    transition: background 0.2s ease;
+}
+.freeship-popup__btn:hover {
+    background: #b81042;
+}
+.freeship-popup__close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px;
+}
+.freeship-popup__close:hover {
+    color: #D4144A;
+}
+@media (max-width: 480px) {
+    .freeship-popup {
+        right: 12px;
+        left: 12px;
+        max-width: none;
+    }
+}
+.footer__inner {
+    justify-content: space-between;
+    gap: 28px 40px;
+}
+/* Search копче = само лупа (без текст — просторот за пишување е отстранет) */
+.search-btn__label {
+    display: none !important;
+}
+/* Двојно поле во Водичот: EU ↔ должина (см/мм) */
+.size-finder__duo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.size-finder__duo .size-finder__input-wrap {
+    gap: 6px;
+}
+.size-finder__field-tag {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: var(--pink);
+    letter-spacing: 0.3px;
+}
+.size-finder__duo-arrow {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 700;
+}
+.size-finder__unit-toggle {
+    display: inline-flex;
+    border: 1.5px solid rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+.size-finder__unit {
+    border: none;
+    background: transparent;
+    padding: 7px 11px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s ease;
+}
+.size-finder__unit.is-active {
+    background: var(--pink);
+    color: #ffffff;
+}
+/* Икони-информации во Водичот за големини */
+.size-finder__features {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #f1ebe7;
+}
+.size-finder__features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+.size-finder__feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 10px;
+    background: #FBF8F6;
+    border: 1px solid #f1ebe7;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+}
+.size-finder__feature img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+}
+@media (max-width: 640px) {
+    .size-finder__features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* Одвоеност: free-ship блокот има ДВОЕН спејс од акордеонот (акордеон gap = 10px) */
+.model-freeship {
+    margin-bottom: 20px;
+}
+/* Блок за бесплатна достава на модел-страниците */
+.model-freeship {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #fdf2f5, #fff7fa);
+    border: 1px solid #fbd5e0;
+    font-size: 13px;
+    color: #8a2b46;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.model-freeship svg { flex-shrink: 0; color: #D4144A; }
+.model-freeship.is-reached {
+    border-color: #2ecc71;
+    background: linear-gradient(135deg, #effaf2, #f6fdf8);
+    color: #1d7a3d;
+    animation: monetaFreeGlow 1s ease-in-out infinite alternate;
+}
+.model-freeship.is-reached svg { color: #2ecc71; }
+@keyframes monetaFreeGlow {
+    from { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+    to { box-shadow: 0 0 18px 2px rgba(46, 204, 113, 0.35); }
+}
+/* Блок за бесплатна достава во cart.html (со напредок) */
+.cart__free-ship {
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #fdf2f5, #fff7fa);
+    border: 1px solid #fbd5e0;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+.cart__free-ship__text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #8a2b46;
+    margin-bottom: 10px;
+}
+.cart__free-ship__text svg { flex-shrink: 0; color: #D4144A; }
+.cart__free-ship__bar {
+    height: 8px;
+    border-radius: 6px;
+    background: #f7e9ee;
+    overflow: hidden;
+}
+.cart__free-ship__fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #FF5A84, #D4144A);
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cart__free-ship.is-reached {
+    border-color: #2ecc71;
+    background: linear-gradient(135deg, #effaf2, #f6fdf8);
+}
+.cart__free-ship.is-reached .cart__free-ship__text { color: #1d7a3d; }
+.cart__free-ship.is-reached .cart__free-ship__text svg { color: #2ecc71; }
+.cart__free-ship.is-reached .cart__free-ship__fill {
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    animation: monetaFreeGlow 1s ease-in-out infinite alternate;
+}
+.cart__free-ship__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #a47082;
+}
+.cart__free-ship__48h { font-weight: 700; color: #D4144A; }
+.cart__free-ship.is-reached .cart__free-ship__48h { color: #2ecc71; }
+/* Лента „Бесплатна достава + 48ч" (index.html и категории) */
+.freeship-ribbon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    padding: 11px 18px;
+    background: linear-gradient(90deg, #D4144A, #FF5A84, #D4144A);
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-align: center;
+}
+.freeship-ribbon__item { display: inline-flex; align-items: center; gap: 7px; }
+.freeship-ribbon__item svg { flex-shrink: 0; }
+.freeship-ribbon__item--48h { font-weight: 800; }
+/* Модел степер за кошничка (+/-) */
+.model-cart {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #F6F2F0;
+    border: 1px solid #ece5e0;
+    border-radius: 40px;
+    padding: 4px;
+}
+.model-cart__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: #ffffff;
+    color: #2b2b33;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    padding: 0;
+}
+.model-cart__btn svg { display: block; }
+.model-cart__add { background: #FF5A84; color: #ffffff; }
+.model-cart__add:hover { background: #D4144A; transform: scale(1.06); }
+.model-cart__minus { color: #D4144A; display: none; }
+.model-cart__minus:hover { background: #FDEBF0; }
+.model-cart__qty {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #2b2b33;
+    line-height: 1;
+}
+@media (max-width: 480px) {
+    .model-cart__btn { width: 38px; height: 38px; }
+}
+/* Спецификации: етикета над вредност (респонзивно) */
+.spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+@media (max-width: 520px) {
+    .spec-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.spec-item {
+    background: #FBF8F6;
+    border: 1px solid #f1ebe7;
+    border-radius: 12px;
+    padding: 9px 11px;
+    min-width: 0;
+}
+.spec-item__label {
+    display: block;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #999;
+    margin-bottom: 3px;
+}
+.spec-item__value {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #2b2b33;
+    word-break: break-word;
+    line-height: 1.35;
+}
+.spec-materials {
+    margin-top: 8px;
+    background: #FBF8F6;
+    border: 1px solid #f1ebe7;
+    border-radius: 12px;
+    padding: 11px;
+}
+.spec-materials .spec-list {
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+}
+.spec-materials .spec-list li {
+    padding: 2px 0;
+    font-size: 13px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.model-layer-figure img {
+    width: min(260px, 100%);
+    margin: 0 auto 8px;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: #ffffff;
+}
+/* Модел содржина (целосен docx текст) */
+.model-intro p { font-size: 13px; line-height: 1.6; color: #555; margin: 0 0 12px; }
+.model-checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.model-checklist li { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: #333; line-height: 1.45; }
+.model-checklist li span { color: #D4144A; font-weight: 700; flex-shrink: 0; }
+.model-subhead { display: block; font-size: 12.5px; font-weight: 700; color: #2b2b33; margin: 14px 0 6px; font-family: Manrope, 'Plus Jakarta Sans', sans-serif; }
+.model-subhead:first-child { margin-top: 0; }
+.model-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.model-list li { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: #444; line-height: 1.45; }
+.model-list li span { color: #D4144A; flex-shrink: 0; }
+.model-list--num { list-style: decimal; padding-left: 18px; }
+.model-list--num li { display: list-item; }
+.model-faq-item { padding: 10px 0; border-bottom: 1px solid #f3efec; }
+.model-faq-item:last-child { border-bottom: none; }
+.model-faq-item strong { display: block; font-size: 13.5px; color: #2b2b33; margin-bottom: 3px; }
+.model-faq-item p { margin: 0; font-size: 12.8px; line-height: 1.55; color: #666; }
+
+/* ========================================
+   ФУТЕР — НОВ РАСПОРЕД (2026-08-03)
+   Контакт горе-лево / бренд лево + линкови десно / социјални + правни централно
+   ======================================== */
+.footer__contact {
+    margin-bottom: 30px;
+    max-width: 460px;
+}
+.footer__inner {
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px 40px;
+}
+.footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px 34px;
+    margin-top: 34px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer__bottom .footer__social {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.footer__legal-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    font-size: 12.5px;
+}
+.footer__legal-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-weight: 600;
+}
+.footer__legal-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .footer__contact { max-width: none; }
+    .footer__bottom { flex-direction: column; gap: 14px; }
+}
+
+/* Спречи скок на скролање при отворање/затворање на акордеонот („ме фрла надолу“) */
+.model-acc,
+.model-acc__item {
+    overflow-anchor: none;
+}
+
+/* ========================================
+   PRODUCT FINDER QUIZ
+   ======================================== */
+.quiz-section {
+    padding: 70px 20px 40px;
+    background: linear-gradient(180deg, #fff 0%, #fdf4f7 100%);
+}
+.quiz-section__inner {
+    max-width: 860px;
+    margin: 0 auto;
+}
+.quiz-section__header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+.quiz-section__badge {
+    display: inline-block;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--pink);
+    background: rgba(236, 23, 82, 0.08);
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+}
+.quiz-section__header h2 {
+    font-family: Manrope, 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(22px, 3.4vw, 32px);
+    color: var(--ink);
+    margin: 0 0 10px;
+}
+.quiz-section__header p {
+    color: #666;
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 560px;
+}
+.quiz-card {
+    background: #fff;
+    border: 1px solid #f0e6ea;
+    border-radius: 24px;
+    padding: 26px 28px 22px;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.08);
+}
+.quiz-progress {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+.quiz-progress__bar {
+    height: 8px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #FF5A84, #D4144A);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    flex: 1;
+    max-width: 100%;
+}
+.quiz-progress__label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pink);
+    min-width: 34px;
+    text-align: right;
+}
+.quiz-step { display: none; }
+.quiz-step.is-active { display: block; animation: quizStepIn 0.35s ease; }
+@keyframes quizStepIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+.quiz-step__title {
+    font-family: Manrope, 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin: 0 0 16px;
+}
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+.quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 14px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    background: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.quiz-option:hover { border-color: var(--pink); background: #fdf2f5; }
+.quiz-option.is-selected {
+    border-color: var(--pink);
+    background: #fdf2f5;
+    box-shadow: 0 0 0 3px rgba(236, 23, 82, 0.12);
+}
+.quiz-option span { font-size: 18px; }
+.quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+}
+.quiz-nav__btn {
+    border: none;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--pink);
+    cursor: pointer;
+    padding: 10px 16px;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+.quiz-nav__btn:hover { background: #fdf2f5; }
+.quiz-nav__next { background: var(--pink); color: #fff; }
+.quiz-nav__next:hover { background: #c01240; }
+.quiz-result {
+    text-align: center;
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    animation: none;
+    overflow: visible;
+    position: static;
+}
+.quiz-result::before { display: none; }
+.quiz-result__title {
+    font-family: Manrope, 'Plus Jakarta Sans', sans-serif;
+    font-size: 19px;
+    color: var(--ink);
+    margin: 0 0 18px;
+}
+.quiz-result__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 18px;
+}
+@media (max-width: 640px) { .quiz-result__grid { grid-template-columns: 1fr; } }
+.quiz-result__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 12px;
+    border: 1.5px solid #f0e6ea;
+    border-radius: 16px;
+    background: #fff;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.25s ease;
+}
+.quiz-result__card:hover {
+    border-color: var(--pink);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+}
+.quiz-result__card img { width: 100%; border-radius: 12px; }
+.quiz-result__card strong { font-size: 14px; }
+.quiz-result__card span { color: var(--pink); font-weight: 800; font-size: 13.5px; }
+.quiz-result__card em { font-style: normal; font-size: 12px; color: #888; }
+.quiz-restart {
+    border: 1.5px solid rgba(0, 0, 0, 0.12);
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    cursor: pointer;
+}
+.quiz-restart:hover { border-color: var(--pink); color: var(--pink); }
+@media (max-width: 560px) {
+    .quiz-card { padding: 20px 16px 16px; }
+    .quiz-options { grid-template-columns: 1fr; }
+}
+
+/* ========================================
+   CTA „Најди го твојот совршен пар“ (квиз)
+   ======================================== */
+.quiz-finder-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--pink);
+    border: 1.5px solid var(--pink);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(236, 23, 82, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.quiz-finder-trigger-btn:hover {
+    background: #c01240;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(236, 23, 82, 0.4);
+}
+
+/* „MONETA водич за влошки" во нав-барот = обичен линк (како останатите) */
+
+/* ========================================
+   ФУТЕР — TAGLINE „Секој чекор заслужува удобност“
+   ======================================== */
+.footer__tagline {
+    margin: 0;
+    font-size: 12.5px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ========================================
+   ФУТЕР v2 — КОМПАКТЕН (2026-08-03)
+   Правни (Услови/Приватност) во вториот ред, социјални без „Следете нè“
+   ======================================== */
+.footer {
+    padding: 44px 20px 26px;
+}
+.footer__contact {
+    margin-bottom: 18px;
+    max-width: 460px;
+}
+.footer__inner {
+    gap: 20px 36px;
+}
+.footer__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+.footer__legal-links {
+    font-size: 12px;
+    gap: 8px;
+}
+.footer__bottom {
+    margin-top: 20px;
+    padding-top: 14px;
+    gap: 12px 34px;
+}
+.footer__social .social__label {
+    display: none;
+}
+@media (max-width: 768px) {
+    .footer__right { align-items: center; text-align: center; }
+    .footer__bottom { flex-direction: column; gap: 10px; }
+}
+
+/* ========================================
+   FREE-SHIP / TRUST BANNER — МАЗЕН МАРКИ (непрекинат, десно→лево)
+   Поенти од Word документот, 2× копии за infinity loop
+   ======================================== */
+.freeship-ribbon {
+    display: block;
+    overflow: hidden;
+    padding: 12px 0;
+    background: linear-gradient(90deg, #D4144A, #FF5A84, #D4144A);
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-align: left;
+}
+.freeship-ribbon__track {
+    display: flex;
+    width: max-content;
+    animation: freeshipMarquee 45s linear infinite;
+    will-change: transform;
+}
+.freeship-ribbon__group {
+    display: inline-flex;
+    align-items: center;
+    gap: 56px;
+    padding-right: 56px;
+}
+.freeship-ribbon__item { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.freeship-ribbon__item svg { flex-shrink: 0; }
+.freeship-ribbon__star {
+    flex-shrink: 0;
+    color: #FFE066;
+    font-size: 15px;
+    line-height: 1;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+@keyframes freeshipMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .freeship-ribbon__track { animation: none; }
+}
+
+/* ========================================
+   HERO — растојание меѓу ribbon-от, значките и копчињата
+   ======================================== */
+.hero__trust {
+    margin-top: 28px;
+}
+.categories__actions-banner {
+    gap: 30px;
 }
 

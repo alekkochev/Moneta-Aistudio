@@ -3,8 +3,37 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>MONETA — Vital кожна влошка</title>
-    <meta name="description" content="MONETA Vital – кожна влошка од перфорирана кожа, латекс со активен јаглен и карбосан перниче. Код 271104." />
+    <title>МОНЕТА — Vital кожна влошка</title>
+    <meta name="description" content="МОНЕТА Vital – кожна влошка од перфорирана кожа, латекс со активен јаглен и карбосан перниче. Код 271104." />
+    <meta property="og:type" content="product" />
+    <meta property="og:site_name" content="МОНЕТА — Анатомски вложки" />
+    <meta property="og:title" content="МОНЕТА — Vital кожна влошка" />
+    <meta property="og:description" content="МОНЕТА Vital – кожна влошка од перфорирана кожа, латекс со активен јаглен и карбосан перниче. Код 271104." />
+    <meta property="og:url" content="https://insoles.mk/modeli/vital.html" />
+    <meta property="og:image" content="../images/cards/vital.webp" />
+    <meta property="og:locale" content="mk_MK" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="МОНЕТА — Vital кожна влошка" />
+    <meta name="twitter:description" content="МОНЕТА Vital – кожна влошка од перфорирана кожа, латекс со активен јаглен и карбосан перниче. Код 271104." />
+    <meta name="twitter:image" content="../images/cards/vital.webp" />
+    <meta name="theme-color" content="#EC1752" />
+    <link rel="canonical" href="https://insoles.mk/modeli/vital.html" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "МОНЕТА — Vital кожна влошка",
+      "description": "МОНЕТА Vital – кожна влошка од перфорирана кожа, латекс со активен јаглен и карбосан перниче. Код 271104.",
+      "image": "../images/cards/vital.webp",
+      "brand": { "@type": "Brand", "name": "МОНЕТА" },
+      "url": "https://insoles.mk/modeli/vital.html",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "MKD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
@@ -15,7 +44,7 @@
     <link rel="icon" type="image/svg+xml" href="../images/favicon/favicon.svg" />
     <link rel="stylesheet" href="../styles.css" />
     <style>
-        /* MONETA page-specific layout helpers */
+        /* МОНЕТА page-specific layout helpers */
         .grid-3 { grid-template-columns: repeat(3, 1fr); }
         .grid-4 { grid-template-columns: repeat(4, 1fr); }
         @media (max-width: 900px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
@@ -27,6 +56,60 @@
         .spec-list { list-style: none; margin: 0; padding: 0; text-align: left; display: inline-block; }
         .spec-list li { padding: 2px 0; }
         .related-head { padding-top: 70px; }
+
+        /* Insole layers */
+        .layers-section { padding: 20px 32px 70px; }
+        .layers-content { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; padding: 10px 24px 28px; }
+        @media (max-width: 860px) { .layers-content { grid-template-columns: 1fr; } }
+        .layers-visual { display: flex; justify-content: center; }
+        .layers-visual img { width: min(340px, 100%); border-radius: 20px; box-shadow: 0 18px 45px rgba(0,0,0,.14); border: 1px solid rgba(0,0,0,.06); background: #fff; }
+        .layers-stack { display: flex; flex-direction: column; gap: 14px; }
+        .layer-row { display: flex; gap: 16px; align-items: flex-start; background: #fff; border: 1px solid #eee; border-radius: 14px; padding: 14px 18px; box-shadow: 0 6px 18px rgba(0,0,0,.05); }
+        .layer-row__num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: #D4144A; color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .layer-row__info strong { display: block; margin-bottom: 3px; font-family: Manrope, 'Plus Jakarta Sans', sans-serif; }
+        .layer-row__info p { margin: 0; font-size: 13.5px; line-height: 1.55; color: #555; }
+
+        /* ===== Product layout: image left + info frame right (accordion) ===== */
+        .model-layout { display: grid; grid-template-columns: 400px minmax(0,1fr); gap: 48px; align-items: start; margin-top: 34px; }
+        @media (max-width: 980px) { .model-layout { grid-template-columns: 1fr; gap: 26px; } }
+        .model-layout__media { display: flex; flex-direction: column; gap: 16px; }
+        .model-layout__media .hero-img { margin-top: 0; }
+        .model-layout__media .hero-img img { width: 100%; max-width: 400px; margin: 0 auto; }
+        .model-layer-diagram { display: flex; justify-content: center; }
+        .model-layer-diagram img { width: min(300px, 100%); border-radius: 20px; box-shadow: 0 14px 34px rgba(0,0,0,.14); border: 1px solid rgba(0,0,0,.06); background: #fff; }
+        .model-layout__info { min-width: 0; }
+        .model-info-frame { background: #fff; border: 1px solid #efe9e6; border-radius: 22px; padding: 26px 28px; box-shadow: 0 18px 50px rgba(0,0,0,.08); }
+        .model-info-frame .system-hero__badge { margin-bottom: 12px; }
+        .model-info-frame .system-hero__title { font-size: clamp(26px, 3.6vw, 38px); margin: 0 0 6px; }
+        .model-info-frame .system-hero__subtitle { font-size: 14.5px; margin: 0 0 16px; }
+        .model-info-frame .order-bar { margin: 18px 0 20px; justify-content: flex-start; flex-wrap: wrap; }
+        @media (max-width: 560px) { .model-info-frame .order-bar { justify-content: center; } }
+        /* Accordion */
+        .model-acc { display: flex; flex-direction: column; gap: 10px; }
+        .model-acc__item { border: 1px solid #f0eae6; border-radius: 14px; background: #FCFAF9; overflow: hidden; }
+        .model-acc__item[open] { background: #fff; }
+        .model-acc__head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 16px; cursor: pointer; list-style: none; font-weight: 700; font-size: 14px; font-family: Manrope, 'Plus Jakarta Sans', sans-serif; color: #2b2b33; user-select: none; }
+        .model-acc__head::-webkit-details-marker { display: none; }
+        .model-acc__head::after { content: '+'; font-size: 20px; font-weight: 400; color: #D4144A; line-height: 1; transition: transform .2s ease; }
+        .model-acc__item[open] .model-acc__head::after { transform: rotate(45deg); }
+        .model-acc__body { padding: 2px 16px 16px; }
+        /* Карактеристики → компактни редови */
+        .model-features { display: flex; flex-direction: column; gap: 8px; }
+        .model-features .feature-card { display: flex; gap: 12px; align-items: flex-start; background: #FBF8F6; border: 1px solid #f1ebe7; border-radius: 12px; padding: 10px 12px; margin: 0; box-shadow: none; }
+        .model-features .feature-card__icon { width: 36px; height: 36px; flex-shrink: 0; border-radius: 10px; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.06); }
+        .model-features .feature-card h3 { font-size: 14px; margin: 0 0 2px; }
+        .model-features .feature-card p { font-size: 12.5px; line-height: 1.5; color: #666; margin: 0; }
+        /* Слоеви → компактни редови */
+        .model-layers { display: flex; flex-direction: column; gap: 8px; }
+        .model-layers .layer-row { padding: 9px 12px; }
+        .model-layers .layer-row__num { width: 24px; height: 24px; font-size: 12px; }
+        .model-layers .layer-row__info p { font-size: 12.5px; }
+        /* Спецификации */
+        .model-specs { overflow-x: auto; }
+        .model-specs table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 0; }
+        .model-specs td { padding: 7px 10px; border-bottom: 1px solid #f3efec; vertical-align: top; }
+        .model-specs td:first-child { color: #999; white-space: nowrap; width: 34%; }
+        .model-specs tr:last-child td { border-bottom: none; }
     </style>
 </head>
 <body class="page-sistem">
@@ -44,19 +127,32 @@
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                     <span class="search-btn__label" data-mk="Пребарај..." data-en="Search...">Пребарај...</span>
-                    <kbd class="search-btn__shortcut">⌘K</kbd>
                 </button>
                 <ul class="navbar__links" id="navLinks">
                     <li><a href="../index.html#kategorii" data-mk="Влошки" data-en="Insoles">Влошки</a></li>
                     <li><a href="../sistem.html" data-mk="МОНЕТА систем" data-en="MONETA System">МОНЕТА систем</a></li>
+                                        <li class="navbar__guide-item">
+                        <a href="../kviz.html" class="navbar__guide-btn">
+                            <span data-mk="МОНЕТА водич за влошки" data-en="MONETA insole guide">МОНЕТА водич за влошки</span>
+                        </a>
+                    </li>
                     <li><a href="../index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
-                    <li class="navbar__promo-item">
-                        <button type="button" class="promo-btn" id="promoTrigger" aria-label="Промокод" title="Промокод" data-mk-aria="Промокод" data-en-aria="Promo Code" data-mk-title="Промокод" data-en-title="Promo Code">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M14 9l-4 6"/><circle cx="9.5" cy="9.5" r="0.5"/><circle cx="14.5" cy="14.5" r="0.5"/></svg>
-                            <span class="promo-btn__label" data-mk="Промокод" data-en="Promo Code">Промокод</span>
+                                        <li class="navbar__coupon-item">
+                        <button type="button" class="navbar__coupon" id="promoTrigger" aria-label="Промокод" title="Промокод" data-mk-aria="Промокод" data-en-aria="Promo Code" data-mk-title="Промокод" data-en-title="Promo Code">
+                            <img src="../images/icons/coupon.webp" alt="Промокод" width="33" height="33" class="navbar__coupon-icon" loading="lazy" decoding="async">
                         </button>
                     </li>
-                </ul>
+                
+                    <li>
+                        <a href="../cart.html" class="navbar__cart" aria-label="Кошница" title="Кошница" data-mk-aria="Кошница" data-en-aria="Cart" data-mk-title="Кошница" data-en-title="Cart">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"/>
+                                <circle cx="20" cy="21" r="1"/>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                            </svg>
+                            <span class="navbar__cart-badge" data-cart-badge>0</span>
+                        </a>
+                    </li></ul>
                 <div class="lang-switcher" id="langSwitcher">
                     <button type="button" class="lang-btn is-active" data-lang="mk" aria-label="Македонски" aria-pressed="true">MK</button>
                     <span class="lang-divider">|</span>
@@ -70,6 +166,8 @@
     </header>
 
     <!-- ===== MODEL HERO ===== -->
+    
+    <!-- ===== MODEL HERO (реструктурирано: слика + рамка со accordion) ===== -->
     <section class="system-hero">
         <div class="system-hero__bg-glow"></div>
         <div class="system-hero__inner">
@@ -80,179 +178,200 @@
                 <span>/</span>
                 <span>Vital</span>
             </div>
-            <div class="system-hero__badge" data-mk="👞 ПЕРФОРИРАНА КОЖА + КАРБОСАН ПЕРНИЧЕ" data-en="👞 PERFORATED LEATHER + CARBOSAN CUSHION">
+            <div class="model-layout">
+                <div class="model-layout__media">
+                    <div class="hero-img">
+                <img src="../images/cards/vital.webp" alt="Vital" width="400" height="300" decoding="async">
+            </div>
+                    <div class="model-icons">
+                <div class="model-icons__item">
+                    <img src="../images/icons/koza.webp" alt="Кожа" loading="lazy" width="30" height="30">
+                    <span data-mk="Кожа" data-en="Leather">Кожа</span>
+                </div>
+                <div class="model-icons__item">
+                    <img src="../images/icons/apsorpcija.webp" alt="Апсорпција" loading="lazy" width="30" height="30">
+                    <span data-mk="Апсорпција" data-en="Absorption">Апсорпција</span>
+                </div>
+                <div class="model-icons__item">
+                    <img src="../images/icons/anatomska%20vloska.webp" alt="Анатомска" loading="lazy" width="30" height="30">
+                    <span data-mk="Анатомска" data-en="Anatomical">Анатомска</span>
+                </div>
+                </div>
+                </div>
+                <div class="model-layout__info">
+                    <div class="model-info-frame">
+                        <div class="system-hero__badge" data-mk="👞 ПЕРФОРИРАНА КОЖА + КАРБОСАН ПЕРНИЧЕ" data-en="👞 PERFORATED LEATHER + CARBOSAN CUSHION">
                 👞 ПЕРФОРИРАНА КОЖА + КАРБОСАН ПЕРНИЧЕ
             </div>
-            <h1 class="system-hero__title">
+                        <h1 class="system-hero__title">
                 <span data-mk="VITAL" data-en="VITAL">VITAL</span> <span data-mk="КОЖНА ВЛОШКА" data-en="LEATHER INSOLE">КОЖНА ВЛОШКА</span>
             </h1>
-            <p class="system-hero__subtitle" data-mk="Кожна влошка од перфорирана кожа, латекс со активен јаглен и карбосан перниче." data-en="Leather insole of perforated leather, latex with activated charcoal, and carbosan cushion.">
+                        <p class="system-hero__subtitle" data-mk="Кожна влошка од перфорирана кожа, латекс со активен јаглен и карбосан перниче." data-en="Leather insole of perforated leather, latex with activated charcoal, and carbosan cushion.">
                 Кожна влошка од перфорирана кожа, латекс со активен јаглен и карбосан перниче.
             </p>
-            <div class="hero-img">
-                <img src="../images/cards/vital.webp" alt="Vital" loading="lazy">
+                        
+                        <div class="order-bar">
+                            <div class="model-price" data-mk="Цена: 450 ден." data-en="Price: 450 MKD">Цена: 450 ден.</div>
+                            <div class="model-cart" data-model="vital" data-code="271104" data-price="450" data-name-mk="Vital" data-name-en="Vital">
+                                <button type="button" class="model-cart__btn model-cart__minus" data-cart-minus aria-label="Намали количина" title="Намали количина">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                </button>
+                                <span class="model-cart__qty" data-cart-qty>0</span>
+                                <button type="button" class="model-cart__btn model-cart__add" data-cart-add aria-label="Додади во кошничка" title="Додади во кошничка">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+            <div class="model-freeship" data-free-ship>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6H10a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"/><path d="M6 9H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><circle cx="16" cy="16" r="2"/><circle cx="8" cy="16" r="2"/></svg>
+                <span data-free-ship-text>Бесплатна достава за нарачки над 1.000 ден.</span>
             </div>
-        </div>
-    </section>
+                        
+                        <div class="model-acc">
+                            <details class="model-acc__item" open>
+                                <summary class="model-acc__head" data-mk="Клучни карактеристики" data-en="Key Features">Клучни карактеристики</summary>
+                                <div class="model-acc__body">
+                                    <div class="model-features">
+                                        <div class="model-intro">
+                                            <p data-mk="Кожна влошка од перфорирана кожа, латекс со активен јаглен и карбосан перниче." data-en="Leather insole of perforated leather, latex with activated charcoal, and carbosan cushion.">Кожна влошка од перфорирана кожа, латекс со активен јаглен и карбосан перниче.</p>
+                                        </div>
+                                        <ul class="model-checklist">
+                                                                                        <li data-mk="Перфорирана кожа" data-en="Perforated Leather"><span>✔</span> Перфорирана кожа</li>
+                                                                                        <li data-mk="Латекс со активен јаглен" data-en="Latex with Activated Charcoal"><span>✔</span> Латекс со активен јаглен</li>
+                                                                                        <li data-mk="Карбосан перниче" data-en="Carbosan Cushion"><span>✔</span> Карбосан перниче</li>
+                                                                                        <li data-mk="Мека јагнешка кожа" data-en="Soft Lambskin"><span>✔</span> Мека јагнешка кожа</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </details>
+                            <details class="model-acc__item">
+                                <summary class="model-acc__head" data-mk="Слоеви на влошката" data-en="Insole Layers">Слоеви на влошката</summary>
+                                <div class="model-acc__body">
+                                    <div class="model-layers">
+                                        <div class="model-layer-figure"><img src="../images/layers/vital-layers.webp" alt="Vital слоеви" width="400" height="400" loading="lazy" decoding="async"></div>
+                                        
+                    <div class="layer-row">
+                        <span class="layer-row__num">1</span>
+                        <div class="layer-row__info">
+                            <strong data-mk="Мека перфорирана јагнешка кожа" data-en="Soft perforated lambskin leather">Мека перфорирана јагнешка кожа</strong>
+                            <p data-mk="Горниот слој е изработен од природна јагнешка кожа со перфорирана структура која обезбедува мек допир и подобра циркулација на воздухот." data-en="The top layer is made of natural lambskin leather with a perforated structure for a soft touch and better air circulation.">Горниот слој е изработен од природна јагнешка кожа со перфорирана структура која обезбедува мек допир и подобра циркулација на воздухот.</p>
+                        </div>
+                    </div>
 
-    <!-- ===== KEY FEATURES ===== -->
-    <section class="features-section">
-        <div class="features__inner">
-            <div class="features__header">
-                <h2 data-mk="Клучни карактеристики" data-en="Key Features">Клучни карактеристики</h2>
-                <p data-mk="Природна кожа со активна заштита и удобност за секојдневни елегантни обувки." data-en="Natural leather with active protection and comfort for everyday elegant shoes.">Природна кожа со активна заштита и удобност за секојдневни елегантни обувки.</p>
-            </div>
-            <div class="features__grid">
-                <div class="feature-card">
-                    <div class="feature-card__icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    <div class="layer-row">
+                        <span class="layer-row__num">2</span>
+                        <div class="layer-row__info">
+                            <strong data-mk="Карбосан перниче" data-en="Carbosan heel pad">Карбосан перниче</strong>
+                            <p data-mk="Карбосан перничето е поставено во зоната на петата и придонесува за попријатно чувство при чекорење." data-en="The carbosan heel pad is placed in the heel zone for a more pleasant walking feel.">Карбосан перничето е поставено во зоната на петата и придонесува за попријатно чувство при чекорење.</p>
+                        </div>
                     </div>
-                    <h3 data-mk="Перфорирана кожа" data-en="Perforated Leather">Перфорирана кожа</h3>
-                    <p data-mk="Перфорациите овозможуваат дишење и ја одржуваат свежината дури и во затворени деловни обувки." data-en="The perforations allow breathability and maintain freshness even in closed business shoes.">Перфорациите овозможуваат дишење и ја одржуваат свежината дури и во затворени деловни обувки.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                    </div>
-                    <h3 data-mk="Латекс со активен јаглен" data-en="Latex with Activated Charcoal">Латекс со активен јаглен</h3>
-                    <p data-mk="Активниот јаглен ги неутрализира мирисите и ја апсорбира влагата во текот на целиот ден." data-en="Activated charcoal neutralizes odors and absorbs moisture throughout the day.">Активниот јаглен ги неутрализира мирисите и ја апсорбира влагата во текот на целиот ден.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-                    </div>
-                    <h3 data-mk="Карбосан перниче" data-en="Carbosan Cushion">Карбосан перниче</h3>
-                    <p data-mk="Перничето во петата ги апсорбира ударите и ја намалува непријатноста при одење." data-en="The heel cushion absorbs impacts and reduces discomfort while walking.">Перничето во петата ги апсорбира ударите и ја намалува непријатноста при одење.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h3 data-mk="Мека јагнешка кожа" data-en="Soft Lambskin">Мека јагнешка кожа</h3>
-                    <p data-mk="Природната кожа е пријатна на допир и дискретно се вклопува во секој тип обувка." data-en="Natural leather feels pleasant to the touch and fits discreetly into any shoe type.">Природната кожа е пријатна на допир и дискретно се вклопува во секој тип обувка.</p>
-                </div>
-            </div>
 
-            <!-- ORDER BAR -->
-            <div class="order-bar">
-                <div class="model-price" data-mk="Цена: 890 ден." data-en="Price: 890 MKD">Цена: 890 ден.</div>
-                <button type="button" class="hero__cta hero__cta--primary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                    <span data-mk="Додади во кошничка" data-en="Add to Cart">Додади во кошничка</span>
-                </button>
-                <a href="../index.html#kontakt" class="hero__cta hero__cta--secondary" data-mk="Нарачај" data-en="Order Now">Нарачај</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== TECHNICAL INFO ===== -->
-    <section class="compare-models-wrapper" style="padding: 70px 32px 20px;">
-        <div class="compare-models__card" data-aos="fade-up">
-            <div class="compare-models__header">
-                <div class="compare-models__title-group">
-                    <span class="compare-models__badge" data-mk="Технички информации" data-en="Technical Info">Технички информации</span>
-                    <h3 data-mk="Спецификации на Vital" data-en="Vital Specifications">Спецификации на Vital</h3>
-                    <p data-mk="Материјали, големини, код и EAN на моделот Vital." data-en="Materials, sizes, code, and EAN of the Vital model.">Материјали, големини, код и EAN на моделот Vital.</p>
-                </div>
-            </div>
-            <div class="compare-models__table-scroll">
-                <table class="compare-table">
-                    <thead>
-                        <tr>
-                            <th class="compare-table__feature-col">Особина</th>
-                            <th>Вредност</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="compare-table__label">Материјали</td>
-                            <td>
-                                <ul class="spec-list">
-                                    <li><span class="compare-badge compare-badge--high">1</span> Мека јагнешка кожа</li>
-                                    <li><span class="compare-badge compare-badge--high">2</span> Карбосан перниче</li>
-                                    <li><span class="compare-badge compare-badge--high">3</span> Латекс пена со активен јаглен</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="compare-table__label">Големини</td>
-                            <td>35, 37, 38, 39, 41, 42, 43, 45, 46</td>
-                        </tr>
-                        <tr>
-                            <td class="compare-table__label">Код</td>
-                            <td><strong>271104</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-table__label">EAN</td>
-                            <td>8586005036647</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FAQ ===== -->
-    <section class="faq-section">
-        <div class="faq__inner">
-            <div class="faq__header">
-                <h2 data-mk="Често поставувани прашања" data-en="Frequently Asked Questions">Често поставувани прашања</h2>
-                <p data-mk="Сè што треба да знаете за Vital влошката." data-en="Everything you need to know about the Vital insole.">Сè што треба да знаете за Vital влошката.</p>
-            </div>
-            <div class="faq__accordion" id="faqAccordion">
-                <div class="faq__item">
-                    <button class="faq__question" aria-expanded="false">
-                        <div class="faq__q-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-                        </div>
-                        <span data-mk="Дали Vital се погодни за секојдневно носење?" data-en="Are Vital suitable for everyday wear?">Дали Vital се погодни за секојдневно носење?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-content">
-                            <p data-mk="Да, Vital е дизајнирана за секојдневно носење во деловни и елегантни обувки. Тенката конструкција и свежината ја прават идеална за секојдневна употреба." data-en="Yes, Vital is designed for everyday wear in business and elegant shoes. The thin construction and freshness make it ideal for daily use.">Да, Vital е дизајнирана за секојдневно носење во деловни и елегантни обувки. Тенката конструкција и свежината ја прават идеална за секојдневна употреба.</p>
+                    <div class="layer-row">
+                        <span class="layer-row__num">3</span>
+                        <div class="layer-row__info">
+                            <strong data-mk="Латекс пена со активен јаглен" data-en="Latex foam with activated charcoal">Латекс пена со активен јаглен</strong>
+                            <p data-mk="Латекс пената обезбедува флексибилност и удобно прилегање, додека активниот јаглен придонесува обувките подолго да останат свежи." data-en="Latex foam provides flexibility and a comfortable fit, while activated charcoal keeps shoes fresher for longer.">Латекс пената обезбедува флексибилност и удобно прилегање, додека активниот јаглен придонесува обувките подолго да останат свежи.</p>
                         </div>
                     </div>
-                </div>
-                <div class="faq__item">
-                    <button class="faq__question" aria-expanded="false">
-                        <div class="faq__q-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                        </div>
-                        <span data-mk="Дали активниот јаглен е ефикасен против мирис?" data-en="Is the activated charcoal effective against odor?">Дали активниот јаглен е ефикасен против мирис?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-content">
-                            <p data-mk="Да. Активниот јаглен е познат по својата способност да ги апсорбира мирисите и влагата, што е особено корисно во затворени деловни обувки." data-en="Yes. Activated charcoal is known for its ability to absorb odors and moisture, which is especially useful in closed business shoes.">Да. Активниот јаглен е познат по својата способност да ги апсорбира мирисите и влагата, што е особено корисно во затворени деловни обувки.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq__item">
-                    <button class="faq__question" aria-expanded="false">
-                        <div class="faq__q-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-                        </div>
-                        <span data-mk="Дали може да се пренесуваат меѓу различни чевли?" data-en="Can they be moved between different shoes?">Дали може да се пренесуваат меѓу различни чевли?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-content">
-                            <p data-mk="Да, влошките се преносливи и може да ги користите во повеќе парови обувки. Препорачуваме да ги вадите од обувките преку ноќ за да проветруваат." data-en="Yes, the insoles are transferable and can be used in multiple pairs of shoes. We recommend removing them from the shoes overnight to air out.">Да, влошките се преносливи и може да ги користите во повеќе парови обувки. Препорачуваме да ги вадите од обувките преку ноќ за да проветруваат.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq__item">
-                    <button class="faq__question" aria-expanded="false">
-                        <div class="faq__q-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-                        </div>
-                        <span data-mk="Како се чистат?" data-en="How do I clean them?">Како се чистат?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                    </button>
-                    <div class="faq__answer">
-                        <div class="faq__answer-content">
-                            <p data-mk="Чистете ги со малку влажна крпа и средство за нега на кожа. Избегнувајте потопување во вода и директна топлина." data-en="Clean with a slightly damp cloth and leather care product. Avoid soaking in water and direct heat.">Чистете ги со малку влажна крпа и средство за нега на кожа. Избегнувајте потопување во вода и директна топлина.</p>
+                
+                                    </div>
+                                </div>
+                            </details>
+                            <details class="model-acc__item">
+                                <summary class="model-acc__head" data-mk="Технички информации" data-en="Technical Info">Технички информации</summary>
+                                <div class="model-acc__body">
+                                    <div class="model-specs">
+                                        <div class="spec-grid">
+                                        <div class="spec-item">
+                                            <span class="spec-item__label" data-mk="Материјали" data-en="Materials">Материјали</span>
+                                            <span class="spec-item__value">Мека јагнешка кожа, Карбосан перниче, Латекс пена со активен јаглен</span>
+                                        </div>
+                                        <div class="spec-item">
+                                            <span class="spec-item__label" data-mk="Големини" data-en="Sizes">Големини</span>
+                                            <span class="spec-item__value">35, 37, 38, 39, 41, 42, 43, 45, 46</span>
+                                        </div>
+                                        <div class="spec-item">
+                                            <span class="spec-item__label" data-mk="Код" data-en="Code">Код</span>
+                                            <span class="spec-item__value">271104</span>
+                                        </div>
+                                        <div class="spec-item">
+                                            <span class="spec-item__label" data-mk="EAN" data-en="EAN">EAN</span>
+                                            <span class="spec-item__value">8586005036647</span>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </details>
+                            <details class="model-acc__item">
+                                <summary class="model-acc__head" data-mk="Намена и обувки" data-en="Usage & Shoes">Намена и обувки</summary>
+                                <div class="model-acc__body">
+                                    <strong class="model-subhead" data-mk="За секојдневна удобност и работа" data-en="For everyday comfort and work">За секојдневна удобност и работа</strong>
+                                    <ul class="model-list">
+                                        <li data-mk="Секојдневно носење" data-en="Everyday wear"><span>•</span> Секојдневно носење</li>
+                                        <li data-mk="Работа и канцеларија" data-en="Work and office"><span>•</span> Работа и канцеларија</li>
+                                        <li data-mk="Подолго стоење" data-en="Prolonged standing"><span>•</span> Подолго стоење</li>
+                                        <li data-mk="Пешачење" data-en="Walking"><span>•</span> Пешачење</li>
+                                        <li data-mk="Патувања" data-en="Travel"><span>•</span> Патувања</li>
+                                    </ul>
+                                    <strong class="model-subhead" data-mk="Во кои обувки може да се користат?" data-en="Which shoes can they be used in?">Во кои обувки може да се користат?</strong>
+                                    <ul class="model-list">
+                                        <li data-mk="Кожни чевли" data-en="Leather shoes"><span>•</span> Кожни чевли</li>
+                                        <li data-mk="Деловни чевли" data-en="Dress shoes"><span>•</span> Деловни чевли</li>
+                                        <li data-mk="Оксфорд и мокасини" data-en="Oxfords and loafers"><span>•</span> Оксфорд и мокасини</li>
+                                        <li data-mk="Чизми" data-en="Boots"><span>•</span> Чизми</li>
+                                        <li data-mk="Секојдневни обувки" data-en="Everyday shoes"><span>•</span> Секојдневни обувки</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details class="model-acc__item">
+                                <summary class="model-acc__head" data-mk="Користење и одржување" data-en="Use & Care">Користење и одржување</summary>
+                                <div class="model-acc__body">
+                                    <strong class="model-subhead" data-mk="Како се користат?" data-en="How to use?">Како се користат?</strong>
+                                    <ol class="model-list model-list--num">
+                                        <li data-mk="Извадете ја постојната влошка од обувката." data-en="Remove the existing insole from the shoe.">Извадете ја постојната влошка од обувката.</li>
+                                        <li data-mk="Поставете ја Vital влошката внатре." data-en="Place the Vital insole inside.">Поставете ја Vital влошката внатре.</li>
+                                        <li data-mk="Проверете дали правилно прилега." data-en="Check that it fits properly.">Проверете дали правилно прилега.</li>
+                                        <li data-mk="Користете ја при секојдневни активности." data-en="Use it for everyday activities.">Користете ја при секојдневни активности.</li>
+                                    </ol>
+                                    <strong class="model-subhead" data-mk="Одржување" data-en="Care">Одржување</strong>
+                                    <ul class="model-list">
+                                        <li data-mk="Редовно проветрувајте ги обувките" data-en="Air out your shoes regularly"><span>•</span> Редовно проветрувајте ги обувките</li>
+                                        <li data-mk="Чистете ги влошките со влажна крпа" data-en="Clean the insoles with a damp cloth"><span>•</span> Чистете ги влошките со влажна крпа</li>
+                                        <li data-mk="Сушете ги природно" data-en="Let them dry naturally"><span>•</span> Сушете ги природно</li>
+                                        <li data-mk="Избегнувајте изложување на директна топлина" data-en="Avoid exposure to direct heat"><span>•</span> Избегнувајте изложување на директна топлина</li>
+                                        <li data-mk="Не ја потопувајте во вода — кожната површина се одржува со влажна крпа." data-en="Do not soak in water — care for the leather surface with a damp cloth."><span>•</span> Не ја потопувајте во вода — кожната површина се одржува со влажна крпа.</li>
+                                    </ul>
+                                    <strong class="model-subhead" data-mk="Совети" data-en="Tips">Совети</strong>
+                                    <ul class="model-list">
+                                        <li data-mk="Изберете обувки што одговараат на вашата активност" data-en="Choose shoes that match your activity"><span>•</span> Изберете обувки што одговараат на вашата активност</li>
+                                        <li data-mk="Заменете ги влошките кога ќе покажат знаци на значително абење" data-en="Replace the insoles when they show significant wear"><span>•</span> Заменете ги влошките кога ќе покажат знаци на значително абење</li>
+                                        <li data-mk="По тренинг, оставете ги обувките и влошките да се проветрат" data-en="After training, let the shoes and insoles air out"><span>•</span> По тренинг, оставете ги обувките и влошките да се проветрат</li>
+                                        <li data-mk="Комбинирајте ги со чорапи што овозможуваат добра циркулација на воздухот" data-en="Pair them with socks that allow good air circulation"><span>•</span> Комбинирајте ги со чорапи што овозможуваат добра циркулација на воздухот</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details class="model-acc__item">
+                                <summary class="model-acc__head" data-mk="Често поставувани прашања" data-en="FAQ">Често поставувани прашања</summary>
+                                <div class="model-acc__body">
+                                        <div class="model-faq-item">
+                                            <strong data-mk="Дали Vital се погодни за секојдневно носење?" data-en="Are Vital suitable for everyday wear?">Дали Vital се погодни за секојдневно носење?</strong>
+                                            <p data-mk="Да, Vital е дизајнирана за секојдневно носење во деловни и елегантни обувки. Тенката конструкција и свежината ја прават идеална за секојдневна употреба." data-en="Yes, Vital is designed for everyday wear in business and elegant shoes. The thin construction and freshness make it ideal for daily use.">Да, Vital е дизајнирана за секојдневно носење во деловни и елегантни обувки. Тенката конструкција и свежината ја прават идеална за секојдневна употреба.</p>
+                                        </div>
+                                        <div class="model-faq-item">
+                                            <strong data-mk="Дали активниот јаглен е ефикасен против мирис?" data-en="Is the activated charcoal effective against odor?">Дали активниот јаглен е ефикасен против мирис?</strong>
+                                            <p data-mk="Да. Активниот јаглен е познат по својата способност да ги апсорбира мирисите и влагата, што е особено корисно во затворени деловни обувки." data-en="Yes. Activated charcoal is known for its ability to absorb odors and moisture, which is especially useful in closed business shoes.">Да. Активниот јаглен е познат по својата способност да ги апсорбира мирисите и влагата, што е особено корисно во затворени деловни обувки.</p>
+                                        </div>
+                                        <div class="model-faq-item">
+                                            <strong data-mk="Дали може да се пренесуваат меѓу различни чевли?" data-en="Can they be moved between different shoes?">Дали може да се пренесуваат меѓу различни чевли?</strong>
+                                            <p data-mk="Да, влошките се преносливи и може да ги користите во повеќе парови обувки. Препорачуваме да ги вадите од обувките преку ноќ за да проветруваат." data-en="Yes, the insoles are transferable and can be used in multiple pairs of shoes. We recommend removing them from the shoes overnight to air out.">Да, влошките се преносливи и може да ги користите во повеќе парови обувки. Препорачуваме да ги вадите од обувките преку ноќ за да проветруваат.</p>
+                                        </div>
+                                        <div class="model-faq-item">
+                                            <strong data-mk="Како се чистат?" data-en="How do I clean them?">Како се чистат?</strong>
+                                            <p data-mk="Чистете ги со малку влажна крпа и средство за нега на кожа. Избегнувајте потопување во вода и директна топлина." data-en="Clean with a slightly damp cloth and leather care product. Avoid soaking in water and direct heat.">Чистете ги со малку влажна крпа и средство за нега на кожа. Избегнувајте потопување во вода и директна топлина.</p>
+                                        </div>
+                                </div>
+                            </details>
                         </div>
                     </div>
                 </div>
@@ -297,40 +416,54 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer__container">
+            <div class="footer__contact">
+                    <span class="social__label" data-mk="Контакт:" data-en="Contact:">Контакт:</span>
+                    <p class="footer__contact-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-mk="Скопје, ул. св. Кирил и Методиј бр. 20" data-en="Skopje, 20 Sv. Kiril i Metodij St.">Скопје, ул. св. Кирил и Методиј бр. 20</span></p>
+                    <p class="footer__contact-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+38976454957">+389 76 454 957</a> / <a href="tel:+38923230088">+389 2 323 00 88</a></p>
+                    <p class="footer__contact-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@calivita.mk">info@calivita.mk</a></p>
+                    <p class="footer__contact-line"><span data-mk="МАК-ФИТ ДООЕЛ (Calivita)" data-en="MAK-FIT DOOEL (Calivita)">МАК-ФИТ ДООЕЛ (Calivita)</span></p>
+                </div>
+
             <div class="footer__inner">
                 <div class="footer__brand">
                     <img src="../images/moneta-logo.svg" alt="MONETA" width="100" height="28">
-                    <p data-mk="&copy; 2026 MONETA. Сите права задржани." data-en="&copy; 2026 MONETA. All rights reserved.">&copy; 2026 MONETA. Сите права задржани.</p>
+                    <p data-mk="&copy; 2026 МОНЕТА. Сите права задржани." data-en="&copy; 2026 MONETA. All rights reserved.">&copy; 2026 МОНЕТА. Сите права задржани.</p>
+                <p class="footer__tagline" data-mk="Секој чекор заслужува удобност." data-en="Every step deserves comfort.">Секој чекор заслужува удобност.</p>
                 </div>
+
+                <div class="footer__right">
+                    <ul class="footer__links">
+                    <li><a href="../index.html#prednosti" data-mk="За нас" data-en="About Us">За нас</a></li>
+                    <li><a href="../index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li><a href="../dostava.html" data-mk="Достава и плаќање" data-en="Delivery &amp; Payment">Достава и плаќање</a></li>
+                    </ul>
+
+                    <div class="footer__legal-links">
+                        <a href="../uslovi.html" data-mk="Услови за користење" data-en="Terms of Use">Услови за користење</a>
+                        <span class="footer__legal-dot">•</span>
+                        <a href="../uslovi.html#privatnost" data-mk="Приватност" data-en="Privacy">Приватност</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
                 <div class="footer__social">
-                    <span class="social__label" data-mk="Следете нè:" data-en="Follow us:">Следете нè:</span>
                     <div class="social__links">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--facebook" aria-label="MONETA на Facebook" title="Facebook">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--facebook" aria-label="МОНЕТА на Facebook" title="Facebook">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.69c0-2.47 1.47-3.83 3.72-3.83 1.08 0 2.21.19 2.21.19v2.43h-1.24c-1.23 0-1.61.76-1.61 1.54V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z"/>
                             </svg>
                         </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--instagram" aria-label="MONETA на Instagram" title="Instagram">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--instagram" aria-label="МОНЕТА на Instagram" title="Instagram">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                             </svg>
-                        </a>
-                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--tiktok" aria-label="MONETA на TikTok" title="TikTok">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-2.84V7.65a6.34 6.34 0 0 0-3.5 1.01 6.33 6.33 0 1 0 9.84 5.34V8.85a8.3 8.3 0 0 0 4.77 1.47V6.87a4.85 4.85 0 0 1-1.00-.18z"/>
-                            </svg>
-                        </a>
-                    </div>
+                        </a>                    </div>
                 </div>
-                <ul class="footer__links">
-                    <li><a href="../index.html#prednosti" data-mk="За нас" data-en="About Us">За нас</a></li>
-                    <li><a href="../index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
-                    <li><a href="../index.html#faq" data-mk="Услови" data-en="Terms">Услови</a></li>
-                    <li><a href="../index.html#faq" data-mk="Приватност" data-en="Privacy">Приватност</a></li>
-                </ul>
             </div>
+
         </div>
     </footer>
 
@@ -343,8 +476,6 @@
 
     <!-- ===== SCRIPTS ===== -->
     <script src="../vendor/aos.js" defer></script>
-    <script src="../vendor/gsap.min.js" defer></script>
-    <script src="../vendor/ScrollTrigger.min.js" defer></script>
     <script src="../script.js" defer></script>
 </body>
 </html>

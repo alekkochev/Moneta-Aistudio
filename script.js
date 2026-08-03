@@ -112,6 +112,21 @@ document.addEventListener('click', (e) => {
                 }
             }
         });
+
+        // Ажурирај ги free-ship текстовте по промена на јазик
+        if (window.MonetaCart && window.MonetaCart.renderFreeShip) {
+            window.MonetaCart.renderFreeShip(window.MonetaCart.getCart());
+        }
+
+        // Глобален hook — секој модул што треба да се освежи на промена на јазик
+        (window.MonetaLangCallbacks || []).forEach((cb) => {
+            try { cb(lang); } catch (err) { /* ignore */ }
+        });
+    };
+
+    window.MonetaLangCallbacks = window.MonetaLangCallbacks || [];
+    window.MonetaOnLangChange = (cb) => {
+        if (typeof cb === 'function') window.MonetaLangCallbacks.push(cb);
     };
 
     langBtns.forEach((btn) => {
@@ -126,6 +141,128 @@ document.addEventListener('click', (e) => {
     if (currentLang !== 'mk') {
         setLanguage(currentLang);
     }
+
+    // Изложи ги за паѓачкиот јазичен прекинувач (initLangDropdown)
+    window.MonetaSetLang = setLanguage;
+    window.MonetaGetLang = () => currentLang;
+})();
+
+// ========================================
+// LANGUAGE DROPDOWN (паѓачко мени MK / EN / SQ)
+// ========================================
+(function initLangDropdown() {
+    const LANG_NAMES = {
+        mk: { code: 'MK', nameNative: 'Македонски' },
+        en: { code: 'EN', nameNative: 'English' },
+        sq: { code: 'SQ', nameNative: 'Shqip' }
+    };
+
+    const enhance = (switcher) => {
+        if (!switcher || switcher.classList.contains('lang-dropdown-ready')) return;
+        const btns = [...switcher.querySelectorAll('.lang-btn')];
+        if (!btns.length) return;
+        switcher.classList.add('lang-dropdown-ready');
+
+        const stored = window.MonetaGetLang ? window.MonetaGetLang() : (localStorage.getItem('moneta_lang') || 'mk');
+        const active = LANG_NAMES[stored] ? stored : 'mk';
+
+        const dd = document.createElement('div');
+        dd.className = 'lang-dropdown';
+
+        const trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.className = 'lang-dropdown__trigger';
+        trigger.setAttribute('aria-haspopup', 'listbox');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.innerHTML = `<span class="lang-dropdown__code">${LANG_NAMES[active].code}</span>`
+            + `<span class="lang-dropdown__chevron"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>`;
+
+        const menu = document.createElement('div');
+        menu.className = 'lang-dropdown__menu';
+        menu.setAttribute('role', 'listbox');
+
+        // Секогаш ги прикажува сите 3 јазици (MK / EN / SQ) — SQ се полни со превод подоцна
+        Object.keys(LANG_NAMES).forEach((lang) => {
+            const opt = document.createElement('button');
+            opt.type = 'button';
+            opt.className = 'lang-dropdown__option' + (lang === active ? ' is-active' : '');
+            opt.dataset.lang = lang;
+            opt.setAttribute('role', 'option');
+            opt.setAttribute('aria-selected', lang === active ? 'true' : 'false');
+            opt.innerHTML = `<span class="lang-dropdown__opt-code">${LANG_NAMES[lang].code}</span><span class="lang-dropdown__opt-name">${LANG_NAMES[lang].nameNative}</span>`;
+            opt.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (window.MonetaSetLang) window.MonetaSetLang(lang);
+                const codeEl = trigger.querySelector('.lang-dropdown__code');
+                if (codeEl) codeEl.textContent = LANG_NAMES[lang].code;
+                menu.querySelectorAll('.lang-dropdown__option').forEach((o) => {
+                    const isAct = o.dataset.lang === lang;
+                    o.classList.toggle('is-active', isAct);
+                    o.setAttribute('aria-selected', isAct ? 'true' : 'false');
+                });
+                dd.classList.remove('is-open');
+                trigger.setAttribute('aria-expanded', 'false');
+            });
+            menu.appendChild(opt);
+        });
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = dd.classList.toggle('is-open');
+            trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        dd.appendChild(trigger);
+        dd.appendChild(menu);
+        switcher.innerHTML = '';
+        switcher.appendChild(dd);
+    };
+
+    document.querySelectorAll('.lang-switcher').forEach(enhance);
+
+    // Затвори го менито при клик на друго место / Escape
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.lang-dropdown.is-open').forEach((dd) => {
+            dd.classList.remove('is-open');
+            const tr = dd.querySelector('.lang-dropdown__trigger');
+            if (tr) tr.setAttribute('aria-expanded', 'false');
+        });
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.lang-dropdown.is-open').forEach((dd) => dd.classList.remove('is-open'));
+        }
+    });
+})();
+
+// ========================================
+// MODEL АКОРДЕОН: само една картичка отворена во исто време
+// ========================================
+(function initModelAccordion() {
+    document.querySelectorAll('.model-acc').forEach((acc) => {
+        const items = acc.querySelectorAll('details.model-acc__item');
+        items.forEach((item) => {
+            item.addEventListener('toggle', () => {
+                if (item.open) {
+                    items.forEach((other) => {
+                        if (other !== item && other.open) other.open = false;
+                    });
+                }
+            });
+            // Спречи „скок/фрлање" при отворање — врати ја позицијата на скролање
+            const head = item.querySelector('summary');
+            if (head) {
+                head.addEventListener('click', () => {
+                    const y = window.scrollY;
+                    const fix = () => {
+                        if (Math.abs(window.scrollY - y) > 4) window.scrollTo({ top: y, behavior: 'auto' });
+                    };
+                    requestAnimationFrame(fix);
+                    setTimeout(fix, 120);
+                });
+            }
+        });
+    });
 })();
 
 // ========================================
@@ -447,6 +584,9 @@ if (sizeModal) {
     const resultContainer = document.getElementById('sizeResult');
     const customSizeInput = document.getElementById('customSizeInput');
     const customSizeBadge = document.getElementById('customSizeBadge');
+    const customLenInput = document.getElementById('customLenInput');
+    const lenUnitBtns = document.querySelectorAll('.size-finder__unit');
+    let lenUnit = 'mm';
 
     const sizeRangeMap = {
         '28-34': { minCm: 18.0, maxCm: 22.0, defaultCm: 20.0, labelMk: 'Детска големина 28-34 EU', labelEn: 'Kids Size 28-34 EU', trimLineMk: 'Подсечете по означената линија за соодветниот детски број', trimLineEn: 'Trim along marked line for child size' },
@@ -460,7 +600,7 @@ if (sizeModal) {
 
     const insoleModels = {
         sport: {
-            title_mk: 'MONETA Спортски анатомски влошки',
+            title_mk: 'МОНЕТА Спортски анатомски влошки',
             title_en: 'MONETA Sports Anatomical Insoles',
             tag_mk: '98% Совпаѓање • Спорт & Трчање',
             tag_en: '98% Match • Sports & Running',
@@ -474,7 +614,8 @@ if (sizeModal) {
             tech_en: ['Silicone Gel', 'Absorb & Breathable', 'Shock Cushioning']
         },
         leather: {
-            title_mk: 'MONETA Елегантни кожни влошки',
+            canTrim: false,
+            title_mk: 'МОНЕТА Елегантни кожни влошки',
             title_en: 'MONETA Elegant Leather Insoles',
             tag_mk: '96% Совпаѓање • Деловни & Кожни чевли',
             tag_en: '96% Match • Leather & Dress Shoes',
@@ -488,7 +629,7 @@ if (sizeModal) {
             tech_en: ['100% Genuine Leather', 'Active Charcoal', 'Antibacterial']
         },
         summer: {
-            title_mk: 'MONETA Летни дишечки влошки',
+            title_mk: 'МОНЕТА Летни дишечки влошки',
             title_en: 'MONETA Summer Breathable Insoles',
             tag_mk: '97% Совпаѓање • Топло време & Свежина',
             tag_en: '97% Match • Warm Weather & Airflow',
@@ -502,7 +643,7 @@ if (sizeModal) {
             tech_en: ['Micro-perforated', 'Anti-moisture System', 'Lightweight Flex']
         },
         winter: {
-            title_mk: 'MONETA Зимски термо влошки',
+            title_mk: 'МОНЕТА Зимски термо влошки',
             title_en: 'MONETA Winter Thermo Insoles',
             tag_mk: '99% Совпаѓање • Термо заштита & Зима',
             tag_en: '99% Match • Thermal Shield & Winter',
@@ -516,7 +657,7 @@ if (sizeModal) {
             tech_en: ['Aluminum Shield', 'Warm Wool', 'Frost Barrier']
         },
         hunter: {
-            title_mk: 'MONETA HUNTER професионални влошки',
+            title_mk: 'МОНЕТА HUNTER професионални влошки',
             title_en: 'MONETA HUNTER Heavy-Duty Insoles',
             tag_mk: '99% Совпаѓање • Терен & Работни чевли',
             tag_en: '99% Match • Extreme Field & Heavy Duty',
@@ -530,7 +671,8 @@ if (sizeModal) {
             tech_en: ['Ortho-Stabilizer', 'Extreme Durability', 'Anti-Vibration']
         },
         kids: {
-            title_mk: 'MONETA Детски анатомски влошки',
+            canTrim: false,
+            title_mk: 'МОНЕТА Детски анатомски влошки',
             title_en: 'MONETA Kids Anatomical Insoles',
             tag_mk: '100% Совпаѓање • Правилен детски развој',
             tag_en: '100% Match • Healthy Growth Support',
@@ -548,20 +690,32 @@ if (sizeModal) {
     let selectedSize = '39-40';
     let selectedActivity = 'sport';
 
+    const euToCm = (eu) => (eu * 0.667) - 1.2;
+    const cmToEu = (cm) => Math.round((cm + 1.5) / 0.667);
+
+    const highlightPillForVal = (eu) => {
+        let matchedPillKey = '39-40';
+        if (eu <= 34) matchedPillKey = '28-34';
+        else if (eu <= 36) matchedPillKey = '35-36';
+        else if (eu <= 38) matchedPillKey = '37-38';
+        else if (eu <= 40) matchedPillKey = '39-40';
+        else if (eu <= 42) matchedPillKey = '41-42';
+        else if (eu <= 44) matchedPillKey = '43-44';
+        else matchedPillKey = '45-46';
+        selectedSize = matchedPillKey;
+        sizePills.forEach((p) => p.classList.toggle('is-active', p.dataset.size === matchedPillKey));
+    };
+
+    const setLenField = (cmLen) => {
+        if (!customLenInput) return;
+        customLenInput.value = lenUnit === 'mm' ? Math.round(cmLen * 10) : parseFloat(cmLen.toFixed(1));
+    };
+
     const getInsoleLengthInfo = (sizeKey, customVal) => {
         if (customVal && !isNaN(customVal) && customVal > 0) {
-            // If user typed custom size (e.g. 40 or 25.5 cm)
-            let euSize = customVal;
-            let cmLen = 0;
-            if (customVal <= 30 && customVal >= 15) {
-                // Foot length entered in cm (e.g. 25.5 cm)
-                cmLen = parseFloat(customVal);
-                euSize = Math.round((cmLen + 1.5) / 0.667);
-            } else {
-                // EU size entered (e.g. 40)
-                euSize = parseFloat(customVal);
-                cmLen = (euSize * 0.667) - 1.2;
-            }
+            // ЕУ број внесен во полето (customSizeInput е секогаш EU)
+            const euSize = parseFloat(customVal);
+            let cmLen = euToCm(euSize);
             cmLen = Math.max(16, Math.min(32, cmLen));
             const mmLen = Math.round(cmLen * 10);
             return {
@@ -620,13 +774,16 @@ if (sizeModal) {
         const trimAdvice = isEn ? lengthInfo.trimLineEn : lengthInfo.trimLineMk;
         const techList = isEn ? model.tech_en : model.tech_mk;
 
-        const ctaText = isEn ? 'Explore model details →' : 'Погледни ги сите детали за овој модел →';
         const sizeHeading = isEn ? 'Recommended Size:' : 'Препорачан број:';
         const lengthHeading = isEn ? 'Insole Length:' : 'Должина на влошка:';
         const trimHeading = isEn ? 'Trimming Advice:' : 'Совет за кастрење:';
         const archHeading = isEn ? 'Arch Profile:' : 'Профил на свод:';
 
         const techChipsHtml = techList.map(t => `<span class="result-card__tech-chip">${t}</span>`).join('');
+
+        const trimRow = model.canTrim === false
+            ? `<p class="result-card__spec-item"><strong>${trimHeading}</strong> ${isEn ? 'Fixed sizes — not for trimming' : 'Фиксни големини — не се поткаструваат'}</p>`
+            : `<p class="result-card__spec-item"><strong>${trimHeading}</strong> ${trimAdvice}</p>`;
 
         resultContainer.innerHTML = `
             <div class="result-card__image">
@@ -648,17 +805,12 @@ if (sizeModal) {
                     <p class="result-card__spec-item">
                         <strong>${archHeading}</strong> ${archText}
                     </p>
-                    <p class="result-card__spec-item">
-                        <strong>${trimHeading}</strong> ${trimAdvice}
-                    </p>
+                    ${trimRow}
                 </div>
                 <p class="result-card__desc">${descText}</p>
                 <div class="result-card__tech-row">
                     ${techChipsHtml}
                 </div>
-                <a href="${model.link}" class="result-card__cta" data-close-modal>
-                    ${ctaText}
-                </a>
             </div>
         `;
     };
@@ -669,6 +821,7 @@ if (sizeModal) {
             pill.classList.add('is-active');
             selectedSize = pill.dataset.size;
             if (customSizeInput) customSizeInput.value = '';
+            if (customLenInput) customLenInput.value = '';
             updateRecommendation();
         });
     });
@@ -686,31 +839,48 @@ if (sizeModal) {
         customSizeInput.addEventListener('input', () => {
             const val = parseFloat(customSizeInput.value);
             if (!isNaN(val) && val > 0) {
-                // Highlight closest pill range
-                let matchedPillKey = '39-40';
-                if (val <= 34 || val <= 22) matchedPillKey = '28-34';
-                else if (val <= 36 || val <= 23.5) matchedPillKey = '35-36';
-                else if (val <= 38 || val <= 24.8) matchedPillKey = '37-38';
-                else if (val <= 40 || val <= 26.0) matchedPillKey = '39-40';
-                else if (val <= 42 || val <= 27.3) matchedPillKey = '41-42';
-                else if (val <= 44 || val <= 28.5) matchedPillKey = '43-44';
-                else matchedPillKey = '45-46';
-
-                selectedSize = matchedPillKey;
-                sizePills.forEach((p) => {
-                    p.classList.toggle('is-active', p.dataset.size === matchedPillKey);
-                });
+                highlightPillForVal(val);
+                setLenField(euToCm(val));
             }
             updateRecommendation();
         });
     }
 
-    // Re-render recommendation when language buttons are clicked
-    document.querySelectorAll('.navbar__lang-btn').forEach(btn => {
+    if (customLenInput) {
+        customLenInput.addEventListener('input', () => {
+            const val = parseFloat(customLenInput.value);
+            if (!isNaN(val) && val > 0) {
+                const cmLen = lenUnit === 'mm' ? val / 10 : val;
+                const eu = cmToEu(cmLen);
+                if (customSizeInput) customSizeInput.value = eu;
+                highlightPillForVal(eu);
+            }
+            updateRecommendation();
+        });
+    }
+
+    lenUnitBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
-            setTimeout(updateRecommendation, 50);
+            lenUnitBtns.forEach((b) => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            lenUnit = btn.dataset.unit;
+            const euVal = parseFloat(customSizeInput ? customSizeInput.value : '');
+            if (!isNaN(euVal) && euVal > 0) {
+                setLenField(euToCm(euVal));
+            } else {
+                const lenVal = parseFloat(customLenInput ? customLenInput.value : '');
+                if (!isNaN(lenVal) && lenVal > 0) {
+                    setLenField(lenUnit === 'mm' ? lenVal / 10 : lenVal);
+                }
+            }
+            updateRecommendation();
         });
     });
+
+    // Re-render recommendation when language changes (dropdown-switcher safe)
+    if (window.MonetaOnLangChange) {
+        window.MonetaOnLangChange(() => setTimeout(updateRecommendation, 50));
+    }
 
     // Initial calculation
     updateRecommendation();
@@ -769,9 +939,9 @@ if (orderTrackerForm && orderIdInput && orderStatusResult) {
                 statusText: 'Се подготвува за пакување',
                 badgeClass: 'order-result__badge--processing',
                 currentStep: 1,
-                courier: 'MONETA Централен магацин Скопје',
+                courier: 'МОНЕТА Централен магацин Скопје',
                 date: 'Очекувано испраќање за 24ч',
-                item: '1x MONETA Анатомски влошки'
+                item: '1x МОНЕТА Анатомски влошки'
             };
         }
 
@@ -923,84 +1093,9 @@ if (newsletterForm && newsletterEmailInput && newsletterFeedback) {
 }
 
 // ========================================
-// CATEGORY CARDS 3D TILT EFFECT (GSAP + VANILLA JS FALLBACK)
+// CATEGORY CARDS 3D TILT — ОТСТРАНЕТ (2026-08-03, барање на клиент)
+// Картичките повеќе не се „нишаат" на hover. Иконката горе со светлото останува.
 // ========================================
-function initCategoryCards3DTilt() {
-    // Skip 3D tilt on subpages — product cards use the simple navbar-style pink line instead
-    if (document.body.classList.contains('page-sistem')) return;
-
-    const categoryCards = document.querySelectorAll('.categories__grid .card');
-    if (!categoryCards || categoryCards.length === 0) return;
-
-    categoryCards.forEach((card) => {
-        if (card.dataset.tiltInitialized === 'true') return;
-        card.dataset.tiltInitialized = 'true';
-
-        card.style.transformStyle = 'preserve-3d';
-        card.style.perspective = '1000px';
-
-        card.addEventListener('mouseenter', () => {
-            if (typeof window.gsap !== 'undefined') {
-                window.gsap.to(card, {
-                    scale: 1.03,
-                    duration: 0.3,
-                    ease: 'power2.out',
-                    overwrite: 'auto'
-                });
-            } else {
-                card.style.transition = 'transform 0.15s ease-out';
-            }
-        });
-
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            // Max tilt 12 degrees
-            const rotateX = -((y - centerY) / centerY) * 12;
-            const rotateY = ((x - centerX) / centerX) * 12;
-
-            if (typeof window.gsap !== 'undefined') {
-                window.gsap.to(card, {
-                    rotationX: rotateX,
-                    rotationY: rotateY,
-                    scale: 1.03,
-                    duration: 0.35,
-                    ease: 'power2.out',
-                    overwrite: 'auto'
-                });
-            } else {
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            if (typeof window.gsap !== 'undefined') {
-                window.gsap.to(card, {
-                    rotationX: 0,
-                    rotationY: 0,
-                    scale: 1,
-                    duration: 0.5,
-                    ease: 'power3.out',
-                    overwrite: 'auto'
-                });
-            } else {
-                card.style.transition = 'transform 0.4s ease-out';
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-            }
-        });
-    });
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCategoryCards3DTilt);
-} else {
-    initCategoryCards3DTilt();
-}
-window.addEventListener('load', initCategoryCards3DTilt);
 
 // ========================================
 // COMPARE MODELS TOGGLE INTERACTION
@@ -1113,7 +1208,7 @@ if (compareToggleBtn && compareModelsSection) {
             shortName: { mk: 'Спортски', en: 'Sports' },
             image: './images/cards/Sportski.webp',
             link: './index.html#kategorii',
-            price: '890 ден.',
+            price: '230 – 620 ден.',
             specs: {
                 material: { mk: 'EVA пена & Gel перничиња', en: 'EVA foam & Gel cushioning' },
                 purpose: { mk: 'Спорт, трчање, активно вежбање', en: 'Sports, running, active workouts' },
@@ -1133,7 +1228,7 @@ if (compareToggleBtn && compareModelsSection) {
             shortName: { mk: 'Кожни', en: 'Leather' },
             image: './images/cards/Kozni.webp',
             link: './index.html#kategorii',
-            price: '890 ден.',
+            price: '100 – 820 ден.',
             specs: {
                 material: { mk: '100% природна кожа & мек латекс', en: '100% genuine leather & soft latex' },
                 purpose: { mk: 'Елегантни, деловни и секојдневни обувки', en: 'Elegant, business & everyday shoes' },
@@ -1153,7 +1248,7 @@ if (compareToggleBtn && compareModelsSection) {
             shortName: { mk: 'Летни', en: 'Summer' },
             image: './images/cards/Letni.webp',
             link: './index.html#kategorii',
-            price: '790 ден.',
+            price: '120 – 170 ден.',
             specs: {
                 material: { mk: 'Памук / Лен со активен јаглен', en: 'Cotton / Linen with activated carbon' },
                 purpose: { mk: 'Летни обувки, носење на босо стапало', en: 'Summer footwear, barefoot wear' },
@@ -1173,7 +1268,7 @@ if (compareToggleBtn && compareModelsSection) {
             shortName: { mk: 'Зимски', en: 'Winter' },
             image: './images/cards/thermo_alu.webp',
             link: './index.html#kategorii',
-            price: '890 ден.',
+            price: '210 ден.',
             specs: {
                 material: { mk: '100% природна волна & алуминиумски слој', en: '100% natural wool & aluminium barrier' },
                 purpose: { mk: 'Зимски чизми, топлотна изолација во студ', en: 'Winter boots, cold weather isolation' },
@@ -1193,7 +1288,7 @@ if (compareToggleBtn && compareModelsSection) {
             shortName: { mk: 'HUNTER', en: 'HUNTER' },
             image: './images/cards/hunter_vloski.webp',
             link: './index.html#kategorii',
-            price: '990 ден.',
+            price: '330 ден.',
             specs: {
                 material: { mk: 'Гумена база & мемори пена за екстремни услови', en: 'Heavy rubber base & high-density memory foam' },
                 purpose: { mk: 'Лов, планинарење, теренска работа', en: 'Hunting, hiking, extreme outdoor duty' },
@@ -1213,7 +1308,7 @@ if (compareToggleBtn && compareModelsSection) {
             shortName: { mk: 'Детски', en: 'Kids' },
             image: './images/cards/detski.webp',
             link: './index.html#kategorii',
-            price: '690 ден.',
+            price: '490 ден.',
             specs: {
                 material: { mk: 'Хипоалергенска мека анатомична пена', en: 'Hypoallergenic soft anatomical foam' },
                 purpose: { mk: 'Детски обувки, училиште & спорт', en: 'Children shoes, school & playtime' },
@@ -1440,13 +1535,10 @@ if (compareToggleBtn && compareModelsSection) {
         });
     }
 
-    // Listen for language changes across the app
-    const langBtns = document.querySelectorAll('.lang-btn');
-    langBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            setTimeout(renderSideBySideTable, 50);
-        });
-    });
+    // Listen for language changes across the app (dropdown-switcher safe)
+    if (window.MonetaOnLangChange) {
+        window.MonetaOnLangChange(() => setTimeout(renderSideBySideTable, 50));
+    }
 
     // Initial render
     renderSideBySideTable();
@@ -1455,17 +1547,72 @@ if (compareToggleBtn && compareModelsSection) {
 // ========================================
 // LIVE NAVBAR SEARCH SYSTEM
 // ========================================
+// Шаблон за search-маската — автоматски се креира на под-страниците каде што ја нема
+const SEARCH_MODAL_HTML = `
+    <div class="search-modal" id="searchModal" aria-hidden="true">
+        <div class="search-modal__backdrop" id="searchBackdrop"></div>
+        <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="searchInput">
+            <div class="search-modal__header">
+                <div class="search-modal__input-wrapper">
+                    <svg class="search-modal__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="searchInput" class="search-modal__input" placeholder="Пребарај модели на влошки, броеви или совети..." autocomplete="off" spellcheck="false" data-mk-placeholder="Пребарај модели на влошки, броеви или совети..." data-en-placeholder="Search insole models, sizes, or advice...">
+                </div>
+                <button type="button" class="search-modal__close" id="searchClose" aria-label="Затвори" title="Затвори (ESC)"><kbd>ESC</kbd></button>
+            </div>
+            <div class="search-modal__quick-tags">
+                <span class="quick-tags__title" data-mk="Брзи категории:" data-en="Quick categories:">Брзи категории:</span>
+                <button type="button" class="search-tag" data-query="спортски" data-mk="Спортски" data-en="Sports">Спортски</button>
+                <button type="button" class="search-tag" data-query="кожни" data-mk="Кожни" data-en="Leather">Кожни</button>
+                <button type="button" class="search-tag" data-query="летни" data-mk="Летни" data-en="Summer">Летни</button>
+                <button type="button" class="search-tag" data-query="зимски" data-mk="Зимски" data-en="Winter">Зимски</button>
+                <button type="button" class="search-tag" data-query="hunter" data-mk="HUNTER" data-en="HUNTER">HUNTER</button>
+                <button type="button" class="search-tag" data-query="детски" data-mk="Детски" data-en="Kids">Детски</button>
+                <button type="button" class="search-tag" data-query="големина" data-mk="Водич за броеви" data-en="Size guide">Водич за броеви</button>
+            </div>
+            <div class="search-modal__body" id="searchResultsContainer"></div>
+            <div class="search-modal__footer">
+                <div class="search-modal__shortcuts">
+                    <span><kbd>↑</kbd><kbd>↓</kbd> <span data-mk="Навигација" data-en="Navigate">Навигација</span></span>
+                    <span><kbd>↵</kbd> <span data-mk="Отвори" data-en="Open">Отвори</span></span>
+                    <span><kbd>ESC</kbd> <span data-mk="Затвори" data-en="Close">Затвори</span></span>
+                </div>
+                <div class="search-modal__brand" data-mk="МОНЕТА Пребарување" data-en="MONETA Search">МОНЕТА Пребарување</div>
+            </div>
+        </div>
+    </div>`;
+
 (function initNavbarSearch() {
     const searchTrigger = document.getElementById('searchTrigger');
+    if (!searchTrigger) return;
+
+    // Базна патека: под-страниците (modeli/) се еден чекор подлабоко
+    const IS_MODELI = /\/modeli\//.test(window.location.pathname);
+    const BASE = IS_MODELI ? '../' : './';
+    const resolveUrl = (p) => {
+        if (!p) return '#';
+        if (/^(#|\.\.\/|https?:|\/)/.test(p)) return p;
+        return BASE + p.replace(/^\.\//, '');
+    };
+    const resolveImg = (p) => {
+        if (!p) return '';
+        if (/^(\.\.\/|https?:|\/)/.test(p)) return p;
+        return BASE + p.replace(/^\.\//, '');
+    };
+
+    // Автоматско креирање на search-маската ако ја нема (под-страници)
+    if (!document.getElementById('searchModal')) {
+        const holder = document.createElement('div');
+        holder.innerHTML = SEARCH_MODAL_HTML.trim();
+        document.body.appendChild(holder.firstElementChild);
+    }
     const searchModal = document.getElementById('searchModal');
     const searchBackdrop = document.getElementById('searchBackdrop');
     const searchClose = document.getElementById('searchClose');
     const searchInput = document.getElementById('searchInput');
-    const searchClear = document.getElementById('searchClear');
     const searchResultsContainer = document.getElementById('searchResultsContainer');
     const quickTags = document.querySelectorAll('.search-tag');
 
-    if (!searchTrigger || !searchModal || !searchInput || !searchResultsContainer) return;
+    if (!searchModal || !searchInput || !searchResultsContainer) return;
 
     // Search Database
     const searchItems = [
@@ -1541,6 +1688,247 @@ if (compareToggleBtn && compareModelsSection) {
             badgeEn: 'Healthy growth',
             keywords: 'детски kids деца развој стапало 28-34 училиште игра children school growth'
         },
+        // ===== СИТЕ 20 МОДЕЛИ (modeli/) =====
+        {
+            type: 'product',
+            titleMk: 'MEMOSOLE',
+            titleEn: 'MEMOSOLE',
+            descMk: 'Влошки со мемориска пена што се прилагодува на стапалото и латекс со активен јаглен за свежина.',
+            descEn: 'Memory foam insoles that adapt to your foot, with latex and activated charcoal for freshness.',
+            url: './modeli/memosole.html',
+            image: './images/cards/memosole.webp',
+            badgeMk: 'Спортски',
+            badgeEn: 'Sports',
+            keywords: 'memosole мемосол мемориска пена memory foam латекс спортски патики трчање 16012'
+        },
+        {
+            type: 'product',
+            titleMk: 'Active Gel',
+            titleEn: 'Active Gel',
+            descMk: 'Спортска влошка од активен гел и мек плиш за дополнителна амортизација, се сече по големина.',
+            descEn: 'Sports insole made of active gel and soft plush for extra cushioning, cut-to-size.',
+            url: './modeli/active-gel.html',
+            image: './images/cards/active-gel.webp',
+            badgeMk: 'Спортски',
+            badgeEn: 'Sports',
+            keywords: 'active gel активен гел гел плиш спортски сечење амортизација 281111'
+        },
+        {
+            type: 'product',
+            titleMk: 'AnatomiX',
+            titleEn: 'AnatomiX',
+            descMk: 'Премиум спортска влошка од серијата RUN & HIKING со рециклирана антибактериска пена.',
+            descEn: 'Premium sports insole from the RUN & HIKING line with recycled antibacterial foam.',
+            url: './modeli/anatomiX.html',
+            image: './images/cards/anatomiX.webp',
+            badgeMk: 'Спортски',
+            badgeEn: 'Sports',
+            keywords: 'anatomix анатомикс run hiking рециклирана антибактериска пена спортски трчање планинарење 20002'
+        },
+        {
+            type: 'product',
+            titleMk: 'Sport Style',
+            titleEn: 'Sport Style',
+            descMk: 'Анатомска влошка од 100% памучен фротир со латекс пена и пластичен носач за стабилност.',
+            descEn: 'Anatomical insole made of 100% cotton terry with latex foam and a plastic arch support.',
+            url: './modeli/sport-style.html',
+            image: './images/cards/sport-style.webp',
+            badgeMk: 'Спортски',
+            badgeEn: 'Sports',
+            keywords: 'sport style спорт стил памучен фротир латекс пластичен носач карбосан 221069'
+        },
+        {
+            type: 'product',
+            titleMk: 'Sportex',
+            titleEn: 'Sportex',
+            descMk: 'Спортска влошка со воздушно перниче во петата и освежувачки ефект на алое вера.',
+            descEn: 'Sports insole with an air cushion in the heel and a fresh aloe vera effect.',
+            url: './modeli/sportex.html',
+            image: './images/cards/sportex.webp',
+            badgeMk: 'Спортски',
+            badgeEn: 'Sports',
+            keywords: 'sportex спортекс воздушно перниче алое вера антибактериска карбосан 951010'
+        },
+        {
+            type: 'product',
+            titleMk: 'X-TREME',
+            titleEn: 'X-TREME',
+            descMk: 'Премиум 4-слојна спортска влошка со WAP материјал за outdoor активности и планинарење.',
+            descEn: 'Premium 4-layer sports insole with WAP material for outdoor activities and hiking.',
+            url: './modeli/x-treme.html',
+            image: './images/cards/x-treme.webp',
+            badgeMk: 'Спортски',
+            badgeEn: 'Sports',
+            keywords: 'x-treme x treme xтрем wap спортска outdoor планинарење термо филц карбосан 21005'
+        },
+        {
+            type: 'product',
+            titleMk: 'Heel Pad',
+            titleEn: 'Heel Pad',
+            descMk: 'Кожна влошка за пета со карбосан перниче и самолеплив слој за стабилно прилегање.',
+            descEn: 'Leather heel pad with a carbosan cushion and self-adhesive layer for a stable fit.',
+            url: './modeli/heel-pad.html',
+            image: './images/cards/heel-pad.webp',
+            badgeMk: 'Кожни',
+            badgeEn: 'Leather',
+            keywords: 'heel pad хил пад влошка за пета кожа карбосан самолеплива удобност 971031'
+        },
+        {
+            type: 'product',
+            titleMk: 'Heel Pad FIX',
+            titleEn: 'Heel Pad FIX',
+            descMk: 'Кожна влошка за пета со карбосан перниче и зајакнат самолеплив слој.',
+            descEn: 'Leather heel pad with a carbosan cushion and reinforced self-adhesive layer.',
+            url: './modeli/heel-pad-fix.html',
+            image: './images/cards/heel-pad-fix.webp',
+            badgeMk: 'Кожни',
+            badgeEn: 'Leather',
+            keywords: 'heel pad fix хил пад фикс пета кожа карбосан самолеплива зајакнат 291117'
+        },
+        {
+            type: 'product',
+            titleMk: 'Heel Pad Grip',
+            titleEn: 'Heel Pad Grip',
+            descMk: 'Самолепливо кожно перниче за пета за подобро прилегање и стабилност.',
+            descEn: 'Self-adhesive leather heel pad for a better fit and stability.',
+            url: './modeli/heel-pad-grip.html',
+            image: './images/cards/heel-pad-grip.webp',
+            badgeMk: 'Кожни',
+            badgeEn: 'Leather',
+            keywords: 'heel pad grip хил пад грип пета кожа прилегање универзална самолеплива 951013'
+        },
+        {
+            type: 'product',
+            titleMk: 'Topas',
+            titleEn: 'Topas',
+            descMk: '3/4 анатомска кожна влошка за елегантни и деловни обувки со пластичен носач.',
+            descEn: '3/4 anatomical leather insole for dress and business shoes with a plastic arch support.',
+            url: './modeli/topas.html',
+            image: './images/cards/topas.webp',
+            badgeMk: 'Кожни',
+            badgeEn: 'Leather',
+            keywords: 'topas топас 3/4 кратка кожна елегантни чевли мокасини носач 281044'
+        },
+        {
+            type: 'product',
+            titleMk: 'Soft Gel',
+            titleEn: 'Soft Gel',
+            descMk: 'Премиум кожна влошка со гел перничиња, латекс со активен јаглен и пластичен носач.',
+            descEn: 'Premium leather insole with gel cushions, latex with activated charcoal and plastic support.',
+            url: './modeli/soft-gel.html',
+            image: './images/cards/soft-gel.webp',
+            badgeMk: 'Кожни',
+            badgeEn: 'Leather',
+            keywords: 'soft gel софт гел кожна гел перничиња премиум латекс носач 281108'
+        },
+        {
+            type: 'product',
+            titleMk: 'Vital',
+            titleEn: 'Vital',
+            descMk: 'Анатомска кожна влошка од перфорирана кожа со латекс и карбосан перниче.',
+            descEn: 'Anatomical leather insole made of perforated leather with latex and a carbosan heel pad.',
+            url: './modeli/vital.html',
+            image: './images/cards/vital.webp',
+            badgeMk: 'Кожни',
+            badgeEn: 'Leather',
+            keywords: 'vital витал кожна перфорирана латекс карбосан анатомска 271104'
+        },
+        {
+            type: 'product',
+            titleMk: 'Relax',
+            titleEn: 'Relax',
+            descMk: 'Анатомска кожна влошка од перфорирана јагнешка кожа со латекс и пластичен носач.',
+            descEn: 'Anatomical leather insole made of perforated lambskin with latex and a plastic arch support.',
+            url: './modeli/relax.html',
+            image: './images/cards/relax.webp',
+            badgeMk: 'Кожни',
+            badgeEn: 'Leather',
+            keywords: 'relax релакс кожна јагнешка кожа перфорирана латекс носач 251090'
+        },
+        {
+            type: 'product',
+            titleMk: 'Simona',
+            titleEn: 'Simona',
+            descMk: 'Летни памучни влошки со латекс со активен јаглен и ароматична карбосан пена.',
+            descEn: 'Summer cotton insoles with latex and activated charcoal, plus aromatic carbosan foam.',
+            url: './modeli/simona.html',
+            image: './images/cards/simona.webp',
+            badgeMk: 'Летни',
+            badgeEn: 'Summer',
+            keywords: 'simona симона летни памучни активен јаглен ароматична свежина 981034'
+        },
+        {
+            type: 'product',
+            titleMk: 'Carbon',
+            titleEn: 'Carbon',
+            descMk: 'Летни влошки со активен јаглен, анти-габични и перфорирани за вентилација.',
+            descEn: 'Summer insoles with activated charcoal, anti-fungal and perforated for ventilation.',
+            url: './modeli/carbon.html',
+            image: './images/cards/carbon.webp',
+            badgeMk: 'Летни',
+            badgeEn: 'Summer',
+            keywords: 'carbon карбон летни активен јаглен анти-габични перфорирани универзална 201063'
+        },
+        {
+            type: 'product',
+            titleMk: 'Thermo Alu',
+            titleEn: 'Thermo Alu',
+            descMk: 'Зимска влошка од 100% волна со латекс пена и алуминиумска фолија за топлинска изолација.',
+            descEn: 'Winter insole made of 100% wool with latex foam and aluminium foil for thermal insulation.',
+            url: './modeli/thermo-alu.html',
+            image: './images/cards/thermo_alu.webp',
+            badgeMk: 'Зимски',
+            badgeEn: 'Winter',
+            keywords: 'thermo alu термо алу зимска волна алуминиум топлина чизми студ 201062'
+        },
+        {
+            type: 'product',
+            titleMk: 'Hunter Outdoor',
+            titleEn: 'Hunter Outdoor',
+            descMk: 'Анатомска влошка со Viscolat мемориска пена, PES филц и алуминиумска фолија за пролет/есен.',
+            descEn: 'Anatomical insole with Viscolat memory foam, PES felt and aluminium foil for spring/autumn.',
+            url: './modeli/hunter-outdoor.html',
+            image: './images/cards/hunter-outdoor.webp',
+            badgeMk: 'HUNTER',
+            badgeEn: 'HUNTER',
+            keywords: 'hunter outdoor хантер аутдор viscolat мемориска пена филц алуминиум лов планинарење 140402'
+        },
+        {
+            type: 'product',
+            titleMk: 'Hunter Flex',
+            titleEn: 'Hunter Flex',
+            descMk: 'Термо влошка со Cambrella ткаенина, алуминиумска фолија и филц за зимски активности.',
+            descEn: 'Thermal insole with Cambrella fabric, aluminium foil and felt for winter activities.',
+            url: './modeli/hunter-flex.html',
+            image: './images/cards/hunter-flex.webp',
+            badgeMk: 'HUNTER',
+            badgeEn: 'HUNTER',
+            keywords: 'hunter flex хантер флекс термо cambrella алуминиум филц зимски лов риболов 140406'
+        },
+        {
+            type: 'product',
+            titleMk: 'Hunter CAMO',
+            titleEn: 'Hunter CAMO',
+            descMk: 'Камуфлажна влошка со перфорирана PES ткаенина и латекс пена со активен јаглен.',
+            descEn: 'Camouflage insole with perforated PES fabric and latex foam with activated charcoal.',
+            url: './modeli/hunter-camo.html',
+            image: './images/cards/hunter-camo.webp',
+            badgeMk: 'HUNTER',
+            badgeEn: 'HUNTER',
+            keywords: 'hunter camo хантер камо камуфлажна pes ткаенина латекс активен јаглен лов 140405'
+        },
+        {
+            type: 'product',
+            titleMk: 'Duck',
+            titleEn: 'Duck',
+            descMk: 'Детски анатомски влошки од 100% памук со латекс, пластичен и карбосан калап за правилен развој.',
+            descEn: 'Kids anatomical insoles made of 100% cotton with latex, plastic and carbosan mold for healthy growth.',
+            url: './modeli/duck.html',
+            image: './images/cards/duck.webp',
+            badgeMk: 'Детски',
+            badgeEn: 'Kids',
+            keywords: 'duck дак детски памук латекс карбосан анатомски развој училиште 201068'
+        },
         {
             type: 'info',
             titleMk: 'Водич за броеви и избор на модел',
@@ -1615,19 +2003,33 @@ if (compareToggleBtn && compareModelsSection) {
         },
         {
             type: 'info',
-            titleMk: 'MONETA® Технолошки Системи',
+            titleMk: 'МОНЕТА® Технолошки Системи',
             titleEn: 'MONETA® Technological Systems',
             descMk: 'Пет иновативни анатомски технологии: Anatomic, Absorb, Memory, Ortho и Thermo',
             descEn: 'Five innovative anatomical technologies: Anatomic, Absorb, Memory, Ortho & Thermo',
             url: './sistem.html',
             icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC1752" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
-            badgeMk: 'MONETA Систем',
+            badgeMk: 'МОНЕТА Систем',
             badgeEn: 'MONETA System',
             keywords: 'монета систем moneta sistem анатомски технологии anatomic absorb memory ortho thermo замор болка свод пета'
         }
     ];
 
     let focusedIndex = -1;
+
+    // ==== Паметно пребарување: кирилица ↔ латиница + азбучен редослед ====
+    const CYR_TO_LAT = {
+        'а':'a','б':'b','в':'v','г':'g','д':'d','ѓ':'gj','е':'e','ж':'z','з':'z','ѕ':'dz','и':'i','ј':'j','к':'k','л':'l','љ':'lj','м':'m','н':'n','њ':'nj','о':'o','п':'p','р':'r','с':'s','т':'t','ќ':'k','у':'u','ф':'f','х':'h','ц':'c','ч':'c','џ':'dz','ш':'s',
+        'А':'A','Б':'B','В':'V','Г':'G','Д':'D','Ѓ':'Gj','Е':'E','Ж':'Z','З':'Z','Ѕ':'Dz','И':'I','Ј':'J','К':'K','Л':'L','Љ':'Lj','М':'M','Н':'N','Њ':'Nj','О':'O','П':'P','Р':'R','С':'S','Т':'T','Ќ':'K','У':'U','Ф':'F','Х':'H','Ц':'C','Ч':'C','Џ':'Dz','Ш':'S'
+    };
+    const transliterate = (s) => String(s || '').replace(/[\u0400-\u04FF]/g, (ch) => CYR_TO_LAT[ch] || ch);
+    const searchNormalize = (s) => transliterate(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+    // Подготви пребарувачка основа за секој резултат (оригинал + транслитерација)
+    searchItems.forEach((item) => {
+        const parts = [item.titleMk, item.titleEn, item.descMk, item.descEn, item.keywords || '', item.badgeMk || '', item.badgeEn || ''];
+        item._search = searchNormalize(parts.join(' '));
+    });
 
     function getCurrentLang() {
         return document.documentElement.lang === 'en' ? 'en' : 'mk';
@@ -1648,7 +2050,6 @@ if (compareToggleBtn && compareModelsSection) {
         searchModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
         searchInput.value = '';
-        searchClear.style.display = 'none';
         focusedIndex = -1;
     }
 
@@ -1674,18 +2075,9 @@ if (compareToggleBtn && compareModelsSection) {
         }
     });
 
-    // Clear Button
-    searchClear.addEventListener('click', () => {
-        searchInput.value = '';
-        searchClear.style.display = 'none';
-        searchInput.focus();
-        renderResults('');
-    });
-
     // Input event
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value;
-        searchClear.style.display = query.length > 0 ? 'flex' : 'none';
         focusedIndex = -1;
         renderResults(query.trim());
     });
@@ -1695,7 +2087,6 @@ if (compareToggleBtn && compareModelsSection) {
         tag.addEventListener('click', () => {
             const query = tag.dataset.query;
             searchInput.value = query;
-            searchClear.style.display = 'flex';
             searchInput.focus();
             renderResults(query);
         });
@@ -1738,16 +2129,11 @@ if (compareToggleBtn && compareModelsSection) {
     // Render Logic
     function renderResults(query) {
         const lang = getCurrentLang();
-        const q = query.toLowerCase();
+        const q = searchNormalize(query);
 
         let filtered = searchItems;
         if (q) {
-            filtered = searchItems.filter(item => {
-                const title = lang === 'en' ? item.titleEn.toLowerCase() : item.titleMk.toLowerCase();
-                const desc = lang === 'en' ? item.descEn.toLowerCase() : item.descMk.toLowerCase();
-                const keywords = item.keywords.toLowerCase();
-                return title.includes(q) || desc.includes(q) || keywords.includes(q);
-            });
+            filtered = searchItems.filter(item => (item._search || '').includes(q));
         }
 
         if (filtered.length === 0) {
@@ -1768,6 +2154,13 @@ if (compareToggleBtn && compareModelsSection) {
         const products = filtered.filter(i => i.type === 'product');
         const infos = filtered.filter(i => i.type === 'info');
 
+        // Азбучен редослед на производите (по јазикот на приказ)
+        products.sort((a, b) => {
+            const ta = lang === 'en' ? a.titleEn : a.titleMk;
+            const tb = lang === 'en' ? b.titleEn : b.titleMk;
+            return ta.localeCompare(tb, lang === 'en' ? 'en' : 'mk');
+        });
+
         let html = '';
 
         if (products.length > 0) {
@@ -1786,9 +2179,9 @@ if (compareToggleBtn && compareModelsSection) {
                 const badge = lang === 'en' ? item.badgeEn : item.badgeMk;
 
                 html += `
-                    <a href="${item.url}" class="search-result-item" data-search-link>
+                    <a href="${resolveUrl(item.url)}" class="search-result-item" data-search-link>
                         <div class="search-result-item__thumb">
-                            <img src="${item.image}" alt="${title}" loading="lazy">
+                            <img src="${resolveImg(item.image)}" alt="${title}" loading="lazy">
                         </div>
                         <div class="search-result-item__info">
                             <div class="search-result-item__title">
@@ -1824,7 +2217,7 @@ if (compareToggleBtn && compareModelsSection) {
                 const isAction = !!item.action;
 
                 html += `
-                    <a href="${item.url || '#'}" class="search-result-item" ${isAction ? `data-search-action="${item.action}"` : ''} data-search-link>
+                    <a href="${resolveUrl(item.url)}" class="search-result-item" ${isAction ? `data-search-action="${item.action}"` : ''} data-search-link>
                         <div class="search-result-item__thumb" style="color: var(--pink);">
                             ${item.icon}
                         </div>
@@ -1916,6 +2309,8 @@ if (compareToggleBtn && compareModelsSection) {
     function updateCategoryCardsSequentialFocus() {
         const categoryCards = document.querySelectorAll('.categories__grid .card');
         if (!categoryCards.length) return;
+        // Поврзани производи на модел-страниците — без фокус/скок ефект на картичките
+        if (document.querySelector('.model-layout')) return;
 
         const isMobile = window.innerWidth <= 860 || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
@@ -1990,3 +2385,321 @@ if (compareToggleBtn && compareModelsSection) {
 console.log('%c MONETA Macedonia 🦶 ', 'background:#EC1752;color:#fff;font-size:20px;font-weight:bold;padding:10px 20px;border-radius:8px;');
 console.log('%c Анатомски вложки - Подобар чекор, помал замор', 'color:#201F26;font-size:14px;');
 console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size:12px;');
+
+// ========================================
+// CART SYSTEM (localStorage) — 2026-08-03
+// ========================================
+(function initCartSystem() {
+    const KEY = 'moneta_cart';
+
+    const getCart = () => {
+        try {
+            const c = JSON.parse(localStorage.getItem(KEY));
+            return c && typeof c === 'object' ? c : {};
+        } catch (e) {
+            return {};
+        }
+    };
+    const setCart = (cart) => {
+        try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) { /* ignore */ }
+    };
+    const totalQty = (cart) => Object.keys(cart).reduce((sum, k) => sum + (cart[k].qty || 0), 0);
+
+    // ==== Бесплатна достава (1000+ ден.) + Достава за 48ч ====
+    const FREE_SHIP_THRESHOLD = 1000;
+    const subtotal = (cart) => Object.keys(cart).reduce((s, k) => s + (cart[k].qty || 0) * (cart[k].price || 0), 0);
+
+    const renderFreeShip = (cart) => {
+        const subt = subtotal(cart);
+        const remaining = Math.max(0, FREE_SHIP_THRESHOLD - subt);
+        const pct = Math.min(100, Math.round((subt / FREE_SHIP_THRESHOLD) * 100));
+        const isEn = document.documentElement.lang === 'en';
+
+        document.querySelectorAll('[data-free-ship]').forEach((block) => {
+            const textEl = block.querySelector('[data-free-ship-text]');
+            const fillEl = block.querySelector('[data-free-ship-fill]');
+            if (remaining > 0) {
+                block.classList.remove('is-reached');
+                if (textEl) {
+                    textEl.textContent = isEn
+                        ? `Free shipping for orders over ${FREE_SHIP_THRESHOLD} MKD — add ${remaining.toLocaleString('mk-MK')} MKD more.`
+                        : `Бесплатна достава за нарачки над ${FREE_SHIP_THRESHOLD.toLocaleString('mk-MK')} ден. — додадете уште ${remaining.toLocaleString('mk-MK')} ден.`;
+                }
+            } else {
+                block.classList.add('is-reached');
+                if (textEl) {
+                    textEl.textContent = isEn
+                        ? '🎉 You have FREE shipping!'
+                        : '🎉 Имате БЕСПЛАТНА достава!';
+                }
+            }
+            if (fillEl) fillEl.style.width = pct + '%';
+        });
+    };
+
+    // Мотивациски popup — ИСКЛУЧИВО на cart.html, кога сметката е НАД 500 ден. (а под 1000)
+    const maybeShowFreeShipPopup = (cart) => {
+        if (!/cart\.html/.test(window.location.pathname)) return;
+        if (window.__freeshipPopupShown) return;
+        const subt = subtotal(cart);
+        if (subt <= 500 || subt >= FREE_SHIP_THRESHOLD) return;
+        window.__freeshipPopupShown = true;
+        const remaining = FREE_SHIP_THRESHOLD - subt;
+        const isEn = document.documentElement.lang === 'en';
+        const IS_MODELI = /\/modeli\//.test(window.location.pathname);
+        const base = IS_MODELI ? '../' : './';
+
+        let popup = document.getElementById('freeshipPopup');
+        if (popup) popup.remove();
+        popup = document.createElement('div');
+        popup.id = 'freeshipPopup';
+        popup.className = 'freeship-popup';
+        popup.innerHTML = `
+            <div class="freeship-popup__content">
+                <div class="freeship-popup__icon">🎁</div>
+                <div class="freeship-popup__text">
+                    <strong>${isEn ? 'Only ' + remaining.toLocaleString('mk-MK') + ' MKD to FREE delivery!' : 'Само уште ' + remaining.toLocaleString('mk-MK') + ' ден. до БЕСПЛАТНА достава!'}</strong>
+                    <span>${isEn ? 'Add one more insole and the delivery is on us.' : 'Додадете уште една влошка и доставата е на нас.'}</span>
+                    <a href="${base}index.html#kategorii" class="freeship-popup__btn">${isEn ? 'See insoles →' : 'Види ги влошките →'}</a>
+                </div>
+                <button type="button" class="freeship-popup__close" aria-label="Затвори">×</button>
+            </div>`;
+        document.body.appendChild(popup);
+        const closeBtn = popup.querySelector('.freeship-popup__close');
+        if (closeBtn) closeBtn.addEventListener('click', () => popup.remove());
+        setTimeout(() => { if (popup.parentNode) popup.remove(); }, 12000);
+    };
+
+    // Нав-бар баџ — вкупен број на сите артикли во кошничката
+    const renderNavBadges = () => {
+        const cart = getCart();
+        const total = totalQty(cart);
+        document.querySelectorAll('[data-cart-badge]').forEach((badge) => {
+            badge.textContent = total;
+            badge.style.display = total > 0 ? 'flex' : 'none';
+        });
+    };
+
+    // Бројач на модел-страница — само за овој модел
+    const renderModelQty = () => {
+        const cart = getCart();
+        document.querySelectorAll('[data-model]').forEach((ctl) => {
+            const slug = ctl.getAttribute('data-model');
+            const qty = (cart[slug] || {}).qty || 0;
+            const qtyEl = ctl.querySelector('[data-cart-qty]');
+            const minusEl = ctl.querySelector('[data-cart-minus]');
+            if (qtyEl) {
+                qtyEl.textContent = qty;
+                qtyEl.style.display = qty > 0 ? 'block' : 'none';
+            }
+            if (minusEl) minusEl.style.display = qty > 0 ? 'flex' : 'none';
+        });
+    };
+
+    const updateModel = (ctl, delta) => {
+        const slug = ctl.getAttribute('data-model');
+        if (!slug) return;
+        const cart = getCart();
+        const item = cart[slug] || {
+            slug: slug,
+            code: ctl.getAttribute('data-code') || slug,
+            price: parseFloat(ctl.getAttribute('data-price')) || 0,
+            nameMk: ctl.getAttribute('data-name-mk') || slug,
+            nameEn: ctl.getAttribute('data-name-en') || slug,
+            qty: 0
+        };
+        const next = Math.max(0, (item.qty || 0) + delta);
+        if (next === 0) {
+            delete cart[slug];
+        } else {
+            item.qty = next;
+            cart[slug] = item;
+        }
+        setCart(cart);
+        renderModelQty();
+        renderNavBadges();
+        renderFreeShip(cart);
+        maybeShowFreeShipPopup(cart);
+        if (window.MonetaCartOnChange) window.MonetaCartOnChange(cart);
+    };
+
+    const removeItem = (slug) => {
+        const cart = getCart();
+        delete cart[slug];
+        setCart(cart);
+        renderModelQty();
+        renderNavBadges();
+        renderFreeShip(cart);
+        maybeShowFreeShipPopup(cart);
+        if (window.MonetaCartOnChange) window.MonetaCartOnChange(cart);
+    };
+
+    // Врзување преку делегација — работи и за динамички додадени степери (cart.html)
+    document.addEventListener('click', (e) => {
+        const addBtn = e.target.closest('[data-cart-add]');
+        const minusBtn = e.target.closest('[data-cart-minus]');
+        const removeBtn = e.target.closest('[data-cart-remove]');
+        if (removeBtn) {
+            const itemEl = removeBtn.closest('[data-cart-item]');
+            if (itemEl) removeItem(itemEl.getAttribute('data-cart-item'));
+            return;
+        }
+        if (addBtn) {
+            const ctl = addBtn.closest('[data-model]');
+            if (ctl) updateModel(ctl, 1);
+            return;
+        }
+        if (minusBtn) {
+            const ctl = minusBtn.closest('[data-model]');
+            if (ctl) updateModel(ctl, -1);
+        }
+    });
+
+    renderModelQty();
+    renderNavBadges();
+    renderFreeShip(getCart());
+    maybeShowFreeShipPopup(getCart());
+
+    // Јавно API за cart.html
+    window.MonetaCart = { getCart: getCart, setCart: setCart, totalQty: totalQty, subtotal: subtotal, updateModel: updateModel, removeItem: removeItem, renderNavBadges: renderNavBadges, renderFreeShip: renderFreeShip, FREE_SHIP_THRESHOLD: FREE_SHIP_THRESHOLD };
+})();
+
+// ========================================
+// PRODUCT FINDER QUIZ (2026-08-03) — „Најди го твојот совршен пар“
+// ========================================
+(function initProductFinder() {
+    const section = document.getElementById('productFinder');
+    if (!section) return;
+
+    const steps = [...section.querySelectorAll('.quiz-step')];
+    const bar = section.querySelector('#quizBar');
+    const stepLabel = section.querySelector('#quizStepLabel');
+    const result = section.querySelector('#quizResult');
+    const grid = section.querySelector('#quizResultGrid');
+    const prevBtn = section.querySelector('#quizPrev');
+    const nextBtn = section.querySelector('#quizNext');
+    const restartBtn = section.querySelector('#quizRestart');
+
+    const answers = {};
+    let current = 1;
+
+    const MODELS = {
+        'memosole':       { cat: ['sport'],  pain: ['celo', 'nema'], prio: ['amort', 'prirodni'], price: 400, nameMk: 'MEMOSOLE', nameEn: 'MEMOSOLE' },
+        'active-gel':     { cat: ['sport'],  pain: ['peta', 'nema'], prio: ['amort'], price: 620, nameMk: 'Active Gel', nameEn: 'Active Gel' },
+        'anatomiX':       { cat: ['sport'],  pain: ['lac', 'nema'], prio: ['poddrshka'], price: 430, nameMk: 'AnatomiX', nameEn: 'AnatomiX' },
+        'sport-style':    { cat: ['sport'],  pain: ['nema'], prio: ['cena', 'prirodni'], price: 300, nameMk: 'Sport Style', nameEn: 'Sport Style' },
+        'sportex':        { cat: ['sport'],  pain: ['nema'], prio: ['cena', 'fresina'], price: 230, nameMk: 'Sportex', nameEn: 'Sportex' },
+        'x-treme':        { cat: ['sport'],  pain: ['peta', 'celo'], prio: ['amort', 'poddrshka'], price: 420, nameMk: 'X-TREME', nameEn: 'X-TREME' },
+        'heel-pad':       { cat: ['kozni'],  pain: ['peta'], prio: ['poddrshka'], price: 250, nameMk: 'Heel Pad', nameEn: 'Heel Pad' },
+        'heel-pad-fix':   { cat: ['kozni'],  pain: ['peta'], prio: ['poddrshka'], price: 210, nameMk: 'Heel Pad FIX', nameEn: 'Heel Pad FIX' },
+        'heel-pad-grip':  { cat: ['kozni'],  pain: ['peta'], prio: ['cena', 'poddrshka'], price: 100, nameMk: 'Heel Pad Grip', nameEn: 'Heel Pad Grip' },
+        'topas':          { cat: ['kozni'],  pain: ['lac', 'peta'], prio: ['poddrshka', 'prirodni'], price: 490, nameMk: 'Topas', nameEn: 'Topas' },
+        'soft-gel':       { cat: ['kozni'],  pain: ['celo', 'peta'], prio: ['amort', 'fresina'], price: 820, nameMk: 'Soft Gel', nameEn: 'Soft Gel' },
+        'vital':          { cat: ['kozni'],  pain: ['lac'], prio: ['poddrshka'], price: 450, nameMk: 'Vital', nameEn: 'Vital' },
+        'relax':          { cat: ['kozni'],  pain: ['celo', 'lac'], prio: ['prirodni', 'amort'], price: 570, nameMk: 'Relax', nameEn: 'Relax' },
+        'simona':         { cat: ['letni'],  pain: ['nema', 'celo'], prio: ['fresina', 'prirodni', 'cena'], price: 120, nameMk: 'Simona', nameEn: 'Simona' },
+        'carbon':         { cat: ['letni'],  pain: ['celo', 'nema'], prio: ['fresina', 'cena'], price: 170, nameMk: 'Carbon', nameEn: 'Carbon' },
+        'thermo-alu':     { cat: ['zimski'], pain: ['nema', 'celo'], prio: ['prirodni'], price: 210, nameMk: 'Thermo Alu', nameEn: 'Thermo Alu' },
+        'hunter-outdoor': { cat: ['hunter'], pain: ['lac', 'peta'], prio: ['poddrshka'], price: 330, nameMk: 'Hunter Outdoor', nameEn: 'Hunter Outdoor' },
+        'hunter-flex':    { cat: ['hunter'], pain: ['celo'], prio: ['amort'], price: 330, nameMk: 'Hunter Flex', nameEn: 'Hunter Flex' },
+        'hunter-camo':    { cat: ['hunter'], pain: ['peta', 'lac'], prio: ['poddrshka'], price: 330, nameMk: 'Hunter CAMO', nameEn: 'Hunter CAMO' },
+        'duck':           { cat: ['detski'], pain: ['nema', 'celo'], prio: ['prirodni', 'cena'], price: 490, nameMk: 'Duck', nameEn: 'Duck' },
+    };
+
+    function lang() {
+        return document.documentElement.lang === 'en' ? 'en' : 'mk';
+    }
+
+    function showStep(n) {
+        current = Math.min(Math.max(1, n), steps.length);
+        steps.forEach((s) => s.classList.toggle('is-active', +s.dataset.step === current));
+        if (result) result.style.display = 'none';
+        if (bar) bar.style.width = ((current - 1) / steps.length * 100 + 25) + '%';
+        if (stepLabel) stepLabel.textContent = current + ' / ' + steps.length;
+        if (prevBtn) prevBtn.style.visibility = current === 1 ? 'hidden' : 'visible';
+        steps.forEach((s) => {
+            const val = answers[s.dataset.step];
+            s.querySelectorAll('.quiz-option').forEach((o) => o.classList.toggle('is-selected', o.dataset.val === val));
+        });
+    }
+
+    function scoreModels() {
+        const q1 = answers['1'] || 'nema';
+        const q2 = answers['2'] || '4-8';
+        const q3 = answers['3'] || 'sport';
+        const q4 = answers['4'] || 'poddrshka';
+        const scored = Object.entries(MODELS).map(([slug, m]) => {
+            let score = 0;
+            if (m.cat.includes(q3)) score += 3;
+            if (m.pain.includes(q1)) score += 2;
+            if (m.prio.includes(q4)) score += 2;
+            if (q2 === '8+' && (m.pain.includes('celo') || q1 === 'peta' || q1 === 'lac')) score += 1;
+            return { slug, ...m, score };
+        });
+        scored.sort((a, b) => b.score - a.score || a.price - b.price);
+        return scored;
+    }
+
+    function showResult() {
+        const top = scoreModels().slice(0, 3);
+        const isEn = lang() === 'en';
+        if (grid) {
+            grid.innerHTML = top.map((m) => `
+                <a href="modeli/${m.slug}.html" class="quiz-result__card">
+                    <img src="images/cards/${m.slug}.webp" alt="${isEn ? m.nameEn : m.nameMk}" width="200" height="150" loading="lazy">
+                    <strong>${isEn ? m.nameEn : m.nameMk}</strong>
+                    <span>${m.price} ${isEn ? 'MKD' : 'ден.'}</span>
+                    <em>${isEn ? 'View →' : 'Види →'}</em>
+                </a>`).join('');
+        }
+        steps.forEach((s) => s.classList.remove('is-active'));
+        if (result) result.style.display = 'block';
+        if (bar) bar.style.width = '100%';
+        if (stepLabel) stepLabel.textContent = '✓';
+        if (prevBtn) prevBtn.style.visibility = 'hidden';
+    }
+
+    section.addEventListener('click', (e) => {
+        const opt = e.target.closest('.quiz-option');
+        if (opt) {
+            const stepEl = opt.closest('.quiz-step');
+            answers[stepEl.dataset.step] = opt.dataset.val;
+            stepEl.querySelectorAll('.quiz-option').forEach((o) => o.classList.toggle('is-selected', o === opt));
+            if (current < steps.length) {
+                setTimeout(() => showStep(current + 1), 260);
+            } else {
+                showResult();
+            }
+            return;
+        }
+        if (e.target.closest('#quizPrev')) { showStep(current - 1); return; }
+        if (e.target.closest('#quizNext')) {
+            if (current < steps.length) showStep(current + 1);
+            return;
+        }
+        if (e.target.closest('#quizRestart')) {
+            Object.keys(answers).forEach((k) => delete answers[k]);
+            showStep(1);
+        }
+    });
+
+    // CTA копче „Најди го твојот совршен пар“ → квиз
+    const trigger = document.getElementById('quizFinderTrigger');
+    if (trigger) {
+        trigger.addEventListener('click', () => section.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    }
+
+    // Кога ќе се смени јазикот — прикажи го тековниот чекор со новите преводи
+    if (window.MonetaOnLangChange) {
+        window.MonetaOnLangChange(() => {
+            const wasResult = result && result.style.display === 'block';
+            if (wasResult) {
+                showResult();
+            } else {
+                steps.forEach((s) => s.classList.toggle('is-active', +s.dataset.step === current));
+            }
+        });
+    }
+
+    showStep(1);
+})();

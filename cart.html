@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>МОНЕТА — Кошничка</title>
+    <meta name="description" content="МОНЕТА кошничка – преглед на вашата нарачка на анатомски влошки." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="МОНЕТА — Анатомски вложки" />
+    <meta property="og:title" content="МОНЕТА — Кошничка" />
+    <meta property="og:description" content="МОНЕТА кошничка – преглед на вашата нарачка на анатомски влошки." />
+    <meta property="og:url" content="https://insoles.mk/cart.html" />
+    <meta property="og:image" content="./images/cards/Kozni.webp" />
+    <meta property="og:locale" content="mk_MK" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="МОНЕТА — Кошничка" />
+    <meta name="twitter:description" content="МОНЕТА кошничка – преглед на вашата нарачка на анатомски влошки." />
+    <meta name="twitter:image" content="./images/cards/Kozni.webp" />
+    <meta name="theme-color" content="#EC1752" />
+    <link rel="canonical" href="https://insoles.mk/cart.html" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "МОНЕТА — Кошничка",
+      "description": "МОНЕТА кошничка – преглед на вашата нарачка на анатомски влошки.",
+      "url": "https://insoles.mk/cart.html"
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Manrope:wght@700&display=swap" rel="stylesheet" />
+    <link href="./vendor/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="./vendor/aos.css" /></noscript>
+    <link rel="icon" type="image/svg+xml" href="./images/favicon/favicon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+        /* Cart page specific styles */
+        .cart-section { padding: 20px 24px 80px; }
+        .cart__inner { max-width: 860px; margin: 0 auto; }
+        .cart__frame { background: #fff; border: 1px solid #efe9e6; border-radius: 22px; padding: 24px 26px; box-shadow: 0 18px 50px rgba(0,0,0,.08); }
+        .cart__empty { text-align: center; padding: 40px 16px; }
+        .cart__empty svg { color: #d8d0cb; margin-bottom: 10px; }
+        .cart__empty h3 { margin: 0 0 6px; font-family: Manrope, 'Plus Jakarta Sans', sans-serif; }
+        .cart__empty p { margin: 0 0 18px; color: #888; font-size: 14px; }
+        .cart__item { display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #f3efec; }
+        .cart__item:last-of-type { border-bottom: none; }
+        .cart__item img { width: 64px; height: 64px; object-fit: cover; border-radius: 12px; border: 1px solid #f0eae6; background: #fff; }
+        .cart__item-name { font-weight: 700; font-size: 15px; color: #2b2b33; font-family: Manrope, 'Plus Jakarta Sans', sans-serif; }
+        .cart__item-code { font-size: 12px; color: #999; margin-top: 2px; }
+        .cart__item-price { font-size: 12.5px; color: #666; margin-top: 3px; }
+        .cart__item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+        .cart__line-total { font-weight: 800; font-size: 15px; color: #D4144A; }
+        .cart__remove { background: none; border: none; color: #b3a9a3; cursor: pointer; font-size: 12px; text-decoration: underline; padding: 2px; }
+        .cart__remove:hover { color: #D4144A; }
+        .cart__summary { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; padding-top: 18px; border-top: 2px solid #f3efec; }
+        .cart__total-row { display: flex; justify-content: space-between; align-items: center; }
+        .cart__total-label { font-size: 15px; color: #666; }
+        .cart__total-value { font-size: 24px; font-weight: 800; color: #D4144A; font-family: Manrope, 'Plus Jakarta Sans', sans-serif; }
+        .cart__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .cart__actions .hero__cta { flex: 1; min-width: 180px; }
+        .cart__count-badge { font-size: 12.5px; color: #999; }
+        @media (max-width: 560px) {
+            .cart__item { grid-template-columns: 52px 1fr auto; gap: 10px; }
+            .cart__item img { width: 52px; height: 52px; }
+            .cart__frame { padding: 18px 16px; }
+        }
+        /* Линкови во кошничката кон производот */
+        .cart__item-thumb { display: block; line-height: 0; }
+        .cart__item-thumb img { transition: transform .2s ease; }
+        .cart__item-thumb:hover img { transform: scale(1.05); }
+        .cart__item-name { text-decoration: none; color: #2b2b33; }
+        .cart__item-name:hover { color: #D4144A; }
+    </style>
+</head>
+<body class="page-sistem">
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar navbar--sistem">
+        <div class="navbar__inner">
+            <a href="./index.html" class="navbar__logo">
+                <img src="./images/moneta-logo.svg" alt="MONETA" width="132" height="37">
+            </a>
+            <div class="navbar__right">
+                <button type="button" class="navbar__search-btn" id="searchTrigger" aria-label="Пребарај" title="Пребарај" data-mk-aria="Пребарај" data-en-aria="Search" data-mk-title="Пребарај" data-en-title="Search">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span class="search-btn__label" data-mk="Пребарај..." data-en="Search...">Пребарај...</span>
+                </button>
+                <ul class="navbar__links" id="navLinks">
+                    <li><a href="./index.html#kategorii" data-mk="Влошки" data-en="Insoles">Влошки</a></li>
+                    <li><a href="./sistem.html" data-mk="МОНЕТА систем" data-en="MONETA System">МОНЕТА систем</a></li>
+                                        <li class="navbar__guide-item">
+                        <a href="./kviz.html" class="navbar__guide-btn">
+                            <span data-mk="МОНЕТА водич за влошки" data-en="MONETA insole guide">МОНЕТА водич за влошки</span>
+                        </a>
+                    </li>
+                    <li><a href="./index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                                        <li class="navbar__coupon-item">
+                        <button type="button" class="navbar__coupon" id="promoTrigger" aria-label="Промокод" title="Промокод" data-mk-aria="Промокод" data-en-aria="Promo Code" data-mk-title="Промокод" data-en-title="Promo Code">
+                            <img src="./images/icons/coupon.webp" alt="Промокод" width="33" height="33" class="navbar__coupon-icon" loading="lazy" decoding="async">
+                        </button>
+                    </li>
+                    <li>
+                        <a href="./cart.html" class="navbar__cart" aria-label="Кошница" title="Кошница" data-mk-aria="Кошница" data-en-aria="Cart" data-mk-title="Кошница" data-en-title="Cart">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"/>
+                                <circle cx="20" cy="21" r="1"/>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                            </svg>
+                            <span class="navbar__cart-badge" data-cart-badge>0</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="lang-switcher" id="langSwitcher">
+                    <button type="button" class="lang-btn is-active" data-lang="mk" aria-label="Македонски" aria-pressed="true">MK</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+                </div>
+                <button class="navbar__toggle" id="navToggle" aria-label="Мени">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== CART HERO ===== -->
+    <section class="system-hero">
+        <div class="system-hero__bg-glow"></div>
+        <div class="system-hero__inner">
+            <div class="system-hero__breadcrumbs">
+                <a href="./index.html" data-mk="Почетна" data-en="Home">Почетна</a>
+                <span>/</span>
+                <span data-mk="Кошничка" data-en="Cart">Кошничка</span>
+            </div>
+            <div class="system-hero__badge" data-mk="🛒 ВАШАТА НАРАЧКА" data-en="🛒 YOUR ORDER">🛒 ВАШАТА НАРАЧКА</div>
+            <h1 class="system-hero__title" data-mk="Кошничка" data-en="Cart">Кошничка</h1>
+            <p class="system-hero__subtitle" data-mk="Преглед на производите што сте ги избрале." data-en="A review of the products you have selected.">Преглед на производите што сте ги избрале.</p>
+        </div>
+    </section>
+
+    <!-- ===== CART CONTENT ===== -->
+    <section class="cart-section">
+        <div class="cart__inner">
+            <div class="cart__frame" id="cartContainer"></div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__inner-wrap">
+            <div class="footer__contact">
+                    <span class="social__label" data-mk="Контакт:" data-en="Contact:">Контакт:</span>
+                    <p class="footer__contact-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-mk="Скопје, ул. св. Кирил и Методиј бр. 20" data-en="Skopje, 20 Sv. Kiril i Metodij St.">Скопје, ул. св. Кирил и Методиј бр. 20</span></p>
+                    <p class="footer__contact-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+38976454957">+389 76 454 957</a> / <a href="tel:+38923230088">+389 2 323 00 88</a></p>
+                    <p class="footer__contact-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@calivita.mk">info@calivita.mk</a></p>
+                    <p class="footer__contact-line"><span data-mk="МАК-ФИТ ДООЕЛ (Calivita)" data-en="MAK-FIT DOOEL (Calivita)">МАК-ФИТ ДООЕЛ (Calivita)</span></p>
+                </div>
+
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <img src="./images/moneta-logo.svg" alt="MONETA" width="100" height="28">
+                    <p data-mk="&copy; 2026 МОНЕТА. Сите права задржани." data-en="&copy; 2026 MONETA. All rights reserved.">&copy; 2026 МОНЕТА. Сите права задржани.</p>
+                <p class="footer__tagline" data-mk="Секој чекор заслужува удобност." data-en="Every step deserves comfort.">Секој чекор заслужува удобност.</p>
+                </div>
+
+                <div class="footer__right">
+                    <ul class="footer__links">
+                    <li><a href="./index.html#prednosti" data-mk="За нас" data-en="About Us">За нас</a></li>
+                    <li><a href="./index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li><a href="./dostava.html" data-mk="Достава и плаќање" data-en="Delivery &amp; Payment">Достава и плаќање</a></li>
+                    </ul>
+
+                    <div class="footer__legal-links">
+                        <a href="./uslovi.html" data-mk="Услови за користење" data-en="Terms of Use">Услови за користење</a>
+                        <span class="footer__legal-dot">•</span>
+                        <a href="./uslovi.html#privatnost" data-mk="Приватност" data-en="Privacy">Приватност</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="footer__social">
+                    <div class="social__links">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--facebook" aria-label="МОНЕТА на Facebook" title="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.69c0-2.47 1.47-3.83 3.72-3.83 1.08 0 2.21.19 2.21.19v2.43h-1.24c-1.23 0-1.61.76-1.61 1.54V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z"/></svg></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social__link social__link--instagram" aria-label="МОНЕТА на Instagram" title="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Назад кон врвот">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="./vendor/aos.js" defer></script>
+    <script src="./vendor/gsap.min.js" defer></script>
+    <script src="./vendor/ScrollTrigger.min.js" defer></script>
+    <script src="./script.js" defer></script>
+    <script>
+        // ===== CART PAGE RENDER (prototype) =====
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('cartContainer');
+            if (!container || !window.MonetaCart) return;
+
+            const isEn = () => document.documentElement.lang === 'en';
+            const fmt = (n) => n.toLocaleString('mk-MK') + ' ' + (isEn() ? 'MKD' : 'ден.');
+
+            const render = () => {
+                const cart = window.MonetaCart.getCart();
+                const items = Object.values(cart).filter((it) => it.qty > 0);
+                const total = items.reduce((s, it) => s + it.qty * (it.price || 0), 0);
+
+                if (items.length === 0) {
+                    container.innerHTML = `
+                        <div class="cart__empty">
+                            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                            </svg>
+                            <h3 data-mk="Вашата кошничка е празна" data-en="Your cart is empty">Вашата кошничка е празна</h3>
+                            <p data-mk="Додадете некој од нашите модели на анатомски влошки." data-en="Add one of our anatomical insole models.">Додадете некој од нашите модели на анатомски влошки.</p>
+                            <a href="./index.html#kategorii" class="hero__cta hero__cta--primary" data-mk="Истражи ги влошките →" data-en="Explore Insoles →">Истражи ги влошките →</a>
+                        </div>`;
+                    return;
+                }
+
+                container.innerHTML = items.map((it) => `
+                    <div class="cart__item" data-cart-item="${it.slug}">
+                        <a href="./modeli/${it.slug}.html" class="cart__item-thumb" aria-label="${isEn() ? it.nameEn : it.nameMk}">
+                            <img src="./images/cards/${it.slug}.webp" alt="${isEn() ? it.nameEn : it.nameMk}" loading="lazy">
+                        </a>
+                        <div>
+                            <a href="./modeli/${it.slug}.html" class="cart__item-name">${isEn() ? it.nameEn : it.nameMk}</a>
+                            <div class="cart__item-code">${isEn() ? 'Code' : 'Код'}: ${it.code}</div>
+                            <div class="cart__item-price">${fmt(it.price)} / ${isEn() ? 'pair' : 'пар'}</div>
+                        </div>
+                        <div class="cart__item-right">
+                            <div class="model-cart" data-model="${it.slug}" data-code="${it.code}" data-price="${it.price}" data-name-mk="${it.nameMk}" data-name-en="${it.nameEn}">
+                                <button type="button" class="model-cart__btn model-cart__minus" data-cart-minus aria-label="Намали" title="Намали" style="display:${it.qty > 1 ? 'flex' : 'none'}">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                </button>
+                                <span class="model-cart__qty" data-cart-qty>${it.qty}</span>
+                                <button type="button" class="model-cart__btn model-cart__add" data-cart-add aria-label="Додади" title="Додади">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                </button>
+                            </div>
+                            <span class="cart__line-total">${fmt(it.qty * (it.price || 0))}</span>
+                            <button type="button" class="cart__remove" data-cart-remove aria-label="Отстрани" title="Отстрани">${isEn() ? 'Remove' : 'Отстрани'}</button>
+                        </div>
+                    </div>`).join('') + `
+                    <div class="cart__summary">
+                        <div class="cart__free-ship" data-free-ship>
+                            <div class="cart__free-ship__text">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6H10a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"/><path d="M6 9H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><circle cx="16" cy="16" r="2"/><circle cx="8" cy="16" r="2"/></svg>
+                                <span data-free-ship-text>Бесплатна достава за нарачки над 1.000 ден.</span>
+                            </div>
+                            <div class="cart__free-ship__bar"><div class="cart__free-ship__fill" data-free-ship-fill></div></div>
+                            <div class="cart__free-ship__meta">
+                                <span data-mk="Достава за 48 часа" data-en="Delivery within 48 hours">Достава за 48 часа</span>
+                                <span data-mk="Бесплатно над 1.000 ден." data-en="Free over 1,000 MKD">Бесплатно над 1.000 ден.</span>
+                            </div>
+                        </div>
+                        <div class="cart__total-row">
+                            <span class="cart__total-label" data-mk="Вкупно:" data-en="Total:">Вкупно:</span>
+                            <span class="cart__total-value">${fmt(total)}</span>
+                        </div>
+                        <div class="cart__count-badge">${isEn() ? 'Total items: ' : 'Вкупен број на артикли: '} ${items.reduce((s, it) => s + it.qty, 0)}</div>
+                        <div class="cart__actions">
+                            <a href="./index.html#kategorii" class="hero__cta hero__cta--secondary" data-mk="Продолжи со купување" data-en="Continue Shopping">Продолжи со купување</a>
+                            <a href="./naracka.html" class="hero__cta hero__cta--primary" data-mk="Нарачај сега" data-en="Order Now">Нарачај сега</a>
+                        </div>
+                    </div>`;
+
+                // Ажурирај го free-ship статусот по рендерирањето
+                if (window.MonetaCart.renderFreeShip) {
+                    window.MonetaCart.renderFreeShip(window.MonetaCart.getCart());
+                }
+            };
+
+            render();
+            window.MonetaCartOnChange = render;
+        });
+    </script>
+</body>
+</html>

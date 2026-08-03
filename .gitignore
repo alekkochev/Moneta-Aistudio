@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Изворни материјали (конвертирани во content/ и images/)
+opis na vloska/
+Materijali za marketing/
+vloski sloevi/
+ikoni informacii/
+Icon/
+
+# Локални конфигурации / кеш
+.env
+.env.local
+_pgbackup/
+_pginfo/
+
+# OS / editor
+.DS_Store
+Thumbs.db
