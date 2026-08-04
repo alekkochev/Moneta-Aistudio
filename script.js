@@ -2584,47 +2584,47 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
     let current = 1;
 
     const QUIZ_ICONS = {
-        anatomska:   ['anatomska%20vloska.webp', 'Анатомска', 'Anatomical'],
-        pritisok:    ['apsorpcija%20na%20pritisok.webp', 'Апсорпција на удари', 'Shock absorb'],
-        apsorpcija:  ['apsorpcija.webp', 'Апсорпција', 'Absorption'],
-        gel:         ['gel%20vloska.webp', 'Гел', 'Gel'],
-        higienski:   ['higienski.webp', 'Хигиенски', 'Hygienic'],
-        koza:        ['koza.webp', 'Кожа', 'Leather'],
-        medicinski:  ['medicinski_svojstva.webp', 'Здравје', 'Health'],
-        perenje:     ['moznost%20za%20perenje.webp', 'Перење', 'Washable'],
-        polar:       ['polar%28ultra%20zimski%29.webp', 'Полар', 'Polar'],
-        prirodni:    ['prirodni%20materijali.webp', 'Природни', 'Natural'],
-        mirisi:      ['protiv%20losi%20mirisi.webp', 'Анти-мирис', 'Anti-odor'],
-        aroma:       ['so%20aroma.webp', 'Арома', 'Aroma'],
-        univerzalen: ['univerzalen%20broj.webp', 'Универзален', 'Universal'],
-        zimski:      ['zimski.webp', 'Зимски', 'Winter']
+        anatomska:   ['anatomska%20vloska.webp', 'Анатомска', 'Anatomical', 'Anatomike'],
+        pritisok:    ['apsorpcija%20na%20pritisok.webp', 'Апсорпција на удари', 'Shock absorb', 'Thithje goditjesh'],
+        apsorpcija:  ['apsorpcija.webp', 'Апсорпција', 'Absorption', 'Thithje'],
+        gel:         ['gel%20vloska.webp', 'Гел', 'Gel', 'Xhel'],
+        higienski:   ['higienski.webp', 'Хигиенски', 'Hygienic', 'Higjienik'],
+        koza:        ['koza.webp', 'Кожа', 'Leather', 'Lëkurë'],
+        medicinski:  ['medicinski_svojstva.webp', 'Здравје', 'Health', 'Shëndet'],
+        perenje:     ['moznost%20za%20perenje.webp', 'Перење', 'Washable', 'Larëse'],
+        polar:       ['polar%28ultra%20zimski%29.webp', 'Полар', 'Polar', 'Polar'],
+        prirodni:    ['prirodni%20materijali.webp', 'Природни', 'Natural', 'Natyral'],
+        mirisi:      ['protiv%20losi%20mirisi.webp', 'Анти-мирис', 'Anti-odor', 'Kundër erës'],
+        aroma:       ['so%20aroma.webp', 'Арома', 'Aroma', 'Aromë'],
+        univerzalen: ['univerzalen%20broj.webp', 'Универзален', 'Universal', 'Universal'],
+        zimski:      ['zimski.webp', 'Зимски', 'Winter', 'Dimëror']
     };
 
     const MODELS = {
-        'memosole':       { cat: ['sport'],  pain: ['celo', 'nema'], prio: ['amort', 'prirodni'], job: ['sportist', 'nastavnik', 'zdravstvo'], icons: ['anatomska', 'pritisok', 'mirisi', 'univerzalen'], price: 400, nameMk: 'MEMOSOLE', nameEn: 'MEMOSOLE' },
-        'active-gel':     { cat: ['sport'],  pain: ['peta', 'nema'], prio: ['amort'], job: ['sportist', 'zdravstvo'], icons: ['gel', 'pritisok', 'univerzalen', 'anatomska'], price: 620, nameMk: 'Active Gel', nameEn: 'Active Gel' },
-        'anatomiX':       { cat: ['sport'],  pain: ['lac', 'nema'], prio: ['poddrshka'], job: ['sportist', 'zdravstvo', 'rabotnik'], icons: ['pritisok', 'higienski', 'anatomska'], price: 430, nameMk: 'AnatomiX', nameEn: 'AnatomiX' },
-        'sport-style':    { cat: ['sport'],  pain: ['nema'], prio: ['cena', 'prirodni'], job: ['sportist', 'nastavnik'], icons: ['prirodni', 'anatomska', 'apsorpcija'], price: 300, nameMk: 'Sport Style', nameEn: 'Sport Style' },
-        'sportex':        { cat: ['sport'],  pain: ['nema'], prio: ['cena', 'fresina'], job: ['sportist', 'rabotnik', 'nastavnik'], icons: ['pritisok', 'higienski', 'anatomska'], price: 230, nameMk: 'Sportex', nameEn: 'Sportex' },
-        'x-treme':        { cat: ['sport'],  pain: ['peta', 'celo'], prio: ['amort', 'poddrshka'], job: ['sportist', 'rabotnik'], icons: ['pritisok', 'anatomska', 'apsorpcija', 'higienski'], price: 420, nameMk: 'X-TREME', nameEn: 'X-TREME' },
-        'heel-pad':       { cat: ['kozni'],  pain: ['peta'], prio: ['poddrshka'], job: ['kancelarija', 'zdravstvo', 'nastavnik'], icons: ['koza', 'pritisok', 'anatomska'], price: 250, nameMk: 'Heel Pad', nameEn: 'Heel Pad' },
-        'heel-pad-fix':   { cat: ['kozni'],  pain: ['peta'], prio: ['poddrshka'], job: ['kancelarija', 'zdravstvo'], icons: ['koza', 'pritisok'], price: 210, nameMk: 'Heel Pad FIX', nameEn: 'Heel Pad FIX' },
-        'heel-pad-grip':  { cat: ['kozni'],  pain: ['peta'], prio: ['cena', 'poddrshka'], job: ['kancelarija', 'nastavnik'], icons: ['koza', 'univerzalen', 'pritisok'], price: 100, nameMk: 'Heel Pad Grip', nameEn: 'Heel Pad Grip' },
-        'topas':          { cat: ['kozni'],  pain: ['lac', 'peta'], prio: ['poddrshka', 'prirodni'], job: ['kancelarija', 'nastavnik', 'zdravstvo'], icons: ['koza', 'anatomska', 'medicinski'], price: 490, nameMk: 'Topas', nameEn: 'Topas' },
-        'soft-gel':       { cat: ['kozni'],  pain: ['celo', 'peta'], prio: ['amort', 'fresina'], job: ['zdravstvo', 'nastavnik'], icons: ['koza', 'gel', 'mirisi', 'anatomska'], price: 820, nameMk: 'Soft Gel', nameEn: 'Soft Gel' },
-        'vital':          { cat: ['kozni'],  pain: ['lac'], prio: ['poddrshka'], job: ['kancelarija', 'nastavnik'], icons: ['koza', 'apsorpcija', 'anatomska'], price: 450, nameMk: 'Vital', nameEn: 'Vital' },
-        'relax':          { cat: ['kozni'],  pain: ['celo', 'lac'], prio: ['prirodni', 'amort'], job: ['kancelarija', 'zdravstvo', 'nastavnik'], icons: ['koza', 'prirodni', 'anatomska'], price: 570, nameMk: 'Relax', nameEn: 'Relax' },
-        'simona':         { cat: ['letni'],  pain: ['nema', 'celo'], prio: ['fresina', 'prirodni', 'cena'], job: ['kancelarija', 'nastavnik'], icons: ['aroma', 'mirisi', 'prirodni', 'apsorpcija'], price: 120, nameMk: 'Simona', nameEn: 'Simona' },
-        'carbon':         { cat: ['letni'],  pain: ['celo', 'nema'], prio: ['fresina', 'cena'], job: ['kancelarija', 'nastavnik'], icons: ['mirisi', 'higienski', 'univerzalen', 'apsorpcija'], price: 170, nameMk: 'Carbon', nameEn: 'Carbon' },
-        'thermo-alu':     { cat: ['zimski'], pain: ['nema', 'celo'], prio: ['prirodni'], job: ['rabotnik', 'nastavnik'], icons: ['zimski', 'polar', 'prirodni', 'anatomska'], price: 210, nameMk: 'Thermo Alu', nameEn: 'Thermo Alu' },
-        'hunter-outdoor': { cat: ['hunter'], pain: ['lac', 'peta'], prio: ['poddrshka'], job: ['rabotnik', 'sportist'], icons: ['pritisok', 'anatomska', 'apsorpcija'], price: 330, nameMk: 'Hunter Outdoor', nameEn: 'Hunter Outdoor' },
-        'hunter-flex':    { cat: ['hunter'], pain: ['celo'], prio: ['amort'], job: ['rabotnik', 'sportist'], icons: ['zimski', 'pritisok', 'anatomska'], price: 330, nameMk: 'Hunter Flex', nameEn: 'Hunter Flex' },
-        'hunter-camo':    { cat: ['hunter'], pain: ['peta', 'lac'], prio: ['poddrshka'], job: ['rabotnik', 'sportist'], icons: ['mirisi', 'apsorpcija', 'anatomska'], price: 330, nameMk: 'Hunter CAMO', nameEn: 'Hunter CAMO' },
-        'duck':           { cat: ['detski'], pain: ['nema', 'celo'], prio: ['prirodni', 'cena'], job: [], icons: ['prirodni', 'anatomska', 'medicinski'], price: 490, nameMk: 'Duck', nameEn: 'Duck' },
+        'memosole':       { cat: ['sport'],  pain: ['celo', 'nema'], prio: ['amort', 'prirodni'], job: ['sportist', 'nastavnik', 'zdravstvo'], icons: ['anatomska', 'pritisok', 'mirisi', 'univerzalen'], price: 400, sys: 'memory', nameMk: 'MEMOSOLE', nameEn: 'MEMOSOLE' },
+        'active-gel':     { cat: ['sport'],  pain: ['peta', 'nema'], prio: ['amort'], job: ['sportist', 'zdravstvo'], icons: ['gel', 'pritisok', 'univerzalen', 'anatomska'], price: 620, sys: 'absorb', nameMk: 'Active Gel', nameEn: 'Active Gel' },
+        'anatomiX':       { cat: ['sport'],  pain: ['lac', 'nema'], prio: ['poddrshka'], job: ['sportist', 'zdravstvo', 'rabotnik'], icons: ['pritisok', 'higienski', 'anatomska'], price: 430, sys: 'anatomic', nameMk: 'AnatomiX', nameEn: 'AnatomiX' },
+        'sport-style':    { cat: ['sport'],  pain: ['nema'], prio: ['cena', 'prirodni'], job: ['sportist', 'nastavnik'], icons: ['prirodni', 'anatomska', 'apsorpcija'], price: 300, sys: 'anatomic', nameMk: 'Sport Style', nameEn: 'Sport Style' },
+        'sportex':        { cat: ['sport'],  pain: ['nema'], prio: ['cena', 'fresina'], job: ['sportist', 'rabotnik', 'nastavnik'], icons: ['pritisok', 'higienski', 'anatomska'], price: 230, sys: 'absorb', nameMk: 'Sportex', nameEn: 'Sportex' },
+        'x-treme':        { cat: ['sport'],  pain: ['peta', 'celo'], prio: ['amort', 'poddrshka'], job: ['sportist', 'rabotnik'], icons: ['pritisok', 'anatomska', 'apsorpcija', 'higienski'], price: 420, sys: 'anatomic', nameMk: 'X-TREME', nameEn: 'X-TREME' },
+        'heel-pad':       { cat: ['kozni'],  pain: ['peta'], prio: ['poddrshka'], job: ['kancelarija', 'zdravstvo', 'nastavnik'], icons: ['koza', 'pritisok', 'anatomska'], price: 250, sys: 'ortho', nameMk: 'Heel Pad', nameEn: 'Heel Pad' },
+        'heel-pad-fix':   { cat: ['kozni'],  pain: ['peta'], prio: ['poddrshka'], job: ['kancelarija', 'zdravstvo'], icons: ['koza', 'pritisok'], price: 210, sys: 'ortho', nameMk: 'Heel Pad FIX', nameEn: 'Heel Pad FIX' },
+        'heel-pad-grip':  { cat: ['kozni'],  pain: ['peta'], prio: ['cena', 'poddrshka'], job: ['kancelarija', 'nastavnik'], icons: ['koza', 'univerzalen', 'pritisok'], price: 100, sys: 'ortho', nameMk: 'Heel Pad Grip', nameEn: 'Heel Pad Grip' },
+        'topas':          { cat: ['kozni'],  pain: ['lac', 'peta'], prio: ['poddrshka', 'prirodni'], job: ['kancelarija', 'nastavnik', 'zdravstvo'], icons: ['koza', 'anatomska', 'medicinski'], price: 490, sys: 'ortho', nameMk: 'Topas', nameEn: 'Topas' },
+        'soft-gel':       { cat: ['kozni'],  pain: ['celo', 'peta'], prio: ['amort', 'fresina'], job: ['zdravstvo', 'nastavnik'], icons: ['koza', 'gel', 'mirisi', 'anatomska'], price: 820, sys: 'memory', nameMk: 'Soft Gel', nameEn: 'Soft Gel' },
+        'vital':          { cat: ['kozni'],  pain: ['lac'], prio: ['poddrshka'], job: ['kancelarija', 'nastavnik'], icons: ['koza', 'apsorpcija', 'anatomska'], price: 450, sys: 'anatomic', nameMk: 'Vital', nameEn: 'Vital' },
+        'relax':          { cat: ['kozni'],  pain: ['celo', 'lac'], prio: ['prirodni', 'amort'], job: ['kancelarija', 'zdravstvo', 'nastavnik'], icons: ['koza', 'prirodni', 'anatomska'], price: 570, sys: 'anatomic', nameMk: 'Relax', nameEn: 'Relax' },
+        'simona':         { cat: ['letni'],  pain: ['nema', 'celo'], prio: ['fresina', 'prirodni', 'cena'], job: ['kancelarija', 'nastavnik'], icons: ['aroma', 'mirisi', 'prirodni', 'apsorpcija'], price: 120, sys: 'absorb', nameMk: 'Simona', nameEn: 'Simona' },
+        'carbon':         { cat: ['letni'],  pain: ['celo', 'nema'], prio: ['fresina', 'cena'], job: ['kancelarija', 'nastavnik'], icons: ['mirisi', 'higienski', 'univerzalen', 'apsorpcija'], price: 170, sys: 'absorb', nameMk: 'Carbon', nameEn: 'Carbon' },
+        'thermo-alu':     { cat: ['zimski'], pain: ['nema', 'celo'], prio: ['prirodni'], job: ['rabotnik', 'nastavnik'], icons: ['zimski', 'polar', 'prirodni', 'anatomska'], price: 210, sys: 'thermo', nameMk: 'Thermo Alu', nameEn: 'Thermo Alu' },
+        'hunter-outdoor': { cat: ['hunter'], pain: ['lac', 'peta'], prio: ['poddrshka'], job: ['rabotnik', 'sportist'], icons: ['pritisok', 'anatomska', 'apsorpcija'], price: 330, sys: 'ortho', nameMk: 'Hunter Outdoor', nameEn: 'Hunter Outdoor' },
+        'hunter-flex':    { cat: ['hunter'], pain: ['celo'], prio: ['amort'], job: ['rabotnik', 'sportist'], icons: ['zimski', 'pritisok', 'anatomska'], price: 330, sys: 'thermo', nameMk: 'Hunter Flex', nameEn: 'Hunter Flex' },
+        'hunter-camo':    { cat: ['hunter'], pain: ['peta', 'lac'], prio: ['poddrshka'], job: ['rabotnik', 'sportist'], icons: ['mirisi', 'apsorpcija', 'anatomska'], price: 330, sys: 'absorb', nameMk: 'Hunter CAMO', nameEn: 'Hunter CAMO' },
+        'duck':           { cat: ['detski'], pain: ['nema', 'celo'], prio: ['prirodni', 'cena'], job: [], icons: ['prirodni', 'anatomska', 'medicinski'], price: 490, sys: 'anatomic', nameMk: 'Duck', nameEn: 'Duck' },
     };
 
     function lang() {
-        return document.documentElement.lang === 'en' ? 'en' : 'mk';
+        return document.documentElement.lang === 'en' ? 'en' : (document.documentElement.lang === 'sq' ? 'sq' : 'mk');
     }
 
     function showStep(n) {
@@ -2638,7 +2638,8 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
             nextBtn.style.visibility = 'visible';
             nextBtn.dataset.mk = 'Следно →';
             nextBtn.dataset.en = 'Next →';
-            nextBtn.textContent = lang() === 'en' ? 'Next →' : 'Следно →';
+            nextBtn.dataset.sq = 'Tjetra →';
+            nextBtn.textContent = lang() === 'en' ? 'Next →' : (lang() === 'sq' ? 'Tjetra →' : 'Следно →');
         }
         steps.forEach((s) => {
             const val = answers[s.dataset.step];
@@ -2669,23 +2670,27 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
 
     function showResult() {
         const isEn = lang() === 'en';
+        const isSq = lang() === 'sq';
         const isDuckMode = answers['1'] === 'dete';
         const top = isDuckMode ? [] : scoreModels().slice(0, 3);
         if (grid) {
             if (isDuckMode) {
                 // За деца има само еден модел (DUCK) — нема квиз прашања, само инфо + линк
+                const duckNote = isEn ? '🎒 For kids there is only one insole — meet <strong>MONETA Duck</strong>!' : (isSq ? '🎒 Për fëmijë ekziston vetëm një taban — njihuni me <strong>MONETA Duck</strong>!' : '🎒 За деца постои само една влошка — запознајте ја <strong>МОНЕТА Duck</strong>!');
+                const duckView = isEn ? 'View →' : (isSq ? 'Shiko →' : 'Види →');
+                const duckIcn = (sq, en, mk) => isEn ? en : (isSq ? sq : mk);
                 grid.innerHTML = `
-                    <p class="quiz-result__note">${isEn ? '🎒 For kids there is only one insole — meet <strong>MONETA Duck</strong>!' : '🎒 За деца постои само една влошка — запознајте ја <strong>МОНЕТА Duck</strong>!'}</p>
+                    <p class="quiz-result__note">${duckNote}</p>
                     <a href="modeli/duck.html" class="quiz-result__card quiz-result__card--duck">
                         <img src="images/cards/duck.webp" alt="Duck" width="200" height="150" loading="lazy">
                         <strong>Duck</strong>
                         <span>490 ${isEn ? 'MKD' : 'ден.'}</span>
                         <div class="quiz-result__icons">
-                            <img src="images/icons/prirodni%20materijali.webp" alt="${isEn ? 'Natural' : 'Природни'}" title="${isEn ? 'Natural' : 'Природни'}" width="22" height="22" loading="lazy">
-                            <img src="images/icons/anatomska%20vloska.webp" alt="${isEn ? 'Anatomical' : 'Анатомска'}" title="${isEn ? 'Anatomical' : 'Анатомска'}" width="22" height="22" loading="lazy">
-                            <img src="images/icons/medicinski_svojstva.webp" alt="${isEn ? 'Health' : 'Здравје'}" title="${isEn ? 'Health' : 'Здравје'}" width="22" height="22" loading="lazy">
+                            <img src="images/icons/prirodni%20materijali.webp" alt="${duckIcn('Natyral', 'Natural', 'Природни')}" title="${duckIcn('Natyral', 'Natural', 'Природни')}" width="22" height="22" loading="lazy">
+                            <img src="images/icons/anatomska%20vloska.webp" alt="${duckIcn('Anatomike', 'Anatomical', 'Анатомска')}" title="${duckIcn('Anatomike', 'Anatomical', 'Анатомска')}" width="22" height="22" loading="lazy">
+                            <img src="images/icons/medicinski_svojstva.webp" alt="${duckIcn('Shëndet', 'Health', 'Здравје')}" title="${duckIcn('Shëndet', 'Health', 'Здравје')}" width="22" height="22" loading="lazy">
                         </div>
-                        <em>${isEn ? 'View →' : 'Види →'}</em>
+                        <em>${duckView}</em>
                     </a>`;
             } else {
                 grid.innerHTML = top.map((m) => `
@@ -2693,13 +2698,15 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
                     <img src="images/cards/${m.slug}.webp" alt="${isEn ? m.nameEn : m.nameMk}" width="200" height="150" loading="lazy">
                     <strong>${isEn ? m.nameEn : m.nameMk}</strong>
                     <span>${m.price} ${isEn ? 'MKD' : 'ден.'}</span>
+                    ${m.sys ? `<span class="quiz-result__sys">🔬 ${m.sys.toUpperCase()}</span>` : ''}
                     <div class="quiz-result__icons">${(m.icons || []).map((k) => {
                         const ic = QUIZ_ICONS[k];
                         if (!ic) return '';
-                        const [file, mk, en] = ic;
-                        return `<img src="images/icons/${file}" alt="${isEn ? en : mk}" title="${isEn ? en : mk}" width="22" height="22" loading="lazy">`;
+                        const [file, mk, en, sq] = ic;
+                        const label = isEn ? en : (isSq ? sq : mk);
+                        return `<img src="images/icons/${file}" alt="${label}" title="${label}" width="22" height="22" loading="lazy">`;
                     }).join('')}</div>
-                    <em>${isEn ? 'View →' : 'Види →'}</em>
+                    <em>${isEn ? 'View →' : (isSq ? 'Shiko →' : 'Види →')}</em>
                 </a>`).join('');
             }
         }
@@ -2712,7 +2719,8 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
             nextBtn.style.visibility = 'visible';
             nextBtn.dataset.mk = '🏠 Почетна';
             nextBtn.dataset.en = '🏠 Home';
-            nextBtn.textContent = isEn ? '🏠 Home' : '🏠 Почетна';
+            nextBtn.dataset.sq = '🏠 Kryefaqja';
+            nextBtn.textContent = isEn ? '🏠 Home' : (isSq ? '🏠 Kryefaqja' : '🏠 Почетна');
         }
     }
 
@@ -2832,164 +2840,3 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
     }
 })();
 
-// ========================================
-// TECH / SYSTEM QUIZ (2026-08-04) — kviz.html, 3 прашања → 5 технолошки системи
-// Префрлен од sistem.html, сега целосно преведуван (MK/EN/SQ) во реално време.
-// ========================================
-(function initTechQuiz() {
-    const section = document.getElementById('techQuiz');
-    if (!section) return;
-    const steps = [...section.querySelectorAll('.quiz-step')];
-    const result = section.querySelector('#techResult');
-    const titleEl = section.querySelector('#techResultTitle');
-    const imgEl = section.querySelector('#techResultImage');
-    const descEl = section.querySelector('#techResultDesc');
-    const nameEl = section.querySelector('#techResultInsoleName');
-    const ctaEl = section.querySelector('#techResultCta');
-    const resetBtn = section.querySelector('#techReset');
-    const progressBar = section.querySelector('#techProgressBar');
-    const indicator = section.querySelector('#techStepIndicator');
-    const remainingText = section.querySelector('#techRemainingText');
-    const node1 = section.querySelector('#techNode1');
-    const node2 = section.querySelector('#techNode2');
-    const node3 = section.querySelector('#techNode3');
-    const nodeLine1 = section.querySelector('#techNodeLine1');
-    const nodeLine2 = section.querySelector('#techNodeLine2');
-    const answers = {};
-    let current = 1;
-
-    const isEn = () => document.documentElement.lang === 'en';
-    const isSq = () => document.documentElement.lang === 'sq';
-    const L = (mk, en, sq) => (isEn() ? en : (isSq() ? sq : mk));
-
-    const SYSTEMS = {
-        ortho: {
-            title: { mk: 'МОНЕТА ORTHO SYSTEM', en: 'MONETA ORTHO SYSTEM', sq: 'MONETA ORTHO SYSTEM' },
-            img: './images/systems/ortho-system.svg',
-            desc: {
-                mk: 'Заради болката во петата и оптоварувањето, вашето стапало бара зајакната анатомска поддршка, длабока чашка за петата и рамномерно ослободување на притисокот.',
-                en: 'Due to heel pain and strain, your foot needs reinforced anatomical support, a deep heel cup, and even pressure relief.',
-                sq: 'Për shkak të dhimbjes në thembër dhe ngarkesës, këmba juaj ka nevojë për mbështetje anatomike të përforcuar, kupë të thellë për thembrën dhe çlirim të barabartë të presionit.'
-            },
-            model: { mk: 'МОНЕТА Ortho Relief', en: 'MONETA Ortho Relief', sq: 'MONETA Ortho Relief' }
-        },
-        thermo: {
-            title: { mk: 'МОНЕТА THERMO SYSTEM', en: 'MONETA THERMO SYSTEM', sq: 'MONETA THERMO SYSTEM' },
-            img: './images/systems/thermo-system.svg',
-            desc: {
-                mk: 'За зимски услови и ниски температури, ви е потребен систем со алуминиумски топлотен штит и природен филц кој го блокира студот и ја задржува топлината.',
-                en: 'For winter conditions and low temperatures, you need a system with an aluminum heat shield and natural felt that blocks the cold and retains warmth.',
-                sq: 'Për kushte dimërore dhe temperatura të ulëta, keni nevojë për një sistem me mburojë termike alumini dhe felt natyral që bllokon të ftohtin dhe ruan ngrohtësinë.'
-            },
-            model: { mk: 'МОНЕТА Thermo Alu', en: 'MONETA Thermo Alu', sq: 'MONETA Thermo Alu' }
-        },
-        absorb: {
-            title: { mk: 'МОНЕТА ABSORB & BREATHABLE SYSTEM', en: 'MONETA ABSORB & BREATHABLE SYSTEM', sq: 'MONETA ABSORB & BREATHABLE SYSTEM' },
-            img: './images/systems/absorb-breathable-system.svg',
-            desc: {
-                mk: 'Ви е потребна максимална циркулација на воздух и брзо апсорбирање на потта за вашите стапала да бидат суви, свежи и заштитени од бактерии цел ден.',
-                en: 'You need maximum air circulation and fast sweat absorption so your feet stay dry, fresh, and protected from bacteria all day.',
-                sq: 'Keni nevojë për qarkullim maksimal të ajrit dhe thithje të shpejtë të djersës që këmbët tuaja të mbeten të thata, të freskëta dhe të mbrojtura nga bakteret gjithë ditën.'
-            },
-            model: { mk: 'МОНЕТА Summer Perforated / Active', en: 'MONETA Summer Perforated / Active', sq: 'MONETA Summer Perforated / Active' }
-        },
-        memory: {
-            title: { mk: 'МОНЕТА MEMORY & SPORT SYSTEM', en: 'MONETA MEMORY & SPORT SYSTEM', sq: 'MONETA MEMORY & SPORT SYSTEM' },
-            img: './images/systems/memory-system.svg',
-            desc: {
-                mk: 'За спортски активности и чекорење, комбинацијата од вискоеластична мемори пена и анатомски свод гарантира супериорна шок-апсорпција и мекост.',
-                en: 'For sports activities and walking, the combination of viscoelastic memory foam and an anatomical arch guarantees superior shock absorption and softness.',
-                sq: 'Për aktivitete sportive dhe ecje, kombinimi i shkumës viskoelastike të memories dhe harkut anatomik garanton thithje superiore të goditjeve dhe butësi.'
-            },
-            model: { mk: 'МОНЕТА Sport Deluxe', en: 'MONETA Sport Deluxe', sq: 'MONETA Sport Deluxe' }
-        },
-        anatomic: {
-            title: { mk: 'МОНЕТА ANATOMIC SYSTEM', en: 'MONETA ANATOMIC SYSTEM', sq: 'MONETA ANATOMIC SYSTEM' },
-            img: './images/systems/anatomic-system.svg',
-            desc: {
-                mk: 'Вашите стапала бараат природна анатомска поддршка за надолжниот и попречниот свод за правилно држење на телото и максимална удобност во текот на денот.',
-                en: 'Your feet need natural anatomical support for the longitudinal and transverse arch for proper posture and maximum comfort throughout the day.',
-                sq: 'Këmbët tuaja kanë nevojë për mbështetje anatomike natyrale për harkun gjatësor dhe tërthor për qëndrim të saktë të trupit dhe rehati maksimale gjatë ditës.'
-            },
-            model: { mk: 'МОНЕТА Leather Comfort Anatomic', en: 'MONETA Leather Comfort Anatomic', sq: 'MONETA Leather Comfort Anatomic' }
-        }
-    };
-
-    function currentSys() {
-        const a = answers;
-        if (a['2'] === 'heel_pain' || a['1'] === 'heavy') return SYSTEMS.ortho;
-        if (a['2'] === 'cold' || a['3'] === 'winter_boots') return SYSTEMS.thermo;
-        if (a['2'] === 'sweat') return SYSTEMS.absorb;
-        if (a['1'] === 'sport' || a['3'] === 'sneakers') return SYSTEMS.memory;
-        return SYSTEMS.anatomic;
-    }
-    const pick = (obj) => obj[isEn() ? 'en' : (isSq() ? 'sq' : 'mk')];
-
-    function renderProgress() {
-        const remaining = steps.length - current;
-        if (indicator) indicator.textContent = L('Прашање ' + current + ' од ' + steps.length, 'Question ' + current + ' of ' + steps.length, 'Pyetja ' + current + ' nga ' + steps.length);
-        if (remainingText) remainingText.textContent = remaining === 1 ? L('Уште 1 прашање', '1 more question', 'Edhe 1 pyetje') : L('Уште ' + remaining + ' прашања', remaining + ' more questions', 'Edhe ' + remaining + ' pyetje');
-        if (progressBar) progressBar.style.width = ((current) / steps.length * 100) + '%';
-    }
-
-    function showStep(n) {
-        current = Math.min(Math.max(1, n), steps.length);
-        steps.forEach((s) => {
-            const on = +s.dataset.step === current;
-            s.classList.toggle('is-active', on);
-            s.style.display = on ? 'block' : 'none';
-        });
-        if (result) result.style.display = 'none';
-        renderProgress();
-        if (node1) node1.className = 'quiz-node' + (current === 1 ? ' is-active' : (current > 1 ? ' is-done' : ''));
-        if (node2) node2.className = 'quiz-node' + (current === 2 ? ' is-active' : (current > 2 ? ' is-done' : ''));
-        if (node3) node3.className = 'quiz-node' + (current === 3 ? ' is-active' : (current > 3 ? ' is-done' : ''));
-        if (nodeLine1) nodeLine1.classList.toggle('is-active', current > 1);
-        if (nodeLine2) nodeLine2.classList.toggle('is-active', current > 2);
-    }
-
-    function showResult() {
-        const sys = currentSys();
-        if (titleEl) titleEl.textContent = pick(sys.title);
-        if (imgEl) imgEl.src = sys.img;
-        if (descEl) descEl.textContent = pick(sys.desc);
-        if (nameEl) nameEl.textContent = pick(sys.model);
-        if (ctaEl) ctaEl.href = 'index.html#kategorii';
-        steps.forEach((s) => { s.classList.remove('is-active'); s.style.display = 'none'; });
-        if (result) result.style.display = 'block';
-    }
-
-    section.addEventListener('click', (e) => {
-        const opt = e.target.closest('.quiz-option');
-        if (opt) {
-            const stepEl = opt.closest('.quiz-step');
-            answers[stepEl.dataset.step] = opt.dataset.value;
-            stepEl.querySelectorAll('.quiz-option').forEach((o) => o.classList.toggle('is-selected', o === opt));
-            if (current < steps.length) {
-                setTimeout(() => showStep(current + 1), 260);
-            } else {
-                showResult();
-            }
-            return;
-        }
-        if (e.target.closest('#techReset')) {
-            Object.keys(answers).forEach((k) => delete answers[k]);
-            showStep(1);
-        }
-    });
-
-    if (window.MonetaOnLangChange) {
-        window.MonetaOnLangChange(() => {
-            if (result && result.style.display === 'block') {
-                const sys = currentSys();
-                if (titleEl) titleEl.textContent = pick(sys.title);
-                if (descEl) descEl.textContent = pick(sys.desc);
-                if (nameEl) nameEl.textContent = pick(sys.model);
-            } else {
-                renderProgress();
-            }
-        });
-    }
-
-    showStep(1);
-})();
