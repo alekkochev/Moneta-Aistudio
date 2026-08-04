@@ -39,11 +39,19 @@ setTimeout(() => {
 const toggle = document.getElementById('navToggle');
 const nav = document.getElementById('navLinks');
 
-toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('is-open');
-    toggle.classList.toggle('is-active');
-    toggle.setAttribute('aria-expanded', open);
-});
+if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('is-open');
+        toggle.classList.toggle('is-active');
+        toggle.setAttribute('aria-expanded', open);
+    });
+
+    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-active');
+        toggle.setAttribute('aria-expanded', 'false');
+    }));
+}
 
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.navbar__inner') && nav.classList.contains('is-open')) {
@@ -2783,7 +2791,7 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
 // ========================================
 (function initDealerMap() {
     const mapEl = document.getElementById('dealerMap');
-    if (!mapEl || typeof L === 'undefined') return;
+    if (!mapEl) return;
 
     const DEALERS = [
         { nameMk: 'МЕДИКА ПРО — Скопје', nameEn: 'MEDIKA PRO — Skopje', addrMk: 'бул. Кочо Рацин бр.75, Центар', addrEn: '75 Koco Racin Blvd, Centar', tel: ['+389 72 225 505', '+389 2 3111 404'], lat: 41.9963, lng: 21.4258 },
@@ -2805,6 +2813,10 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
             <span class="dealer-popup__tel">${phones}</span>
         </div>`;
     }
+
+    function renderMap() {
+    if (typeof L === 'undefined' || mapEl.dataset.loaded) return;
+    mapEl.dataset.loaded = 'true';
 
     const pinIcon = L.divIcon({
         className: 'dealer-pin-wrap',
@@ -2837,6 +2849,34 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
         window.MonetaOnLangChange(() => {
             markers.forEach((m, i) => m.setPopupContent(popupHtml(DEALERS[i])));
         });
+    }
+    }
+
+    function loadMapAssets() {
+        if (document.querySelector('script[data-leaflet]')) return;
+        const stylesheet = document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = './vendor/leaflet.css';
+        document.head.appendChild(stylesheet);
+
+        const script = document.createElement('script');
+        script.src = './vendor/leaflet.js';
+        script.async = true;
+        script.dataset.leaflet = 'true';
+        script.onload = renderMap;
+        document.head.appendChild(script);
+    }
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                observer.disconnect();
+                loadMapAssets();
+            }
+        }, { rootMargin: '300px 0px' });
+        observer.observe(mapEl);
+    } else {
+        window.addEventListener('load', loadMapAssets, { once: true, passive: true });
     }
 })();
 

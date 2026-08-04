@@ -17,7 +17,7 @@
     <meta name="twitter:description" content="МОНЕТА анатомски вложки – подобар чекор, помал замор и поголема удобност." />
     <meta name="twitter:image" content="https://insoles.mk/images/cards/Sportski.webp" />
     <meta name="theme-color" content="#EC1752" />
-    <link rel="canonical" href="https://insoles.mk/index.html" />
+    <link rel="canonical" href="https://insoles.mk/" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -47,8 +47,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
-    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link rel="preload" href="./images/hero-foot-insole.webp" as="image" fetchpriority="high" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Manrope:wght@700&display=swap" rel="stylesheet" />
     <link href="./vendor/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="./vendor/aos.css" /></noscript>
@@ -110,7 +109,6 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="./vendor/leaflet.css">
 </head>
 <body>
 
@@ -176,6 +174,10 @@
                 <p class="hero__subtitle-dark" data-mk="Вашите стапала ве носат низ целиот ден. Дајте им ја поддршката што ја заслужуваат." data-sq="Këmbët tuaja ju mbajnë gjithë ditën. Jepuni mbështetjen që meritojnë." data-en="Your feet carry you through the whole day. Give them the support they deserve.">
                     Вашите стапала ве носат низ целиот ден. Дајте им ја поддршката што ја заслужуваат.
                 </p>
+                <div class="hero__cta-group" aria-label="Главни акции">
+                    <a class="hero__cta hero__cta--primary" href="./kviz.html" data-mk="Пронајди ја твојата влошка" data-sq="Gjej tabanin tënd" data-en="Find your insole">Пронајди ја твојата влошка</a>
+                    <a class="hero__cta hero__cta--secondary" href="#kategorii" data-mk="Види ги моделите" data-sq="Shiko modelet" data-en="Browse models">Види ги моделите</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1000,7 +1002,6 @@
     <script src="./vendor/aos.js" defer></script>
     <script src="./vendor/gsap.min.js" defer></script>
     <script src="./vendor/ScrollTrigger.min.js" defer></script>
-    <script src="./vendor/leaflet.js" defer></script>
     <script src="./script.js" defer></script>
 </body>
 </html>

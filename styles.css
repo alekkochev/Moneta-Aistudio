@@ -118,6 +118,11 @@ a {
     color: inherit;
 }
 
+:focus-visible {
+    outline: 3px solid var(--pink);
+    outline-offset: 3px;
+}
+
 /* ========================================
    NAVBAR
    ======================================== */
@@ -1681,7 +1686,7 @@ a {
         opacity: 0.95;
     }
     .hero__inner {
-        margin: 90px auto 0;
+        margin: 44px auto 0;
         padding: 0 20px;
         max-width: 100%;
     }
@@ -1829,6 +1834,15 @@ a {
 
     .kontakt {
         padding: 60px 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
 
@@ -3937,6 +3951,7 @@ a {
     color: #4b5563;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -4061,6 +4076,7 @@ a {
         line-height: 1.4;
         color: #374151;
         -webkit-line-clamp: 2;
+        line-clamp: 2;
     }
     .search-modal__shortcuts {
         display: none;
