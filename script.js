@@ -2831,3 +2831,165 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
         });
     }
 })();
+
+// ========================================
+// TECH / SYSTEM QUIZ (2026-08-04) — kviz.html, 3 прашања → 5 технолошки системи
+// Префрлен од sistem.html, сега целосно преведуван (MK/EN/SQ) во реално време.
+// ========================================
+(function initTechQuiz() {
+    const section = document.getElementById('techQuiz');
+    if (!section) return;
+    const steps = [...section.querySelectorAll('.quiz-step')];
+    const result = section.querySelector('#techResult');
+    const titleEl = section.querySelector('#techResultTitle');
+    const imgEl = section.querySelector('#techResultImage');
+    const descEl = section.querySelector('#techResultDesc');
+    const nameEl = section.querySelector('#techResultInsoleName');
+    const ctaEl = section.querySelector('#techResultCta');
+    const resetBtn = section.querySelector('#techReset');
+    const progressBar = section.querySelector('#techProgressBar');
+    const indicator = section.querySelector('#techStepIndicator');
+    const remainingText = section.querySelector('#techRemainingText');
+    const node1 = section.querySelector('#techNode1');
+    const node2 = section.querySelector('#techNode2');
+    const node3 = section.querySelector('#techNode3');
+    const nodeLine1 = section.querySelector('#techNodeLine1');
+    const nodeLine2 = section.querySelector('#techNodeLine2');
+    const answers = {};
+    let current = 1;
+
+    const isEn = () => document.documentElement.lang === 'en';
+    const isSq = () => document.documentElement.lang === 'sq';
+    const L = (mk, en, sq) => (isEn() ? en : (isSq() ? sq : mk));
+
+    const SYSTEMS = {
+        ortho: {
+            title: { mk: 'МОНЕТА ORTHO SYSTEM', en: 'MONETA ORTHO SYSTEM', sq: 'MONETA ORTHO SYSTEM' },
+            img: './images/systems/ortho-system.svg',
+            desc: {
+                mk: 'Заради болката во петата и оптоварувањето, вашето стапало бара зајакната анатомска поддршка, длабока чашка за петата и рамномерно ослободување на притисокот.',
+                en: 'Due to heel pain and strain, your foot needs reinforced anatomical support, a deep heel cup, and even pressure relief.',
+                sq: 'Për shkak të dhimbjes në thembër dhe ngarkesës, këmba juaj ka nevojë për mbështetje anatomike të përforcuar, kupë të thellë për thembrën dhe çlirim të barabartë të presionit.'
+            },
+            model: { mk: 'МОНЕТА Ortho Relief', en: 'MONETA Ortho Relief', sq: 'MONETA Ortho Relief' }
+        },
+        thermo: {
+            title: { mk: 'МОНЕТА THERMO SYSTEM', en: 'MONETA THERMO SYSTEM', sq: 'MONETA THERMO SYSTEM' },
+            img: './images/systems/thermo-system.svg',
+            desc: {
+                mk: 'За зимски услови и ниски температури, ви е потребен систем со алуминиумски топлотен штит и природен филц кој го блокира студот и ја задржува топлината.',
+                en: 'For winter conditions and low temperatures, you need a system with an aluminum heat shield and natural felt that blocks the cold and retains warmth.',
+                sq: 'Për kushte dimërore dhe temperatura të ulëta, keni nevojë për një sistem me mburojë termike alumini dhe felt natyral që bllokon të ftohtin dhe ruan ngrohtësinë.'
+            },
+            model: { mk: 'МОНЕТА Thermo Alu', en: 'MONETA Thermo Alu', sq: 'MONETA Thermo Alu' }
+        },
+        absorb: {
+            title: { mk: 'МОНЕТА ABSORB & BREATHABLE SYSTEM', en: 'MONETA ABSORB & BREATHABLE SYSTEM', sq: 'MONETA ABSORB & BREATHABLE SYSTEM' },
+            img: './images/systems/absorb-breathable-system.svg',
+            desc: {
+                mk: 'Ви е потребна максимална циркулација на воздух и брзо апсорбирање на потта за вашите стапала да бидат суви, свежи и заштитени од бактерии цел ден.',
+                en: 'You need maximum air circulation and fast sweat absorption so your feet stay dry, fresh, and protected from bacteria all day.',
+                sq: 'Keni nevojë për qarkullim maksimal të ajrit dhe thithje të shpejtë të djersës që këmbët tuaja të mbeten të thata, të freskëta dhe të mbrojtura nga bakteret gjithë ditën.'
+            },
+            model: { mk: 'МОНЕТА Summer Perforated / Active', en: 'MONETA Summer Perforated / Active', sq: 'MONETA Summer Perforated / Active' }
+        },
+        memory: {
+            title: { mk: 'МОНЕТА MEMORY & SPORT SYSTEM', en: 'MONETA MEMORY & SPORT SYSTEM', sq: 'MONETA MEMORY & SPORT SYSTEM' },
+            img: './images/systems/memory-system.svg',
+            desc: {
+                mk: 'За спортски активности и чекорење, комбинацијата од вискоеластична мемори пена и анатомски свод гарантира супериорна шок-апсорпција и мекост.',
+                en: 'For sports activities and walking, the combination of viscoelastic memory foam and an anatomical arch guarantees superior shock absorption and softness.',
+                sq: 'Për aktivitete sportive dhe ecje, kombinimi i shkumës viskoelastike të memories dhe harkut anatomik garanton thithje superiore të goditjeve dhe butësi.'
+            },
+            model: { mk: 'МОНЕТА Sport Deluxe', en: 'MONETA Sport Deluxe', sq: 'MONETA Sport Deluxe' }
+        },
+        anatomic: {
+            title: { mk: 'МОНЕТА ANATOMIC SYSTEM', en: 'MONETA ANATOMIC SYSTEM', sq: 'MONETA ANATOMIC SYSTEM' },
+            img: './images/systems/anatomic-system.svg',
+            desc: {
+                mk: 'Вашите стапала бараат природна анатомска поддршка за надолжниот и попречниот свод за правилно држење на телото и максимална удобност во текот на денот.',
+                en: 'Your feet need natural anatomical support for the longitudinal and transverse arch for proper posture and maximum comfort throughout the day.',
+                sq: 'Këmbët tuaja kanë nevojë për mbështetje anatomike natyrale për harkun gjatësor dhe tërthor për qëndrim të saktë të trupit dhe rehati maksimale gjatë ditës.'
+            },
+            model: { mk: 'МОНЕТА Leather Comfort Anatomic', en: 'MONETA Leather Comfort Anatomic', sq: 'MONETA Leather Comfort Anatomic' }
+        }
+    };
+
+    function currentSys() {
+        const a = answers;
+        if (a['2'] === 'heel_pain' || a['1'] === 'heavy') return SYSTEMS.ortho;
+        if (a['2'] === 'cold' || a['3'] === 'winter_boots') return SYSTEMS.thermo;
+        if (a['2'] === 'sweat') return SYSTEMS.absorb;
+        if (a['1'] === 'sport' || a['3'] === 'sneakers') return SYSTEMS.memory;
+        return SYSTEMS.anatomic;
+    }
+    const pick = (obj) => obj[isEn() ? 'en' : (isSq() ? 'sq' : 'mk')];
+
+    function renderProgress() {
+        const remaining = steps.length - current;
+        if (indicator) indicator.textContent = L('Прашање ' + current + ' од ' + steps.length, 'Question ' + current + ' of ' + steps.length, 'Pyetja ' + current + ' nga ' + steps.length);
+        if (remainingText) remainingText.textContent = remaining === 1 ? L('Уште 1 прашање', '1 more question', 'Edhe 1 pyetje') : L('Уште ' + remaining + ' прашања', remaining + ' more questions', 'Edhe ' + remaining + ' pyetje');
+        if (progressBar) progressBar.style.width = ((current) / steps.length * 100) + '%';
+    }
+
+    function showStep(n) {
+        current = Math.min(Math.max(1, n), steps.length);
+        steps.forEach((s) => {
+            const on = +s.dataset.step === current;
+            s.classList.toggle('is-active', on);
+            s.style.display = on ? 'block' : 'none';
+        });
+        if (result) result.style.display = 'none';
+        renderProgress();
+        if (node1) node1.className = 'quiz-node' + (current === 1 ? ' is-active' : (current > 1 ? ' is-done' : ''));
+        if (node2) node2.className = 'quiz-node' + (current === 2 ? ' is-active' : (current > 2 ? ' is-done' : ''));
+        if (node3) node3.className = 'quiz-node' + (current === 3 ? ' is-active' : (current > 3 ? ' is-done' : ''));
+        if (nodeLine1) nodeLine1.classList.toggle('is-active', current > 1);
+        if (nodeLine2) nodeLine2.classList.toggle('is-active', current > 2);
+    }
+
+    function showResult() {
+        const sys = currentSys();
+        if (titleEl) titleEl.textContent = pick(sys.title);
+        if (imgEl) imgEl.src = sys.img;
+        if (descEl) descEl.textContent = pick(sys.desc);
+        if (nameEl) nameEl.textContent = pick(sys.model);
+        if (ctaEl) ctaEl.href = 'index.html#kategorii';
+        steps.forEach((s) => { s.classList.remove('is-active'); s.style.display = 'none'; });
+        if (result) result.style.display = 'block';
+    }
+
+    section.addEventListener('click', (e) => {
+        const opt = e.target.closest('.quiz-option');
+        if (opt) {
+            const stepEl = opt.closest('.quiz-step');
+            answers[stepEl.dataset.step] = opt.dataset.value;
+            stepEl.querySelectorAll('.quiz-option').forEach((o) => o.classList.toggle('is-selected', o === opt));
+            if (current < steps.length) {
+                setTimeout(() => showStep(current + 1), 260);
+            } else {
+                showResult();
+            }
+            return;
+        }
+        if (e.target.closest('#techReset')) {
+            Object.keys(answers).forEach((k) => delete answers[k]);
+            showStep(1);
+        }
+    });
+
+    if (window.MonetaOnLangChange) {
+        window.MonetaOnLangChange(() => {
+            if (result && result.style.display === 'block') {
+                const sys = currentSys();
+                if (titleEl) titleEl.textContent = pick(sys.title);
+                if (descEl) descEl.textContent = pick(sys.desc);
+                if (nameEl) nameEl.textContent = pick(sys.model);
+            } else {
+                renderProgress();
+            }
+        });
+    }
+
+    showStep(1);
+})();
