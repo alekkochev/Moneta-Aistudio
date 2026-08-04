@@ -6553,3 +6553,142 @@ textarea {
     gap: 30px;
 }
 
+/* ========================================
+   QUIZ RESULT ICONS (2026-08-04) — икони под секоја препорачана влошка
+   ======================================== */
+.quiz-result__icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 8px;
+    min-height: 22px;
+    flex-wrap: wrap;
+}
+.quiz-result__icons img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+/* QUIZ DUCK MODE (2026-08-04) — „За дете“ директно прикажува DUCK */
+.quiz-result__note {
+    grid-column: 1 / -1;
+    margin: 0 0 4px;
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 14.5px;
+    color: var(--ink);
+    background: #fdf0f4;
+    border: 1px solid #f6d5e0;
+    border-radius: 12px;
+}
+.quiz-result__note strong { color: var(--pink); }
+.quiz-result__card--duck {
+    grid-column: 1 / -1;
+    max-width: 340px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ========================================
+   DEALER MAP (2026-08-04) — Leaflet + OSM
+   ======================================== */
+.dealer-section { margin-top: 44px; }
+.dealer-section__title {
+    font-family: Manrope, 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    color: var(--ink);
+    margin: 0 0 6px;
+}
+.dealer-section__sub { margin: 0 0 16px; color: #666; font-size: 14.5px; }
+.dealer-map {
+    position: relative;
+    z-index: 0;
+    height: 420px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1.5px solid #f0e6ea;
+}
+.dealer-map .leaflet-container { z-index: 0; font-family: 'Montserrat', sans-serif; }
+.dealer-pin-wrap { background: transparent; border: none; }
+.dealer-pin {
+    width: 26px;
+    height: 36px;
+    background: var(--pink);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    border: 2px solid #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+    position: relative;
+}
+.dealer-pin::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.dealer-pin--blue { background: #1E6FD9; }
+/* Leaflet логото (атрибуцијата) секогаш видливо */
+.leaflet-control-attribution {
+    font-size: 11px;
+    line-height: 1.4;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 3px 9px;
+    border-radius: 8px 0 0 0;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.12);
+}
+.leaflet-control-attribution a { color: #0078A8; font-weight: 600; }
+.leaflet-control-attribution a:hover { text-decoration: underline; }
+.dealer-popup { text-align: center; min-width: 190px; }
+.dealer-popup strong { display: block; color: var(--ink); font-size: 14px; margin-bottom: 4px; }
+.dealer-popup > span { display: block; font-size: 12.5px; color: #555; }
+.dealer-popup .dealer-popup__tel { margin-top: 7px; }
+.dealer-popup a { color: var(--pink); font-weight: 700; text-decoration: none; font-size: 12.5px; }
+.dealer-popup a:hover { text-decoration: underline; }
+.dealer-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 22px;
+    background: #fff;
+    border: 1.5px solid #f0e6ea;
+    border-radius: 16px;
+    padding: 16px 10px;
+    position: relative;
+}
+/* суптилна сивкаста вертикална линија во средината (лево | десно) */
+.dealer-list::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    bottom: 16px;
+    left: 50%;
+    width: 1px;
+    background: #e9e9ec;
+}
+.dealer-list__item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 16px;
+    align-items: center;
+    text-align: center;
+}
+.dealer-list__item strong { font-size: 13.5px; color: var(--ink); line-height: 1.45; }
+.dealer-list__item span { font-size: 12.5px; color: #666; line-height: 1.45; }
+.dealer-list__item--main strong { color: #1E6FD9; }
+@media (max-width: 900px) {
+    .dealer-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+    .dealer-map { height: 320px; }
+    .dealer-list { grid-template-columns: 1fr; }
+    .dealer-list::before { display: none; }
+}
+

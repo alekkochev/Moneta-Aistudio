@@ -1967,15 +1967,15 @@ const SEARCH_MODAL_HTML = `
         },
         {
             type: 'info',
-            titleMk: 'Ортопедска потпора за рамни стапала & шип во пета',
-            titleEn: 'Orthopedic Support for Flat Feet & Heel Spurs',
+            titleMk: 'Анатомска потпора за рамни стапала & шип во пета',
+            titleEn: 'Anatomical Support for Flat Feet & Heel Spurs',
             descMk: 'Превенција и олеснување на болки во петата, наддолжниот и попречниот свод',
             descEn: 'Prevention and relief for plantar fasciitis, arch fatigue, and flat feet',
             url: '#faq',
             icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
-            badgeMk: 'Ортопедија',
-            badgeEn: 'Orthopedics',
-            keywords: 'рамни стапала ортопедски свод шип во пета болка пета зглобови pes planus plantar fasciitis arch support heel spur pain'
+            badgeMk: 'Анатомска',
+            badgeEn: 'Anatomical',
+            keywords: 'рамни стапала анатомски свод шип во пета болка пета зглобови pes planus plantar fasciitis arch support heel spur pain'
         },
         {
             type: 'info',
@@ -2583,27 +2583,44 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
     const answers = {};
     let current = 1;
 
+    const QUIZ_ICONS = {
+        anatomska:   ['anatomska%20vloska.webp', 'Анатомска', 'Anatomical'],
+        pritisok:    ['apsorpcija%20na%20pritisok.webp', 'Апсорпција на удари', 'Shock absorb'],
+        apsorpcija:  ['apsorpcija.webp', 'Апсорпција', 'Absorption'],
+        gel:         ['gel%20vloska.webp', 'Гел', 'Gel'],
+        higienski:   ['higienski.webp', 'Хигиенски', 'Hygienic'],
+        koza:        ['koza.webp', 'Кожа', 'Leather'],
+        medicinski:  ['medicinski_svojstva.webp', 'Здравје', 'Health'],
+        perenje:     ['moznost%20za%20perenje.webp', 'Перење', 'Washable'],
+        polar:       ['polar%28ultra%20zimski%29.webp', 'Полар', 'Polar'],
+        prirodni:    ['prirodni%20materijali.webp', 'Природни', 'Natural'],
+        mirisi:      ['protiv%20losi%20mirisi.webp', 'Анти-мирис', 'Anti-odor'],
+        aroma:       ['so%20aroma.webp', 'Арома', 'Aroma'],
+        univerzalen: ['univerzalen%20broj.webp', 'Универзален', 'Universal'],
+        zimski:      ['zimski.webp', 'Зимски', 'Winter']
+    };
+
     const MODELS = {
-        'memosole':       { cat: ['sport'],  pain: ['celo', 'nema'], prio: ['amort', 'prirodni'], price: 400, nameMk: 'MEMOSOLE', nameEn: 'MEMOSOLE' },
-        'active-gel':     { cat: ['sport'],  pain: ['peta', 'nema'], prio: ['amort'], price: 620, nameMk: 'Active Gel', nameEn: 'Active Gel' },
-        'anatomiX':       { cat: ['sport'],  pain: ['lac', 'nema'], prio: ['poddrshka'], price: 430, nameMk: 'AnatomiX', nameEn: 'AnatomiX' },
-        'sport-style':    { cat: ['sport'],  pain: ['nema'], prio: ['cena', 'prirodni'], price: 300, nameMk: 'Sport Style', nameEn: 'Sport Style' },
-        'sportex':        { cat: ['sport'],  pain: ['nema'], prio: ['cena', 'fresina'], price: 230, nameMk: 'Sportex', nameEn: 'Sportex' },
-        'x-treme':        { cat: ['sport'],  pain: ['peta', 'celo'], prio: ['amort', 'poddrshka'], price: 420, nameMk: 'X-TREME', nameEn: 'X-TREME' },
-        'heel-pad':       { cat: ['kozni'],  pain: ['peta'], prio: ['poddrshka'], price: 250, nameMk: 'Heel Pad', nameEn: 'Heel Pad' },
-        'heel-pad-fix':   { cat: ['kozni'],  pain: ['peta'], prio: ['poddrshka'], price: 210, nameMk: 'Heel Pad FIX', nameEn: 'Heel Pad FIX' },
-        'heel-pad-grip':  { cat: ['kozni'],  pain: ['peta'], prio: ['cena', 'poddrshka'], price: 100, nameMk: 'Heel Pad Grip', nameEn: 'Heel Pad Grip' },
-        'topas':          { cat: ['kozni'],  pain: ['lac', 'peta'], prio: ['poddrshka', 'prirodni'], price: 490, nameMk: 'Topas', nameEn: 'Topas' },
-        'soft-gel':       { cat: ['kozni'],  pain: ['celo', 'peta'], prio: ['amort', 'fresina'], price: 820, nameMk: 'Soft Gel', nameEn: 'Soft Gel' },
-        'vital':          { cat: ['kozni'],  pain: ['lac'], prio: ['poddrshka'], price: 450, nameMk: 'Vital', nameEn: 'Vital' },
-        'relax':          { cat: ['kozni'],  pain: ['celo', 'lac'], prio: ['prirodni', 'amort'], price: 570, nameMk: 'Relax', nameEn: 'Relax' },
-        'simona':         { cat: ['letni'],  pain: ['nema', 'celo'], prio: ['fresina', 'prirodni', 'cena'], price: 120, nameMk: 'Simona', nameEn: 'Simona' },
-        'carbon':         { cat: ['letni'],  pain: ['celo', 'nema'], prio: ['fresina', 'cena'], price: 170, nameMk: 'Carbon', nameEn: 'Carbon' },
-        'thermo-alu':     { cat: ['zimski'], pain: ['nema', 'celo'], prio: ['prirodni'], price: 210, nameMk: 'Thermo Alu', nameEn: 'Thermo Alu' },
-        'hunter-outdoor': { cat: ['hunter'], pain: ['lac', 'peta'], prio: ['poddrshka'], price: 330, nameMk: 'Hunter Outdoor', nameEn: 'Hunter Outdoor' },
-        'hunter-flex':    { cat: ['hunter'], pain: ['celo'], prio: ['amort'], price: 330, nameMk: 'Hunter Flex', nameEn: 'Hunter Flex' },
-        'hunter-camo':    { cat: ['hunter'], pain: ['peta', 'lac'], prio: ['poddrshka'], price: 330, nameMk: 'Hunter CAMO', nameEn: 'Hunter CAMO' },
-        'duck':           { cat: ['detski'], pain: ['nema', 'celo'], prio: ['prirodni', 'cena'], price: 490, nameMk: 'Duck', nameEn: 'Duck' },
+        'memosole':       { cat: ['sport'],  pain: ['celo', 'nema'], prio: ['amort', 'prirodni'], job: ['sportist', 'nastavnik', 'zdravstvo'], icons: ['anatomska', 'pritisok', 'mirisi', 'univerzalen'], price: 400, nameMk: 'MEMOSOLE', nameEn: 'MEMOSOLE' },
+        'active-gel':     { cat: ['sport'],  pain: ['peta', 'nema'], prio: ['amort'], job: ['sportist', 'zdravstvo'], icons: ['gel', 'pritisok', 'univerzalen', 'anatomska'], price: 620, nameMk: 'Active Gel', nameEn: 'Active Gel' },
+        'anatomiX':       { cat: ['sport'],  pain: ['lac', 'nema'], prio: ['poddrshka'], job: ['sportist', 'zdravstvo', 'rabotnik'], icons: ['pritisok', 'higienski', 'anatomska'], price: 430, nameMk: 'AnatomiX', nameEn: 'AnatomiX' },
+        'sport-style':    { cat: ['sport'],  pain: ['nema'], prio: ['cena', 'prirodni'], job: ['sportist', 'nastavnik'], icons: ['prirodni', 'anatomska', 'apsorpcija'], price: 300, nameMk: 'Sport Style', nameEn: 'Sport Style' },
+        'sportex':        { cat: ['sport'],  pain: ['nema'], prio: ['cena', 'fresina'], job: ['sportist', 'rabotnik', 'nastavnik'], icons: ['pritisok', 'higienski', 'anatomska'], price: 230, nameMk: 'Sportex', nameEn: 'Sportex' },
+        'x-treme':        { cat: ['sport'],  pain: ['peta', 'celo'], prio: ['amort', 'poddrshka'], job: ['sportist', 'rabotnik'], icons: ['pritisok', 'anatomska', 'apsorpcija', 'higienski'], price: 420, nameMk: 'X-TREME', nameEn: 'X-TREME' },
+        'heel-pad':       { cat: ['kozni'],  pain: ['peta'], prio: ['poddrshka'], job: ['kancelarija', 'zdravstvo', 'nastavnik'], icons: ['koza', 'pritisok', 'anatomska'], price: 250, nameMk: 'Heel Pad', nameEn: 'Heel Pad' },
+        'heel-pad-fix':   { cat: ['kozni'],  pain: ['peta'], prio: ['poddrshka'], job: ['kancelarija', 'zdravstvo'], icons: ['koza', 'pritisok'], price: 210, nameMk: 'Heel Pad FIX', nameEn: 'Heel Pad FIX' },
+        'heel-pad-grip':  { cat: ['kozni'],  pain: ['peta'], prio: ['cena', 'poddrshka'], job: ['kancelarija', 'nastavnik'], icons: ['koza', 'univerzalen', 'pritisok'], price: 100, nameMk: 'Heel Pad Grip', nameEn: 'Heel Pad Grip' },
+        'topas':          { cat: ['kozni'],  pain: ['lac', 'peta'], prio: ['poddrshka', 'prirodni'], job: ['kancelarija', 'nastavnik', 'zdravstvo'], icons: ['koza', 'anatomska', 'medicinski'], price: 490, nameMk: 'Topas', nameEn: 'Topas' },
+        'soft-gel':       { cat: ['kozni'],  pain: ['celo', 'peta'], prio: ['amort', 'fresina'], job: ['zdravstvo', 'nastavnik'], icons: ['koza', 'gel', 'mirisi', 'anatomska'], price: 820, nameMk: 'Soft Gel', nameEn: 'Soft Gel' },
+        'vital':          { cat: ['kozni'],  pain: ['lac'], prio: ['poddrshka'], job: ['kancelarija', 'nastavnik'], icons: ['koza', 'apsorpcija', 'anatomska'], price: 450, nameMk: 'Vital', nameEn: 'Vital' },
+        'relax':          { cat: ['kozni'],  pain: ['celo', 'lac'], prio: ['prirodni', 'amort'], job: ['kancelarija', 'zdravstvo', 'nastavnik'], icons: ['koza', 'prirodni', 'anatomska'], price: 570, nameMk: 'Relax', nameEn: 'Relax' },
+        'simona':         { cat: ['letni'],  pain: ['nema', 'celo'], prio: ['fresina', 'prirodni', 'cena'], job: ['kancelarija', 'nastavnik'], icons: ['aroma', 'mirisi', 'prirodni', 'apsorpcija'], price: 120, nameMk: 'Simona', nameEn: 'Simona' },
+        'carbon':         { cat: ['letni'],  pain: ['celo', 'nema'], prio: ['fresina', 'cena'], job: ['kancelarija', 'nastavnik'], icons: ['mirisi', 'higienski', 'univerzalen', 'apsorpcija'], price: 170, nameMk: 'Carbon', nameEn: 'Carbon' },
+        'thermo-alu':     { cat: ['zimski'], pain: ['nema', 'celo'], prio: ['prirodni'], job: ['rabotnik', 'nastavnik'], icons: ['zimski', 'polar', 'prirodni', 'anatomska'], price: 210, nameMk: 'Thermo Alu', nameEn: 'Thermo Alu' },
+        'hunter-outdoor': { cat: ['hunter'], pain: ['lac', 'peta'], prio: ['poddrshka'], job: ['rabotnik', 'sportist'], icons: ['pritisok', 'anatomska', 'apsorpcija'], price: 330, nameMk: 'Hunter Outdoor', nameEn: 'Hunter Outdoor' },
+        'hunter-flex':    { cat: ['hunter'], pain: ['celo'], prio: ['amort'], job: ['rabotnik', 'sportist'], icons: ['zimski', 'pritisok', 'anatomska'], price: 330, nameMk: 'Hunter Flex', nameEn: 'Hunter Flex' },
+        'hunter-camo':    { cat: ['hunter'], pain: ['peta', 'lac'], prio: ['poddrshka'], job: ['rabotnik', 'sportist'], icons: ['mirisi', 'apsorpcija', 'anatomska'], price: 330, nameMk: 'Hunter CAMO', nameEn: 'Hunter CAMO' },
+        'duck':           { cat: ['detski'], pain: ['nema', 'celo'], prio: ['prirodni', 'cena'], job: [], icons: ['prirodni', 'anatomska', 'medicinski'], price: 490, nameMk: 'Duck', nameEn: 'Duck' },
     };
 
     function lang() {
@@ -2614,9 +2631,15 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
         current = Math.min(Math.max(1, n), steps.length);
         steps.forEach((s) => s.classList.toggle('is-active', +s.dataset.step === current));
         if (result) result.style.display = 'none';
-        if (bar) bar.style.width = ((current - 1) / steps.length * 100 + 25) + '%';
+        if (bar) bar.style.width = (current / steps.length * 100) + '%';
         if (stepLabel) stepLabel.textContent = current + ' / ' + steps.length;
         if (prevBtn) prevBtn.style.visibility = current === 1 ? 'hidden' : 'visible';
+        if (nextBtn) {
+            nextBtn.style.visibility = 'visible';
+            nextBtn.dataset.mk = 'Следно →';
+            nextBtn.dataset.en = 'Next →';
+            nextBtn.textContent = lang() === 'en' ? 'Next →' : 'Следно →';
+        }
         steps.forEach((s) => {
             const val = answers[s.dataset.step];
             s.querySelectorAll('.quiz-option').forEach((o) => o.classList.toggle('is-selected', o.dataset.val === val));
@@ -2624,16 +2647,20 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
     }
 
     function scoreModels() {
-        const q1 = answers['1'] || 'nema';
-        const q2 = answers['2'] || '4-8';
-        const q3 = answers['3'] || 'sport';
-        const q4 = answers['4'] || 'poddrshka';
+        const q1 = answers['1'] || 'jas';          // за кого
+        const q2 = answers['2'] || 'drugo';        // занимање
+        const q3 = answers['3'] || 'nema';         // непријатност
+        const q4 = answers['4'] || '4-8';          // часови на нозе
+        const q5 = answers['5'] || 'sport';        // обувки
+        const q6 = answers['6'] || 'poddrshka';    // приоритет
         const scored = Object.entries(MODELS).map(([slug, m]) => {
             let score = 0;
-            if (m.cat.includes(q3)) score += 3;
-            if (m.pain.includes(q1)) score += 2;
-            if (m.prio.includes(q4)) score += 2;
-            if (q2 === '8+' && (m.pain.includes('celo') || q1 === 'peta' || q1 === 'lac')) score += 1;
+            if (m.cat.includes(q5)) score += 3;
+            if (m.pain.includes(q3)) score += 2;
+            if (m.prio.includes(q6)) score += 2;
+            if (m.job && m.job.includes(q2)) score += 2;
+            if (q1 === 'dete' && slug === 'duck') score += 5;
+            if (q4 === '8+' && (m.pain.includes('celo') || q3 === 'peta' || q3 === 'lac')) score += 1;
             return { slug, ...m, score };
         });
         scored.sort((a, b) => b.score - a.score || a.price - b.price);
@@ -2641,22 +2668,52 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
     }
 
     function showResult() {
-        const top = scoreModels().slice(0, 3);
         const isEn = lang() === 'en';
+        const isDuckMode = answers['1'] === 'dete';
+        const top = isDuckMode ? [] : scoreModels().slice(0, 3);
         if (grid) {
-            grid.innerHTML = top.map((m) => `
+            if (isDuckMode) {
+                // За деца има само еден модел (DUCK) — нема квиз прашања, само инфо + линк
+                grid.innerHTML = `
+                    <p class="quiz-result__note">${isEn ? '🎒 For kids there is only one insole — meet <strong>MONETA Duck</strong>!' : '🎒 За деца постои само една влошка — запознајте ја <strong>МОНЕТА Duck</strong>!'}</p>
+                    <a href="modeli/duck.html" class="quiz-result__card quiz-result__card--duck">
+                        <img src="images/cards/duck.webp" alt="Duck" width="200" height="150" loading="lazy">
+                        <strong>Duck</strong>
+                        <span>490 ${isEn ? 'MKD' : 'ден.'}</span>
+                        <div class="quiz-result__icons">
+                            <img src="images/icons/prirodni%20materijali.webp" alt="${isEn ? 'Natural' : 'Природни'}" title="${isEn ? 'Natural' : 'Природни'}" width="22" height="22" loading="lazy">
+                            <img src="images/icons/anatomska%20vloska.webp" alt="${isEn ? 'Anatomical' : 'Анатомска'}" title="${isEn ? 'Anatomical' : 'Анатомска'}" width="22" height="22" loading="lazy">
+                            <img src="images/icons/medicinski_svojstva.webp" alt="${isEn ? 'Health' : 'Здравје'}" title="${isEn ? 'Health' : 'Здравје'}" width="22" height="22" loading="lazy">
+                        </div>
+                        <em>${isEn ? 'View →' : 'Види →'}</em>
+                    </a>`;
+            } else {
+                grid.innerHTML = top.map((m) => `
                 <a href="modeli/${m.slug}.html" class="quiz-result__card">
                     <img src="images/cards/${m.slug}.webp" alt="${isEn ? m.nameEn : m.nameMk}" width="200" height="150" loading="lazy">
                     <strong>${isEn ? m.nameEn : m.nameMk}</strong>
                     <span>${m.price} ${isEn ? 'MKD' : 'ден.'}</span>
+                    <div class="quiz-result__icons">${(m.icons || []).map((k) => {
+                        const ic = QUIZ_ICONS[k];
+                        if (!ic) return '';
+                        const [file, mk, en] = ic;
+                        return `<img src="images/icons/${file}" alt="${isEn ? en : mk}" title="${isEn ? en : mk}" width="22" height="22" loading="lazy">`;
+                    }).join('')}</div>
                     <em>${isEn ? 'View →' : 'Види →'}</em>
                 </a>`).join('');
+            }
         }
         steps.forEach((s) => s.classList.remove('is-active'));
         if (result) result.style.display = 'block';
         if (bar) bar.style.width = '100%';
         if (stepLabel) stepLabel.textContent = '✓';
         if (prevBtn) prevBtn.style.visibility = 'hidden';
+        if (nextBtn) {
+            nextBtn.style.visibility = 'visible';
+            nextBtn.dataset.mk = '🏠 Почетна';
+            nextBtn.dataset.en = '🏠 Home';
+            nextBtn.textContent = isEn ? '🏠 Home' : '🏠 Почетна';
+        }
     }
 
     section.addEventListener('click', (e) => {
@@ -2665,7 +2722,10 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
             const stepEl = opt.closest('.quiz-step');
             answers[stepEl.dataset.step] = opt.dataset.val;
             stepEl.querySelectorAll('.quiz-option').forEach((o) => o.classList.toggle('is-selected', o === opt));
-            if (current < steps.length) {
+            if (current === 1 && opt.dataset.val === 'dete') {
+                // За „За дете“ → нема квиз прашања (постои само DUCK), директно резултат
+                showResult();
+            } else if (current < steps.length) {
                 setTimeout(() => showStep(current + 1), 260);
             } else {
                 showResult();
@@ -2674,6 +2734,11 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
         }
         if (e.target.closest('#quizPrev')) { showStep(current - 1); return; }
         if (e.target.closest('#quizNext')) {
+            const resultShown = result && result.style.display === 'block';
+            if (resultShown) {
+                window.location.href = 'index.html';
+                return;
+            }
             if (current < steps.length) showStep(current + 1);
             return;
         }
@@ -2702,4 +2767,67 @@ console.log('%c Вебсајт во развој 💪', 'color:#6B6B76;font-size
     }
 
     showStep(1);
+})();
+
+// ========================================
+// DEALER MAP (2026-08-04) — Leaflet + OpenStreetMap
+// Мапа на дилери во секцијата Контакт (index.html), двојазично MK/EN.
+// ========================================
+(function initDealerMap() {
+    const mapEl = document.getElementById('dealerMap');
+    if (!mapEl || typeof L === 'undefined') return;
+
+    const DEALERS = [
+        { nameMk: 'МЕДИКА ПРО — Скопје', nameEn: 'MEDIKA PRO — Skopje', addrMk: 'бул. Кочо Рацин бр.75, Центар', addrEn: '75 Koco Racin Blvd, Centar', tel: ['+389 72 225 505', '+389 2 3111 404'], lat: 41.9963, lng: 21.4258 },
+        { nameMk: 'МЕДИКА ПРО — Прилеп', nameEn: 'MEDIKA PRO — Prilep', addrMk: 'ул. Мице Козар бр.10', addrEn: '10 Mice Kozar St.', tel: ['+389 70 22 55 99', '+389 48 450 231'], lat: 41.3458, lng: 21.5565 },
+        { nameMk: 'МЕДИКА ПРО — Тетово', nameEn: 'MEDIKA PRO — Tetovo', addrMk: 'ул. Маршал Тито бр.36', addrEn: '36 Marshal Tito St.', tel: ['+389 71 26 20 48', '+389 44 349 050'], lat: 42.0086, lng: 20.9710 },
+        { nameMk: 'МЕДИКА ПРО — Битола', nameEn: 'MEDIKA PRO — Bitola', addrMk: 'бул. 1-ви Мај бр.202/7', addrEn: '202/7 1st May Blvd', tel: ['+389 72 30 37 82', '+389 47 29 21 10'], lat: 41.0297, lng: 21.3332 },
+        { nameMk: 'МЕДИКА ПРО — Куманово', nameEn: 'MEDIKA PRO — Kumanovo', addrMk: 'ул. Христијан Тодоровски Карпош бр.7', addrEn: '7 Hristijan Todorovski Karpos St.', tel: ['+389 70 322 611', '+389 31 461 990'], lat: 42.1322, lng: 21.7150 },
+        { nameMk: 'МЕДИКА ПРО — Струмица', nameEn: 'MEDIKA PRO — Strumica', addrMk: 'ул. Младинска бр.37', addrEn: '37 Mladinska St.', tel: ['+389 70 223 100', '+389 34 348 256'], lat: 41.3183, lng: 22.6410 },
+        { nameMk: 'МАК-ФИТ (Calivita) — Скопје', nameEn: 'MAK-FIT (Calivita) — Skopje', addrMk: 'ул. св. Кирил и Методиј бр.20', addrEn: '20 Sv. Kiril i Metodij St.', tel: ['+389 76 454 957', '+389 2 323 00 88'], isMain: true, lat: 42.0008, lng: 21.4310 }
+    ];
+
+    const isEn = () => document.documentElement.lang === 'en';
+
+    function popupHtml(d) {
+        const phones = d.tel.map((t) => `<a href="tel:${t.replace(/\s/g, '')}">${t}</a>`).join(' · ');
+        return `<div class="dealer-popup">
+            <strong>${isEn() ? d.nameEn : d.nameMk}</strong>
+            <span>${isEn() ? d.addrEn : d.addrMk}</span>
+            <span class="dealer-popup__tel">${phones}</span>
+        </div>`;
+    }
+
+    const pinIcon = L.divIcon({
+        className: 'dealer-pin-wrap',
+        html: '<div class="dealer-pin"></div>',
+        iconSize: [26, 36],
+        iconAnchor: [13, 36],
+        popupAnchor: [0, -34]
+    });
+    // Главната продавница (МАК-ФИТ) → син пин
+    const pinIconBlue = L.divIcon({
+        className: 'dealer-pin-wrap',
+        html: '<div class="dealer-pin dealer-pin--blue"></div>',
+        iconSize: [26, 36],
+        iconAnchor: [13, 36],
+        popupAnchor: [0, -34]
+    });
+
+    const map = L.map(mapEl, { scrollWheelZoom: false, attributionControl: true }).setView([41.65, 21.55], 8);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    const markers = DEALERS.map((d) =>
+        L.marker([d.lat, d.lng], { icon: d.isMain ? pinIconBlue : pinIcon }).addTo(map).bindPopup(popupHtml(d))
+    );
+
+    // Јазична промена → освежи ги попup-содржините
+    if (window.MonetaOnLangChange) {
+        window.MonetaOnLangChange(() => {
+            markers.forEach((m, i) => m.setPopupContent(popupHtml(DEALERS[i])));
+        });
+    }
 })();

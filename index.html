@@ -10,12 +10,12 @@
     <meta property="og:title" content="МОНЕТА — Анатомски вложки" />
     <meta property="og:description" content="МОНЕТА анатомски вложки – подобар чекор, помал замор и поголема удобност." />
     <meta property="og:url" content="https://insoles.mk/index.html" />
-    <meta property="og:image" content="./images/cards/Sportski.webp" />
+    <meta property="og:image" content="https://insoles.mk/images/cards/Sportski.webp" />
     <meta property="og:locale" content="mk_MK" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="МОНЕТА — Анатомски вложки" />
     <meta name="twitter:description" content="МОНЕТА анатомски вложки – подобар чекор, помал замор и поголема удобност." />
-    <meta name="twitter:image" content="./images/cards/Sportski.webp" />
+    <meta name="twitter:image" content="https://insoles.mk/images/cards/Sportski.webp" />
     <meta name="theme-color" content="#EC1752" />
     <link rel="canonical" href="https://insoles.mk/index.html" />
     <script type="application/ld+json">
@@ -110,6 +110,7 @@
       ]
     }
     </script>
+    <link rel="stylesheet" href="./vendor/leaflet.css">
 </head>
 <body>
 
@@ -120,29 +121,29 @@
                 <img src="./images/moneta-logo.svg" alt="MONETA" width="132" height="37">
             </a>
             <div class="navbar__right">
-                <button type="button" class="navbar__search-btn" id="searchTrigger" aria-label="Пребарај" title="Пребарај (Ctrl+K)" data-mk-aria="Пребарај" data-en-aria="Search" data-mk-title="Пребарај (Ctrl+K)" data-en-title="Search (Ctrl+K)">
+                <button type="button" class="navbar__search-btn" id="searchTrigger" aria-label="Пребарај" title="Пребарај (Ctrl+K)" data-mk-aria="Пребарај" data-sq-aria="Kërko" data-en-aria="Search" data-mk-title="Пребарај (Ctrl+K)" data-en-title="Search (Ctrl+K)">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <span class="search-btn__label" data-mk="Пребарај..." data-en="Search...">Пребарај...</span>
+                    <span class="search-btn__label" data-mk="Пребарај..." data-sq="Kërko..." data-en="Search...">Пребарај...</span>
                 </button>
                 <ul class="navbar__links" id="navLinks">
-                    <li><a href="./index.html#kategorii" data-mk="Влошки" data-en="Insoles">Влошки</a></li>
-                    <li><a href="./sistem.html" data-mk="МОНЕТА систем" data-en="MONETA System">МОНЕТА систем</a></li>
+                    <li><a href="./index.html#kategorii" data-mk="Влошки" data-sq="Tabana" data-en="Insoles">Влошки</a></li>
+                    <li><a href="./sistem.html" data-mk="МОНЕТА систем" data-sq="Sistemi MONETA" data-en="MONETA System">МОНЕТА систем</a></li>
                                         <li class="navbar__guide-item">
                         <a href="./kviz.html" class="navbar__guide-btn">
-                            <span data-mk="МОНЕТА водич за влошки" data-en="MONETA insole guide">МОНЕТА водич за влошки</span>
+                            <span data-mk="МОНЕТА водич за влошки" data-sq="Udhëzuesi MONETA për tabana" data-en="MONETA insole guide">МОНЕТА водич за влошки</span>
                         </a>
                     </li>
-                    <li><a href="./index.html#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
+                    <li><a href="./index.html#kontakt" data-mk="Контакт" data-sq="Kontakt" data-en="Contact">Контакт</a></li>
                                         <li class="navbar__coupon-item">
-                        <button type="button" class="navbar__coupon" id="promoTrigger" aria-label="Промокод" title="Промокод" data-mk-aria="Промокод" data-en-aria="Promo Code" data-mk-title="Промокод" data-en-title="Promo Code">
+                        <button type="button" class="navbar__coupon" id="promoTrigger" aria-label="Промокод" title="Промокод" data-mk-aria="Промокод" data-sq-aria="Kodi promocional" data-en-aria="Promo Code" data-mk-title="Промокод" data-en-title="Promo Code">
                             <img src="./images/icons/coupon.webp" alt="Промокод" width="33" height="33" class="navbar__coupon-icon" loading="lazy" decoding="async">
                         </button>
                     </li>
                     <li>
-                        <a href="./cart.html" class="navbar__cart" aria-label="Кошница" title="Кошница" data-mk-aria="Кошница" data-en-aria="Cart" data-mk-title="Кошница" data-en-title="Cart">
+                        <a href="./cart.html" class="navbar__cart" aria-label="Кошница" title="Кошница" data-mk-aria="Кошница" data-sq-aria="Shporta" data-en-aria="Cart" data-mk-title="Кошница" data-en-title="Cart">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="9" cy="21" r="1"/>
                                 <circle cx="20" cy="21" r="1"/>
@@ -169,10 +170,10 @@
         <div class="hero__content-wrapper">
             <div class="hero__inner">
                 <h1 class="hero__title-animated">
-                    <span class="hero__white" data-mk="РЕШЕНИЕ ЗА ПОДОБАР ЧЕКОР," data-en="SOLUTION FOR A BETTER STEP,">РЕШЕНИЕ ЗА ПОДОБАР ЧЕКОР,</span><br>
-                    <span class="hero__pink" data-mk="ПОМАЛ ЗАМОР И ПОГОЛЕМА УДОБНОСТ" data-en="LESS FATIGUE &amp; GREATER COMFORT">ПОМАЛ ЗАМОР И ПОГОЛЕМА УДОБНОСТ</span>
+                    <span class="hero__white" data-mk="РЕШЕНИЕ ЗА ПОДОБАР ЧЕКОР," data-sq="ZGJIDHJE PËR HAP MË TË MIRË," data-en="SOLUTION FOR A BETTER STEP,">РЕШЕНИЕ ЗА ПОДОБАР ЧЕКОР,</span><br>
+                    <span class="hero__pink" data-mk="ПОМАЛ ЗАМОР И ПОГОЛЕМА УДОБНОСТ" data-sq="MË PAK LODHJE DHE MË SHUMË REHATI" data-en="LESS FATIGUE &amp; GREATER COMFORT">ПОМАЛ ЗАМОР И ПОГОЛЕМА УДОБНОСТ</span>
                 </h1>
-                <p class="hero__subtitle-dark" data-mk="Вашите стапала ве носат низ целиот ден. Дајте им ја поддршката што ја заслужуваат." data-en="Your feet carry you through the whole day. Give them the support they deserve.">
+                <p class="hero__subtitle-dark" data-mk="Вашите стапала ве носат низ целиот ден. Дајте им ја поддршката што ја заслужуваат." data-sq="Këmbët tuaja ju mbajnë gjithë ditën. Jepuni mbështetjen që meritojnë." data-en="Your feet carry you through the whole day. Give them the support they deserve.">
                     Вашите стапала ве носат низ целиот ден. Дајте им ја поддршката што ја заслужуваат.
                 </p>
             </div>
@@ -185,45 +186,45 @@
             <div class="freeship-ribbon__group">
                 <span class="freeship-ribbon__item">
                     <span class="freeship-ribbon__star">★</span>
-                    <span data-mk="Секој чекор заслужува удобност." data-en="Every step deserves comfort.">Секој чекор заслужува удобност.</span>
+                    <span data-mk="Секој чекор заслужува удобност." data-sq="Çdo hap meriton rehati." data-en="Every step deserves comfort.">Секој чекор заслужува удобност.</span>
                 </span>
                 <span class="freeship-ribbon__item">
                     <span class="freeship-ribbon__star">★</span>
-                    <span data-mk="Престанете да трпите болка во нозете — чекорете повторно без мака." data-en="Stop suffering from foot pain — walk comfortably again.">Престанете да трпите болка во нозете — чекорете повторно без мака.</span>
+                    <span data-mk="Престанете да трпите болка во нозете — чекорете повторно без мака." data-sq="Ndaloni së duruari dhimbje në këmbë — ecni sërish pa vuajtje." data-en="Stop suffering from foot pain — walk comfortably again.">Престанете да трпите болка во нозете — чекорете повторно без мака.</span>
                 </span>
                 <span class="freeship-ribbon__item">
                     <span class="freeship-ribbon__star">★</span>
-                    <span data-mk="Зошто илјадници луѓе во Македонија веќе избираат Монета?" data-en="Why do thousands of people in Macedonia already choose Moneta?">Зошто илјадници луѓе во Македонија веќе избираат Монета?</span>
+                    <span data-mk="Зошто илјадници луѓе во Македонија веќе избираат Монета?" data-sq="Pse mijëra njerëz në Maqedoni tashmë zgjedhin Moneta?" data-en="Why do thousands of people in Macedonia already choose Moneta?">Зошто илјадници луѓе во Македонија веќе избираат Монета?</span>
                 </span>
                 <span class="freeship-ribbon__item">
                     <span class="freeship-ribbon__star">★</span>
-                    <span data-mk="Подобар чекор. Подобра стабилност. Подобро движење." data-en="Better step. Better stability. Better movement.">Подобар чекор. Подобра стабилност. Подобро движење.</span>
+                    <span data-mk="Подобар чекор. Подобра стабилност. Подобро движење." data-sq="Hap më i mirë. Stabilitet më i mirë. Lëvizje më e mirë." data-en="Better step. Better stability. Better movement.">Подобар чекор. Подобра стабилност. Подобро движење.</span>
                 </span>
                 <span class="freeship-ribbon__item">
                     <span class="freeship-ribbon__star">★</span>
-                    <span data-mk="Мал додаток во обувките. Голема разлика во чувството." data-en="A small addition to your shoes. A big difference in feeling.">Мал додаток во обувките. Голема разлика во чувството.</span>
+                    <span data-mk="Мал додаток во обувките. Голема разлика во чувството." data-sq="Shtesë e vogël në këpucë. Diferencë e madhe në ndjesi." data-en="A small addition to your shoes. A big difference in feeling.">Мал додаток во обувките. Голема разлика во чувството.</span>
                 </span>
                 </div>
             <div class="freeship-ribbon__group">
                 <span class="freeship-ribbon__item">
                     <span class="freeship-ribbon__star">★</span>
-                    <span data-mk="Секој чекор заслужува удобност." data-en="Every step deserves comfort.">Секој чекор заслужува удобност.</span>
+                    <span data-mk="Секој чекор заслужува удобност." data-sq="Çdo hap meriton rehati." data-en="Every step deserves comfort.">Секој чекор заслужува удобност.</span>
                 </span>
                 <span class="freeship-ribbon__item">
                     <span class="freeship-ribbon__star">★</span>
-                    <span data-mk="Престанете да трпите болка во нозете — чекорете повторно без мака." data-en="Stop suffering from foot pain — walk comfortably again.">Престанете да трпите болка во нозете — чекорете повторно без мака.</span>
+                    <span data-mk="Престанете да трпите болка во нозете — чекорете повторно без мака." data-sq="Ndaloni së duruari dhimbje në këmbë — ecni sërish pa vuajtje." data-en="Stop suffering from foot pain — walk comfortably again.">Престанете да трпите болка во нозете — чекорете повторно без мака.</span>
                 </span>
                 <span class="freeship-ribbon__item">
                     <span class="freeship-ribbon__star">★</span>
-                    <span data-mk="Зошто илјадници луѓе во Македонија веќе избираат Монета?" data-en="Why do thousands of people in Macedonia already choose Moneta?">Зошто илјадници луѓе во Македонија веќе избираат Монета?</span>
+                    <span data-mk="Зошто илјадници луѓе во Македонија веќе избираат Монета?" data-sq="Pse mijëra njerëz në Maqedoni tashmë zgjedhin Moneta?" data-en="Why do thousands of people in Macedonia already choose Moneta?">Зошто илјадници луѓе во Македонија веќе избираат Монета?</span>
                 </span>
                 <span class="freeship-ribbon__item">
                     <span class="freeship-ribbon__star">★</span>
-                    <span data-mk="Подобар чекор. Подобра стабилност. Подобро движење." data-en="Better step. Better stability. Better movement.">Подобар чекор. Подобра стабилност. Подобро движење.</span>
+                    <span data-mk="Подобар чекор. Подобра стабилност. Подобро движење." data-sq="Hap më i mirë. Stabilitet më i mirë. Lëvizje më e mirë." data-en="Better step. Better stability. Better movement.">Подобар чекор. Подобра стабилност. Подобро движење.</span>
                 </span>
                 <span class="freeship-ribbon__item">
                     <span class="freeship-ribbon__star">★</span>
-                    <span data-mk="Мал додаток во обувките. Голема разлика во чувството." data-en="A small addition to your shoes. A big difference in feeling.">Мал додаток во обувките. Голема разлика во чувството.</span>
+                    <span data-mk="Мал додаток во обувките. Голема разлика во чувството." data-sq="Shtesë e vogël në këpucë. Diferencë e madhe në ndjesi." data-en="A small addition to your shoes. A big difference in feeling.">Мал додаток во обувките. Голема разлика во чувството.</span>
                 </span>
                 </div>
         </div>
@@ -232,9 +233,9 @@
     <!-- ===== CATEGORIES ===== -->
     <section class="categories-section" id="kategorii">
         <div class="hero__trust" data-aos="fade-up" data-aos-delay="200">
-            <span class="hero__trust-item" data-mk="✓ Анатомска поддршка" data-en="✓ Anatomical Support">✓ Анатомска поддршка</span>
-            <span class="hero__trust-item" data-mk="✓ Произведено во Словачка" data-en="✓ Made in Slovakia">✓ Произведено во Словачка</span>
-            <span class="hero__trust-item" data-mk="✓ За секојдневна удобност" data-en="✓ Everyday Comfort">✓ За секојдневна удобност</span>
+            <span class="hero__trust-item" data-mk="✓ Анатомска поддршка" data-sq="✓ Mbështetje anatomike" data-en="✓ Anatomical Support">✓ Анатомска поддршка</span>
+            <span class="hero__trust-item" data-mk="✓ Произведено во Словачка" data-sq="✓ Prodhuar në Sllovaki" data-en="✓ Made in Slovakia">✓ Произведено во Словачка</span>
+            <span class="hero__trust-item" data-mk="✓ За секојдневна удобност" data-sq="✓ Për rehati të përditshme" data-en="✓ Everyday Comfort">✓ За секојдневна удобност</span>
         </div>
 
         <div class="categories__actions-banner" data-aos="fade-up">
@@ -246,7 +247,7 @@
                     <path d="m8.5 6.5 2-2"/>
                     <path d="m17.5 15.5 2-2"/>
                 </svg>
-                <span data-mk="<strong>Отворете го Водичот за големини →</strong>" data-en="<strong>Open the Size Guide →</strong>" data-lang-html><strong>Отворете го Водичот за големини →</strong></span>
+                <span data-mk="<strong>Отворете го Водичот за големини →</strong>" data-sq="<strong>Hapni Udhëzuesin e madhësive →</strong>" data-en="<strong>Open the Size Guide →</strong>" data-lang-html><strong>Отворете го Водичот за големини →</strong></span>
             </button>
             <button type="button" class="compare-models-trigger-btn" id="compareToggleBtn" aria-expanded="false" aria-controls="compareModelsSection">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -254,7 +255,7 @@
                     <line x1="12" y1="20" x2="12" y2="4"/>
                     <line x1="6" y1="20" x2="6" y2="14"/>
                 </svg>
-                <span data-mk="Спореди ги сите модели" data-en="Compare All Models">Спореди ги сите модели</span>
+                <span data-mk="Спореди ги сите модели" data-sq="Krahasoji të gjitha modelet" data-en="Compare All Models">Спореди ги сите модели</span>
                 <svg class="compare-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"/>
                 </svg>
@@ -266,9 +267,9 @@
             <div class="compare-models__card">
                 <div class="compare-models__header">
                     <div class="compare-models__title-group">
-                        <span class="compare-models__badge" data-mk="Интерактивна споредба" data-en="Interactive Comparison">Интерактивна споредба</span>
-                        <h3 data-mk="Интерактивен споредувач на МОНЕТА модели 1:1" data-en="MONETA Interactive 1:1 Model Comparer">Интерактивен споредувач на МОНЕТА модели 1:1</h3>
-                        <p data-mk="Изберете кои било два модела за детален споредбен преглед на спецификите, поддршката, материјалот и дебелината." data-en="Select any two models for a detailed side-by-side breakdown of specs, arch support, materials, and thickness.">Изберете кои било два модела за детален споредбен преглед на спецификите, поддршката, материјалот и дебелината.</p>
+                        <span class="compare-models__badge" data-mk="Интерактивна споредба" data-sq="Krahasim interaktiv" data-en="Interactive Comparison">Интерактивна споредба</span>
+                        <h3 data-mk="Интерактивен споредувач на МОНЕТА модели 1:1" data-sq="Krahasues interaktiv i modeleve MONETA 1:1" data-en="MONETA Interactive 1:1 Model Comparer">Интерактивен споредувач на МОНЕТА модели 1:1</h3>
+                        <p data-mk="Изберете кои било два модела за детален споредбен преглед на спецификите, поддршката, материјалот и дебелината." data-sq="Zgjidhni çdo dy modele për pasqyrë të detajuar krahasuese të specifikave, mbështetjes, materialit dhe trashësisë." data-en="Select any two models for a detailed side-by-side breakdown of specs, arch support, materials, and thickness.">Изберете кои било два модела за детален споредбен преглед на спецификите, поддршката, материјалот и дебелината.</p>
                     </div>
                     <button type="button" class="compare-models__close" id="compareCloseBtn" aria-label="Затвори споредба">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -280,16 +281,16 @@
 
                 <div class="compare-controls-bar">
                     <div class="compare-mode-tabs" role="tablist">
-                        <button type="button" class="compare-tab-btn is-active" id="compareTabInteractive" role="tab" aria-selected="true" data-mk="⇄ 1:1 Интерактивна споредба" data-en="⇄ 1:1 Interactive Comparison">
+                        <button type="button" class="compare-tab-btn is-active" id="compareTabInteractive" role="tab" aria-selected="true" data-mk="⇄ 1:1 Интерактивна споредба" data-sq="⇄ Krahasim interaktiv 1:1" data-en="⇄ 1:1 Interactive Comparison">
                             ⇄ 1:1 Интерактивна споредба
                         </button>
-                        <button type="button" class="compare-tab-btn" id="compareTabOverview" role="tab" aria-selected="false" data-mk="📊 Сите 6 модели (Табела)" data-en="📊 All 6 Models (Table)">
+                        <button type="button" class="compare-tab-btn" id="compareTabOverview" role="tab" aria-selected="false" data-mk="📊 Сите 6 модели (Табела)" data-sq="📊 Të gjitha 6 modelet (Tabela)" data-en="📊 All 6 Models (Table)">
                             📊 Сите 6 модели (Табела)
                         </button>
                     </div>
 
                     <div class="compare-presets-group">
-                        <span class="compare-presets-label" data-mk="Популарни комбинации:" data-en="Popular Comparisons:">Популарни комбинации:</span>
+                        <span class="compare-presets-label" data-mk="Популарни комбинации:" data-sq="Kombinime popullore:" data-en="Popular Comparisons:">Популарни комбинации:</span>
                         <div class="compare-presets-chips">
                             <button type="button" class="compare-preset-chip" data-p1="sportski" data-p2="kozhni">🏃 Спортски vs 👞 Кожни</button>
                             <button type="button" class="compare-preset-chip" data-p1="letni" data-p2="zimski">☀️ Летни vs ❄️ Зимски</button>
@@ -302,7 +303,7 @@
                 <div class="compare-interactive-view" id="compareInteractiveView">
                     <div class="compare-selectors-panel">
                         <div class="compare-selector-box">
-                            <label for="compareSelect1" class="compare-selector-label" data-mk="Прв модел за споредба" data-en="First Model to Compare">Прв модел за споредба</label>
+                            <label for="compareSelect1" class="compare-selector-label" data-mk="Прв модел за споредба" data-sq="Modeli i parë për krahasim" data-en="First Model to Compare">Прв модел за споредба</label>
                             <div class="compare-select-wrapper">
                                 <select id="compareSelect1" class="compare-select-dropdown">
                                     <option value="sportski" selected>🏃 Спортски влошки</option>
@@ -328,7 +329,7 @@
                         </div>
 
                         <div class="compare-selector-box">
-                            <label for="compareSelect2" class="compare-selector-label" data-mk="Втор модел за споредба" data-en="Second Model to Compare">Втор модел за споредба</label>
+                            <label for="compareSelect2" class="compare-selector-label" data-mk="Втор модел за споредба" data-sq="Modeli i dytë për krahasim" data-en="Second Model to Compare">Втор модел за споредба</label>
                             <div class="compare-select-wrapper">
                                 <select id="compareSelect2" class="compare-select-dropdown">
                                     <option value="sportski">🏃 Спортски влошки</option>
@@ -346,9 +347,9 @@
                     <div class="compare-utility-bar">
                         <label class="compare-toggle-label">
                             <input type="checkbox" id="compareDiffOnlyToggle" class="compare-toggle-checkbox">
-                            <span data-mk="Истакни ги само разликите" data-en="Highlight differences only">Истакни ги само разликите</span>
+                            <span data-mk="Истакни ги само разликите" data-sq="Theksoji vetëm ndryshimet" data-en="Highlight differences only">Истакни ги само разликите</span>
                         </label>
-                        <span class="compare-diff-count-badge" id="compareDiffCountBadge" data-mk="Разлики: 0" data-en="Differences: 0">Разлики: 0</span>
+                        <span class="compare-diff-count-badge" id="compareDiffCountBadge" data-mk="Разлики: 0" data-sq="Ndryshime: 0" data-en="Differences: 0">Разлики: 0</span>
                     </div>
 
                     <div class="compare-side-by-side-wrapper" id="compareInteractiveContainer">
@@ -397,8 +398,8 @@
                     <div class="card__icon">
                         <img src="./images/icons/sport.svg" alt="Спорт" width="26" height="26" loading="lazy" decoding="async">
                     </div>
-                    <h4 data-mk="Спортски влошки" data-en="Sports Insoles">Спортски влошки</h4>
-                    <span class="card__link" data-mk="Спортски" data-en="Sports">Спортски</span>
+                    <h4 data-mk="Спортски влошки" data-sq="Tabana sportive" data-en="Sports Insoles">Спортски влошки</h4>
+                    <span class="card__link" data-mk="Спортски" data-sq="Sportive" data-en="Sports">Спортски</span>
                 </div>
             </a>
 
@@ -411,8 +412,8 @@
                     <div class="card__icon">
                         <img src="./images/icons/leather.svg" alt="Кожни" width="26" height="26" loading="lazy" decoding="async">
                     </div>
-                    <h4 data-mk="Кожни влошки" data-en="Leather Insoles">Кожни влошки</h4>
-                    <span class="card__link" data-mk="Кожни" data-en="Leather">Кожни</span>
+                    <h4 data-mk="Кожни влошки" data-sq="Tabana lëkure" data-en="Leather Insoles">Кожни влошки</h4>
+                    <span class="card__link" data-mk="Кожни" data-sq="Lëkure" data-en="Leather">Кожни</span>
                 </div>
             </a>
 
@@ -425,8 +426,8 @@
                     <div class="card__icon">
                         <img src="./images/icons/summer.svg" alt="Летни" width="26" height="26" loading="lazy" decoding="async">
                     </div>
-                    <h4 data-mk="Летни влошки" data-en="Summer Insoles">Летни влошки</h4>
-                    <span class="card__link" data-mk="Летни" data-en="Summer">Летни</span>
+                    <h4 data-mk="Летни влошки" data-sq="Tabana verore" data-en="Summer Insoles">Летни влошки</h4>
+                    <span class="card__link" data-mk="Летни" data-sq="Verore" data-en="Summer">Летни</span>
                 </div>
             </a>
 
@@ -439,8 +440,8 @@
                     <div class="card__icon">
                         <img src="./images/icons/winter.svg" alt="Зимски" width="26" height="26" loading="lazy" decoding="async">
                     </div>
-                    <h4 data-mk="Зимски влошки" data-en="Winter Insoles">Зимски влошки</h4>
-                    <span class="card__link" data-mk="Зимски" data-en="Winter">Зимски</span>
+                    <h4 data-mk="Зимски влошки" data-sq="Tabana dimërore" data-en="Winter Insoles">Зимски влошки</h4>
+                    <span class="card__link" data-mk="Зимски" data-sq="Dimëror" data-en="Winter">Зимски</span>
                 </div>
             </a>
 
@@ -453,8 +454,8 @@
                     <div class="card__icon">
                         <img src="./images/icons/hunter.svg" alt="HUNTER" width="26" height="26" loading="lazy" decoding="async">
                     </div>
-                    <h4 data-mk="HUNTER влошки" data-en="HUNTER Insoles">HUNTER влошки</h4>
-                    <span class="card__link" data-mk="HUNTER" data-en="HUNTER">HUNTER</span>
+                    <h4 data-mk="HUNTER влошки" data-sq="Tabana HUNTER" data-en="HUNTER Insoles">HUNTER влошки</h4>
+                    <span class="card__link" data-mk="HUNTER" data-sq="HUNTER" data-en="HUNTER">HUNTER</span>
                 </div>
             </a>
 
@@ -467,8 +468,8 @@
                     <div class="card__icon">
                         <img src="./images/icons/kids.svg" alt="Детски" width="26" height="26" loading="lazy" decoding="async">
                     </div>
-                    <h4 data-mk="Детски влошки" data-en="Kids Insoles">Детски влошки</h4>
-                    <span class="card__link" data-mk="Детски" data-en="Kids">Детски</span>
+                    <h4 data-mk="Детски влошки" data-sq="Tabana për fëmijë" data-en="Kids Insoles">Детски влошки</h4>
+                    <span class="card__link" data-mk="Детски" data-sq="Për fëmijë" data-en="Kids">Детски</span>
                 </div>
             </a>
 
@@ -479,37 +480,37 @@
     <section class="features-section" id="prednosti" data-aos="fade-up">
         <div class="features__inner">
             <div class="features__header">
-                <h2 data-mk="Зошто МОНЕТА анатомски влошки?" data-en="Why MONETA Anatomical Insoles?">Зошто МОНЕТА анатомски влошки?</h2>
-                <p data-mk="Главните предности за долготрајно здравје, стабилност и непречена удобност во текот на целиот ден." data-en="Key benefits for long-term health, stability, and uncompromised all-day comfort.">Главните предности за долготрајно здравје, стабилност и непречена удобност во текот на целиот ден.</p>
+                <h2 data-mk="Зошто МОНЕТА анатомски влошки?" data-sq="Pse tabana anatomike MONETA?" data-en="Why MONETA Anatomical Insoles?">Зошто МОНЕТА анатомски влошки?</h2>
+                <p data-mk="Главните предности за долготрајно здравје, стабилност и непречена удобност во текот на целиот ден." data-sq="Përparësitë kryesore për shëndet afatgjatë, stabilitet dhe rehati të pandërprerë gjatë gjithë ditës." data-en="Key benefits for long-term health, stability, and uncompromised all-day comfort.">Главните предности за долготрајно здравје, стабилност и непречена удобност во текот на целиот ден.</p>
             </div>
             <div class="features__grid">
                 <div class="feature-card">
                     <div class="feature-card__icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
                     </div>
-                    <h3 data-mk="Намалување на заморот" data-en="Reduced Fatigue">Намалување на заморот</h3>
-                    <p data-mk="Правилно распределување на тежината кое го намалува притисокот врз колената, зглобовите и рбетот." data-en="Proper weight distribution that reduces pressure on knees, joints, and spine.">Правилно распределување на тежината кое го намалува притисокот врз колената, зглобовите и рбетот.</p>
+                    <h3 data-mk="Намалување на заморот" data-sq="Reduktim i lodhjes" data-en="Reduced Fatigue">Намалување на заморот</h3>
+                    <p data-mk="Правилно распределување на тежината кое го намалува притисокот врз колената, зглобовите и рбетот." data-sq="Shpërndarje e saktë e peshës që redukton presionin mbi gjunjët, nyjet dhe shtyllën kurrizore." data-en="Proper weight distribution that reduces pressure on knees, joints, and spine.">Правилно распределување на тежината кое го намалува притисокот врз колената, зглобовите и рбетот.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-card__icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                     </div>
-                    <h3 data-mk="Анатомска поддршка" data-en="Anatomical Support">Анатомска поддршка</h3>
-                    <p data-mk="Ергономска поддршка за подолжниот и попречниот свод на стапалото за стабилен и правилен чекор." data-en="Ergonomic support for longitudinal and transverse arch for a stable, correct stride.">Ергономска поддршка за подолжниот и попречниот свод на стапалото за стабилен и правилен чекор.</p>
+                    <h3 data-mk="Анатомска поддршка" data-sq="Mbështetje anatomike" data-en="Anatomical Support">Анатомска поддршка</h3>
+                    <p data-mk="Ергономска поддршка за подолжниот и попречниот свод на стапалото за стабилен и правилен чекор." data-sq="Mbështetje ergonomike për harkun gjatësor dhe tërthor të këmbës për hap të qëndrueshëm dhe të saktë." data-en="Ergonomic support for longitudinal and transverse arch for a stable, correct stride.">Ергономска поддршка за подолжниот и попречниот свод на стапалото за стабилен и правилен чекор.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-card__icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c2-2.96 0-7-1-8 0 3.038-1.773 4.741-3 6-1.226 1.26-2 2.5-2 4a6 6 0 0 0 12 0c0-1.53-.774-2.74-2-4-1.227-1.259-3-2.962-3-6-1 1-3 5.04-1 8z"/></svg>
                     </div>
-                    <h3 data-mk="Прозрачност &amp; Свежина" data-en="Breathability &amp; Freshness">Прозрачност &amp; Свежина</h3>
-                    <p data-mk="Перфорирани дишечки материјали со висока циркулација на воздух што спречуваат потење и мириси." data-en="Perforated breathable materials with high airflow preventing sweat and odors.">Перфорирани дишечки материјали со висока циркулација на воздух што спречуваат потење и мириси.</p>
+                    <h3 data-mk="Прозрачност &amp; Свежина" data-sq="Frymëmarrje &amp; Freski" data-en="Breathability &amp; Freshness">Прозрачност &amp; Свежина</h3>
+                    <p data-mk="Перфорирани дишечки материјали со висока циркулација на воздух што спречуваат потење и мириси." data-sq="Materiale të shpuara që marrin frymë me qarkullim të lartë të ajrit që parandalojnë djersitjen dhe erën." data-en="Perforated breathable materials with high airflow preventing sweat and odors.">Перфорирани дишечки материјали со висока циркулација на воздух што спречуваат потење и мириси.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-card__icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                     </div>
-                    <h3 data-mk="Апсорпција на удари" data-en="Shock Absorption">Апсорпција на удари</h3>
-                    <p data-mk="Специјални гел и мемори зони на петицата и предниот дел за максимално ублажување на вибрациите." data-en="Special gel and memory zones on heel and forefoot for maximum vibration cushioning.">Специјални гел и мемори зони на петицата и предниот дел за максимално ублажување на вибрациите.</p>
+                    <h3 data-mk="Апсорпција на удари" data-sq="Thithje goditjesh" data-en="Shock Absorption">Апсорпција на удари</h3>
+                    <p data-mk="Специјални гел и мемори зони на петицата и предниот дел за максимално ублажување на вибрациите." data-sq="Zona speciale xhel dhe memorie në thembër dhe në pjesën e përparme për zbutje maksimale të dridhjeve." data-en="Special gel and memory zones on heel and forefoot for maximum vibration cushioning.">Специјални гел и мемори зони на петицата и предниот дел за максимално ублажување на вибрациите.</p>
                 </div>
             </div>
         </div>
@@ -638,57 +639,57 @@
     <section class="faq-section" id="faq" data-aos="fade-up">
         <div class="faq__inner">
             <div class="faq__header">
-                <h2 data-mk="Често поставувани прашања" data-en="Frequently Asked Questions">Често поставувани прашања</h2>
-                <p data-mk="Сè што треба да знаете за изборот, димензиите и одржувањето на МОНЕТА влошките." data-en="Everything you need to know about sizing, selection, and care for MONETA insoles.">Сè што треба да знаете за изборот, димензиите и одржувањето на МОНЕТА влошките.</p>
+                <h2 data-mk="Често поставувани прашања" data-sq="Pyetje të shpeshta" data-en="Frequently Asked Questions">Често поставувани прашања</h2>
+                <p data-mk="Сè што треба да знаете за изборот, димензиите и одржувањето на МОНЕТА влошките." data-sq="Gjithçka që duhet të dini për zgjedhjen, përmasat dhe mirëmbajtjen e tabanëve MONETA." data-en="Everything you need to know about sizing, selection, and care for MONETA insoles.">Сè што треба да знаете за изборот, димензиите и одржувањето на МОНЕТА влошките.</p>
             </div>
             <div class="faq__accordion" id="faqAccordion">
                 <div class="faq__item">
                     <button class="faq__question" aria-expanded="false">
                         <div class="faq__q-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L3.3 9.3a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0l12 12z"/><line x1="14.5" y1="7.5" x2="12" y2="10"/><line x1="11.5" y1="10.5" x2="9" y2="13"/><line x1="8.5" y1="13.5" x2="6" y2="16"/></svg></div>
-                        <span data-mk="Како да ја изберам вистинската големина на анатомски влошки?" data-en="How do I choose the right size of anatomical insoles?">Како да ја изберам вистинската големина на анатомски влошки?</span>
+                        <span data-mk="Како да ја изберам вистинската големина на анатомски влошки?" data-sq="Si ta zgjedh madhësinë e duhur të tabanëve anatomikë?" data-en="How do I choose the right size of anatomical insoles?">Како да ја изберам вистинската големина на анатомски влошки?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
-                    <div class="faq__answer"><div class="faq__answer-content"><p><span data-mk="Влошките се изработени според стандардните европски броеви на обувки (35-46). Препорачуваме да го изберете истиот број што го носите најчесто." data-en="Insoles are crafted according to standard European shoe sizes (35-46). We recommend choosing your usual shoe size.">Влошките се изработени според стандардните европски броеви на обувки (35-46). Препорачуваме да го изберете истиот број што го носите најчесто.</span> <button type="button" class="faq__modal-link" data-open-size-modal data-mk="Отворете го Водичот за големини и модели →" data-en="Open Size &amp; Model Guide →">Отворете го Водичот за големини и модели →</button></p></div></div>
+                    <div class="faq__answer"><div class="faq__answer-content"><p><span data-mk="Влошките се изработени според стандардните европски броеви на обувки (35-46). Препорачуваме да го изберете истиот број што го носите најчесто." data-sq="Tabanat prodhohen sipas numrave standardë evropianë të këpucëve (35-46). Rekomandojmë të zgjidhni të njëjtin numër që mbani më shpesh." data-en="Insoles are crafted according to standard European shoe sizes (35-46). We recommend choosing your usual shoe size.">Влошките се изработени според стандардните европски броеви на обувки (35-46). Препорачуваме да го изберете истиот број што го носите најчесто.</span> <button type="button" class="faq__modal-link" data-open-size-modal data-mk="Отворете го Водичот за големини и модели →" data-sq="Hapni Udhëzuesin e madhësive dhe modeleve →" data-en="Open Size &amp; Model Guide →">Отворете го Водичот за големини и модели →</button></p></div></div>
                 </div>
                 <div class="faq__item">
                     <button class="faq__question" aria-expanded="false">
                         <div class="faq__q-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-                        <span data-mk="Дали влошките одговараат за сите видови чевли и патики?" data-en="Are insoles suitable for all types of shoes and sneakers?">Дали влошките одговараат за сите видови чевли и патики?</span>
+                        <span data-mk="Дали влошките одговараат за сите видови чевли и патики?" data-sq="A përshtaten tabanat për të gjitha llojet e këpucëve dhe atleteve?" data-en="Are insoles suitable for all types of shoes and sneakers?">Дали влошките одговараат за сите видови чевли и патики?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
-                    <div class="faq__answer"><div class="faq__answer-content"><p data-mk="Да, имаме специјализирани линии: спортски влошки со апсорпција на удари за спорт и патики, танки кожни влошки за елегантни и деловни обувки, термо зимски влошки со алуминиумска изолација и детски анатомски модели за правилен развој на детското стапало." data-en="Yes, we offer specialized lines: shock-absorbing sports insoles, thin leather insoles for dress shoes, thermo winter insoles with aluminium insulation, and children's anatomical models for healthy foot development.">Да, имаме специјализирани линии: спортски влошки со апсорпција на удари за спорт и патики, танки кожни влошки за елегантни и деловни обувки, термо зимски влошки со алуминиумска изолација и детски анатомски модели за правилен развој на детското стапало.</p></div></div>
+                    <div class="faq__answer"><div class="faq__answer-content"><p data-mk="Да, имаме специјализирани линии: спортски влошки со апсорпција на удари за спорт и патики, танки кожни влошки за елегантни и деловни обувки, термо зимски влошки со алуминиумска изолација и детски анатомски модели за правилен развој на детското стапало." data-sq="Po, kemi linja të specializuara: tabana sportive me thithje goditjesh për sport dhe atlete, tabana të holla lëkure për këpucë elegante dhe pune, tabana termike dimërore me izolim alumini dhe modele anatomike për fëmijë për zhvillim të saktë të këmbës së fëmijës." data-en="Yes, we offer specialized lines: shock-absorbing sports insoles, thin leather insoles for dress shoes, thermo winter insoles with aluminium insulation, and children's anatomical models for healthy foot development.">Да, имаме специјализирани линии: спортски влошки со апсорпција на удари за спорт и патики, танки кожни влошки за елегантни и деловни обувки, термо зимски влошки со алуминиумска изолација и детски анатомски модели за правилен развој на детското стапало.</p></div></div>
                 </div>
                 <div class="faq__item">
                     <button class="faq__question" aria-expanded="false">
                         <div class="faq__q-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="12 8 12 12 15 15"/></svg></div>
-                        <span data-mk="Колку долго траат МОНЕТА анатомските влошки?" data-en="How long do MONETA anatomical insoles last?">Колку долго траат МОНЕТА анатомските влошки?</span>
+                        <span data-mk="Колку долго траат МОНЕТА анатомските влошки?" data-sq="Sa zgjasin tabanat anatomike MONETA?" data-en="How long do MONETA anatomical insoles last?">Колку долго траат МОНЕТА анатомските влошки?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
-                    <div class="faq__answer"><div class="faq__answer-content"><p data-mk="Со редовно секојдневно користење, очекуваниот животен век на влошките е помеѓу 6 и 12 месеци. Времетраењето зависи од телесната тежина, интензитетот на физичка активност и типот на подлога на која најчесто чекорите." data-en="With daily use, the expected lifespan of the insoles is between 6 and 12 months, depending on body weight, physical activity level, and terrain.">Со редовно секојдневно користење, очекуваниот животен век на влошките е помеѓу 6 и 12 месеци. Времетраењето зависи од телесната тежина, интензитетот на физичка активност и типот на подлога на која најчесто чекорите.</p></div></div>
+                    <div class="faq__answer"><div class="faq__answer-content"><p data-mk="Со редовно секојдневно користење, очекуваниот животен век на влошките е помеѓу 6 и 12 месеци. Времетраењето зависи од телесната тежина, интензитетот на физичка активност и типот на подлога на која најчесто чекорите." data-sq="Me përdorim të rregullt të përditshëm, jetëgjatësia e pritshme e tabanëve është nga 6 deri në 12 muaj. Kohëzgjatja varet nga pesha trupore, intensiteti i aktivitetit fizik dhe lloji i sipërfaqes ku ecni më shpesh." data-en="With daily use, the expected lifespan of the insoles is between 6 and 12 months, depending on body weight, physical activity level, and terrain.">Со редовно секојдневно користење, очекуваниот животен век на влошките е помеѓу 6 и 12 месеци. Времетраењето зависи од телесната тежина, интензитетот на физичка активност и типот на подлога на која најчесто чекорите.</p></div></div>
                 </div>
                 <div class="faq__item">
                     <button class="faq__question" aria-expanded="false">
                         <div class="faq__q-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.47" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
-                        <span data-mk="Дали можам да ги скратам или прилагодам влошките со ножици?" data-en="Can I trim or adjust the insoles with scissors?">Дали можам да ги скратам или прилагодам влошките со ножици?</span>
+                        <span data-mk="Дали можам да ги скратам или прилагодам влошките со ножици?" data-sq="A mund t'i shkurtoj ose përshtat tabanat me gërshërë?" data-en="Can I trim or adjust the insoles with scissors?">Дали можам да ги скратам или прилагодам влошките со ножици?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
-                    <div class="faq__answer"><div class="faq__answer-content"><p data-mk="Повеќето спортски, летни и зимски модели имаат означени испрекинати линии за поткастрување на предниот дел. Најдобар начин е да ја извадите постоечката влошка од вашите чевли, да ја преклопите врз МОНЕТА влошката и внимателно да го скратите вишокот материјал на прстите." data-en="Most sports, summer, and winter models feature cut-to-fit guide lines on the forefoot. Simply place your original insole over the MONETA insole and trim carefully.">Повеќето спортски, летни и зимски модели имаат означени испрекинати линии за поткастрување на предниот дел. Најдобар начин е да ја извадите постоечката влошка од вашите чевли, да ја преклопите врз МОНЕТА влошката и внимателно да го скратите вишокот материјал на прстите.</p></div></div>
+                    <div class="faq__answer"><div class="faq__answer-content"><p data-mk="Повеќето спортски, летни и зимски модели имаат означени испрекинати линии за поткастрување на предниот дел. Најдобар начин е да ја извадите постоечката влошка од вашите чевли, да ја преклопите врз МОНЕТА влошката и внимателно да го скратите вишокот материјал на прстите." data-sq="Shumica e modeleve sportive, verore dhe dimërore kanë vija të shënuara me pika për shkurtimin e pjesës së përparme. Mënyra më e mirë është të hiqni tabanin ekzistues nga këpucët tuaja, ta vendosni mbi tabanin MONETA dhe të shkurtoni me kujdes materialin e tepërt te gishtërinjtë." data-en="Most sports, summer, and winter models feature cut-to-fit guide lines on the forefoot. Simply place your original insole over the MONETA insole and trim carefully.">Повеќето спортски, летни и зимски модели имаат означени испрекинати линии за поткастрување на предниот дел. Најдобар начин е да ја извадите постоечката влошка од вашите чевли, да ја преклопите врз МОНЕТА влошката и внимателно да го скратите вишокот материјал на прстите.</p></div></div>
                 </div>
                 <div class="faq__item">
                     <button class="faq__question" aria-expanded="false">
                         <div class="faq__q-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
-                        <span data-mk="Како правилно да ги чистам и одржувам влошките?" data-en="How do I properly clean and maintain the insoles?">Како правилно да ги чистам и одржувам влошките?</span>
+                        <span data-mk="Како правилно да ги чистам и одржувам влошките?" data-sq="Si t'i pastroj dhe mirëmbaj tabanat në mënyrë të saktë?" data-en="How do I properly clean and maintain the insoles?">Како правилно да ги чистам и одржувам влошките?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
-                    <div class="faq__answer"><div class="faq__answer-content"><p data-mk="За кожните влошки користите малку влажна крпа и средство за нега на кожа. Текстилните и гел влошките може да се избришат со влажна крпа и благ сапун. Не се препорачува нивно перење во машина за алишта ниту директно сушење на радијатор." data-en="For leather insoles, use a damp cloth with leather care product. Textile and gel insoles can be wiped with a damp cloth and mild soap. Machine washing or direct heat drying is not recommended.">За кожните влошки користите малку влажна крпа и средство за нега на кожа. Текстилните и гел влошките може да се избришат со влажна крпа и благ сапун. Не се препорачува нивно перење во машина за алишта ниту директно сушење на радијатор.</p></div></div>
+                    <div class="faq__answer"><div class="faq__answer-content"><p data-mk="За кожните влошки користите малку влажна крпа и средство за нега на кожа. Текстилните и гел влошките може да се избришат со влажна крпа и благ сапун. Не се препорачува нивно перење во машина за алишта ниту директно сушење на радијатор." data-sq="Për tabanat lëkure përdorni një leckë pak të lagur dhe produkt për kujdesin e lëkurës. Tabanat tekstile dhe xhel mund të fshihen me leckë të lagur dhe sapun të butë. Nuk rekomandohet larja e tyre në makinë larëse as tharja e drejtpërdrejtë në radiator." data-en="For leather insoles, use a damp cloth with leather care product. Textile and gel insoles can be wiped with a damp cloth and mild soap. Machine washing or direct heat drying is not recommended.">За кожните влошки користите малку влажна крпа и средство за нега на кожа. Текстилните и гел влошките може да се избришат со влажна крпа и благ сапун. Не се препорачува нивно перење во машина за алишта ниту директно сушење на радијатор.</p></div></div>
                 </div>
                 <div class="faq__item">
                     <button class="faq__question" aria-expanded="false">
                         <div class="faq__q-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-                        <span data-mk="Колку време е потребно за прилагодување на стапалото?" data-en="How long does it take for feet to adapt to insoles?">Колку време е потребно за прилагодување на стапалото?</span>
+                        <span data-mk="Колку време е потребно за прилагодување на стапалото?" data-sq="Sa kohë nevojitet për përshtatjen e këmbës?" data-en="How long does it take for feet to adapt to insoles?">Колку време е потребно за прилагодување на стапалото?</span>
                         <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
-                    <div class="faq__answer"><div class="faq__answer-content"><p data-mk="Повеќето корисници чувствуваат олеснување веднаш. Доколку претходно не сте носеле анатомски влошки, нормално е да почувствувате благ притисок во првите 2-3 дена додека мускулите и мускулно-скелетниот систем на стапалото се прилагодат на правилната поддршка." data-en="Most users feel relief immediately. If you haven't worn anatomical insoles before, mild pressure during the first 2-3 days is normal as foot muscles adjust to arch support.">Повеќето корисници чувствуваат олеснување веднаш. Доколку претходно не сте носеле анатомски влошки, нормално е да почувствувате благ притисок во првите 2-3 дена додека мускулите и мускулно-скелетниот систем на стапалото се прилагодат на правилната поддршка.</p></div></div>
+                    <div class="faq__answer"><div class="faq__answer-content"><p data-mk="Повеќето корисници чувствуваат олеснување веднаш. Доколку претходно не сте носеле анатомски влошки, нормално е да почувствувате благ притисок во првите 2-3 дена додека мускулите и мускулно-скелетниот систем на стапалото се прилагодат на правилната поддршка." data-sq="Shumica e përdoruesve ndjejnë lehtësim menjëherë. Nëse më parë nuk keni mbajtur tabana anatomike, është normale të ndjeni një presion të lehtë në 2-3 ditët e para, derisa muskujt dhe sistemi muskuloskeletor i këmbës të përshtaten me mbështetjen e saktë." data-en="Most users feel relief immediately. If you haven't worn anatomical insoles before, mild pressure during the first 2-3 days is normal as foot muscles adjust to arch support.">Повеќето корисници чувствуваат олеснување веднаш. Доколку претходно не сте носеле анатомски влошки, нормално е да почувствувате благ притисок во првите 2-3 дена додека мускулите и мускулно-скелетниот систем на стапалото се прилагодат на правилната поддршка.</p></div></div>
                 </div>
             </div>
         </div>
@@ -707,6 +708,50 @@
                 <button type="submit" class="form__submit">Испрати порака</button>
                 <div class="form__feedback" id="kontaktFeedback" aria-live="polite"></div>
             </form>
+
+            <!-- ===== ДИЛЕРИ / МАПА ===== -->
+            <div class="dealer-section">
+                <h3 class="dealer-section__title" data-mk="Каде може да не најдете?" data-sq="Ku mund të na gjeni?" data-en="Where to find us?">Каде може да не најдете?</h3>
+                <p class="dealer-section__sub" data-mk="МОНЕТА влошките може да ги најдете кај нашите партнери низ Македонија." data-sq="Tabanat MONETA mund t'i gjeni te partnerët tanë në të gjithë Maqedoninë." data-en="MONETA insoles are available at our partner stores across Macedonia.">МОНЕТА влошките може да ги најдете кај нашите партнери низ Македонија.</p>
+                <div class="dealer-map" id="dealerMap" role="region" aria-label="Мапа на продажни места"></div>
+                <div class="dealer-list">
+                    <div class="dealer-list__item dealer-list__item--main">
+                        <strong data-mk="МАК-ФИТ (Calivita) — Скопје" data-sq="MAK-FIT (Calivita) — Shkup" data-en="MAK-FIT (Calivita) — Skopje">МАК-ФИТ (Calivita) — Скопје</strong>
+                        <span data-mk="ул. св. Кирил и Методиј бр.20" data-sq="rr. Shën Kirili dhe Metodi nr. 20" data-en="20 Sv. Kiril i Metodij St.">ул. св. Кирил и Методиј бр.20</span>
+                        <span class="dealer-list__tel">+389 76 454 957 · +389 2 323 00 88</span>
+                    </div>
+                    <div class="dealer-list__item">
+                        <strong data-mk="МЕДИКА ПРО — Скопје" data-sq="MEDIKA PRO — Shkup" data-en="MEDIKA PRO — Skopje">МЕДИКА ПРО — Скопје</strong>
+                        <span data-mk="бул. Кочо Рацин бр.75, Центар" data-sq="bul. Koço Racin nr. 75, Qendër" data-en="75 Koco Racin Blvd, Centar">бул. Кочо Рацин бр.75, Центар</span>
+                        <span class="dealer-list__tel">+389 72 225 505 · +389 2 3111 404</span>
+                    </div>
+                    <div class="dealer-list__item">
+                        <strong data-mk="МЕДИКА ПРО — Прилеп" data-sq="MEDIKA PRO — Prilep" data-en="MEDIKA PRO — Prilep">МЕДИКА ПРО — Прилеп</strong>
+                        <span data-mk="ул. Мице Козар бр.10" data-sq="rr. Mice Kozar nr. 10" data-en="10 Mice Kozar St.">ул. Мице Козар бр.10</span>
+                        <span class="dealer-list__tel">+389 70 22 55 99 · +389 48 450 231</span>
+                    </div>
+                    <div class="dealer-list__item">
+                        <strong data-mk="МЕДИКА ПРО — Тетово" data-sq="MEDIKA PRO — Tetovë" data-en="MEDIKA PRO — Tetovo">МЕДИКА ПРО — Тетово</strong>
+                        <span data-mk="ул. Маршал Тито бр.36" data-sq="rr. Marshall Tito nr. 36" data-en="36 Marshal Tito St.">ул. Маршал Тито бр.36</span>
+                        <span class="dealer-list__tel">+389 71 26 20 48 · +389 44 349 050</span>
+                    </div>
+                    <div class="dealer-list__item">
+                        <strong data-mk="МЕДИКА ПРО — Битола" data-sq="MEDIKA PRO — Manastir" data-en="MEDIKA PRO — Bitola">МЕДИКА ПРО — Битола</strong>
+                        <span data-mk="бул. 1-ви Мај бр.202/7" data-sq="bul. 1 Maji nr. 202/7" data-en="202/7 1st May Blvd">бул. 1-ви Мај бр.202/7</span>
+                        <span class="dealer-list__tel">+389 72 30 37 82 · +389 47 29 21 10</span>
+                    </div>
+                    <div class="dealer-list__item">
+                        <strong data-mk="МЕДИКА ПРО — Куманово" data-sq="MEDIKA PRO — Kumanovë" data-en="MEDIKA PRO — Kumanovo">МЕДИКА ПРО — Куманово</strong>
+                        <span data-mk="ул. Христијан Тодоровски Карпош бр.7" data-sq="rr. Hristijan Todorovski Karposh nr. 7" data-en="7 Hristijan Todorovski Karpos St.">ул. Христијан Тодоровски Карпош бр.7</span>
+                        <span class="dealer-list__tel">+389 70 322 611 · +389 31 461 990</span>
+                    </div>
+                    <div class="dealer-list__item">
+                        <strong data-mk="МЕДИКА ПРО — Струмица" data-sq="MEDIKA PRO — Strumicë" data-en="MEDIKA PRO — Strumica">МЕДИКА ПРО — Струмица</strong>
+                        <span data-mk="ул. Младинска бр.37" data-sq="rr. Mladinska nr. 37" data-en="37 Mladinska St.">ул. Младинска бр.37</span>
+                        <span class="dealer-list__tel">+389 70 223 100 · +389 34 348 256</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -717,12 +762,12 @@
                 <div class="footer__newsletter">
                     <div class="newsletter__header">
                         <div class="newsletter__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                        <div class="newsletter__titles"><h3 data-mk="Билтен за здравје на стапалата" data-en="Foot Health Newsletter">Билтен за здравје на стапалата</h3><p data-mk="Добивајте стручни совети за нега, вежби и попусти за МОНЕТА влошките." data-en="Get expert foot care tips, exercises, and discounts for MONETA insoles.">Добивајте стручни совети за нега, вежби и попусти за МОНЕТА влошките.</p></div>
+                        <div class="newsletter__titles"><h3 data-mk="Билтен за здравје на стапалата" data-sq="Buletin për shëndetin e këmbëve" data-en="Foot Health Newsletter">Билтен за здравје на стапалата</h3><p data-mk="Добивајте стручни совети за нега, вежби и попусти за МОНЕТА влошките." data-sq="Merrni këshilla ekspertësh për kujdesin, ushtrimet dhe zbritje për tabanat MONETA." data-en="Get expert foot care tips, exercises, and discounts for MONETA insoles.">Добивајте стручни совети за нега, вежби и попусти за МОНЕТА влошките.</p></div>
                     </div>
                     <form class="newsletter__form" id="newsletterForm">
                         <div class="newsletter__input-group">
-                            <input type="email" id="newsletterEmailInput" placeholder="Внесете ја вашата е-пошта..." data-mk-placeholder="Внесете ја вашата е-пошта..." data-en-placeholder="Enter your email address..." required autocomplete="email">
-                            <button type="submit" class="newsletter__submit"><span data-mk="Претплати се" data-en="Subscribe">Претплати се</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+                            <input type="email" id="newsletterEmailInput" placeholder="Внесете ја вашата е-пошта..." data-mk-placeholder="Внесете ја вашата е-пошта..." data-sq-placeholder="Shkruani email-in tuaj..." data-en-placeholder="Enter your email address..." required autocomplete="email">
+                            <button type="submit" class="newsletter__submit"><span data-mk="Претплати се" data-sq="Abonohu" data-en="Subscribe">Претплати се</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
                         </div>
                     </form>
                     <div class="newsletter__feedback" id="newsletterFeedback" aria-live="polite"></div>
@@ -730,16 +775,16 @@
                 <div class="footer__tracker">
                     <div class="order-tracker__header">
                         <div class="order-tracker__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-                        <div class="order-tracker__titles"><h3 data-mk="Следете ја вашата нарачка" data-en="Track Your Order">Следете ја вашата нарачка</h3><p data-mk="Внесете го вашиот број на нарачка за статус во реално време" data-en="Enter your order number for real-time tracking status">Внесете го вашиот број на нарачка за статус во реално време</p></div>
+                        <div class="order-tracker__titles"><h3 data-mk="Следете ја вашата нарачка" data-sq="Ndiq porosinë tuaj" data-en="Track Your Order">Следете ја вашата нарачка</h3><p data-mk="Внесете го вашиот број на нарачка за статус во реално време" data-sq="Shkruani numrin e porosisë për status në kohë reale" data-en="Enter your order number for real-time tracking status">Внесете го вашиот број на нарачка за статус во реално време</p></div>
                     </div>
                     <form class="order-tracker__form" id="orderTrackerForm">
                         <div class="order-tracker__input-group">
-                            <input type="text" id="orderIdInput" placeholder="Внесете бр. на нарачка (пр. MN-8492)" data-mk-placeholder="Внесете бр. на нарачка (пр. MN-8492)" data-en-placeholder="Enter order no. (e.g. MN-8492)" required autocomplete="off">
-                            <button type="submit" class="order-tracker__submit"><span data-mk="Следи пратка" data-en="Track Package">Следи пратка</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+                            <input type="text" id="orderIdInput" placeholder="Внесете бр. на нарачка (пр. MN-8492)" data-mk-placeholder="Внесете бр. на нарачка (пр. MN-8492)" data-sq-placeholder="Shkruani nr. e porosisë (p.sh. MN-8492)" data-en-placeholder="Enter order no. (e.g. MN-8492)" required autocomplete="off">
+                            <button type="submit" class="order-tracker__submit"><span data-mk="Следи пратка" data-sq="Ndiq parcelën" data-en="Track Package">Следи пратка</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
                         </div>
                     </form>
                     <div class="order-tracker__samples">
-                        <span class="samples-label" data-mk="Брз тест:" data-en="Quick test:">Брз тест:</span>
+                        <span class="samples-label" data-mk="Брз тест:" data-sq="Test i shpejtë:" data-en="Quick test:">Брз тест:</span>
                         <button type="button" class="order-sample-chip" data-sample="MN-8492">MN-8492</button>
                         <button type="button" class="order-sample-chip" data-sample="MN-3021">MN-3021</button>
                         <button type="button" class="order-sample-chip" data-sample="MN-1094">MN-1094</button>
@@ -749,31 +794,31 @@
             </div>
 
             <div class="footer__contact">
-                    <span class="social__label" data-mk="Контакт:" data-en="Contact:">Контакт:</span>
-                    <p class="footer__contact-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-mk="Скопје, ул. св. Кирил и Методиј бр. 20" data-en="Skopje, 20 Sv. Kiril i Metodij St.">Скопје, ул. св. Кирил и Методиј бр. 20</span></p>
+                    <span class="social__label" data-mk="Контакт:" data-sq="Kontakt:" data-en="Contact:">Контакт:</span>
+                    <p class="footer__contact-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-mk="Скопје, ул. св. Кирил и Методиј бр. 20" data-sq="Shkup, rr. Shën Kirili dhe Metodi nr. 20" data-en="Skopje, 20 Sv. Kiril i Metodij St.">Скопје, ул. св. Кирил и Методиј бр. 20</span></p>
                     <p class="footer__contact-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+38976454957">+389 76 454 957</a> / <a href="tel:+38923230088">+389 2 323 00 88</a></p>
                     <p class="footer__contact-line"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@calivita.mk">info@calivita.mk</a></p>
-                    <p class="footer__contact-line"><span data-mk="МАК-ФИТ ДООЕЛ (Calivita)" data-en="MAK-FIT DOOEL (Calivita)">МАК-ФИТ ДООЕЛ (Calivita)</span></p>
+                    <p class="footer__contact-line"><span data-mk="МАК-ФИТ ДООЕЛ (Calivita)" data-sq="MAK-FIT SH.P.K. (Calivita)" data-en="MAK-FIT DOOEL (Calivita)">МАК-ФИТ ДООЕЛ (Calivita)</span></p>
                 </div>
 
             <div class="footer__inner">
                 <div class="footer__brand">
                     <img src="./images/moneta-logo.svg" alt="MONETA" width="100" height="28">
-                    <p data-mk="&copy; 2026 МОНЕТА. Сите права задржани." data-en="&copy; 2026 MONETA. All rights reserved.">&copy; 2026 МОНЕТА. Сите права задржани.</p>
-                <p class="footer__tagline" data-mk="Секој чекор заслужува удобност." data-en="Every step deserves comfort.">Секој чекор заслужува удобност.</p>
+                    <p data-mk="&copy; 2026 МОНЕТА. Сите права задржани." data-sq="&copy; 2026 MONETA. Të gjitha të drejtat e rezervuara." data-en="&copy; 2026 MONETA. All rights reserved.">&copy; 2026 МОНЕТА. Сите права задржани.</p>
+                <p class="footer__tagline" data-mk="Секој чекор заслужува удобност." data-sq="Çdo hap meriton rehati." data-en="Every step deserves comfort.">Секој чекор заслужува удобност.</p>
                 </div>
 
                 <div class="footer__right">
                     <ul class="footer__links">
-                    <li><a href="#prednosti" data-mk="За нас" data-en="About Us">За нас</a></li>
-                    <li><a href="#kontakt" data-mk="Контакт" data-en="Contact">Контакт</a></li>
-                    <li><a href="./dostava.html" data-mk="Достава и плаќање" data-en="Delivery &amp; Payment">Достава и плаќање</a></li>
+                    <li><a href="#prednosti" data-mk="За нас" data-sq="Rreth nesh" data-en="About Us">За нас</a></li>
+                    <li><a href="#kontakt" data-mk="Контакт" data-sq="Kontakt" data-en="Contact">Контакт</a></li>
+                    <li><a href="./dostava.html" data-mk="Достава и плаќање" data-sq="Dorëzimi dhe pagesa" data-en="Delivery &amp; Payment">Достава и плаќање</a></li>
                     </ul>
 
                     <div class="footer__legal-links">
-                        <a href="./uslovi.html" data-mk="Услови за користење" data-en="Terms of Use">Услови за користење</a>
+                        <a href="./uslovi.html" data-mk="Услови за користење" data-sq="Kushtet e përdorimit" data-en="Terms of Use">Услови за користење</a>
                         <span class="footer__legal-dot">•</span>
-                        <a href="./uslovi.html#privatnost" data-mk="Приватност" data-en="Privacy">Приватност</a>
+                        <a href="./uslovi.html#privatnost" data-mk="Приватност" data-sq="Privatësia" data-en="Privacy">Приватност</a>
                     </div>
                 </div>
             </div>
@@ -796,8 +841,8 @@
         <div class="modal__dialog">
             <div class="modal__header">
                 <div class="modal__title-group">
-                    <span class="modal__badge" data-mk="📏 Водич за големини &amp; Препорака" data-en="📏 Size Guide &amp; Recommendation">📏 Водич за големини &amp; Препорака</span>
-                    <h3 id="sizeModalTitle" data-mk="Најдете ја вашата идеална МОНЕТА влошка" data-en="Find Your Ideal MONETA Insole">Најдете ја вашата идеална МОНЕТА влошка</h3>
+                    <span class="modal__badge" data-mk="📏 Водич за големини &amp; Препорака" data-sq="📏 Udhëzues i madhësive &amp; Rekomandim" data-en="📏 Size Guide &amp; Recommendation">📏 Водич за големини &amp; Препорака</span>
+                    <h3 id="sizeModalTitle" data-mk="Најдете ја вашата идеална МОНЕТА влошка" data-sq="Gjeni tabanin tuaj ideal MONETA" data-en="Find Your Ideal MONETA Insole">Најдете ја вашата идеална МОНЕТА влошка</h3>
                 </div>
                 <button type="button" class="modal__close" data-close-modal aria-label="Затвори маска">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -805,9 +850,9 @@
             </div>
             <div class="modal__body">
                 <div class="size-finder__group">
-                    <label class="size-finder__label" data-mk="1. Изберете го вашиот број на обувки (EU):" data-en="1. Select your shoe size (EU):">1. Изберете го вашиот број на обувки (EU):</label>
+                    <label class="size-finder__label" data-mk="1. Изберете го вашиот број на обувки (EU):" data-sq="1. Zgjidhni numrin tuaj të këpucëve (EU):" data-en="1. Select your shoe size (EU):">1. Изберете го вашиот број на обувки (EU):</label>
                     <div class="size-finder__pills" id="sizePills">
-                        <button type="button" class="size-pill" data-size="28-34" data-mk="Детски (28-34)" data-en="Kids (28-34)">Детски (28-34)</button>
+                        <button type="button" class="size-pill" data-size="28-34" data-mk="Детски (28-34)" data-sq="Për fëmijë (28-34)" data-en="Kids (28-34)">Детски (28-34)</button>
                         <button type="button" class="size-pill" data-size="35-36">35 - 36</button>
                         <button type="button" class="size-pill" data-size="37-38">37 - 38</button>
                         <button type="button" class="size-pill is-active" data-size="39-40">39 - 40</button>
@@ -816,15 +861,15 @@
                         <button type="button" class="size-pill" data-size="45-46">45 - 46</button>
                     </div>
                     <div class="size-finder__custom-row">
-                        <span class="size-finder__custom-label" data-mk="Или внесете го точно (EU или должина):" data-en="Or enter it exactly (EU or length):">Или внесете го точно (EU или должина):</span>
+                        <span class="size-finder__custom-label" data-mk="Или внесете го точно (EU или должина):" data-sq="Ose shkruani saktësisht (EU ose gjatësi):" data-en="Or enter it exactly (EU or length):">Или внесете го точно (EU или должина):</span>
                         <div class="size-finder__duo">
                             <div class="size-finder__input-wrap">
-                                <input type="number" id="customSizeInput" min="20" max="48" step="0.5" class="size-finder__input" placeholder="EU 40" data-mk-placeholder="EU 40" data-en-placeholder="EU 40" aria-label="Точен EU број">
-                                <span class="size-finder__field-tag" data-mk="EU" data-en="EU">EU</span>
+                                <input type="number" id="customSizeInput" min="20" max="48" step="0.5" class="size-finder__input" placeholder="EU 40" data-mk-placeholder="EU 40" data-sq-placeholder="EU 40" data-en-placeholder="EU 40" aria-label="Точен EU број">
+                                <span class="size-finder__field-tag" data-mk="EU" data-sq="EU" data-en="EU">EU</span>
                             </div>
                             <span class="size-finder__duo-arrow" aria-hidden="true">↔</span>
                             <div class="size-finder__input-wrap">
-                                <input type="number" id="customLenInput" min="150" max="320" step="1" class="size-finder__input" placeholder="255" data-mk-placeholder="255 mm" data-en-placeholder="255 mm" aria-label="Должина на стапалото">
+                                <input type="number" id="customLenInput" min="150" max="320" step="1" class="size-finder__input" placeholder="255" data-mk-placeholder="255 mm" data-sq-placeholder="255 mm" data-en-placeholder="255 mm" aria-label="Должина на стапалото">
                                 <div class="size-finder__unit-toggle" id="lenUnitToggle">
                                     <button type="button" class="size-finder__unit is-active" data-unit="mm" aria-label="милиметри">мм</button>
                                     <button type="button" class="size-finder__unit" data-unit="cm" aria-label="сантиметри">см</button>
@@ -835,82 +880,82 @@
                     </div>
                 </div>
                 <div class="size-finder__group">
-                    <label class="size-finder__label" data-mk="2. Изберете ја вашата главна намена или вид обувки:" data-en="2. Select your main activity or shoe type:">2. Изберете ја вашата главна намена или вид обувки:</label>
+                    <label class="size-finder__label" data-mk="2. Изберете ја вашата главна намена или вид обувки:" data-sq="2. Zgjidhni qëllimin tuaj kryesor ose llojin e këpucëve:" data-en="2. Select your main activity or shoe type:">2. Изберете ја вашата главна намена или вид обувки:</label>
                     <div class="size-finder__activities" id="activityOptions">
-                        <button type="button" class="activity-pill is-active" data-activity="sport"><img src="./images/icons/sport.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="Спорт &amp; Патики" data-en="Sports &amp; Sneakers">Спорт &amp; Патики</span></button>
-                        <button type="button" class="activity-pill" data-activity="leather"><img src="./images/icons/leather.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="Кожни &amp; Деловни" data-en="Leather &amp; Dress Shoes">Кожни &amp; Деловни</span></button>
-                        <button type="button" class="activity-pill" data-activity="summer"><img src="./images/icons/summer.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="Летни &amp; Отворени" data-en="Summer &amp; Open Shoes">Летни &amp; Отворени</span></button>
-                        <button type="button" class="activity-pill" data-activity="winter"><img src="./images/icons/winter.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="Зимски &amp; Чизми" data-en="Winter &amp; Boots">Зимски &amp; Чизми</span></button>
-                        <button type="button" class="activity-pill" data-activity="hunter"><img src="./images/icons/hunter.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="HUNTER / Работни" data-en="HUNTER / Heavy Duty">HUNTER / Работни</span></button>
-                        <button type="button" class="activity-pill" data-activity="kids"><img src="./images/icons/kids.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="Детски обувки" data-en="Children's Shoes">Детски обувки</span></button>
+                        <button type="button" class="activity-pill is-active" data-activity="sport"><img src="./images/icons/sport.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="Спорт &amp; Патики" data-sq="Sport &amp; Atlete" data-en="Sports &amp; Sneakers">Спорт &amp; Патики</span></button>
+                        <button type="button" class="activity-pill" data-activity="leather"><img src="./images/icons/leather.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="Кожни &amp; Деловни" data-sq="Lëkure &amp; Pune" data-en="Leather &amp; Dress Shoes">Кожни &amp; Деловни</span></button>
+                        <button type="button" class="activity-pill" data-activity="summer"><img src="./images/icons/summer.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="Летни &amp; Отворени" data-sq="Verore &amp; të Hapura" data-en="Summer &amp; Open Shoes">Летни &amp; Отворени</span></button>
+                        <button type="button" class="activity-pill" data-activity="winter"><img src="./images/icons/winter.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="Зимски &amp; Чизми" data-sq="Dimërore &amp; Çizme" data-en="Winter &amp; Boots">Зимски &amp; Чизми</span></button>
+                        <button type="button" class="activity-pill" data-activity="hunter"><img src="./images/icons/hunter.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="HUNTER / Работни" data-sq="HUNTER / Pune" data-en="HUNTER / Heavy Duty">HUNTER / Работни</span></button>
+                        <button type="button" class="activity-pill" data-activity="kids"><img src="./images/icons/kids.svg" alt="" width="20" height="20" loading="lazy" decoding="async"><span data-mk="Детски обувки" data-sq="Këpucë për fëmijë" data-en="Children's Shoes">Детски обувки</span></button>
                     </div>
                 </div>
                 <div class="size-finder__result" id="sizeResult"></div>
 
                 <div class="size-finder__features">
-                    <label class="size-finder__label" data-mk="Што значат иконите?" data-en="What do the icons mean?">Што значат иконите?</label>
+                    <label class="size-finder__label" data-mk="Што значат иконите?" data-sq="Çfarë kuptojnë ikonat?" data-en="What do the icons mean?">Што значат иконите?</label>
                     <div class="size-finder__features-grid">
                         <div class="size-finder__feature">
                             <img src="./images/icons/anatomska%20vloska.webp" alt="Анатомска форма" loading="lazy">
-                            <span data-mk="Анатомска форма" data-en="Anatomic shape">Анатомска форма</span>
+                            <span data-mk="Анатомска форма" data-sq="Formë anatomike" data-en="Anatomic shape">Анатомска форма</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/apsorpcija%20na%20pritisok.webp" alt="Апсорпција на притисок" loading="lazy">
-                            <span data-mk="Апсорпција на притисок" data-en="Shock absorption">Апсорпција на притисок</span>
+                            <span data-mk="Апсорпција на притисок" data-sq="Thithje e presionit" data-en="Shock absorption">Апсорпција на притисок</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/apsorpcija.webp" alt="Апсорпција" loading="lazy">
-                            <span data-mk="Апсорпција" data-en="Absorption">Апсорпција</span>
+                            <span data-mk="Апсорпција" data-sq="Thithje" data-en="Absorption">Апсорпција</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/gel%20vloska.webp" alt="Гел влошка" loading="lazy">
-                            <span data-mk="Гел влошка" data-en="Gel insole">Гел влошка</span>
+                            <span data-mk="Гел влошка" data-sq="Taban xhel" data-en="Gel insole">Гел влошка</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/higienski.webp" alt="Хигиенски" loading="lazy">
-                            <span data-mk="Хигиенски" data-en="Hygienic">Хигиенски</span>
+                            <span data-mk="Хигиенски" data-sq="Higjienik" data-en="Hygienic">Хигиенски</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/koza.webp" alt="Од кожа" loading="lazy">
-                            <span data-mk="Од кожа" data-en="Leather">Од кожа</span>
+                            <span data-mk="Од кожа" data-sq="Nga lëkura" data-en="Leather">Од кожа</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/medicinski_svojstva.webp" alt="Медицински својства" loading="lazy">
-                            <span data-mk="Медицински својства" data-en="Health benefits">Медицински својства</span>
+                            <span data-mk="Медицински својства" data-sq="Veti mjekësore" data-en="Health benefits">Медицински својства</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/moznost%20za%20perenje.webp" alt="Можност за перење" loading="lazy">
-                            <span data-mk="Перење на 30°C" data-en="Washable at 30°C">Перење на 30°C</span>
+                            <span data-mk="Перење на 30°C" data-sq="Larje në 30°C" data-en="Washable at 30°C">Перење на 30°C</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/polar%28ultra%20zimski%29.webp" alt="Полар — ултра зимски" loading="lazy">
-                            <span data-mk="Полар — ултра зимски" data-en="Polar — ultra winter">Полар — ултра зимски</span>
+                            <span data-mk="Полар — ултра зимски" data-sq="Polar — ultra dimëror" data-en="Polar — ultra winter">Полар — ултра зимски</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/prirodni%20materijali.webp" alt="Природни материјали" loading="lazy">
-                            <span data-mk="Природни материјали" data-en="Natural materials">Природни материјали</span>
+                            <span data-mk="Природни материјали" data-sq="Materiale natyrale" data-en="Natural materials">Природни материјали</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/protiv%20losi%20mirisi.webp" alt="Против лоши мириси" loading="lazy">
-                            <span data-mk="Против лоши мириси" data-en="Anti-odor">Против лоши мириси</span>
+                            <span data-mk="Против лоши мириси" data-sq="Kundër erërave të këqija" data-en="Anti-odor">Против лоши мириси</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/so%20aroma.webp" alt="Со арома" loading="lazy">
-                            <span data-mk="Со арома" data-en="With aroma">Со арома</span>
+                            <span data-mk="Со арома" data-sq="Me aromë" data-en="With aroma">Со арома</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/univerzalen%20broj.webp" alt="Универзален број" loading="lazy">
-                            <span data-mk="Универзален број" data-en="Universal size">Универзален број</span>
+                            <span data-mk="Универзален број" data-sq="Numër universal" data-en="Universal size">Универзален број</span>
                         </div>
                         <div class="size-finder__feature">
                             <img src="./images/icons/zimski.webp" alt="Зимски" loading="lazy">
-                            <span data-mk="Зимски" data-en="Winter">Зимски</span>
+                            <span data-mk="Зимски" data-sq="Dimëror" data-en="Winter">Зимски</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal__footer">
-                <p class="modal__tip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span><strong data-mk="Совет:" data-en="Tip:">Совет:</strong> <span data-mk="Поткастрување со ножици е можно кај: Active Gel, MEMOSOLE, Sportex, Carbon, Simona, Thermo Alu и сите HUNTER модели. Кожните влошки и останатите модели имаат фиксни големини." data-en="Trimming with scissors is available for: Active Gel, MEMOSOLE, Sportex, Carbon, Simona, Thermo Alu and all HUNTER models. Leather insoles and other models come in fixed sizes.">Поткастрување со ножици е можно кај: Active Gel, MEMOSOLE, Sportex, Carbon, Simona, Thermo Alu и сите HUNTER модели. Кожните влошки и останатите модели имаат фиксни големини.</span></span></p>
+                <p class="modal__tip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span><strong data-mk="Совет:" data-sq="Këshillë:" data-en="Tip:">Совет:</strong> <span data-mk="Поткастрување со ножици е можно кај: Active Gel, MEMOSOLE, Sportex, Carbon, Simona, Thermo Alu и сите HUNTER модели. Кожните влошки и останатите модели имаат фиксни големини." data-sq="Shkurtimi me gërshërë është i mundur te: Active Gel, MEMOSOLE, Sportex, Carbon, Simona, Thermo Alu dhe të gjitha modelet HUNTER. Tabanat lëkure dhe modelet e tjera kanë madhësi fikse." data-en="Trimming with scissors is available for: Active Gel, MEMOSOLE, Sportex, Carbon, Simona, Thermo Alu and all HUNTER models. Leather insoles and other models come in fixed sizes.">Поткастрување со ножици е можно кај: Active Gel, MEMOSOLE, Sportex, Carbon, Simona, Thermo Alu и сите HUNTER модели. Кожните влошки и останатите модели имаат фиксни големини.</span></span></p>
             </div>
         </div>
     </div>
@@ -922,24 +967,24 @@
             <div class="search-modal__header">
                 <div class="search-modal__input-wrapper">
                     <svg class="search-modal__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    <input type="text" id="searchInput" class="search-modal__input" placeholder="Пребарај модели на влошки, броеви или совети..." autocomplete="off" spellcheck="false" data-mk-placeholder="Пребарај модели на влошки, броеви или совети..." data-en-placeholder="Search insole models, sizes, or advice...">
+                    <input type="text" id="searchInput" class="search-modal__input" placeholder="Пребарај модели на влошки, броеви или совети..." autocomplete="off" spellcheck="false" data-mk-placeholder="Пребарај модели на влошки, броеви или совети..." data-sq-placeholder="Kërko modele tabanash, numra ose këshilla..." data-en-placeholder="Search insole models, sizes, or advice...">
                 </div>
                 <button type="button" class="search-modal__close" id="searchClose" aria-label="Затвори" title="Затвори (ESC)"><kbd>ESC</kbd></button>
             </div>
             <div class="search-modal__quick-tags">
-                <span class="quick-tags__title" data-mk="Брзи категории:" data-en="Quick categories:">Брзи категории:</span>
-                <button type="button" class="search-tag" data-query="спортски" data-mk="Спортски" data-en="Sports">Спортски</button>
-                <button type="button" class="search-tag" data-query="кожни" data-mk="Кожни" data-en="Leather">Кожни</button>
-                <button type="button" class="search-tag" data-query="зимски" data-mk="Зимски" data-en="Winter">Зимски</button>
-                <button type="button" class="search-tag" data-query="детски" data-mk="Детски" data-en="Kids">Детски</button>
-                <button type="button" class="search-tag" data-query="големина" data-mk="Водич за броеви" data-en="Size guide">Водич за броеви</button>
+                <span class="quick-tags__title" data-mk="Брзи категории:" data-sq="Kategori të shpejta:" data-en="Quick categories:">Брзи категории:</span>
+                <button type="button" class="search-tag" data-query="спортски" data-mk="Спортски" data-sq="Sportive" data-en="Sports">Спортски</button>
+                <button type="button" class="search-tag" data-query="кожни" data-mk="Кожни" data-sq="Lëkure" data-en="Leather">Кожни</button>
+                <button type="button" class="search-tag" data-query="зимски" data-mk="Зимски" data-sq="Dimëror" data-en="Winter">Зимски</button>
+                <button type="button" class="search-tag" data-query="детски" data-mk="Детски" data-sq="Për fëmijë" data-en="Kids">Детски</button>
+                <button type="button" class="search-tag" data-query="големина" data-mk="Водич за броеви" data-sq="Udhëzues i numrave" data-en="Size guide">Водич за броеви</button>
             </div>
             <div class="search-modal__body" id="searchResultsContainer"></div>
             <div class="search-modal__footer">
                 <div class="search-modal__shortcuts">
-                    <span><kbd>↑</kbd><kbd>↓</kbd> <span data-mk="Навигација" data-en="Navigate">Навигација</span></span>
-                    <span><kbd>↵</kbd> <span data-mk="Отвори" data-en="Open">Отвори</span></span>
-                    <span><kbd>ESC</kbd> <span data-mk="Затвори" data-en="Close">Затвори</span></span>
+                    <span><kbd>↑</kbd><kbd>↓</kbd> <span data-mk="Навигација" data-sq="Navigimi" data-en="Navigate">Навигација</span></span>
+                    <span><kbd>↵</kbd> <span data-mk="Отвори" data-sq="Hap" data-en="Open">Отвори</span></span>
+                    <span><kbd>ESC</kbd> <span data-mk="Затвори" data-sq="Mbyll" data-en="Close">Затвори</span></span>
                 </div>
                 <div class="search-modal__brand">МОНЕТА Search</div>
             </div>
@@ -955,6 +1000,7 @@
     <script src="./vendor/aos.js" defer></script>
     <script src="./vendor/gsap.min.js" defer></script>
     <script src="./vendor/ScrollTrigger.min.js" defer></script>
+    <script src="./vendor/leaflet.js" defer></script>
     <script src="./script.js" defer></script>
 </body>
 </html>
